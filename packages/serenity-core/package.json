@@ -2,7 +2,6 @@
 	"name": "@serenity-ui/core",
 	"type": "module",
 	"scripts": {
-		"build": "vite build",
-		"tsc": "tsc"
+		"build": "rm -rf dist && tsc && vite build"
 	}
 }

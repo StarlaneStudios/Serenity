@@ -1,14 +1,15 @@
+import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-	plugins: [
-	],
 	build: {
 		lib: {
 			entry: "lib/index.ts",
 			formats: ["es", "umd"],
-			name: "serenity-core"
+			name: "serenity-core",
+			fileName: "serenity-core"
 		},
-		minify: false
+		minify: false,
+		emptyOutDir: false
 	}
 });

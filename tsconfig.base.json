@@ -1,8 +1,16 @@
 {
 	"compilerOptions": {
-		"module": "ESNext",
+		"module": "NodeNext",
 		"target": "ESNext",
-		"sourceMap": true
+		"moduleResolution": "NodeNext",
+		"sourceMap": false,
+		"declaration": true,
+		"composite": true,
+		"lib": [
+			"DOM",
+			"ESNext",
+			"DOM.Iterable"
+		],
 	},
 	"exclude": ["node_modules", "dist"]
 }

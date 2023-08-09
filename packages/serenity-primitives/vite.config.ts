@@ -4,8 +4,11 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: "lib/index.ts",
-			formats: ["es", "umd"]
+			formats: ["es", "umd"],
+			name: "serenity-primitives",
+			fileName: "serenity-primitives"
 		},
-		minify: false
+		minify: false,
+		emptyOutDir: false
 	}
 });

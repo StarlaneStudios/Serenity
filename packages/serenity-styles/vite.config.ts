@@ -4,8 +4,11 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: "lib/index.ts",
-			formats: ["es", "umd"]
+			formats: ["es", "umd"],
+			fileName: "serenity-styles",
+			name: "serenity-styles"
 		},
-		minify: false
+		minify: false,
+		emptyOutDir: false
 	}
 });
