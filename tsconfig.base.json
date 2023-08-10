@@ -3,14 +3,13 @@
 		"module": "NodeNext",
 		"target": "ESNext",
 		"moduleResolution": "NodeNext",
-		"sourceMap": false,
-		"declaration": true,
 		"composite": true,
 		"lib": [
 			"DOM",
 			"ESNext",
 			"DOM.Iterable"
 		],
+		"types": ["vite/client"]
 	},
 	"exclude": ["node_modules", "dist"]
 }

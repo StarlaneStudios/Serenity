@@ -6,12 +6,18 @@
 		"declaration": true,
 		"declarationDir": "./dist",
 		"declarationMap": true,
-		"emitDeclarationOnly": true
+		"emitDeclarationOnly": true,
+		"paths": {
+			"~/": ["./lib/"]
+		}
 	},
+	"include": [
+		"lib/**/*",
+		"env.d.ts"
+	],
 	"exclude": [
 		"node_modules",
-		"dist",
-		"vite.config.ts"
+		"dist"
 	],
 	"references": [
 		{
