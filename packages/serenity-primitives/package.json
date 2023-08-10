@@ -2,9 +2,25 @@
 	"name": "@serenity-ui/primitives",
 	"type": "module",
 	"scripts": {
-		"build": "rm -rf dist && tsc && vite build"
+		"build": "rm -rf dist && tsc && vite build",
+		"test": "vitest",
+		"declaration:generate": "tsup --dts --dts-only",
+		"dev": "vite"
 	},
 	"dependencies": {
-		"@serenity/utils": "*"
+		"@serenity-ui/utils": "*"
+	},
+	"main": "./dist/serenity-primitives.umd.cjs",
+	"module": "./dist/serenity-primitives.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/serenity-primitives.js",
+			"require": "./dist/serenity-primitives.umd.cjs"
+		}
 	}
 }

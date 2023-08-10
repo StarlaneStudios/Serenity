@@ -1,7 +1,23 @@
 {
-	"name": "@serenity/styles",
+	"name": "@serenity-ui/styles",
 	"type": "module",
 	"scripts": {
-		"build": "rm -rf dist && tsc && vite build"
+		"build": "rm -rf dist && tsc && vite build",
+		"test": "vitest",
+		"dev": "vite",
+		"declaration:generate": "tsup --dts --dts-only"
+	},
+	"main": "./dist/serenity-styles.umd.cjs",
+	"module": "./dist/serenity-styles.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/serenity-styles.js",
+			"require": "./dist/serenity-styles.umd.cjs"
+		}
 	}
 }

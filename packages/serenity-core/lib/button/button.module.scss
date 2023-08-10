@@ -1,0 +1,7 @@
+.button {
+	background-color: red !important;
+
+	&[disabled] {
+		background-color: blue !important;
+	}
+}

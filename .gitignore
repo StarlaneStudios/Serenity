@@ -1,3 +1,18 @@
+# Dependency directories
 node_modules
 dist
+
+# Turborepo
 .turbo
+
+# Environment
+.env
+.env*.local
+
+# Solid
+.solid
+.output
+
+# System Files
+.DS_Store
+Thumbs.db
