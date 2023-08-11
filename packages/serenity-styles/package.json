@@ -4,7 +4,7 @@
 	"scripts": {
 		"build": "rm -rf dist && tsc && vite build",
 		"test": "vitest",
-		"dev": "vite"
+		"dev": "vite build --watch"
 	},
 	"main": "./dist/serenity-styles.umd.cjs",
 	"module": "./dist/serenity-styles.js",
@@ -18,5 +18,8 @@
 			"import": "./dist/serenity-styles.js",
 			"require": "./dist/serenity-styles.umd.cjs"
 		}
+	},
+	"dependencies": {
+		"@serenity-ui/utils": "*"
 	}
 }

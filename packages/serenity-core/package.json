@@ -23,6 +23,11 @@
 			"require": "./dist/style.css"
 		}
 	},
+	"dependencies": {
+		"@serenity-ui/styles": "*",
+		"@serenity-ui/utils": "*",
+		"@serenity-ui/primitives": "*"
+	},
 	"devDependencies": {
 		"sass": "1.65.1",
 		"typescript-plugin-css-modules": "^5.0.1"

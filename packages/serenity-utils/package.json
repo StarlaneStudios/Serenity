@@ -4,7 +4,7 @@
 	"scripts": {
 		"build": "rm -rf dist && tsc && vite build",
 		"test": "vitest",
-		"dev": "vite"
+		"dev": "vite build --watch"
 	},
 	"main": "./dist/serenity-utils.umd.cjs",
 	"module": "./dist/serenity-utils.js",

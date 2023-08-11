@@ -1,25 +1,23 @@
 {
+	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
+		"rootDir": "lib",
 		"baseUrl": ".",
-		"lib": ["ESNext", "DOM"],
-		"moduleResolution": "Node",
-		"esModuleInterop": true,
-		"declaration": true,
-		"declarationDir": "./dist",
-		"declarationMap": true,
-		"noEmit": true,
+		"outDir": "dist",
+		"composite": true,
 		"types": ["vite/client"],
-		"paths": {
-			"~/": ["./lib/"]
-		},
+		"plugins": [
+			{
+				"name": "typescript-plugin-css-modules",
+				"options": {
+					"classnameTransform": "camelCaseOnly",
+					"goToDefinition": true,
+				}
+			}
+		]
 	},
 	"include": [
 		"lib/**/*",
 		"env.d.ts"
-	],
-	"exclude": [
-		"node_modules",
-		"dist",
-		"lib/**/*.test.ts",
 	]
 }

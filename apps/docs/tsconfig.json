@@ -2,20 +2,39 @@
 	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleResolution": "node",
 		"jsxImportSource": "solid-js",
+		"isolatedModules": true,
+		"allowJs": true,
 		"jsx": "preserve",
 		"strict": true,
+		"composite": true,
 		"types": [
 			"solid-start/env"
 		],
-		"baseUrl": "./",
+		"baseUrl": ".",
 		"paths": {
 			"~/*": [
 				"./src/*"
 			]
-		}
-	}
+		},
+		"plugins": [
+			{
+				"name": "typescript-plugin-css-modules",
+				"options": {
+					"classnameTransform": "camelCaseOnly",
+					"goToDefinition": true,
+				}
+			}
+		],
+		"skipLibCheck": true
+	},
+	"exclude": ["node_modules"],
+	"include": [
+		"src/**/*",
+		"env.d.ts"
+	]
 }

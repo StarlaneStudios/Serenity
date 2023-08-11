@@ -1,24 +1,34 @@
 {
+	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"baseUrl": ".",
-		"lib": ["ESNext", "DOM"],
-		"moduleResolution": "Node",
-		"esModuleInterop": true,
-		"declaration": true,
-		"declarationDir": "./dist",
-		"declarationMap": true,
+		"rootDir": "lib",
+		"outDir": "dist",
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
-		"noEmit": true,
-		"types": ["vite/client"],
+		"types": [
+			"vite/client"
+		],
+		"composite": true,
+		"paths": {
+			"@serenity-ui/styles": ["../serenity-styles/lib"],
+			"@serenity-ui/utils": ["../serenity-utils/lib"],
+			"@serenity-ui/primitives": ["../serenity-primitives/lib"]
+		}
 	},
 	"include": [
 		"lib/**/*",
 		"env.d.ts"
 	],
-	"exclude": [
-		"node_modules",
-		"dist",
-		"lib/**/*.test.ts",
+	"references": [
+		{
+			"path": "../serenity-utils/tsconfig.json"
+		},
+		{
+			"path": "../serenity-styles/tsconfig.json"
+		},
+		{
+			"path": "../serenity-primitives/tsconfig.json"
+		}
 	]
 }

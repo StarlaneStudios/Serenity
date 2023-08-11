@@ -1,25 +1,10 @@
 {
+	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
-		"baseUrl": ".",
-		"lib": ["ESNext", "DOM"],
-		"moduleResolution": "Node",
-		"esModuleInterop": true,
-		"declaration": true,
-		"declarationDir": "./dist",
-		"declarationMap": true,
-		"noEmit": true,
-		"types": ["vite/client"],
-		"paths": {
-			"~/": ["./lib/"]
-		},
+		"composite": true
 	},
 	"include": [
 		"lib/**/*",
 		"env.d.ts"
-	],
-	"exclude": [
-		"node_modules",
-		"dist",
-		"lib/**/*.test.ts",
 	]
 }

@@ -1,9 +1,6 @@
 import { resolve } from "path";
-import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
-
-const srcPath = fileURLToPath(new URL('./src', import.meta.url));
 
 export default defineConfig({
 	plugins: [
@@ -24,10 +21,5 @@ export default defineConfig({
 		},
 		minify: false,
 		emptyOutDir: false
-	},
-	resolve: {
-		alias: {
-			"~/": srcPath
-		}
 	}
 });

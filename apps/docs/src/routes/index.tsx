@@ -6,7 +6,7 @@ export default function Home() {
 	return (
 		<main>
 			<Stack>
-				<Button>
+				<Button color="">
 					<Title>Home</Title>
 				</Button>
 				<Counter />
@@ -18,7 +18,7 @@ export default function Home() {
 				<Counter />
 			</Stack>
 			<Stack>
-				<Button>
+				<Button color="">
 					<Title>Home</Title>
 				</Button>
 				<Counter />

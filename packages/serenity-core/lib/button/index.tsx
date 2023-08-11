@@ -1,8 +1,9 @@
 import { JSX } from "solid-js";
 import classes from "./button.module.scss";
+import { ThemeColor } from "@serenity-ui/styles";
 
 interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
-	
+	color?: ThemeColor;
 }
 
 function Button(props: ButtonProps) {

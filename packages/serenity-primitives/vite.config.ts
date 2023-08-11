@@ -1,9 +1,17 @@
-import { fileURLToPath } from "url";
+import { resolve } from "path";
 import { defineConfig } from "vite";
-
-const srcPath = fileURLToPath(new URL('./src', import.meta.url));
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
+	plugins: [
+		dts({ 
+			rollupTypes: true, 
+			exclude: ['node_module/**'],
+			tsconfigPath: resolve(__dirname, "tsconfig.json"),
+			insertTypesEntry: true,
+			outDir: resolve(__dirname, "dist")
+		})
+	],
 	build: {
 		lib: {
 			entry: "lib/index.ts",
@@ -13,10 +21,5 @@ export default defineConfig({
 		},
 		minify: false,
 		emptyOutDir: false
-	},
-	resolve: {
-		alias: {
-			"~/": srcPath
-		}
 	}
 });
