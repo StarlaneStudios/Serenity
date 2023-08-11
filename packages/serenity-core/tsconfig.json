@@ -1,17 +1,16 @@
 {
 	"compilerOptions": {
+		"baseUrl": ".",
+		"lib": ["ESNext", "DOM"],
 		"moduleResolution": "Node",
 		"esModuleInterop": true,
 		"declaration": true,
 		"declarationDir": "./dist",
 		"declarationMap": true,
-		"paths": {
-			"~/": ["./lib/"]
-		},
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
 		"noEmit": true,
-		"types": ["vite/client"]
+		"types": ["vite/client"],
 	},
 	"include": [
 		"lib/**/*",

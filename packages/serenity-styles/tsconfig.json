@@ -1,13 +1,17 @@
 {
 	"compilerOptions": {
+		"baseUrl": ".",
+		"lib": ["ESNext", "DOM"],
+		"moduleResolution": "Node",
 		"esModuleInterop": true,
 		"declaration": true,
 		"declarationDir": "./dist",
 		"declarationMap": true,
-		"emitDeclarationOnly": true,
+		"noEmit": true,
+		"types": ["vite/client"],
 		"paths": {
 			"~/": ["./lib/"]
-		}
+		},
 	},
 	"include": [
 		"lib/**/*",
@@ -16,11 +20,6 @@
 	"exclude": [
 		"node_modules",
 		"dist",
-		"vite.config.ts"
-	],
-	"references": [
-		{
-			"path": "../../tsconfig.base.json"
-		}
+		"lib/**/*.test.ts",
 	]
 }

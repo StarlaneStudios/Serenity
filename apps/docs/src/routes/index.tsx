@@ -1,24 +1,28 @@
-import { Button } from "@serenity-ui/core";
+import { Button, Stack } from "@serenity-ui/core";
 import { Title } from "solid-start";
 import Counter from "~/components/Counter";
 
 export default function Home() {
 	return (
 		<main>
-			<Title>Hello World</Title>
-			<h1>Hello world!</h1>
-			<Counter />
-			<p>
-				Visit{" "}
-				<a href="https://start.solidjs.com" target="_blank">
-					start.solidjs.com
-				</a>{" "}
-				to learn how to build SolidStart apps.
-			</p>
-			<Button>
-				
-			</Button>
-			222
+			<Stack>
+				<Button>
+					<Title>Home</Title>
+				</Button>
+				<Counter />
+			</Stack>
+			<Stack>
+				<Button>
+					<Title>Home</Title>
+				</Button>
+				<Counter />
+			</Stack>
+			<Stack>
+				<Button>
+					<Title>Home</Title>
+				</Button>
+				<Counter />
+			</Stack>
 		</main>
 	);
 }

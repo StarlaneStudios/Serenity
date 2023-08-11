@@ -4,7 +4,6 @@
 	"scripts": {
 		"build": "rm -rf dist && tsc && vite build",
 		"test": "vitest",
-		"declaration:generate": "tsup --dts --dts-only",
 		"dev": "vite"
 	},
 	"dependencies": {
