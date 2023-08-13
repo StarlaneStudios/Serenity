@@ -17,6 +17,10 @@
 			"types": "./dist/index.d.ts",
 			"import": "./dist/serenity-styles.js",
 			"require": "./dist/serenity-styles.umd.cjs"
+		},
+		"./sass/**/*.scss": {
+			"import": "./sass/**/*.scss",
+			"require": "./sass/**/*.scss"
 		}
 	},
 	"dependencies": {

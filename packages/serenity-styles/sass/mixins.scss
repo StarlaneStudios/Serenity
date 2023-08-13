@@ -1,0 +1,13 @@
+@mixin isDark {
+	html[data-theme="dark"] {
+		@content;
+	}
+}
+
+@mixin isLight {
+	html[data-theme="light"] {
+		@content;
+	}
+}
+
+$button-radius: 100px;

@@ -13,13 +13,13 @@ export default function Home() {
 			</Stack>
 			<Stack>
 				<Button>
-					<Title>Home</Title>
+					Bruh bruh
 				</Button>
 				<Counter />
 			</Stack>
 			<Stack>
 				<Button color="">
-					<Title>Home</Title>
+					Home
 				</Button>
 				<Counter />
 			</Stack>

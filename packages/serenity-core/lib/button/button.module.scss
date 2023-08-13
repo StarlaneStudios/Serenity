@@ -1,4 +1,16 @@
 .button {
 	display: inline-block;
-	background-color: red;
+	border-radius: $button-radius;
+}
+
+@include isDark {
+	.button {
+		background-color: red;
+	}
+}
+
+@include isLight {
+	.button {
+		background-color: blue;
+	}
 }

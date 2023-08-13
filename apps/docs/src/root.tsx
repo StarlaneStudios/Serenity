@@ -16,7 +16,7 @@ import "./root.css";
 
 export default function Root() {
 	return (
-		<Html lang="en">
+		<Html lang="en" data-theme="dark">
 			<Head>
 				<Title>SolidStart - Bare</Title>
 				<Meta charset="utf-8" />

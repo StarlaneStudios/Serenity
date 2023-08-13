@@ -14,7 +14,17 @@
 			"@serenity-ui/styles": ["../serenity-styles/lib"],
 			"@serenity-ui/utils": ["../serenity-utils/lib"],
 			"@serenity-ui/primitives": ["../serenity-primitives/lib"]
-		}
+		},
+		"plugins": [
+			{
+				"name": "typescript-plugin-css-modules",
+				"options": {
+					"classnameTransform": "camelCaseOnly",
+					"goToDefinition": true,
+					"customMatcher": ".*\\.module\\.scss$"
+				}
+			}
+		]
 	},
 	"include": [
 		"lib/**/*",

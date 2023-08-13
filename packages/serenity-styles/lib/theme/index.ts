@@ -1,4 +1,4 @@
-import { Tuple } from "./tuple";
+import { Tuple } from "../tuple";
 
 export type DefaultThemeColor =
 	| "dark"
@@ -26,3 +26,5 @@ export type ThemeColorPalette = ThemeColorPaletteOverride extends {
 	: Record<DefaultThemeColor, Tuple<string, 10>>;
 
 export type ThemeColor = keyof ThemeColorPalette;
+
+export * from "./sizes";

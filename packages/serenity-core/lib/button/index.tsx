@@ -1,6 +1,7 @@
-import { JSX } from "solid-js";
+import { JSX, splitProps } from "solid-js";
 import classes from "./button.module.scss";
-import { ThemeColor } from "@serenity-ui/styles";
+import { cx } from "@serenity-ui/utils";
+import type { ThemeColor } from "@serenity-ui/styles";
 
 interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
 	color?: ThemeColor;
@@ -8,9 +9,11 @@ interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
 
 function Button(props: ButtonProps) {
 
+	const [root, other] = splitProps(props, ["children", "color", "class"])
+
 	return (
-		<button class={classes.button}>
-			this is a button 222
+		<button class={cx(classes.button, root.class)}>
+			{root.children}
 		</button>
 	);
 }
