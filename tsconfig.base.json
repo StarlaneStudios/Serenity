@@ -19,6 +19,15 @@
 		"declarationMap": true,
 		"declarationDir": "dist",
 		"strict": true,
-		"noEmitOnError": true
+		"noEmitOnError": true,
+		"plugins": [
+			{
+				"name": "typescript-plugin-css-modules",
+				"options": {
+					"classnameTransform": "camelCaseOnly",
+					"goToDefinition": true,
+				}
+			}
+		]
 	}
 }

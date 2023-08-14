@@ -5,16 +5,7 @@
 		"baseUrl": ".",
 		"outDir": "dist",
 		"composite": true,
-		"types": ["vite/client"],
-		"plugins": [
-			{
-				"name": "typescript-plugin-css-modules",
-				"options": {
-					"classnameTransform": "camelCaseOnly",
-					"goToDefinition": true,
-				}
-			}
-		]
+		"types": ["vite/client"]
 	},
 	"include": [
 		"lib/**/*",

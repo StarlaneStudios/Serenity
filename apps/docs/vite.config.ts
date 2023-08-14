@@ -8,14 +8,5 @@ export default defineConfig({
 		cssMinify: "esbuild",
 		sourcemap: false,
 		target: "esnext"
-	},
-	css: {
-		preprocessorOptions: {
-			scss: {
-				additionalData: `
-					$button-radius: 4px;
-				`
-			}
-		}
 	}
 });

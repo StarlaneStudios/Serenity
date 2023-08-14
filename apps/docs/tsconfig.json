@@ -21,6 +21,7 @@
 				"./src/*"
 			]
 		},
+		"skipLibCheck": true,
 		"plugins": [
 			{
 				"name": "typescript-plugin-css-modules",
@@ -29,8 +30,7 @@
 					"goToDefinition": true,
 				}
 			}
-		],
-		"skipLibCheck": true
+		]
 	},
 	"exclude": ["node_modules"],
 	"include": [
