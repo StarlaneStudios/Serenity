@@ -32,7 +32,7 @@ function Group(props: GroupProps) {
 		return {
 			"--group-spacing": size,
 			"--group-justify": root.justify,
-			"--group-align": root.align ?? "center"
+			"--group-align": root.align
 		};
 	};
 
