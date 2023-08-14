@@ -1,0 +1,36 @@
+.divider {
+	position: relative;
+	border-bottom-style: initial;
+	border-right-color: initial;
+	border-image: initial;
+}
+
+.divider[aria-orientation='horizontal'] {
+	border-width: var(--border-thickness) 0px 0px;
+	border-left-style: initial;
+	border-bottom-color: initial;
+	border-left-color: initial;
+	border-top-color: var(--border-color);
+	border-top-style: var(--border-variant, solid);
+	margin: 0.75rem 0px;
+}
+
+.divider[aria-orientation='vertical'] {
+	border-width: 0px 0px 0px var(--border-thickness);
+	border-top-style: initial;
+	border-right-style: initial;
+	border-top-color: initial;
+	border-bottom-color: initial;
+	align-self: stretch;
+	height: auto;
+	border-left-color: var(--border-color);
+	border-left-style: var(--border-variant, solid);
+}
+
+:root {
+	--divider-thickness-xs: 0.0625rem;
+	--divider-thickness-sm: 0.125rem;
+	--divider-thickness-md: 0.1875rem;
+	--divider-thickness-lg: 0.25rem;
+	--divider-thickness-xl: 0.3125rem;
+}

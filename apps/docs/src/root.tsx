@@ -12,7 +12,7 @@ export default function Root() {
 				<Meta charset="utf-8" />
 				<Meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<Body data-css-vars="true">
+			<Body>
 				<Suspense>
 					<ErrorBoundary>
 						<A href="/">Index</A>

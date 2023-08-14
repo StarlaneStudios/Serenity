@@ -1,4 +1,4 @@
-import { Button, Group, Stack } from "@serenity-ui/core";
+import { Button, Divider, Group, Stack } from "@serenity-ui/core";
 import classes from "./style.module.scss";
 import { createSignal } from "solid-js";
 
@@ -38,6 +38,16 @@ export default function Home() {
 					Disabled button
 				</Button>
 			</Group>
+
+			<div style={{ height: '300px', "margin-left": "100px", display: "flex" }}>
+				<Divider thickness='xl' orientation="vertical" variant="dotted" />
+			</div>
+
+			<Divider thickness='md' orientation="horizontal" variant="solid" />
+
+			<Divider thickness='md' orientation="horizontal" variant="solid">
+				<span>Content</span>
+			</Divider>
 		</main>
 	);
 }
