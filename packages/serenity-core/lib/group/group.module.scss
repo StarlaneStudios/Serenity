@@ -1,0 +1,30 @@
+.group {
+	display: flex;
+	column-gap: var(--group-spacing);
+	align-items: var(--group-align, "center");
+	justify-content: var(--group-justify, "inherit");
+
+	&[data-direction='row'] {
+		flex-direction: row;
+	}
+
+	&[data-direction='row-reverse'] {
+		flex-direction: row-reverse;
+	}
+
+	&[data-grow]>* {
+		flex-grow: 1;
+	}
+
+	&[data-no-wrap='true'] {
+		flex-wrap: nowrap;
+	}
+}
+
+:root {
+	--group-spacing-xs: 0.625rem;
+	--group-spacing-sm: 0.750rem;
+	--group-spacing-md: 1.000rem;
+	--group-spacing-lg: 1.250rem;
+	--group-spacing-xl: 1.500rem;
+}

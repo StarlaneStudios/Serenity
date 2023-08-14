@@ -95,7 +95,7 @@ export const resolveColorInput = (input: string, ignoreComputation: Partial<Reco
 	color: false,
 	hover: false,
 	press: false
-}) => {
+}): Record<ResolveColorComputations, string> => {
 
 	// result with the type that returns the color, hover and press values as strings.
 	// exclude the types that are excluded from the computation.
@@ -135,7 +135,7 @@ export const resolveColorInput = (input: string, ignoreComputation: Partial<Reco
 		return result;
 	}
 
-	const [color, shade] = input.split('.');
+	const [color, shade] = input.split('.') as [string | undefined, string | undefined];
 	const colorShade = shade ? parseInt(shade) : 6;
 	const cssVariable = `var(--color-${color}-${colorShade})`;
 

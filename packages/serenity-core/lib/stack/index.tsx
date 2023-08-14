@@ -12,8 +12,8 @@ interface StackProps extends JSX.HTMLAttributes<HTMLDivElement> {
 function Stack(props: StackProps) {
 
 	const [root, other] = splitProps(props, [
-		"children", 
-		"class", 
+		"children",
+		"class",
 		"spacing",
 		"justify",
 		"align",
@@ -21,19 +21,21 @@ function Stack(props: StackProps) {
 		"style"
 	]);
 
-	const size = resolveSize(root.spacing ?? "md", "stack-spacing", "px");
-	const cssVariables = cssvars({
-		"row-gap": size,
-		"justify-content": root.justify,
-		"align-items": root.align
-	});
+	const cssVariables = () => {
+		const size = resolveSize(root.spacing ?? "md", "stack-spacing", "px");
+		return cssvars({
+			"row-gap": size,
+			"justify-content": root.justify,
+			"align-items": root.align
+		});
+	};
 
 	return (
 		<div
 			class={cx(classes.stack, root.class)}
 			data-spacing={root.spacing}
 			data-direction={root.direction ?? "column"}
-			style={Object.assign(cssVariables, root.style)}
+			style={Object.assign(cssVariables(), root.style)}
 			{...other}
 		>
 			{root.children}
