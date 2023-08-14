@@ -4,8 +4,12 @@ export type {
 	ThemeColorPalette,
 	ThemeColor,
 	Size
-} from "./theme/index";
+} from "./types/theme/index";
 
 export type { Tuple } from "./tuple";
 
-export { DEFAULT_THEME_COLORS } from "./constants";
+export * from "./functions/theme/css";
+export * from "./functions/theme/color";
+
+// import sass files.
+import "./styles/index.scss";

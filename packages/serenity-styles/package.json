@@ -10,7 +10,8 @@
 	"module": "./dist/serenity-styles.js",
 	"types": "dist/index.d.ts",
 	"files": [
-		"dist"
+		"dist",
+		"styles"
 	],
 	"exports": {
 		".": {
@@ -18,9 +19,9 @@
 			"import": "./dist/serenity-styles.js",
 			"require": "./dist/serenity-styles.umd.cjs"
 		},
-		"./sass/**/*.scss": {
-			"import": "./sass/**/*.scss",
-			"require": "./sass/**/*.scss"
+		"./dist/style.css": {
+			"import": "./dist/style.css",
+			"require": "./dist/style.css"
 		}
 	},
 	"dependencies": {

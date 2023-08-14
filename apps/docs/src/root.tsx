@@ -1,18 +1,8 @@
 // @refresh reload
 import { Suspense } from "solid-js";
-import {
-	A,
-	Body,
-	ErrorBoundary,
-	FileRoutes,
-	Head,
-	Html,
-	Meta,
-	Routes,
-	Scripts,
-	Title,
-} from "solid-start";
+import { A, Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title } from "solid-start";
 import "./root.css";
+import "@serenity-ui/styles/dist/style.css";
 
 export default function Root() {
 	return (

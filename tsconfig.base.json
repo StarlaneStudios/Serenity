@@ -14,7 +14,7 @@
 		"skipLibCheck": true,
 		"allowJs": true,
 		"baseUrl": ".",
-		"noEmit": true,
+		"noEmit": false,
 		"declaration": true,
 		"declarationMap": true,
 		"declarationDir": "dist",

@@ -9,6 +9,7 @@
 		"types": [
 			"vite/client"
 		],
+		"noEmit": true,
 		"composite": true,
 		"paths": {
 			"@serenity-ui/styles": ["../serenity-styles/lib"],

@@ -57,6 +57,9 @@ importers:
       '@serenity-ui/primitives':
         specifier: '*'
         version: link:../../packages/serenity-primitives
+      '@serenity-ui/styles':
+        specifier: '*'
+        version: link:../../packages/serenity-styles
       '@solidjs/meta':
         specifier: ^0.28.5
         version: 0.28.5(solid-js@1.7.9)

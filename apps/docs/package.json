@@ -22,7 +22,8 @@
 		"solid-js": "^1.7.9",
 		"solid-start": "^0.3.1",
 		"@serenity-ui/core": "*",
-		"@serenity-ui/primitives": "*"
+		"@serenity-ui/primitives": "*",
+		"@serenity-ui/styles": "*"
 	},
 	"engines": {
 		"node": ">=18"

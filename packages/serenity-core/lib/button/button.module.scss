@@ -1,16 +1,71 @@
 .button {
 	display: inline-block;
-	border-radius: $button-radius;
-}
+	line-height: 1;
+	border: 0.0625rem solid transparent;
+	cursor: pointer;
+	border-radius: var(--border-radius);
+	font-weight: 600;
 
-@include isDark {
-	.button {
-		background-color: red;
+	// sizes
+	&[data-size='xs'] {
+		padding-block: 0.875rem;
+		height: 1.875rem;
+		font-size: 0.75rem;
+	}
+
+	&[data-size='sm'] {
+		padding-block: 1.125rem;
+		height: 2.25rem;
+		font-size: 0.875rem;
+	}
+
+	&[data-size='md'] {
+		padding-block: 1.375rem;
+		height: 2.625rem;
+		font-size: 1rem;
+	}
+
+	&[data-size='lg'] {
+		padding-block: 1.625rem;
+		height: 3.125rem;
+		font-size: 1.125rem;
+	}
+
+	&[data-size='xl'] {
+		padding-block: 2rem;
+		height: 3.75rem;
+		font-size: 1.25rem;
+	}
+
+	&[disabled] {
+		cursor: not-allowed;
+		background-color: var(--color-gray-1) !important;
+		color: var(--color-gray-5) !important;
+	}
+
+	&[data-variant='filled'] {
+		color: white;
+		background-color: var(--background-color);
+
+		&:hover {
+			background-color: var(--hover-color);
+		}
+
+		&:active {
+			background-color: var(--press-color);
+		}
 	}
 }
 
-@include isLight {
-	.button {
-		background-color: blue;
-	}
+.button--inner {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: visible;
+}
+
+.button--label {
+	white-space: nowrap;
+	overflow: hidden;
 }

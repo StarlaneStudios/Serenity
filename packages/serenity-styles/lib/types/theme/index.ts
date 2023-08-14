@@ -1,4 +1,4 @@
-import { Tuple } from "../tuple";
+import { Tuple } from "../../tuple";
 
 export type DefaultThemeColor =
 	| "dark"

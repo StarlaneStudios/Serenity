@@ -47,13 +47,6 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 	},
 	css: {
 		devSourcemap: true,
-		preprocessorOptions: {
-			scss: {
-				additionalData: `
-					@import "@serenity-ui/styles/sass/mixins.scss";
-				`
-			}
-		},
 		modules: {
 			hashPrefix: "serenity",
 			localsConvention: 'camelCaseOnly'

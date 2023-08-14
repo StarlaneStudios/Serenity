@@ -1,27 +1,23 @@
 import { Button, Stack } from "@serenity-ui/core";
 import { Title } from "solid-start";
-import Counter from "~/components/Counter";
+import classes from "./style.module.scss";
 
 export default function Home() {
 	return (
 		<main>
-			<Stack>
-				<Button color="">
+			<Stack spacing='xs' direction="column-reverse">
+				<Button color="lime">
 					<Title>Home</Title>
 				</Button>
-				<Counter />
-			</Stack>
-			<Stack>
 				<Button>
 					Bruh bruh
 				</Button>
-				<Counter />
-			</Stack>
-			<Stack>
-				<Button color="">
+				<Button>
 					Home
 				</Button>
-				<Counter />
+				<Button class={classes.button} disabled>
+					Disabled button
+				</Button>
 			</Stack>
 		</main>
 	);
