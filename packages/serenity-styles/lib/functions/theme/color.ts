@@ -1,16 +1,6 @@
-import type { OmitByValue } from "../../types/helper";
-import type { Size } from "../../types/theme/sizes";
-
-function convertToSixDigitHex(hexColor: string): string {
-    // Handle both 3-digit and 6-digit hex values
-    if (hexColor.length === 4) { // 3-digit hex color
-        const r = hexColor[1];
-        const g = hexColor[2];
-        const b = hexColor[3];
-        return `#${r}${r}${g}${g}${b}${b}`;
-    }
-    return hexColor;
-}
+import type { Tuple } from "../../tuple";
+import type { ThemeColor } from "../../types/theme";
+import { clamp } from "../utils/number";
 
 /**
  * darkens a hex color supporting 3 and 6 digit hex values
@@ -19,22 +9,23 @@ function convertToSixDigitHex(hexColor: string): string {
  * @return string
  */
 export const darkenHex = (color: string, amount: number) => {
-    
-	color = convertToSixDigitHex(color);
-    const colorValue = parseInt(color.slice(1), 16);
 
-    const r = (colorValue >> 16) & 0xFF;
-    const g = (colorValue >> 8) & 0xFF;
-    const b = colorValue & 0xFF;
+	// regex that supports 3 and 6 digit hex values
+	const regex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+	const hex = regex.exec(color);
 
-    const newR = Math.max(0, r - amount);
-    const newG = Math.max(0, g - amount);
-    const newB = Math.max(0, b - amount);
+	if (!hex) {
+		console.warn('invalid hex color', color);
+		return color;
+	}
 
-    const newColorValue = (newR << 16) | (newG << 8) | newB;
+	// clamp every value to 0 - 255
+	const r = clamp(parseInt(hex[1], 16) - amount, 0, 255).toString(16);
+	const g = clamp(parseInt(hex[2], 16) - amount, 0, 255).toString(16);
+	const b = clamp(parseInt(hex[3], 16) - amount, 0, 255).toString(16);
 
-    return `#${newColorValue.toString(16).padStart(6, '0')}`;
-}
+	return `#` + r + g + b;
+};
 
 /**
  * darkens a rgb or rgba color
@@ -42,23 +33,46 @@ export const darkenHex = (color: string, amount: number) => {
  * @param amount 
  */
 export const darkenRGB = (color: string, amount: number) => {
-	const rgb = color.replace('rgba(', '').replace('rgb(', '').replace(')', '').split(',');
-	const r = parseInt(rgb[0]) - amount;
-	const g = parseInt(rgb[1]) - amount;
-	const b = parseInt(rgb[2]) - amount;
-	return `rgba(${r}, ${g}, ${b})`;
-}
+
+	const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/g;
+	const rgb = regex.exec(color);
+
+	if (!rgb) {
+		console.warn('invalid rgb color', color);
+		return color;
+	}
+
+	// clamp every value to 0 - 255
+	const r = clamp(parseInt(rgb[1]) - amount, 0, 255);
+	const g = clamp(parseInt(rgb[2]) - amount, 0, 255);
+	const b = clamp(parseInt(rgb[3]) - amount, 0, 255);
+
+	return `rgb(${r}, ${g}, ${b})`;
+};
 
 /**
+ * darkens a hsl or hsla color
+ * @param color
+ * @param amount
  * 
  */
 export const darkenHSL = (color: string, amount: number) => {
-	const hsl = color.replace('hsla(', '').replace('hsl(', '').replace(')', '').split(',');
-	const h = parseInt(hsl[0]) - amount;
-	const s = parseInt(hsl[1]) - amount;
-	const l = parseInt(hsl[2]) - amount;
-	return `hsla(${h}, ${s}, ${l})`;
-}
+
+	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
+	const hsl = regex.exec(color);
+
+	if (!hsl) {
+		console.warn('invalid hsl color', color);
+		return color;
+	}
+
+	// clamp every value to 0 - 100
+	const h = clamp(parseInt(hsl[1]), 0, 100);
+	const s = clamp(parseInt(hsl[2]), 0, 100);
+	const l = clamp(parseInt(hsl[3]) - amount, 0, 100);
+
+	return `hsl(${h}, ${s}%, ${l}%)`;
+};
 
 /**
  * darkens the hex, rgba or hsl values
@@ -68,110 +82,241 @@ export const darkenHSL = (color: string, amount: number) => {
  */
 export const darkenColor = (color: string, amount: number) => {
 
-	if(color.startsWith('#')) {
+	if (color.startsWith('#')) {
 		return darkenHex(color, amount);
 	}
 
-	if(color.startsWith('rgb')) {
+	if (color.startsWith('rgb')) {
 		return darkenRGB(color, amount);
 	}
 
-	if(color.startsWith('hsl')) {
+	if (color.startsWith('hsl')) {
 		return darkenHSL(color, amount);
+	}
+
+	return color;
+};
+
+/**
+ * lightens a hex color supporting 3 and 6 digit hex values
+ * @param input 
+ * @param defaultShade 
+ * @returns 
+ */
+export const lightenHex = (input: string, amount: number) => {
+
+	// regex that supports 3 and 6 digit hex values
+	const regex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+	const hex = regex.exec(input);
+
+	if (!hex) {
+		console.warn('invalid hex color', input);
+		return input;
+	}
+
+	// clamp every value to 0 - 255
+	const r = clamp(parseInt(hex[1], 16) + amount, 0, 255).toString(16);
+	const g = clamp(parseInt(hex[2], 16) + amount, 0, 255).toString(16);
+	const b = clamp(parseInt(hex[3], 16) + amount, 0, 255).toString(16);
+
+	return `#` + r + g + b;
+};
+
+/**
+ * lightens a rgb or rgba color
+ * @param input
+ * @param amount
+ * @returns
+ */
+export const lightenRGB = (input: string, amount: number) => {
+
+	const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/g;
+	const rgb = regex.exec(input);
+
+	if (!rgb) {
+		console.warn('invalid rgb color', input);
+		return input;
+	}
+
+	// clamp every value to 0 - 255
+	const r = clamp(parseInt(rgb[1]) + amount, 0, 255);
+	const g = clamp(parseInt(rgb[2]) + amount, 0, 255);
+	const b = clamp(parseInt(rgb[3]) + amount, 0, 255);
+
+	return `rgb(${r}, ${g}, ${b})`;
+};
+
+/**
+ * lightens a hsl or hsla color
+ * @param input
+ * @param amount
+ * @returns string
+ */
+export const lightenHSL = (input: string, amount: number) => {
+
+	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
+	const hsl = regex.exec(input);
+
+	if (!hsl) {
+		console.warn('invalid hsl color', input);
+		return input;
+	}
+
+	// clamp every value to 0 - 100
+	const h = clamp(parseInt(hsl[1]), 0, 100);
+	const s = clamp(parseInt(hsl[2]), 0, 100);
+	const l = clamp(parseInt(hsl[3]) + amount, 0, 100);
+
+	return `hsl(${h}, ${s}%, ${l}%)`;
+}
+
+/**
+ * lightens the hex, rgba or hsl values
+ * @param color string
+ * @param amount number
+ * @return string
+ */
+export const lightenColor = (color: string, amount: number) => {
+
+	if (color.startsWith('#')) {
+		return lightenHex(color, amount);
+	}
+
+	if (color.startsWith('rgb')) {
+		return lightenRGB(color, amount);
+	}
+
+	if (color.startsWith('hsl')) {
+		return lightenHSL(color, amount);
 	}
 
 	return color;
 }
 
-type ResolveColorComputations = 'color' | 'hover' | 'press';
+/**
+ * Sets the opacity of a hex color
+ * @param color 
+ * @param opacity 
+ * @returns string
+ */
+export const setHexOpacity = (color: string, opacity: number) => {
+
+	const regex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+	const hex = regex.exec(color);
+
+	if (!hex) {
+		console.warn('invalid hex color', color);
+		return color;
+	}
+
+	const r = parseInt(hex[1], 16);
+	const g = parseInt(hex[2], 16);
+	const b = parseInt(hex[3], 16);
+
+	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+}
 
 /**
- * resolves if the input is a color or not and returns a boolean.
+ * Sets the opacity of a rgb or rgba color
+ * @param color 
+ * @param opacity 
+ * @returns string
+ */
+export const setRGBOpacity = (color: string, opacity: number) => {
+
+	const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/g;
+	const rgb = regex.exec(color);
+
+	if (!rgb) {
+		console.warn('invalid rgb color', color);
+		return color;
+	}
+
+	const r = parseInt(rgb[1]);
+	const g = parseInt(rgb[2]);
+	const b = parseInt(rgb[3]);
+
+	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+}
+
+/**
+ * Sets the opacity of a hsl or hsla color
+ * @param color 
+ * @param opacity 
+ * @returns string
+ */
+export const setHSLOpacity = (color: string, opacity: number) => {
+
+	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
+	const hsl = regex.exec(color);
+
+	if (!hsl) {
+		console.warn('invalid hsl color', color);
+		return color;
+	}
+
+	const h = parseInt(hsl[1]);
+	const s = parseInt(hsl[2]);
+	const l = parseInt(hsl[3]);
+
+	return `hsla(${h}, ${s}%, ${l}%, ${opacity})`;
+}
+
+/**
+ * Sets the opacity of a hex, rgb or hsl color
+ * @param color string
+ * @param opacity number
+ * @return string
+ */
+export const setColorOpacity = (
+	color: string, 
+	opacity: number,
+	themeColors: Record<ThemeColor, Tuple<string, 10>>
+) => {
+
+	if (color.startsWith('#')) {
+		return setHexOpacity(color, opacity);
+	}
+
+	if (color.startsWith('rgb')) {
+		return setRGBOpacity(color, opacity);
+	}
+
+	if (color.startsWith('hsl')) {
+		return setHSLOpacity(color, opacity);
+	}
+
+	if(color.includes('.')) {
+		const [base, shade] = color.split('.');
+		const hex = themeColors[base as ThemeColor][parseInt(shade)];
+
+		return setHexOpacity(hex, opacity);
+	}
+
+	console.warn('invalid color', color);
+	return color;
+}
+
+/**
+ * Resolves the color input and returns a string.
  * @param input string
  * @param defaultShade number
  * @return string
  */
-export const resolveColorInput = (input: string, ignoreComputation: Partial<Record<ResolveColorComputations, boolean>> = {
-	color: false,
-	hover: false,
-	press: false
-}): Record<ResolveColorComputations, string> => {
+export const resolveColorInput = (input: string, defaultShade: number = 6) => {
 
-	// result with the type that returns the color, hover and press values as strings.
-	// exclude the types that are excluded from the computation.
-	const result: Record<string, string> = {};
-
-	if(input.startsWith('#') || input.startsWith('rgb') || input.startsWith('hsl') || input.startsWith('var')) {
-		
-		if(!ignoreComputation.color) {
-			result.color = input;
-		}
-
-		if(!ignoreComputation.hover) {
-			result.hover = darkenColor(input, 11);
-		}
-
-		if(!ignoreComputation.press) {
-			result.press = darkenColor(input, 22);
-		}
-
-		return result;
+	if (input.startsWith('#') || input.startsWith('hsl') || input.startsWith('rgba')) {
+		return input;
 	}
 
-	if(!input.includes('.')) {
+	const base = input.split('.');
+	
+	const color = base[0];
+	const shade = base[1];
 
-		if(!ignoreComputation.color) {
-			result.color = `var(--color-${input}-6)`;
-		}
-
-		if(!ignoreComputation.hover) {
-			result.hover = `var(--color-${input}-7)`;
-		}
-
-		if(!ignoreComputation.press) {
-			result.press = `var(--color-${input}-8)`;
-		}
-
-		return result;
+	if(!shade) {
+		return `var(--serenity-color-${color}-${defaultShade})`;
 	}
 
-	const [color, shade] = input.split('.') as [string | undefined, string | undefined];
-	const colorShade = shade ? parseInt(shade) : 6;
-	const cssVariable = `var(--color-${color}-${colorShade})`;
-
-	if(!ignoreComputation.color) {
-		result.color = cssVariable;
-	}
-
-	if(!ignoreComputation.hover) {
-		result.hover = colorShade < 9 ? `var(--color-${color}-${colorShade + 1})` : cssVariable;
-	}
-
-	if(!ignoreComputation.press) {
-		result.press = colorShade < 8 ? `var(--color-${color}-${colorShade + 2})` : cssVariable;
-	}
-
-	return result;
-}
-
-/**
- * resolves the size input and returns a string.
- * @param size string | number
- * @return string
- */
-export const resolveSize = (
-	size: Size | number | string,
-	cssvariable: string, 
-	suffix: "rem" | "em" | "px"
-) => {
-
-	if(typeof size === 'number') {
-		return `${size}${suffix}`;
-	}
-
-	if(['xs', 'sm', 'md', 'lg', 'xl'].includes(size)) {
-		return `var(--${cssvariable}-${size})`;
-	}
-
-	return size;
-}
+	return `var(--serenity-color-${color}-${shade})`;
+};

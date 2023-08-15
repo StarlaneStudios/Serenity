@@ -22,7 +22,7 @@ function Stack(props: StackProps) {
 	]);
 
 	const cssVariables = () => {
-		const size = resolveSize(root.spacing ?? "md", "stack-spacing", "px");
+		const size = resolveSize(root.spacing ?? "md", "serenity-stack-spacing", "px");
 		return cssvars({
 			"row-gap": size,
 			"justify-content": root.justify,

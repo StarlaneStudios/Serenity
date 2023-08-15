@@ -1,15 +1,10 @@
-export type {
-	DefaultThemeColor,
-	ThemeColorPaletteOverride,
-	ThemeColorPalette,
-	ThemeColor,
-	Size
-} from "./types/theme/index";
-
+export type * from "./types/theme/index";
 export type { Tuple } from "./tuple";
 
 export * from "./functions/theme/css";
 export * from "./functions/theme/color";
+export * from "./functions/theme/variants";
+export * from "./functions/utils/number";
 
 // import sass files.
 import "./styles/index.scss";

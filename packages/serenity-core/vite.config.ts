@@ -36,6 +36,11 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 				"solid-js/web",
 				"solid-js/store",
 
+				// exclude all serenity packages from the bundle
+				"@serenity-ui/utils",
+				"@serenity-ui/styles",
+				"@serenity-ui/primitives",
+
 				// exclude peer dependencies from the bundle
 				...Object.keys(pkg.peerDependencies ?? {})
 			]

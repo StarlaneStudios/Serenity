@@ -15,20 +15,24 @@
 		"packages/*",
 		"apps/*"
 	],
+	"peerDependencies": {
+		"@microsoft/api-extractor": "^7.36.4"
+	},
 	"dependencies": {
 		"solid-js": "1.7.11"
 	},
 	"devDependencies": {
+		
 		"@types/node": "20.4.9",
 		"eslint": "^8.46.0",
 		"eslint-plugin-solid": "^0.12.1",
 		"eslint-plugin-unused-imports": "^3.0.0",
 		"sass": "1.65.1",
 		"turbo": "^1.10.12",
-		"typescript": "^5.1.6",
+		"typescript": "5.0.4",
 		"typescript-plugin-css-modules": "^5.0.1",
 		"vite": "^4.4.9",
-		"vite-plugin-dts": "^3.5.1",
+		"vite-plugin-dts": "3.5.2",
 		"vite-plugin-solid": "^2.7.0",
 		"vitest": "0.34.1"
 	}

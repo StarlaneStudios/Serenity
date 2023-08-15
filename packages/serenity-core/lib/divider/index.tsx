@@ -1,4 +1,4 @@
-import { Size, ThemeColor, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
+import { Size, ThemeColor, cssvars, cx, resolveSize } from "@serenity-ui/styles";
 import { Show, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import classes from "./divider.module.scss";
@@ -26,18 +26,20 @@ function Divider(props: DividerProps) {
 
 	const cssVariables = () => {
 
-		const { color } = resolveColorInput(props.color ?? "rgb(55, 58, 64)", {
-			hover: true,
-			press: true
-		});
+		// const { color } = resolveColorInput(props.color ?? "rgb(55, 58, 64)", {
+		// 	hover: true,
+		// 	press: true
+		// });
 
-		const thickness = resolveSize(props.thickness || "1px", "divider-thickness", "px");
+		// const thickness = resolveSize(props.thickness || "1px", "divider-thickness", "px");
 
-		return cssvars({
-			"border-color": color,
-			"border-thickness": thickness,
-			"border-variant": props.variant
-		});
+		// return cssvars({
+		// 	"border-color": color,
+		// 	"border-thickness": thickness,
+		// 	"border-variant": props.variant
+		// });
+
+		return {};
 	};
 
 	if(!props.children || props.orientation === "vertical") {
