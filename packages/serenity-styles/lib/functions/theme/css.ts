@@ -1,4 +1,4 @@
-import type { Size } from "lib/types/theme";
+import { Size } from "../../types/theme";
 
 /**
  * Combines multiple class names into a single string.
@@ -14,6 +14,11 @@ export const cx = (...args: (string | undefined)[]) => {
  * @param map
  */
 export const cssvars = (map: Record<string, string | undefined>): Record<string, any> => {
+
+	if(!map) {
+		return {};
+	}
+
 	return Object.entries(map).reduce((acc, [key, value]) => {
 
 		if(!value) {

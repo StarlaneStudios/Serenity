@@ -17,6 +17,11 @@ export default defineConfig({
 			name: "serenity-styles"
 		},
 		minify: false,
-		emptyOutDir: false
+		emptyOutDir: false,
+		rollupOptions: {
+			external: [
+				"@serenity-ui/utils",
+			]
+		}
 	}
 });

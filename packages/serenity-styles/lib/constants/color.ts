@@ -1,4 +1,4 @@
-import { Tuple } from "../types/tuple";
+import { Tuple } from "@serenity-ui/utils";
 
 export const DEFAULT_COLORS = {
 	dark: [

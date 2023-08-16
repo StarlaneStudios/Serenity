@@ -1,13 +1,15 @@
 import { JSX, splitProps } from "solid-js";
 import classes from "./button.module.scss";
-import { cssvars, cx, resolveSize, resolveTransparentVariant, resolveWhiteVariant } from "@serenity-ui/styles";
+import { cssvars, cx, resolveFilledVariant, resolveLightVariant, resolveOutlineVariant, resolveSize, resolveTransparentVariant, resolveWhiteVariant } from "@serenity-ui/styles";
 import type { Color, Size } from "@serenity-ui/styles";
+
+type ButtonVariant = "default" | "filled" | "light" | "outline" | "subtle" | "transparent" | "white";
 
 interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: Color;
 	size?: Size;
 	classes?: Record<'inner' | 'label', string>;
-	variant?: "default" | "filled" | "light" | "outline" | "subtle" | "transparent" | "white";
+	variant?: ButtonVariant;
 	radius?: Size | number;
 	loading?: boolean;
 }
@@ -34,44 +36,19 @@ function Button(props: ButtonProps) {
 
 	const cssVariables = () => {
 
-		const defaultVariables = {
-			"border-radius": resolveSize(root.radius || "sm", "serenity-radius", "px")
+		const variants: Record<ButtonVariant, any> = {
+			"default": {},
+			"light": resolveLightVariant(root.color!, 6),
+			"outline": resolveOutlineVariant(root.color!, 6),
+			"transparent": resolveTransparentVariant(root.color!, 6),
+			"white": resolveWhiteVariant(root.color!, 6),
+			"filled": resolveFilledVariant(root.color!, 6),
+			subtle: ""
 		};
 
-		switch (root.variant) {
-			case "default": {
-				return {};
-			}
-			case "light": {
-
-			}
-			case "outline": {
-
-			}
-			case "transparent": {
-				return Object.assign(defaultVariables, cssvars(resolveTransparentVariant(root.color!, 6)));
-			}
-			case "subtle": {
-
-			}
-			case "white": {
-				return Object.assign(defaultVariables, cssvars(resolveWhiteVariant(root.color!, 6)));
-			}
-			case "filled":
-			default: {
-				// const color = resolveColorInput(root.color);
-				// const radius = resolveSize(root.radius || "sm", "serenity-radius", "px");
-
-				// return cssvars({
-				// 	"background-color": color.color,
-				// 	"hover-color": color.hover,
-				// 	"border-radius": radius,
-				// 	"press-color": color.press
-				// });
-
-				return {};
-			}
-		}
+		return Object.assign({}, {
+			"border-radius": resolveSize(root.radius || "sm", "serenity-radius", "px")
+		}, variants[root.variant ?? "filled"]);
 	};
 
 	return (
@@ -94,4 +71,4 @@ function Button(props: ButtonProps) {
 };
 
 export { Button, defaultButtonProps };
-export type { ButtonProps };
+export type { ButtonProps, ButtonVariant };

@@ -20,17 +20,20 @@ export default function Home() {
 				<Button disabled>
 					Disabled button
 				</Button>
-				<Group grow style={{ background: "#000", padding: "5rem" }}>
+				<Group style={{ background: "#1a1b1e", padding: "5rem" }}>
 					<Button color="lime">
 						lorem
 					</Button>
-					<Button onClick={() => setColor(color() === "red" ? "blue" : "red")}>
+					<Button variant="outline" onClick={() => setColor(color() === "red" ? "blue" : "red")}>
 						Bruh bruh
 					</Button>
 					<Button variant="white" color={color()}>
 						Home
 					</Button>
 					<Button variant='transparent'>
+						Disabled button
+					</Button>
+					<Button variant='light' color='blue.6'>
 						Disabled button
 					</Button>
 				</Group>

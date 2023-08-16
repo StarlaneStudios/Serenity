@@ -1,6 +1,7 @@
-import type { Tuple } from "../../types/tuple";
+import { clamp, padZero } from "../utils/number";
+import { DEFAULT_COLORS } from "../../constants/color";
 import type { Color } from "../../types/theme";
-import { clamp } from "../utils/number";
+import type { Tuple } from "@serenity-ui/utils";
 
 /**
  * darkens a hex color supporting 3 and 6 digit hex values
@@ -10,8 +11,8 @@ import { clamp } from "../utils/number";
  */
 export const darkenHex = (color: string, amount: number) => {
 
-	// regex that supports 3 and 6 digit hex values
-	const regex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+	// support #fff and #ffffff
+	const regex = color.length === 4 ? /^#?([a-f\d])([a-f\d])([a-f\d])$/i : /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 	const hex = regex.exec(color);
 
 	if (!hex) {
@@ -19,12 +20,27 @@ export const darkenHex = (color: string, amount: number) => {
 		return color;
 	}
 
-	// clamp every value to 0 - 255
-	const r = clamp(parseInt(hex[1], 16) - amount, 0, 255).toString(16);
-	const g = clamp(parseInt(hex[2], 16) - amount, 0, 255).toString(16);
-	const b = clamp(parseInt(hex[3], 16) - amount, 0, 255).toString(16);
+	// convert hex to rgb
+	let r: number | string = parseInt(hex[1], 16);
+	let g: number | string = parseInt(hex[2], 16);
+	let b: number | string = parseInt(hex[3], 16);
 
-	return `#` + r + g + b;
+	// clamp every value to 0 - 255
+	r = clamp(r - amount, 0, 255);
+	g = clamp(g - amount, 0, 255);
+	b = clamp(b - amount, 0, 255);
+
+	// round and convert to hex
+	r = r.toString(16);
+	g = g.toString(16);
+	b = b.toString(16);
+
+	// pad with leading zeros
+	r = padZero(r);
+	g = padZero(g);
+	b = padZero(b);
+	
+	return `#${r}${g}${b}`;
 };
 
 /**
@@ -168,7 +184,7 @@ export const lightenHSL = (input: string, amount: number) => {
 	const l = clamp(parseInt(hsl[3]) + amount, 0, 100);
 
 	return `hsl(${h}, ${s}%, ${l}%)`;
-}
+};
 
 /**
  * lightens the hex, rgba or hsl values
@@ -191,7 +207,7 @@ export const lightenColor = (color: string, amount: number) => {
 	}
 
 	return color;
-}
+};
 
 /**
  * Sets the opacity of a hex color
@@ -214,7 +230,7 @@ export const setHexOpacity = (color: string, opacity: number) => {
 	const b = parseInt(hex[3], 16);
 
 	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-}
+};
 
 /**
  * Sets the opacity of a rgb or rgba color
@@ -237,7 +253,7 @@ export const setRGBOpacity = (color: string, opacity: number) => {
 	const b = parseInt(rgb[3]);
 
 	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-}
+};
 
 /**
  * Sets the opacity of a hsl or hsla color
@@ -260,7 +276,7 @@ export const setHSLOpacity = (color: string, opacity: number) => {
 	const l = parseInt(hsl[3]);
 
 	return `hsla(${h}, ${s}%, ${l}%, ${opacity})`;
-}
+};
 
 /**
  * Sets the opacity of a hex, rgb or hsl color
@@ -269,7 +285,7 @@ export const setHSLOpacity = (color: string, opacity: number) => {
  * @return string
  */
 export const setColorOpacity = (
-	color: string, 
+	color: string,
 	opacity: number,
 	themeColors: Record<Color, Tuple<string, 10>>
 ) => {
@@ -286,9 +302,9 @@ export const setColorOpacity = (
 		return setHSLOpacity(color, opacity);
 	}
 
-	if(color.includes('.')) {
+	if (color.includes('.')) {
 		const output = color.split('.');
-		
+
 		const base = output[0] as Color;
 		const shade = output[1];
 
@@ -299,7 +315,7 @@ export const setColorOpacity = (
 
 	console.warn('invalid color', color);
 	return color;
-}
+};
 
 /**
  * Resolves the color input and returns a string.
@@ -314,13 +330,29 @@ export const resolveColorInput = (input: string, defaultShade: number = 6) => {
 	}
 
 	const base = input.split('.');
-	
+
 	const color = base[0];
 	const shade = base[1];
 
-	if(!shade) {
-		return `var(--serenity-color-${color}-${defaultShade})`;
+	if (!shade) {
+		return DEFAULT_COLORS[color][defaultShade];
 	}
 
-	return `var(--serenity-color-${color}-${shade})`;
+	return DEFAULT_COLORS[color][parseInt(shade)];
+};
+
+/**
+ * Returns hex color for the theme color
+ * @param name 
+ * @param shade 
+ * @return hex color
+ */
+export const getThemeColor = (name: string, shade: number = 6): string => {
+
+	if (name.includes('.')) {
+		return DEFAULT_COLORS[name][shade];
+	}
+
+	const [base, _shade] = name.split('.');
+	return DEFAULT_COLORS[base][parseInt(_shade)];
 };

@@ -52,13 +52,17 @@
 		}
 
 		&:active {
-			background-color: var(--press-color);
+			background-color: var(--active-color);
 		}
 	}
 
 	&[data-variant='light'] {
-		color: var(--background-color);
-		background-color: var(--serenity-color-gray-1);
+		color: var(--text-color);
+		background-color: var(--background-color);
+
+		&:hover {
+			background-color: var(--hover-color);
+		}
 	}
 
 	&[data-variant='transparent'] {
@@ -69,6 +73,16 @@
 	&[data-variant='white'] {
 		color: var(--text-color);
 		background-color: white;
+	}
+
+	&[data-variant='outline'] {
+		border: 0.0625rem solid var(--border-color);
+		background-color: transparent;
+		color: var(--text-color);
+
+		&:hover {
+			background-color: var(--hover-color);
+		}
 	}
  
 	&:active {
