@@ -1,5 +1,5 @@
-import type { Tuple } from "../../tuple";
-import type { ThemeColor } from "../../types/theme";
+import type { Tuple } from "../../types/tuple";
+import type { Color } from "../../types/theme";
 import { clamp } from "../utils/number";
 
 /**
@@ -271,7 +271,7 @@ export const setHSLOpacity = (color: string, opacity: number) => {
 export const setColorOpacity = (
 	color: string, 
 	opacity: number,
-	themeColors: Record<ThemeColor, Tuple<string, 10>>
+	themeColors: Record<Color, Tuple<string, 10>>
 ) => {
 
 	if (color.startsWith('#')) {
@@ -287,8 +287,12 @@ export const setColorOpacity = (
 	}
 
 	if(color.includes('.')) {
-		const [base, shade] = color.split('.');
-		const hex = themeColors[base as ThemeColor][parseInt(shade)];
+		const output = color.split('.');
+		
+		const base = output[0] as Color;
+		const shade = output[1];
+
+		const hex = themeColors[base][parseInt(shade)];
 
 		return setHexOpacity(hex, opacity);
 	}

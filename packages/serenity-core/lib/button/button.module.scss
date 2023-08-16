@@ -66,6 +66,11 @@
 		background-color: transparent;
 	}
 
+	&[data-variant='white'] {
+		color: var(--text-color);
+		background-color: white;
+	}
+ 
 	&:active {
 		transform: translateY(0.0625rem);
 	}

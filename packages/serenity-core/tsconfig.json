@@ -15,11 +15,23 @@
 			"@serenity-ui/styles": ["../serenity-styles/lib"],
 			"@serenity-ui/utils": ["../serenity-utils/lib"],
 			"@serenity-ui/primitives": ["../serenity-primitives/lib"]
-		}
+		},
+		"plugins": [
+			{
+				"name": "typescript-plugin-css-modules",
+				"options": {
+					"classnameTransform": "camelCaseOnly",
+					"goToDefinition": true
+				}
+			}
+		]
 	},
 	"include": [
 		"lib/**/*",
 		"env.d.ts"
+	],
+	"exclude": [
+		"lib/**/*.test.ts(x)"
 	],
 	"references": [
 		{

@@ -1,10 +1,10 @@
 import { JSX, splitProps } from "solid-js";
 import classes from "./button.module.scss";
-import { cssvars, cx, resolveTransparentVariant } from "@serenity-ui/styles";
-import type { ThemeColor, Size } from "@serenity-ui/styles";
+import { cssvars, cx, resolveSize, resolveTransparentVariant, resolveWhiteVariant } from "@serenity-ui/styles";
+import type { Color, Size } from "@serenity-ui/styles";
 
 interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
-	color?: ThemeColor;
+	color?: Color;
 	size?: Size;
 	classes?: Record<'inner' | 'label', string>;
 	variant?: "default" | "filled" | "light" | "outline" | "subtle" | "transparent" | "white";
@@ -34,6 +34,10 @@ function Button(props: ButtonProps) {
 
 	const cssVariables = () => {
 
+		const defaultVariables = {
+			"border-radius": resolveSize(root.radius || "sm", "serenity-radius", "px")
+		};
+
 		switch (root.variant) {
 			case "default": {
 				return {};
@@ -45,15 +49,13 @@ function Button(props: ButtonProps) {
 
 			}
 			case "transparent": {
-				return cssvars(
-					resolveTransparentVariant(root.color!, 6)
-				);
+				return Object.assign(defaultVariables, cssvars(resolveTransparentVariant(root.color!, 6)));
 			}
 			case "subtle": {
 
 			}
 			case "white": {
-
+				return Object.assign(defaultVariables, cssvars(resolveWhiteVariant(root.color!, 6)));
 			}
 			case "filled":
 			default: {

@@ -30,7 +30,8 @@
 	},
 	"devDependencies": {
 		"sass": "1.65.1",
-		"typescript-plugin-css-modules": "^5.0.1"
+		"typescript-plugin-css-modules": "^5.0.1",
+		"vite": "4.4.9"
 	},
 	"peerDependencies": {
 		"solid-js": "^1.7.9"

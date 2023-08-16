@@ -1,5 +1,5 @@
 import { resolveColorInput } from "../color";
 
-export const resolveTransparentVariant = (color: string, shade: number | undefined) => ({
-	"text-color": resolveColorInput(color, shade)
+export const resolveTransparentVariant = (color: string, defaultShade: number) => ({
+	"text-color": resolveColorInput(color, defaultShade)
 });

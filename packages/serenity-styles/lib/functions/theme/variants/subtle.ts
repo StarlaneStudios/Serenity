@@ -1,4 +1,4 @@
-export const resolveSubtleVariant = (color: string, shade: number | undefined) => {
+export const resolveSubtleVariant = (color: string, defaultShade: number) => {
 
 	
 }

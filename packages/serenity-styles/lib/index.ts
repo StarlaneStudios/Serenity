@@ -1,5 +1,5 @@
 export type * from "./types/theme/index";
-export type { Tuple } from "./tuple";
+export type { Tuple } from "./types/tuple";
 
 export * from "./functions/theme/css";
 export * from "./functions/theme/color";

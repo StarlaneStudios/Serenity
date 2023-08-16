@@ -7,12 +7,9 @@ import dts from "vite-plugin-dts";
 export default defineConfig(({ command, mode, ssrBuild }) => ({
 	plugins: [
 		solid(),
-		dts({ 
-			rollupTypes: true, 
-			exclude: ['node_module/**'],
-			tsconfigPath: resolve(__dirname, "tsconfig.json"),
-			insertTypesEntry: true,
-			outDir: resolve(__dirname, "dist")
+		dts({
+			exclude: ['node_module/**', 'lib/**/*.test.ts'],
+			outDir: resolve(__dirname, "dist"),
 		})
 	],
 	build: {
@@ -23,15 +20,14 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 			fileName: "serenity-core"
 		},
 		minify: false,
-		emptyOutDir: false,
 		outDir: resolve(__dirname, "dist"),
 		target: "esnext",
 		cssCodeSplit: false,
 		cssMinify: false,
+		emptyOutDir: false,
 		rollupOptions: {
 			external: [
-
-				// exclude solid dependencies from the bundle
+				
 				"solid-js",
 				"solid-js/web",
 				"solid-js/store",
@@ -39,10 +35,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 				// exclude all serenity packages from the bundle
 				"@serenity-ui/utils",
 				"@serenity-ui/styles",
-				"@serenity-ui/primitives",
-
-				// exclude peer dependencies from the bundle
-				...Object.keys(pkg.peerDependencies ?? {})
+				"@serenity-ui/primitives"
 			]
 		}
 	},

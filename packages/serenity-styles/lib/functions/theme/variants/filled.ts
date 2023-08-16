@@ -1,4 +1,4 @@
-export const resolveFilledVariant = (color: string, shade: number | undefined) => {
+export const resolveFilledVariant = (color: string, defaultShade: number) => {
 
 	
 }

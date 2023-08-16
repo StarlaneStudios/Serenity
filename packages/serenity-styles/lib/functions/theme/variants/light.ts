@@ -1,4 +1,4 @@
-export const resolveLightVariant = (color: string, shade: number | undefined) => {
+export const resolveLightVariant = (color: string, defaultShade: number) => {
 
 	
 }

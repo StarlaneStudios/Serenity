@@ -11,7 +11,6 @@
 		"moduleResolution": "Node",
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
-		"skipLibCheck": true,
 		"allowJs": true,
 		"baseUrl": ".",
 		"noEmit": false,
@@ -20,12 +19,14 @@
 		"declarationDir": "dist",
 		"strict": true,
 		"noEmitOnError": true,
+		"types": ["vite/client"],
+		"skipLibCheck": true,
 		"plugins": [
 			{
 				"name": "typescript-plugin-css-modules",
 				"options": {
 					"classnameTransform": "camelCaseOnly",
-					"goToDefinition": true,
+					"goToDefinition": true
 				}
 			}
 		]
