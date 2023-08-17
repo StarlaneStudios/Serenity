@@ -325,7 +325,7 @@ export const setColorOpacity = (
  */
 export const resolveColorInput = (input: string, defaultShade: number = 6) => {
 
-	if (input.startsWith('#') || input.startsWith('hsl') || input.startsWith('rgba')) {
+	if (input.startsWith('#') || input.startsWith('hsl') || input.startsWith('rgb')) {
 		return input;
 	}
 
