@@ -87,7 +87,7 @@
 			background-color: var(--hover-color);
 		}
 	}
- 
+
 	&:active:not([disabled]) {
 		transform: translateY(0.0625rem);
 	}
@@ -105,9 +105,16 @@ html[data-theme='light'] {
 }
 
 html[data-theme='dark'] {
-	.button[disabled] {
-		background-color: var(--serenity-color-dark-6) !important;
-		color: var(--serenity-color-dark-3) !important;
+	.button {
+
+		&[data-variant='default'] {
+			border: 1px solid #373a40;
+		}
+
+		&[disabled] {
+			background-color: var(--serenity-color-dark-6) !important;
+			color: var(--serenity-color-dark-3) !important;
+		}
 	}
 }
 
@@ -124,10 +131,14 @@ html[data-theme='dark'] {
 	overflow: hidden;
 }
 
-:root {
-	--serenity-radius-xs: 0.125rem;
-	--serenity-radius-sm: 0.25rem;
-	--serenity-radius-md: 0.5rem;
-	--serenity-radius-lg: 1rem;
-	--serenity-radius-xl: 2rem;
+// loading animation
+
+@keyframes button-loading {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
 }

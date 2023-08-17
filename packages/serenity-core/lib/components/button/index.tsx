@@ -13,14 +13,14 @@ interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	loading?: boolean;
 }
 
-const defaultButtonProps: ButtonProps = {
+const defaultButtonProps = {
 	color: "blue",
 	size: "sm",
 	radius: "sm",
 	variant: "filled"
-};
+} as const;
 
-const defaultButtonSplitProps: (keyof ButtonProps)[] = [
+const defaultButtonSplitProps = [
 	"color",
 	"class",
 	"size",
@@ -30,7 +30,7 @@ const defaultButtonSplitProps: (keyof ButtonProps)[] = [
 	"radius",
 	"children",
 	"loading"
-];
+] as const;
 
 function Button(props: ButtonProps) {
 
@@ -39,9 +39,9 @@ function Button(props: ButtonProps) {
 
 	const cssVariables = () => {
 
-		const defaultColor = baseProps.color!;
-		const defaultRadius = baseProps.radius!;
-		const defaultVariant = baseProps.variant!;
+		const defaultColor = baseProps.color;
+		const defaultRadius = baseProps.radius;
+		const defaultVariant = baseProps.variant;
 
 		const variantVariables = variants.get(defaultVariant)!(defaultColor);
 
@@ -57,7 +57,7 @@ function Button(props: ButtonProps) {
 			data-size={baseProps.size}
 			style={Object.assign(cssVariables(), root.style)}
 			data-loading={baseProps.loading}
-			aria-disabled={baseProps.disabled}
+			aria-disabled={other.disabled}
 			{...other}
 		>
 			<span class={cx(classes.buttonInner, root.classes?.inner)}>

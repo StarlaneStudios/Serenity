@@ -1,0 +1,27 @@
+.paper {
+	display: block;
+	padding: var(--padding);
+	border-radius: var(--border-radius);
+}
+
+html[data-theme='dark'] {
+
+	.paper[data-border='true'] {
+		border: 1px solid var(--serenity-color-dark-4);
+	}
+}
+
+html[data-theme='light'] {
+
+	.paper[data-border='true'] {
+		border: 1px solid var(--serenity-color-gray-3);
+	}
+}
+
+:root {
+	--serenity-padding-xs: 8px;
+	--serenity-padding-sm: 16px;
+	--serenity-padding-md: 24px;
+	--serenity-padding-lg: 32px;
+	--serenity-padding-xl: 40px;
+}

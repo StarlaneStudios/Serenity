@@ -3,10 +3,10 @@ import { splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import classes from "./group.module.scss";
 
-interface GroupProps extends JSX.HTMLAttributes<HTMLDivElement> {
+interface GroupProps extends Omit<JSX.HTMLAttributes<HTMLDivElement>, 'size'> {
 	justify?: JSX.CSSProperties["justify-content"];
 	align?: JSX.CSSProperties["align-items"];
-	spacing?: Size | number;
+	spacing?: Size;
 	grow?: boolean;
 	noWrap?: boolean;
 	direction?: "row" | "row-reverse";

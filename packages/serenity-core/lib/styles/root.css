@@ -1,0 +1,7 @@
+:root {
+	--serenity-radius-xs: 0.125rem;
+	--serenity-radius-sm: 0.25rem;
+	--serenity-radius-md: 0.5rem;
+	--serenity-radius-lg: 1rem;
+	--serenity-radius-xl: 2rem;
+}

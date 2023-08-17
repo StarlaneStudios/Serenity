@@ -1,7 +1,7 @@
 import { Button, Divider, Group, Spacer, Stack } from "@serenity-ui/core";
 import { createEffect, createSignal } from "solid-js";
 
-export default function Home() {
+export default function Buttons() {
 
 	const [color, setColor] = createSignal("red");
 	const [color2, setColor2] = createSignal("green");

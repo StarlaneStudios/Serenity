@@ -1,4 +1,5 @@
 // @refresh reload
+import { Group } from "@serenity-ui/core";
 import { Suspense } from "solid-js";
 import { A, Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title } from "solid-start";
 
@@ -13,8 +14,12 @@ export default function Root() {
 			<Body>
 				<Suspense>
 					<ErrorBoundary>
-						<A href="/">Index</A>
-						<A href="/about">About</A>
+						<Group spacing="xl">
+							<A href="/">Index</A>
+							<A href="/buttons">Buttons</A>
+							<A href="/input">Inputs</A>
+							<A href="/paper">Paper</A>
+						</Group>
 						<Routes>
 							<FileRoutes />
 						</Routes>
