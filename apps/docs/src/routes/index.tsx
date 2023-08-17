@@ -1,14 +1,17 @@
-import { Button, Divider, Group, Stack } from "@serenity-ui/core";
-import { createSignal } from "solid-js";
+import { Button, Divider, Group, Spacer, Stack } from "@serenity-ui/core";
+import { createEffect, createSignal } from "solid-js";
 
 export default function Home() {
 
 	const [color, setColor] = createSignal("red");
+	const [color2, setColor2] = createSignal("green");
 
 	return (
 		<main>
+			{color()}
+			{color2()}
 			<Stack spacing='md' direction="column">
-				<Button color="lime">
+				<Button color={color2()} onClick={() => setColor2(color2() === "green" ? "indigo" : "green")}>
 					Home
 				</Button>
 				<Button onClick={() => setColor(color() === "red" ? "blue" : "red")}>
@@ -31,10 +34,13 @@ export default function Home() {
 						Home
 					</Button>
 					<Button variant='transparent'>
-						Disabled button
+						Transparent button
 					</Button>
 					<Button variant='light' color='blue.6'>
-						Disabled button
+						Light button
+					</Button>
+					<Button variant='subtle' disabled color='blue.6'>
+						Subtle button
 					</Button>
 				</Group>
 				<div style={{ height: '300px', "margin-left": "100px", display: "flex" }}>

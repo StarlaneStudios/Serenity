@@ -49,3 +49,13 @@ export const resolveFilledVariant = (color: string, defaultShade?: number) => {
 		"active-color": darkenColor(output, 15)
 	};
 };
+
+export const resolveSubtleVariant = (color: string, defaultShade?: number) => {
+
+	const output = resolveColorInput(color, defaultShade);
+
+	return {
+		"text-color": output,
+		"hover-color": setColorOpacity(output, 0.12, DEFAULT_COLORS)
+	};
+}

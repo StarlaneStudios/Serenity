@@ -1,4 +1,4 @@
-import { Tuple } from "../tuple";
+import { Tuple } from "@serenity-ui/utils";
 
 // ==============================
 // Colors

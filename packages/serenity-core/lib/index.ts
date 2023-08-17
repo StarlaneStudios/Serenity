@@ -1,9 +1,11 @@
 export * from "@serenity-ui/styles";
-export * from "./button";
-export * from "./stack";
-export * from "./group";
-export * from "./spacer";
-export * from "./divider";
+export * from "./components/button";
+export * from "./components/stack";
+export * from "./components/group";
+export * from "./components/spacer";
+export * from "./components/divider";
+
+export type { Variant } from "./constants/variants";
 
 // import css
 // we want to import the css here so that it is included in the bundle when the user imports the package
