@@ -11,36 +11,28 @@ import type { Tuple } from "@serenity-ui/utils";
  */
 export const darkenHex = (color: string, amount: number) => {
 
-	// support #fff and #ffffff
-	const regex = color.length === 4 ? /^#?([a-f\d])([a-f\d])([a-f\d])$/i : /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
-	const hex = regex.exec(color);
+	let c = color;
 
-	if (!hex) {
-		console.warn('invalid hex color', color);
-		return color;
+	if (c.startsWith('#')) {
+		c = c.slice(1);
 	}
 
-	// convert hex to rgb
-	let r: number | string = parseInt(hex[1], 16);
-	let g: number | string = parseInt(hex[2], 16);
-	let b: number | string = parseInt(hex[3], 16);
+	if (c.length === 3) {
+		c = c.split('').map(v => v + v).join('');
+	}
+
+	const bigint = parseInt(c, 16);
+
+	let r = (bigint >> 16) & 255;
+	let g = (bigint >> 8) & 255;
+	let b = bigint & 255;
 
 	// clamp every value to 0 - 255
 	r = clamp(r - amount, 0, 255);
 	g = clamp(g - amount, 0, 255);
 	b = clamp(b - amount, 0, 255);
 
-	// round and convert to hex
-	r = r.toString(16);
-	g = g.toString(16);
-	b = b.toString(16);
-
-	// pad with leading zeros
-	r = padZero(r);
-	g = padZero(g);
-	b = padZero(b);
-	
-	return `#${r}${g}${b}`;
+	return `#${(r << 16 | g << 8 | b).toString(16)}`;
 };
 
 /**
@@ -59,9 +51,9 @@ export const darkenRGB = (color: string, amount: number) => {
 	}
 
 	// clamp every value to 0 - 255
-	const r = clamp(parseInt(rgb[1]) - amount, 0, 255);
-	const g = clamp(parseInt(rgb[2]) - amount, 0, 255);
-	const b = clamp(parseInt(rgb[3]) - amount, 0, 255);
+	const r = clamp(Number(rgb[1]) - amount, 0, 255);
+	const g = clamp(Number(rgb[2]) - amount, 0, 255);
+	const b = clamp(Number(rgb[3]) - amount, 0, 255);
 
 	return `rgb(${r}, ${g}, ${b})`;
 };
@@ -83,9 +75,9 @@ export const darkenHSL = (color: string, amount: number) => {
 	}
 
 	// clamp every value to 0 - 100
-	const h = clamp(parseInt(hsl[1]), 0, 100);
-	const s = clamp(parseInt(hsl[2]), 0, 100);
-	const l = clamp(parseInt(hsl[3]) - amount, 0, 100);
+	const h = clamp(Number(hsl[1]), 0, 100);
+	const s = clamp(Number(hsl[2]), 0, 100);
+	const l = clamp(Number(hsl[3]) - amount, 0, 100);
 
 	return `hsl(${h}, ${s}%, ${l}%)`;
 };
@@ -121,21 +113,27 @@ export const darkenColor = (color: string, amount: number) => {
  */
 export const lightenHex = (input: string, amount: number) => {
 
-	// regex that supports 3 and 6 digit hex values
-	const regex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
-	const hex = regex.exec(input);
+	let c = input;
 
-	if (!hex) {
-		console.warn('invalid hex color', input);
-		return input;
+	if (c.startsWith('#')) {
+		c = c.slice(1);
 	}
 
-	// clamp every value to 0 - 255
-	const r = clamp(parseInt(hex[1], 16) + amount, 0, 255).toString(16);
-	const g = clamp(parseInt(hex[2], 16) + amount, 0, 255).toString(16);
-	const b = clamp(parseInt(hex[3], 16) + amount, 0, 255).toString(16);
+	if (c.length === 3) {
+		c = c.split('').map(v => v + v).join('');
+	}
 
-	return `#` + r + g + b;
+	const bigint = parseInt(c, 16);
+	
+	let r = (bigint >> 16) & 255;
+	let g = (bigint >> 8) & 255;
+	let b = bigint & 255;
+
+	r = clamp(r + amount, 0, 255);
+	g = clamp(g + amount, 0, 255);
+	b = clamp(b + amount, 0, 255);
+
+	return `#${(r << 16 | g << 8 | b).toString(16)}`;
 };
 
 /**
@@ -155,9 +153,9 @@ export const lightenRGB = (input: string, amount: number) => {
 	}
 
 	// clamp every value to 0 - 255
-	const r = clamp(parseInt(rgb[1]) + amount, 0, 255);
-	const g = clamp(parseInt(rgb[2]) + amount, 0, 255);
-	const b = clamp(parseInt(rgb[3]) + amount, 0, 255);
+	const r = clamp(Number(rgb[1]) + amount, 0, 255);
+	const g = clamp(Number(rgb[2]) + amount, 0, 255);
+	const b = clamp(Number(rgb[3]) + amount, 0, 255);
 
 	return `rgb(${r}, ${g}, ${b})`;
 };
@@ -179,9 +177,9 @@ export const lightenHSL = (input: string, amount: number) => {
 	}
 
 	// clamp every value to 0 - 100
-	const h = clamp(parseInt(hsl[1]), 0, 100);
-	const s = clamp(parseInt(hsl[2]), 0, 100);
-	const l = clamp(parseInt(hsl[3]) + amount, 0, 100);
+	const h = clamp(Number(hsl[1]), 0, 100);
+	const s = clamp(Number(hsl[2]), 0, 100);
+	const l = clamp(Number(hsl[3]) + amount, 0, 100);
 
 	return `hsl(${h}, ${s}%, ${l}%)`;
 };
@@ -217,17 +215,20 @@ export const lightenColor = (color: string, amount: number) => {
  */
 export const setHexOpacity = (color: string, opacity: number) => {
 
-	const regex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
-	const hex = regex.exec(color);
+	let c = color;
 
-	if (!hex) {
-		console.warn('invalid hex color', color);
-		return color;
+	if(c[0] === '#') {
+		c = c.slice(1);
 	}
 
-	const r = parseInt(hex[1], 16);
-	const g = parseInt(hex[2], 16);
-	const b = parseInt(hex[3], 16);
+	if(c.length === 3) {
+		c = c.split('').map((v) => v + v).join('');
+	}
+
+	const bigint = parseInt(c, 16);
+	const r = (bigint >> 16) & 255;
+	const g = (bigint >> 8) & 255;
+	const b = bigint & 255;
 
 	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 };
@@ -248,9 +249,9 @@ export const setRGBOpacity = (color: string, opacity: number) => {
 		return color;
 	}
 
-	const r = parseInt(rgb[1]);
-	const g = parseInt(rgb[2]);
-	const b = parseInt(rgb[3]);
+	const r = Number(rgb[1]);
+	const g = Number(rgb[2]);
+	const b = Number(rgb[3]);
 
 	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 };
@@ -271,9 +272,9 @@ export const setHSLOpacity = (color: string, opacity: number) => {
 		return color;
 	}
 
-	const h = parseInt(hsl[1]);
-	const s = parseInt(hsl[2]);
-	const l = parseInt(hsl[3]);
+	const h = Number(hsl[1]);
+	const s = Number(hsl[2]);
+	const l = Number(hsl[3]);
 
 	return `hsla(${h}, ${s}%, ${l}%, ${opacity})`;
 };
