@@ -1,7 +1,49 @@
 :root {
+
+	/** default radius values **/
 	--serenity-radius-xs: 0.125rem;
 	--serenity-radius-sm: 0.25rem;
 	--serenity-radius-md: 0.5rem;
 	--serenity-radius-lg: 1rem;
 	--serenity-radius-xl: 2rem;
+
+	/** default padding values **/
+	--serenity-padding-xs: 8px;
+	--serenity-padding-sm: 16px;
+	--serenity-padding-md: 24px;
+	--serenity-padding-lg: 32px;
+	--serenity-padding-xl: 40px;
+
+	/** default margin values **/
+	--serenity-margin-xs: 8px;
+	--serenity-margin-sm: 16px;
+	--serenity-margin-md: 24px;
+	--serenity-margin-lg: 32px;
+	--serenity-margin-xl: 40px;
+
+	/** default font sizes **/
+	--serenity-font-size-xs: 0.75rem;
+	--serenity-font-size-sm: 0.875rem;
+	--serenity-font-size-md: 1rem;
+	--serenity-font-size-lg: 1.25rem;
+	--serenity-font-size-xl: 1.5rem;
+
+	/** default shadow values **/
+	--serenity-shadow-xs: 0 0 0 1px rgba(0, 0, 0, 0.05);
+	--serenity-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	--serenity-shadow-md: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+	--serenity-shadow-lg: 0 8px 16px 0 rgba(0, 0, 0, 0.05);
+	--serenity-shadow-xl: 0 16px 24px 0 rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme='dark'] {
+	--serenity-body-background-color: var(--serenity-color-dark-7);
+}
+
+:root[data-theme='light'] {
+	--serenity-body-background-color: var(--serenity-color-gray-0);
+}
+
+body {
+	background-color: var(--serenity-body-background-color);
 }

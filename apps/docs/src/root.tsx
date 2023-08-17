@@ -5,7 +5,7 @@ import { A, Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, 
 
 export default function Root() {
 	return (
-		<Html lang="en" data-theme="dark">
+		<Html lang="en" data-theme="light">
 			<Head>
 				<Title>SolidStart - Bare</Title>
 				<Meta charset="utf-8" />

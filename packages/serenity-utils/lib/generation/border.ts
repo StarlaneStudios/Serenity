@@ -3,7 +3,7 @@
  * @param border 
  * @returns 
  */
-export const resolveBorder = (border?: boolean | Record<string, any>): string | undefined => {
+export const resolveBorder = (border?: boolean | string[]): string | undefined => {
 
 	if(!border) {
 		return undefined;
@@ -13,5 +13,5 @@ export const resolveBorder = (border?: boolean | Record<string, any>): string | 
 		return border ? "true" : undefined;
 	}
 
-	return Object.keys(border).join("");
+	return border.join("");
 }

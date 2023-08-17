@@ -16,3 +16,6 @@ dist
 # System Files
 .DS_Store
 Thumbs.db
+
+# Typescript files
+*.tsbuildinfo

@@ -2,26 +2,43 @@
 	display: block;
 	padding: var(--padding);
 	border-radius: var(--border-radius);
+	box-shadow: var(--shadow);
+}
+
+@mixin paper-border($color) {
+
+	$map: (
+		t: top,
+		r: right,
+		b: bottom,
+		l: left
+	);
+
+	.paper {
+
+		@content;
+		
+		&[data-border='true'] {
+			border: 1px solid var(#{$color});
+		}
+
+		@each $dir in t, r, b, l {
+			$_dir: map-get($map, $dir);
+			&[data-border*=#{$dir}] {
+				border-#{$_dir}: 1px solid var(#{$color});
+			}
+		}
+	}
 }
 
 html[data-theme='dark'] {
-
-	.paper[data-border='true'] {
-		border: 1px solid var(--serenity-color-dark-4);
+	@include paper-border("--serenity-color-dark-4") {
+		
 	}
 }
 
 html[data-theme='light'] {
-
-	.paper[data-border='true'] {
-		border: 1px solid var(--serenity-color-gray-3);
+	@include paper-border("--serenity-color-gray-3") {
+		background-color: white;
 	}
-}
-
-:root {
-	--serenity-padding-xs: 8px;
-	--serenity-padding-sm: 16px;
-	--serenity-padding-md: 24px;
-	--serenity-padding-lg: 32px;
-	--serenity-padding-xl: 40px;
 }

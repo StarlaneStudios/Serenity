@@ -22,7 +22,8 @@
 		"./dist/style.css": {
 			"import": "./dist/style.css",
 			"require": "./dist/style.css"
-		}
+		},
+		"./lib/sass/**/*.scss": "./lib/sass/**/*.scss"
 	},
 	"dependencies": {
 		"@serenity-ui/utils": "*"

@@ -1,0 +1,17 @@
+@mixin isDark {
+	html[data-theme="dark"] {
+		@content;
+	}
+}
+
+@mixin isLight {
+	html[data-theme="light"] {
+		@content;
+	}
+}
+
+@mixin isTheme ($theme) {
+	html[data-theme="#{$theme}"] {
+		@content;
+	}
+}

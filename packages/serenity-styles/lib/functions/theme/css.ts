@@ -15,19 +15,24 @@ export const cx = (...args: (string | undefined)[]) => {
  */
 export const cssvars = (map: Record<string, string | undefined>): Record<string, any> => {
 
-	if(!map) {
+	if (!map) {
 		return {};
 	}
 
-	return Object.entries(map).reduce((acc, [key, value]) => {
+	const variables: Record<string, any> = {};
+	const keys = Object.keys(map);
+	const length = keys.length;
 
-		if(!value) {
-			return acc;
+	for (let i = 0; i < length; i++) {
+		const key = keys[i];
+		const value = map[key];
+
+		if (value !== undefined) {
+			variables[`--${key}`] = value;
 		}
+	}
 
-		acc[`--${key}`] = value;
-		return acc;
-	}, {} as Record<string, any>);
+	return variables;
 };
 
 /**
@@ -47,3 +52,17 @@ export const resolveSize = (
 
 	return `var(--${cssvariable}-${size})`;
 };
+
+/**
+ * Resolves the shadow input and returns a css variable.
+ * @param shadow
+ * @returns string
+ */
+export const resolveShadow = (shadow: Size | undefined): string | undefined => {
+
+	if(!shadow) {
+		return undefined;
+	}
+
+	return `var(--serenity-shadow-${shadow})`;
+}
