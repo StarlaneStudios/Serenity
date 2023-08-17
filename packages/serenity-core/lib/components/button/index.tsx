@@ -1,4 +1,4 @@
-import { JSX, splitProps } from "solid-js";
+import { JSX, mergeProps, splitProps } from "solid-js";
 import classes from "./button.module.scss";
 import { cssvars, cx, resolveSize } from "@serenity-ui/styles";
 import type { Color, Size } from "@serenity-ui/styles";
@@ -13,32 +13,35 @@ interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	loading?: boolean;
 }
 
-const defaultButtonProps: Omit<ButtonProps, keyof Omit<JSX.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>> = {
+const defaultButtonProps: ButtonProps = {
 	color: "blue",
 	size: "sm",
 	radius: "sm",
 	variant: "filled"
 };
 
+const defaultButtonSplitProps: (keyof ButtonProps)[] = [
+	"color",
+	"class",
+	"size",
+	"classes",
+	"style",
+	"variant",
+	"radius",
+	"children",
+	"loading"
+];
+
 function Button(props: ButtonProps) {
 
-	const [root, other] = splitProps(props, [
-		"color",
-		"class",
-		"size",
-		"classes",
-		"style",
-		"variant",
-		"radius",
-		"children",
-		"loading"
-	]);
+	const [root, other] = splitProps(props, defaultButtonSplitProps);
+	const baseProps = mergeProps(defaultButtonProps, root);
 
 	const cssVariables = () => {
 
-		const defaultColor = root.color ?? defaultButtonProps.color ?? "blue";
-		const defaultRadius = root.radius ?? defaultButtonProps.radius ?? "sm";
-		const defaultVariant = root.variant ?? defaultButtonProps.variant ?? "filled";
+		const defaultColor = baseProps.color!;
+		const defaultRadius = baseProps.radius!;
+		const defaultVariant = baseProps.variant!;
 
 		const variantVariables = variants.get(defaultVariant)!(defaultColor);
 
@@ -49,12 +52,12 @@ function Button(props: ButtonProps) {
 
 	return (
 		<button
-			class={cx(root.class, classes.button)}
-			data-variant={root.variant ?? defaultButtonProps.variant ?? "filled"}
-			data-size={root.size ?? defaultButtonProps.size ?? "sm"}
+			class={cx(baseProps.class, classes.button)}
+			data-variant={baseProps.variant}
+			data-size={baseProps.size}
 			style={Object.assign(cssVariables(), root.style)}
-			data-loading={root.loading}
-			aria-disabled={other.disabled}
+			data-loading={baseProps.loading}
+			aria-disabled={baseProps.disabled}
 			{...other}
 		>
 			<span class={cx(classes.buttonInner, root.classes?.inner)}>
