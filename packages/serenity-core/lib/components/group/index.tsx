@@ -1,5 +1,5 @@
-import { Size, cx, resolveSize } from "@serenity-ui/styles";
-import { splitProps } from "solid-js";
+import { Size, cssvars, cx, resolveSize } from "@serenity-ui/styles";
+import { mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import classes from "./group.module.scss";
 
@@ -12,28 +12,40 @@ interface GroupProps extends Omit<JSX.HTMLAttributes<HTMLDivElement>, 'size'> {
 	direction?: "row" | "row-reverse";
 }
 
+const groupSplitProps = [
+	"children",
+	"class",
+	"spacing",
+	"justify",
+	"align",
+	"style",
+	"grow",
+	"noWrap",
+	"direction"
+] as const;
+
+const defaultGroupProps = {
+	align: "center",
+	justify: "flex-start",
+	direction: "row",
+	grow: false,
+	noWrap: false,
+	spacing: "md"
+} as Required<Pick<GroupProps, "spacing" | "justify" | "align" | "grow" | "noWrap" | "direction">>;
+
 function Group(props: GroupProps) {
 
-	const [root, other] = splitProps(props, [
-		"children",
-		"class",
-		"spacing",
-		"justify",
-		"align",
-		"style",
-		"grow",
-		"noWrap",
-		"direction"
-	]);
+	const [root, other] = splitProps(props, groupSplitProps);
+	const baseProps = mergeProps(defaultGroupProps, root);
 
 	const cssVariables = () => {
-		const size = resolveSize(root.spacing ?? "md", "group-spacing", "px");
+		const size = resolveSize(baseProps.spacing, "group-spacing", "px");
 
-		return {
-			"--group-spacing": size,
-			"--group-justify": root.justify,
-			"--group-align": root.align
-		};
+		return cssvars({
+			spacing: size,
+			justify: baseProps.justify,
+			align: baseProps.align
+		});
 	};
 
 	return (
@@ -50,5 +62,5 @@ function Group(props: GroupProps) {
 	);
 }
 
-export { Group };
+export { Group, defaultGroupProps };
 export type { GroupProps };

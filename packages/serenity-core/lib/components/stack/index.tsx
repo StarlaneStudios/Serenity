@@ -1,4 +1,4 @@
-import { splitProps, JSX } from "solid-js";
+import { splitProps, JSX, mergeProps } from "solid-js";
 import { cssvars, cx, resolveSize, Size } from "@serenity-ui/styles";
 import classes from "./stack.module.scss";
 
@@ -9,32 +9,42 @@ interface StackProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	align?: JSX.CSSProperties["align-items"];
 }
 
+const stackSplitProps = [
+	"children",
+	"class",
+	"spacing",
+	"justify",
+	"align",
+	"direction",
+	"style"
+] as const;
+
+const defaultStackProps = {
+	align: "center",
+	justify: "flex-start",
+	direction: "column",
+	spacing: "md"
+} as Required<Pick<StackProps, "spacing" | "justify" | "align" | "direction">>;
+
 function Stack(props: StackProps) {
 
-	const [root, other] = splitProps(props, [
-		"children",
-		"class",
-		"spacing",
-		"justify",
-		"align",
-		"direction",
-		"style"
-	]);
+	const [root, other] = splitProps(props, stackSplitProps);
+	const baseProps = mergeProps(defaultStackProps, root);
 
 	const cssVariables = () => {
-		const size = resolveSize(root.spacing ?? "md", "serenity-stack-spacing", "px");
+		const size = resolveSize(baseProps.spacing, "serenity-stack-spacing", "px");
 		return cssvars({
 			"row-gap": size,
-			"justify-content": root.justify,
-			"align-items": root.align
+			"justify-content": baseProps.justify,
+			"align-items": baseProps.align
 		});
 	};
 
 	return (
 		<div
 			class={cx(classes.stack, root.class)}
-			data-spacing={root.spacing}
-			data-direction={root.direction ?? "column"}
+			data-spacing={baseProps.spacing}
+			data-direction={baseProps.direction}
 			style={Object.assign(cssVariables(), root.style)}
 			{...other}
 		>
@@ -43,5 +53,5 @@ function Stack(props: StackProps) {
 	);
 }
 
-export { Stack };
+export { Stack, defaultStackProps };
 export type { StackProps };

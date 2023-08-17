@@ -20,7 +20,7 @@ const defaultButtonProps = {
 	variant: "filled"
 } as const;
 
-const defaultButtonSplitProps = [
+const buttonSplitProps = [
 	"color",
 	"class",
 	"size",
@@ -34,7 +34,7 @@ const defaultButtonSplitProps = [
 
 function Button(props: ButtonProps) {
 
-	const [root, other] = splitProps(props, defaultButtonSplitProps);
+	const [root, other] = splitProps(props, buttonSplitProps);
 	const baseProps = mergeProps(defaultButtonProps, root);
 
 	const cssVariables = () => {

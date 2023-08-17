@@ -1,8 +1,8 @@
 .group {
 	display: flex;
-	column-gap: var(--group-spacing);
-	align-items: var(--group-align, "center");
-	justify-content: var(--group-justify, "inherit");
+	column-gap: var(--spacing);
+	align-items: var(--align);
+	justify-content: var(--justify);
 
 	&[data-direction='row'] {
 		flex-direction: row;

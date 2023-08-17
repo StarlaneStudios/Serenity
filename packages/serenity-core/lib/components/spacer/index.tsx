@@ -1,12 +1,14 @@
 import { splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 
+const spacerSplitProps = [
+	"children",
+	"style"
+] as const;
+
 function Spacer(props: JSX.HTMLAttributes<HTMLSpanElement>) {
 
-	const [root, other] = splitProps(props, [
-		"children",
-		"style"
-	]);
+	const [root, other] = splitProps(props, spacerSplitProps);
 
 	return (
 		<span
