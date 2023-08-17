@@ -74,12 +74,11 @@ export const darkenHSL = (color: string, amount: number) => {
 		return color;
 	}
 
-	// clamp every value to 0 - 100
-	const h = clamp(Number(hsl[1]), 0, 100);
-	const s = clamp(Number(hsl[2]), 0, 100);
-	const l = clamp(Number(hsl[3]) - amount, 0, 100);
+	const hue = hsl[1];
+	const saturation = hsl[2];
+	const light = clamp(Number(hsl[3]) - amount, 0, 100);
 
-	return `hsl(${h}, ${s}%, ${l}%)`;
+	return `hsl(${hue}, ${saturation}%, ${light}%)`;
 };
 
 /**
@@ -177,11 +176,11 @@ export const lightenHSL = (input: string, amount: number) => {
 	}
 
 	// clamp every value to 0 - 100
-	const h = clamp(Number(hsl[1]), 0, 100);
-	const s = clamp(Number(hsl[2]), 0, 100);
-	const l = clamp(Number(hsl[3]) + amount, 0, 100);
+	const hue = hsl[1];
+	const saturation = hsl[2];
+	const lighten = clamp(Number(hsl[3]) + amount, 0, 100);
 
-	return `hsl(${h}, ${s}%, ${l}%)`;
+	return `hsl(${hue}, ${saturation}%, ${lighten}%)`;
 };
 
 /**
