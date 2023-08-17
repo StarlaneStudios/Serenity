@@ -1,4 +1,4 @@
-import { Size, Color, cssvars, cx, resolveSize } from "@serenity-ui/styles";
+import { Size, Color, cssvars, cx, resolveSize, resolveColorInput } from "@serenity-ui/styles";
 import { splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import classes from "./divider.module.scss";
@@ -26,34 +26,15 @@ function Divider(props: DividerProps) {
 
 	const cssVariables = () => {
 
-		// const { color } = resolveColorInput(props.color ?? "rgb(55, 58, 64)", {
-		// 	hover: true,
-		// 	press: true
-		// });
+		const color = resolveColorInput(props.color ?? "rgb(55, 58, 64)");
+		const thickness = resolveSize(props.thickness || "1px", "divider-thickness", "px");
 
-		// const thickness = resolveSize(props.thickness || "1px", "divider-thickness", "px");
-
-		// return cssvars({
-		// 	"border-color": color,
-		// 	"border-thickness": thickness,
-		// 	"border-variant": props.variant
-		// });
-
-		return {};
+		return cssvars({
+			"border-color": color,
+			"border-thickness": thickness,
+			"border-variant": props.variant
+		});
 	};
-
-	if(!props.children || props.orientation === "vertical") {
-		<div
-			class={cx(classes.divider, root.class)}
-			role="separator"
-			aria-orientation={props.orientation ?? "horizontal"}
-			data-content-position={props.contentPosition}
-			style={Object.assign(cssVariables(), root.style)}
-			{...other}
-		>
-			{props.children}
-		</div>
-	}
 
 	return (
 		<div
