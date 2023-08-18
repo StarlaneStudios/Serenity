@@ -41,6 +41,13 @@
 	--serenity-breakpoint-md: 768px;
 	--serenity-breakpoint-lg: 992px;
 	--serenity-breakpoint-xl: 1200px;
+
+	/** default grid spacing **/
+	--serenity-spacing-xs: 8px;
+	--serenity-spacing-sm: 16px;
+	--serenity-spacing-md: 24px;
+	--serenity-spacing-lg: 32px;
+	--serenity-spacing-xl: 40px;
 }
 
 :root[data-theme='dark'] {
