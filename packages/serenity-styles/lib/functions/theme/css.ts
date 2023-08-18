@@ -1,3 +1,4 @@
+import { Tuple } from "packages/serenity-utils/dist";
 import { Size } from "../../types/theme";
 
 /**
@@ -65,4 +66,57 @@ export const resolveShadow = (shadow: Size | undefined): string | undefined => {
 	}
 
 	return `var(--serenity-shadow-${shadow})`;
+}
+
+/**
+ * resolves the grid spacing input and returns a string.
+ * @param spacing
+ * @return string
+ */
+export const resolveGridSpacing = (spacing: Size | number | Tuple<Size | number, 2>, cssvariable: string, unit: "px" | "rem" | "em") => {
+
+	if(typeof spacing === 'number') {
+		return `${spacing}${unit}`;
+	}
+
+	if(Array.isArray(spacing)) {
+		
+		const x = resolveSize(spacing[0], cssvariable, unit);
+		const y = resolveSize(spacing[1], cssvariable, unit);
+
+		return `${x} ${y}`;
+	}
+
+	return `var(--${cssvariable}-${spacing})`;
+}
+
+/**
+ * 
+ */
+export const resolveGridCols = (
+	breakpoints: Record<Size, number>,
+	cols: number,
+	cssvariable: string
+) => {
+
+	const keys = Object.keys(breakpoints) as Size[];
+
+	if (keys.length === 1) {
+		return {
+			["--cols"]: cols
+		};
+	}
+
+	const variables = {} as Record<string, any>;
+
+	for (let i = 0; i < keys.length; i++) {
+		const key = keys[i];
+		const value = breakpoints[key];
+
+		if (value) {
+			variables[`--${cssvariable}-${key}`] = value;
+		}
+	}
+
+	return variables;
 }
