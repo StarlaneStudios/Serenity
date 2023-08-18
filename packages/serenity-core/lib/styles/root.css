@@ -34,6 +34,13 @@
 	--serenity-shadow-md: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
 	--serenity-shadow-lg: 0 8px 16px 0 rgba(0, 0, 0, 0.05);
 	--serenity-shadow-xl: 0 16px 24px 0 rgba(0, 0, 0, 0.05);
+
+	/** default breakpoints **/
+	--serenity-breakpoint-xs: 0;
+	--serenity-breakpoint-sm: 576px;
+	--serenity-breakpoint-md: 768px;
+	--serenity-breakpoint-lg: 992px;
+	--serenity-breakpoint-xl: 1200px;
 }
 
 :root[data-theme='dark'] {
