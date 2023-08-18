@@ -8,13 +8,25 @@ importers:
 
   .:
     dependencies:
+      '@solidjs/meta':
+        specifier: ^0.28.5
+        version: 0.28.5(solid-js@1.7.11)
+      '@solidjs/router':
+        specifier: ^0.8.2
+        version: 0.8.2(solid-js@1.7.11)
       solid-js:
         specifier: 1.7.11
         version: 1.7.11
+      solid-start:
+        specifier: ^0.3.1
+        version: 0.3.1(@solidjs/meta@0.28.5)(@solidjs/router@0.8.2)(solid-js@1.7.11)(solid-start-node@0.3.0)(vite@4.4.9)
     devDependencies:
       '@types/node':
-        specifier: 20.5.0
-        version: 20.5.0
+        specifier: ^18.16.19
+        version: 18.16.19
+      esbuild:
+        specifier: ^0.14.54
+        version: 0.14.54
       eslint:
         specifier: ^8.47.0
         version: 8.47.0
@@ -27,6 +39,9 @@ importers:
       sass:
         specifier: 1.65.1
         version: 1.65.1
+      solid-start-node:
+        specifier: ^0.3.0
+        version: 0.3.0(solid-start@0.3.1)(undici@5.23.0)(vite@4.4.9)
       turbo:
         specifier: ^1.10.12
         version: 1.10.12
@@ -38,10 +53,10 @@ importers:
         version: 5.0.1(typescript@5.1.6)
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
+        version: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
       vite-plugin-dts:
         specifier: 3.5.2
-        version: 3.5.2(@types/node@20.5.0)(typescript@5.1.6)(vite@4.4.9)
+        version: 3.5.2(@types/node@18.16.19)(rollup@3.28.0)(typescript@5.1.6)(vite@4.4.9)
       vite-plugin-solid:
         specifier: ^2.7.0
         version: 2.7.0(solid-js@1.7.11)(vite@4.4.9)
@@ -60,40 +75,6 @@ importers:
       '@serenity-ui/styles':
         specifier: '*'
         version: link:../../packages/serenity-styles
-      '@solidjs/meta':
-        specifier: ^0.28.5
-        version: 0.28.5(solid-js@1.7.9)
-      '@solidjs/router':
-        specifier: ^0.8.2
-        version: 0.8.2(solid-js@1.7.9)
-      solid-js:
-        specifier: ^1.7.9
-        version: 1.7.9
-      solid-start:
-        specifier: ^0.3.1
-        version: 0.3.1(@solidjs/meta@0.28.5)(@solidjs/router@0.8.2)(solid-js@1.7.9)(solid-start-node@0.3.0)(vite@4.4.9)
-    devDependencies:
-      '@types/node':
-        specifier: ^18.16.19
-        version: 18.16.19
-      esbuild:
-        specifier: ^0.14.54
-        version: 0.14.54
-      postcss:
-        specifier: ^8.4.26
-        version: 8.4.27
-      sass:
-        specifier: 1.65.1
-        version: 1.65.1
-      solid-start-node:
-        specifier: ^0.3.0
-        version: 0.3.0(solid-start@0.3.1)(undici@5.23.0)(vite@4.4.9)
-      typescript:
-        specifier: ^4.9.5
-        version: 4.9.5
-      vite:
-        specifier: ^4.4.6
-        version: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
 
   packages/serenity-core:
     dependencies:
@@ -115,10 +96,10 @@ importers:
         version: 1.65.1
       typescript-plugin-css-modules:
         specifier: ^5.0.1
-        version: 5.0.1(typescript@4.9.5)
+        version: 5.0.1(typescript@5.1.6)
       vite:
         specifier: 4.4.9
-        version: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
+        version: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
 
   packages/serenity-primitives:
     dependencies:
@@ -1716,24 +1697,24 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@microsoft/api-extractor-model@7.27.6(@types/node@20.5.0):
+  /@microsoft/api-extractor-model@7.27.6(@types/node@18.16.19):
     resolution: {integrity: sha512-eiCnlayyum1f7fS2nA9pfIod5VCNR1G+Tq84V/ijDrKrOFVa598BLw145nCsGDMoFenV6ajNi2PR5WCwpAxW6Q==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.7(@types/node@20.5.0)
+      '@rushstack/node-core-library': 3.59.7(@types/node@18.16.19)
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.36.4(@types/node@20.5.0):
+  /@microsoft/api-extractor@7.36.4(@types/node@18.16.19):
     resolution: {integrity: sha512-21UECq8C/8CpHT23yiqTBQ10egKUacIpxkPyYR7hdswo/M5yTWdBvbq+77YC9uPKQJOUfOD1FImBQ1DzpsdeQQ==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.6(@types/node@20.5.0)
+      '@microsoft/api-extractor-model': 7.27.6(@types/node@18.16.19)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.7(@types/node@20.5.0)
+      '@rushstack/node-core-library': 3.59.7(@types/node@18.16.19)
       '@rushstack/rig-package': 0.4.1
       '@rushstack/ts-command-line': 4.15.2
       colors: 1.2.5
@@ -1840,7 +1821,7 @@ packages:
       picomatch: 2.3.1
       rollup: 3.28.0
 
-  /@rushstack/node-core-library@3.59.7(@types/node@20.5.0):
+  /@rushstack/node-core-library@3.59.7(@types/node@18.16.19):
     resolution: {integrity: sha512-ln1Drq0h+Hwa1JVA65x5mlSgUrBa1uHL+V89FqVWQgXd1vVIMhrtqtWGQrhTnFHxru5ppX+FY39VWELF/FjQCw==}
     peerDependencies:
       '@types/node': '*'
@@ -1848,7 +1829,7 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@types/node': 20.5.0
+      '@types/node': 18.16.19
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -1889,19 +1870,19 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@solidjs/meta@0.28.5(solid-js@1.7.9):
+  /@solidjs/meta@0.28.5(solid-js@1.7.11):
     resolution: {integrity: sha512-52luJR6hVNMA1K8Od5OD0d8WVz/svqZG4is8lrDimiUGxdia3DzuLF+pK56dnEzbNt9cA42qVFL134U9LkC9Gg==}
     peerDependencies:
       solid-js: '>=1.4.0'
     dependencies:
-      solid-js: 1.7.9
+      solid-js: 1.7.11
 
-  /@solidjs/router@0.8.2(solid-js@1.7.9):
+  /@solidjs/router@0.8.2(solid-js@1.7.11):
     resolution: {integrity: sha512-gUKW+LZqxtX6y/Aw6JKyy4gQ9E7dLqp513oB9pSYJR1HM5c56Pf7eijzyXX+b3WuXig18Cxqah4tMtF0YGu80w==}
     peerDependencies:
       solid-js: ^1.5.3
     dependencies:
-      solid-js: 1.7.9
+      solid-js: 1.7.11
 
   /@types/argparse@1.0.38:
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
@@ -1962,9 +1943,6 @@ packages:
 
   /@types/node@18.16.19:
     resolution: {integrity: sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==}
-
-  /@types/node@20.5.0:
-    resolution: {integrity: sha512-Mgq7eCtoTjT89FqNoTzzXg2XvCi5VMhRV6+I2aYanc6kQCBImeNaAYRs/DyoVqk1YEUJK5gN9VO7HRIdz4Wo3Q==}
 
   /@types/postcss-modules-local-by-default@4.0.0:
     resolution: {integrity: sha512-0VLab/pcLTLcfbxi6THSIMVYcw9hEUBGvjwwaGpW77mMgRXfGF+a76t7BxTGyLh1y68tBvrffp8UWnqvm76+yg==}
@@ -2937,7 +2915,7 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-plugin-solid@0.5.0(esbuild@0.17.19)(solid-js@1.7.9):
+  /esbuild-plugin-solid@0.5.0(esbuild@0.17.19)(solid-js@1.7.11):
     resolution: {integrity: sha512-ITK6n+0ayGFeDVUZWNMxX+vLsasEN1ILrg4pISsNOQ+mq4ljlJJiuXotInd+HE0MzwTcA9wExT1yzDE2hsqPsg==}
     peerDependencies:
       esbuild: '>=0.12'
@@ -2947,7 +2925,7 @@ packages:
       '@babel/preset-typescript': 7.22.5(@babel/core@7.22.10)
       babel-preset-solid: 1.7.7(@babel/core@7.22.10)
       esbuild: 0.17.19
-      solid-js: 1.7.9
+      solid-js: 1.7.11
     transitivePeerDependencies:
       - supports-color
 
@@ -4731,12 +4709,6 @@ packages:
       csstype: 3.1.2
       seroval: 0.5.1
 
-  /solid-js@1.7.9:
-    resolution: {integrity: sha512-p1orXnauMQmwYULZtuPAXyKNRGEN2qh60kLX4YURa3jvulxAqjlh2kWEljXCtAVR6UZPC16NXdj9ASHcH383Fg==}
-    dependencies:
-      csstype: 3.1.2
-      seroval: 0.5.1
-
   /solid-refresh@0.5.3(solid-js@1.7.11):
     resolution: {integrity: sha512-Otg5it5sjOdZbQZJnvo99TEBAr6J7PQ5AubZLNU6szZzg3RQQ5MX04oteBIIGDs0y2Qv8aXKm9e44V8z+UnFdw==}
     peerDependencies:
@@ -4746,17 +4718,6 @@ packages:
       '@babel/helper-module-imports': 7.22.5
       '@babel/types': 7.22.10
       solid-js: 1.7.11
-    dev: true
-
-  /solid-refresh@0.5.3(solid-js@1.7.9):
-    resolution: {integrity: sha512-Otg5it5sjOdZbQZJnvo99TEBAr6J7PQ5AubZLNU6szZzg3RQQ5MX04oteBIIGDs0y2Qv8aXKm9e44V8z+UnFdw==}
-    peerDependencies:
-      solid-js: ^1.3
-    dependencies:
-      '@babel/generator': 7.22.10
-      '@babel/helper-module-imports': 7.22.5
-      '@babel/types': 7.22.10
-      solid-js: 1.7.9
 
   /solid-start-node@0.3.0(solid-start@0.3.1)(undici@5.23.0)(vite@4.4.9):
     resolution: {integrity: sha512-kg0J6aTvnxGj3OnK4L6EQWY6O3y4dn0CB8Q+6e++Pbzw+VMs8uZg/H9/jg+Ul3fw9uitsnwgxQmieKviaSIxMQ==}
@@ -4772,14 +4733,14 @@ packages:
       polka: 1.0.0-next.22
       rollup: 3.28.0
       sirv: 2.0.3
-      solid-start: 0.3.1(@solidjs/meta@0.28.5)(@solidjs/router@0.8.2)(solid-js@1.7.9)(solid-start-node@0.3.0)(vite@4.4.9)
+      solid-start: 0.3.1(@solidjs/meta@0.28.5)(@solidjs/router@0.8.2)(solid-js@1.7.11)(solid-start-node@0.3.0)(vite@4.4.9)
       terser: 5.19.2
       undici: 5.23.0
       vite: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
     transitivePeerDependencies:
       - supports-color
 
-  /solid-start@0.3.1(@solidjs/meta@0.28.5)(@solidjs/router@0.8.2)(solid-js@1.7.9)(solid-start-node@0.3.0)(vite@4.4.9):
+  /solid-start@0.3.1(@solidjs/meta@0.28.5)(@solidjs/router@0.8.2)(solid-js@1.7.11)(solid-start-node@0.3.0)(vite@4.4.9):
     resolution: {integrity: sha512-so91EhE07F1aLgBUJUUBKEyEqfaJssADKVuRwxHOS5Gzpauh/1QsVuz4jPK4G4eeodamQ440QBCOf3t9Rc/mXQ==}
     hasBin: true
     peerDependencies:
@@ -4819,8 +4780,8 @@ packages:
       '@babel/preset-env': 7.22.10(@babel/core@7.22.10)
       '@babel/preset-typescript': 7.22.5(@babel/core@7.22.10)
       '@babel/template': 7.22.5
-      '@solidjs/meta': 0.28.5(solid-js@1.7.9)
-      '@solidjs/router': 0.8.2(solid-js@1.7.9)
+      '@solidjs/meta': 0.28.5(solid-js@1.7.11)
+      '@solidjs/router': 0.8.2(solid-js@1.7.11)
       '@types/cookie': 0.5.1
       '@types/debug': 4.1.8
       chokidar: 3.5.3
@@ -4831,7 +4792,7 @@ packages:
       dotenv: 16.3.1
       es-module-lexer: 1.3.0
       esbuild: 0.17.19
-      esbuild-plugin-solid: 0.5.0(esbuild@0.17.19)(solid-js@1.7.9)
+      esbuild-plugin-solid: 0.5.0(esbuild@0.17.19)(solid-js@1.7.11)
       fast-glob: 3.3.1
       get-port: 6.1.2
       micromorph: 0.3.1
@@ -4843,13 +4804,13 @@ packages:
       sade: 1.8.1
       set-cookie-parser: 2.6.0
       sirv: 2.0.3
-      solid-js: 1.7.9
+      solid-js: 1.7.11
       solid-start-node: 0.3.0(solid-start@0.3.1)(undici@5.23.0)(vite@4.4.9)
       terser: 5.19.2
       undici: 5.23.0
       vite: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
       vite-plugin-inspect: 0.7.35(rollup@3.28.0)(vite@4.4.9)
-      vite-plugin-solid: 2.7.0(solid-js@1.7.9)(vite@4.4.9)
+      vite-plugin-solid: 2.7.0(solid-js@1.7.11)(vite@4.4.9)
       wait-on: 6.0.1(debug@4.3.4)
     transitivePeerDependencies:
       - '@nuxt/kit'
@@ -5192,33 +5153,6 @@ packages:
       is-typed-array: 1.1.12
     dev: true
 
-  /typescript-plugin-css-modules@5.0.1(typescript@4.9.5):
-    resolution: {integrity: sha512-hKXObfwfjx2/myRq4JeQ8D3xIWYTFqusi0hS/Aka7RFX1xQEoEkdOGDWyXNb8LmObawsUzbI30gQnZvqYXCrkA==}
-    peerDependencies:
-      typescript: '>=4.0.0'
-    dependencies:
-      '@types/postcss-modules-local-by-default': 4.0.0
-      '@types/postcss-modules-scope': 3.0.1
-      dotenv: 16.3.1
-      icss-utils: 5.1.0(postcss@8.4.27)
-      less: 4.2.0
-      lodash.camelcase: 4.3.0
-      postcss: 8.4.27
-      postcss-load-config: 3.1.4(postcss@8.4.27)
-      postcss-modules-extract-imports: 3.0.0(postcss@8.4.27)
-      postcss-modules-local-by-default: 4.0.3(postcss@8.4.27)
-      postcss-modules-scope: 3.0.0(postcss@8.4.27)
-      reserved-words: 0.1.2
-      sass: 1.65.1
-      source-map-js: 1.0.2
-      stylus: 0.59.0
-      tsconfig-paths: 4.2.0
-      typescript: 4.9.5
-    transitivePeerDependencies:
-      - supports-color
-      - ts-node
-    dev: true
-
   /typescript-plugin-css-modules@5.0.1(typescript@5.1.6):
     resolution: {integrity: sha512-hKXObfwfjx2/myRq4JeQ8D3xIWYTFqusi0hS/Aka7RFX1xQEoEkdOGDWyXNb8LmObawsUzbI30gQnZvqYXCrkA==}
     peerDependencies:
@@ -5244,12 +5178,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - ts-node
-    dev: true
-
-  /typescript@4.9.5:
-    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
     dev: true
 
   /typescript@5.0.4:
@@ -5355,7 +5283,7 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  /vite-node@0.34.2(@types/node@20.5.0)(sass@1.65.1):
+  /vite-node@0.34.2(@types/node@18.16.19)(sass@1.65.1):
     resolution: {integrity: sha512-JtW249Zm3FB+F7pQfH56uWSdlltCo1IOkZW5oHBzeQo0iX4jtC7o1t9aILMGd9kVekXBP2lfJBEQt9rBh07ebA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -5365,7 +5293,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
+      vite: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -5377,7 +5305,7 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-dts@3.5.2(@types/node@20.5.0)(typescript@5.1.6)(vite@4.4.9):
+  /vite-plugin-dts@3.5.2(@types/node@18.16.19)(rollup@3.28.0)(typescript@5.1.6)(vite@4.4.9):
     resolution: {integrity: sha512-iKc851+jdHEoN1ifbOEsoMs+/Zg26PE1EyO2Jc+4apOWRoaeK2zRJnaStgUuJaVaEcAjTqWzpNgCAMq7iO6DWA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -5387,13 +5315,13 @@ packages:
       vite:
         optional: true
     dependencies:
-      '@microsoft/api-extractor': 7.36.4(@types/node@20.5.0)
+      '@microsoft/api-extractor': 7.36.4(@types/node@18.16.19)
       '@rollup/pluginutils': 5.0.2(rollup@3.28.0)
       '@vue/language-core': 1.8.8(typescript@5.1.6)
       debug: 4.3.4
       kolorist: 1.8.0
       typescript: 5.1.6
-      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
+      vite: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
       vue-tsc: 1.8.8(typescript@5.1.6)
     transitivePeerDependencies:
       - '@types/node'
@@ -5436,25 +5364,6 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.7.11
       solid-refresh: 0.5.3(solid-js@1.7.11)
-      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
-      vitefu: 0.2.4(vite@4.4.9)
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /vite-plugin-solid@2.7.0(solid-js@1.7.9)(vite@4.4.9):
-    resolution: {integrity: sha512-avp/Jl5zOp/Itfo67xtDB2O61U7idviaIp4mLsjhCa13PjKNasz+IID0jYTyqUp9SFx6/PmBr6v4KgDppqompg==}
-    peerDependencies:
-      solid-js: ^1.7.2
-      vite: ^3.0.0 || ^4.0.0
-    dependencies:
-      '@babel/core': 7.22.10
-      '@babel/preset-typescript': 7.22.5(@babel/core@7.22.10)
-      '@types/babel__core': 7.20.1
-      babel-preset-solid: 1.7.7(@babel/core@7.22.10)
-      merge-anything: 5.1.7
-      solid-js: 1.7.9
-      solid-refresh: 0.5.3(solid-js@1.7.9)
       vite: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
       vitefu: 0.2.4(vite@4.4.9)
     transitivePeerDependencies:
@@ -5496,42 +5405,6 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /vite@4.4.9(@types/node@20.5.0)(sass@1.65.1):
-    resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': 20.5.0
-      esbuild: 0.18.20
-      postcss: 8.4.27
-      rollup: 3.28.0
-      sass: 1.65.1
-    optionalDependencies:
-      fsevents: 2.3.2
-
   /vitefu@0.2.4(vite@4.4.9):
     resolution: {integrity: sha512-fanAXjSaf9xXtOOeno8wZXIhgia+CZury481LsDaV++lSvcU2R9Ch2bPh3PYFyoHW+w9LqAeYRISVQjUIew14g==}
     peerDependencies:
@@ -5540,7 +5413,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
+      vite: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
 
   /vitest@0.34.2(sass@1.65.1):
     resolution: {integrity: sha512-WgaIvBbjsSYMq/oiMlXUI7KflELmzM43BEvkdC/8b5CAod4ryAiY2z8uR6Crbi5Pjnu5oOmhKa9sy7uk6paBxQ==}
@@ -5575,7 +5448,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
-      '@types/node': 20.5.0
+      '@types/node': 18.16.19
       '@vitest/expect': 0.34.2
       '@vitest/runner': 0.34.2
       '@vitest/snapshot': 0.34.2
@@ -5594,8 +5467,8 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.0
       tinypool: 0.7.0
-      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
-      vite-node: 0.34.2(@types/node@20.5.0)(sass@1.65.1)
+      vite: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
+      vite-node: 0.34.2(@types/node@18.16.19)(sass@1.65.1)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less

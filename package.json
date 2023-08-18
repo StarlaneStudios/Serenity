@@ -16,10 +16,12 @@
 		"apps/*"
 	],
 	"dependencies": {
-		"solid-js": "1.7.11"
+		"solid-js": "1.7.11",
+		"@solidjs/meta": "^0.28.5",
+		"@solidjs/router": "^0.8.2",
+		"solid-start": "^0.3.1"
 	},
 	"devDependencies": {
-		"@types/node": "20.5.0",
 		"eslint": "^8.47.0",
 		"eslint-plugin-solid": "^0.12.1",
 		"eslint-plugin-unused-imports": "^3.0.0",
@@ -30,6 +32,9 @@
 		"vite": "^4.4.9",
 		"vite-plugin-dts": "3.5.2",
 		"vite-plugin-solid": "^2.7.0",
-		"vitest": "0.34.2"
+		"vitest": "0.34.2",
+		"@types/node": "^18.16.19",
+		"esbuild": "^0.14.54",
+		"solid-start-node": "^0.3.0"
 	}
 }
