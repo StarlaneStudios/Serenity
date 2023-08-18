@@ -13,13 +13,13 @@ export const cx = (...args: (string | undefined)[]) => {
  * Converts a map of CSS variables into a string.
  * @param map
  */
-export const cssvars = (map: Record<string, string | undefined>): Record<string, any> => {
+export const cssvars = <T extends Record<string, string | undefined>>(map: T): T => {
 
 	if (!map) {
-		return {};
+		return {} as T;
 	}
 
-	const variables: Record<string, any> = {};
+	const variables = {} as Record<string, any>;
 	const keys = Object.keys(map);
 	const length = keys.length;
 
@@ -32,7 +32,7 @@ export const cssvars = (map: Record<string, string | undefined>): Record<string,
 		}
 	}
 
-	return variables;
+	return variables as T;
 };
 
 /**
