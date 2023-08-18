@@ -2,7 +2,6 @@ import { JSX, mergeProps, splitProps } from "solid-js";
 import { Size, cssvars, cx, resolveShadow, resolveSize } from "../..";
 import classes from "./paper.module.scss";
 import { resolveBorder } from "@serenity-ui/utils";
-import { paperSplitProps } from "../../constants/split";
 
 interface PaperProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	border?: boolean | ("t" | "l" | "r" | "b")[];
