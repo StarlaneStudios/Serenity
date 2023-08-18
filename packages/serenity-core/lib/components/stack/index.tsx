@@ -20,9 +20,9 @@ const stackSplitProps = [
 ] as const;
 
 const defaultStackProps = {
-	align: "center",
-	justify: "flex-start",
-	direction: "column",
+	align: "unset",
+	justify: "unset",
+	direction: "column-reverse",
 	spacing: "md"
 } as Required<Pick<StackProps, "spacing" | "justify" | "align" | "direction">>;
 
