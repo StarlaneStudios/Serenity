@@ -1,7 +1,7 @@
 lockfileVersion: '6.0'
 
 settings:
-  autoInstallPeers: false
+  autoInstallPeers: true
   excludeLinksFromLockfile: false
 
 importers:
@@ -87,7 +87,7 @@ importers:
         version: 1.65.1
       solid-start-node:
         specifier: ^0.3.0
-        version: 0.3.0(solid-start@0.3.1)(vite@4.4.9)
+        version: 0.3.0(solid-start@0.3.1)(undici@5.23.0)(vite@4.4.9)
       typescript:
         specifier: ^4.9.5
         version: 4.9.5
@@ -106,13 +106,16 @@ importers:
       '@serenity-ui/utils':
         specifier: '*'
         version: link:../serenity-utils
+      solid-js:
+        specifier: ^1.7.9
+        version: 1.7.11
     devDependencies:
       sass:
         specifier: 1.65.1
         version: 1.65.1
       typescript-plugin-css-modules:
         specifier: ^5.0.1
-        version: 5.0.1(typescript@5.1.6)
+        version: 5.0.1(typescript@4.9.5)
       vite:
         specifier: 4.4.9
         version: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
@@ -4755,7 +4758,7 @@ packages:
       '@babel/types': 7.22.10
       solid-js: 1.7.9
 
-  /solid-start-node@0.3.0(solid-start@0.3.1)(vite@4.4.9):
+  /solid-start-node@0.3.0(solid-start@0.3.1)(undici@5.23.0)(vite@4.4.9):
     resolution: {integrity: sha512-kg0J6aTvnxGj3OnK4L6EQWY6O3y4dn0CB8Q+6e++Pbzw+VMs8uZg/H9/jg+Ul3fw9uitsnwgxQmieKviaSIxMQ==}
     peerDependencies:
       solid-start: '*'
@@ -4771,6 +4774,7 @@ packages:
       sirv: 2.0.3
       solid-start: 0.3.1(@solidjs/meta@0.28.5)(@solidjs/router@0.8.2)(solid-js@1.7.9)(solid-start-node@0.3.0)(vite@4.4.9)
       terser: 5.19.2
+      undici: 5.23.0
       vite: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
     transitivePeerDependencies:
       - supports-color
@@ -4840,7 +4844,7 @@ packages:
       set-cookie-parser: 2.6.0
       sirv: 2.0.3
       solid-js: 1.7.9
-      solid-start-node: 0.3.0(solid-start@0.3.1)(vite@4.4.9)
+      solid-start-node: 0.3.0(solid-start@0.3.1)(undici@5.23.0)(vite@4.4.9)
       terser: 5.19.2
       undici: 5.23.0
       vite: 4.4.9(@types/node@18.16.19)(sass@1.65.1)
@@ -5186,6 +5190,33 @@ packages:
       call-bind: 1.0.2
       for-each: 0.3.3
       is-typed-array: 1.1.12
+    dev: true
+
+  /typescript-plugin-css-modules@5.0.1(typescript@4.9.5):
+    resolution: {integrity: sha512-hKXObfwfjx2/myRq4JeQ8D3xIWYTFqusi0hS/Aka7RFX1xQEoEkdOGDWyXNb8LmObawsUzbI30gQnZvqYXCrkA==}
+    peerDependencies:
+      typescript: '>=4.0.0'
+    dependencies:
+      '@types/postcss-modules-local-by-default': 4.0.0
+      '@types/postcss-modules-scope': 3.0.1
+      dotenv: 16.3.1
+      icss-utils: 5.1.0(postcss@8.4.27)
+      less: 4.2.0
+      lodash.camelcase: 4.3.0
+      postcss: 8.4.27
+      postcss-load-config: 3.1.4(postcss@8.4.27)
+      postcss-modules-extract-imports: 3.0.0(postcss@8.4.27)
+      postcss-modules-local-by-default: 4.0.3(postcss@8.4.27)
+      postcss-modules-scope: 3.0.0(postcss@8.4.27)
+      reserved-words: 0.1.2
+      sass: 1.65.1
+      source-map-js: 1.0.2
+      stylus: 0.59.0
+      tsconfig-paths: 4.2.0
+      typescript: 4.9.5
+    transitivePeerDependencies:
+      - supports-color
+      - ts-node
     dev: true
 
   /typescript-plugin-css-modules@5.0.1(typescript@5.1.6):

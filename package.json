@@ -15,9 +15,6 @@
 		"packages/*",
 		"apps/*"
 	],
-	"peerDependencies": {
-		"@microsoft/api-extractor": "^7.36.4"
-	},
 	"dependencies": {
 		"solid-js": "1.7.11"
 	},
