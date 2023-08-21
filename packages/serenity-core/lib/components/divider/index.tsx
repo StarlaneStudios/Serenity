@@ -61,5 +61,4 @@ function Divider(props: DividerProps) {
 	);
 };
 
-export { Divider, defaultDividerProps };
-export type { DividerProps };
+export { Divider, defaultDividerProps, DividerProps };

@@ -1,5 +1,5 @@
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { Size, cssvars, cx, resolveGridSpacing, resolveSize } from "../..";
+import { Size, cssvars, cx, resolveGridSpacing } from "@serenity-ui/styles";
 import { Tuple } from "@serenity-ui/utils";
 import classes from "./simplegrid.module.scss";
 
@@ -53,5 +53,4 @@ function SimpleGrid(props: SimpleGridProps) {
 	);
 }
 
-export { SimpleGrid, defaultSimpleGridProps };
-export type { SimpleGridProps };
+export { SimpleGrid, defaultSimpleGridProps, SimpleGridProps };

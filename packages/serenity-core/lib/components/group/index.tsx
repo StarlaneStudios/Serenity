@@ -62,5 +62,4 @@ function Group(props: GroupProps) {
 	);
 }
 
-export { Group, defaultGroupProps };
-export type { GroupProps };
+export { Group, defaultGroupProps, GroupProps };

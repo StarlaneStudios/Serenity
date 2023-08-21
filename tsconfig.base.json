@@ -12,14 +12,10 @@
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"allowJs": true,
-		"baseUrl": ".",
-		"noEmit": false,
 		"declaration": true,
 		"declarationMap": true,
 		"declarationDir": "dist",
 		"strict": true,
-		"noEmitOnError": true,
-		"types": ["vite/client"],
 		"skipLibCheck": true,
 		"plugins": [
 			{

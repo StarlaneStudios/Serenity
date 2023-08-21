@@ -1,4 +1,4 @@
-export type * from "./types/theme/index";
+export * from "./types/theme/index";
 
 export * from "./functions/theme/css";
 export * from "./functions/theme/color";

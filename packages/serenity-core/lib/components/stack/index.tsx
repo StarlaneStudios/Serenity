@@ -53,5 +53,4 @@ function Stack(props: StackProps) {
 	);
 }
 
-export { Stack, defaultStackProps };
-export type { StackProps };
+export { Stack, defaultStackProps, StackProps };

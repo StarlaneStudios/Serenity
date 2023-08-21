@@ -4,14 +4,13 @@
 		"rootDir": "lib",
 		"outDir": "dist",
 		"composite": true,
-		"types": ["vite/client"],
+		"esModuleInterop": true,
 		"paths": {
 			"@serenity-ui/utils": ["../serenity-utils/lib"]
 		}
 	},
 	"include": [
-		"lib/**/*",
-		"env.d.ts"
+		"lib/**/*"
 	],
 	"references": [
 		{

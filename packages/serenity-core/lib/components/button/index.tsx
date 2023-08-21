@@ -1,7 +1,7 @@
 import { JSX, mergeProps, splitProps } from "solid-js";
 import classes from "./button.module.scss";
 import { cssvars, cx, resolveSize } from "@serenity-ui/styles";
-import type { Color, Size } from "@serenity-ui/styles";
+import { Color, Size } from "@serenity-ui/styles";
 import { Variant, variants } from "../../constants/variants";
 
 interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -69,5 +69,8 @@ function Button(props: ButtonProps) {
 	);
 };
 
-export { Button, defaultButtonProps };
-export type { ButtonProps };
+export { 
+	Button, 
+	defaultButtonProps, 
+	ButtonProps 
+};

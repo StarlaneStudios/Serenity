@@ -4,10 +4,9 @@
 		"rootDir": "lib",
 		"outDir": "dist",
 		"composite": true,
-		"types": ["vite/client"]
+		"esModuleInterop": true
 	},
 	"include": [
-		"lib/**/*",
-		"env.d.ts"
+		"lib/**/*"
 	]
 }

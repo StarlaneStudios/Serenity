@@ -2,30 +2,33 @@
 	"name": "@serenity-ui/styles",
 	"type": "module",
 	"scripts": {
-		"build": "rm -rf dist && tsc && vite build",
+		"build": "rollup -c",
 		"test": "vitest",
-		"dev": "vite build --watch"
+		"dev": "rollup -c -w"
 	},
-	"main": "./dist/serenity-styles.umd.cjs",
-	"module": "./dist/serenity-styles.js",
-	"types": "dist/index.d.ts",
 	"files": [
-		"dist",
-		"styles"
+		"dist"
 	],
+	"dependencies": {
+		"@serenity-ui/utils": "*"
+	},
+	"main": "./dist/cjs/index.js",
+	"module": "./dist/esm/index.js",
+	"types": "dist/types/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"import": "./dist/serenity-styles.js",
-			"require": "./dist/serenity-styles.umd.cjs"
+			"import": "./dist/esm/index.js",
+			"browser": {
+				"import": "./dist/esm/index.js",
+				"require": "./dist/cjs/index.js"
+			},
+			"require": "./dist/cjs/index.js",
+			"node": "./dist/cjs/index.js"
 		},
-		"./dist/style.css": {
-			"import": "./dist/style.css",
-			"require": "./dist/style.css"
-		},
-		"./lib/sass/**/*.scss": "./lib/sass/**/*.scss"
-	},
-	"dependencies": {
-		"@serenity-ui/utils": "*"
+		"./dist/**/index.css": {
+			"import": "./dist/esm/index.css",
+			"require": "./dist/cjs/index.css"
+		}
 	}
 }

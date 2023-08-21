@@ -5,16 +5,12 @@
 		"outDir": "dist",
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
+		"esModuleInterop": true,
 		"types": [
-			"vite/client"
+			"solid-js",
+			"node"
 		],
-		"noEmit": true,
 		"composite": true,
-		"paths": {
-			"@serenity-ui/styles": ["../serenity-styles/lib"],
-			"@serenity-ui/utils": ["../serenity-utils/lib"],
-			"@serenity-ui/primitives": ["../serenity-primitives/lib"]
-		},
 		"plugins": [
 			{
 				"name": "typescript-plugin-css-modules",
@@ -26,8 +22,7 @@
 		]
 	},
 	"include": [
-		"lib/**/*",
-		"env.d.ts"
+		"lib/**/*"
 	],
 	"exclude": [
 		"lib/**/*.test.ts(x)"

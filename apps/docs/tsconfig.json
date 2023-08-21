@@ -2,39 +2,34 @@
 	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
-		"lib": ["DOM", "DOM.Iterable", "ESNext"],
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleResolution": "node",
 		"jsxImportSource": "solid-js",
-		"isolatedModules": true,
-		"allowJs": true,
 		"jsx": "preserve",
 		"strict": true,
-		"composite": true,
 		"types": [
 			"solid-start/env"
 		],
-		"baseUrl": ".",
+		"baseUrl": "./",
 		"paths": {
 			"~/*": [
 				"./src/*"
 			]
-		},
-		"skipLibCheck": true,
-		"plugins": [
-			{
-				"name": "typescript-plugin-css-modules",
-				"options": {
-					"classnameTransform": "camelCaseOnly",
-					"goToDefinition": true,
-				}
-			}
-		]
+		}
 	},
-	"exclude": ["node_modules"],
-	"include": [
-		"src/**/*",
-		"env.d.ts"
+	"references": [
+		{
+			"path": "../../packages/serenity-utils"
+		},
+		{
+			"path": "../../packages/serenity-primitives"
+		},
+		{
+			"path": "../../packages/serenity-core"
+		},
+		{
+			"path": "../../packages/serenity-styles"
+		}
 	]
 }

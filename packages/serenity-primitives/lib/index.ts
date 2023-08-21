@@ -1,1 +1,5 @@
-export const a = 2;
+import { Test } from "./types/test";
+
+export const a: Test = {
+	id: 1
+};

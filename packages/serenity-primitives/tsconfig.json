@@ -1,13 +1,14 @@
 {
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
+		"rootDir": "lib",
+		"outDir": "dist",
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
-		"types": ["vite/client"],
-		"composite": true
+		"composite": true,
+		"esModuleInterop": true
 	},
 	"include": [
-		"lib/**/*",
-		"env.d.ts"
+		"lib/**/*"
 	]
 }

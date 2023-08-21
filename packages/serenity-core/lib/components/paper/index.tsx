@@ -1,5 +1,5 @@
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { Size, cssvars, cx, resolveShadow, resolveSize } from "../..";
+import { Size, cssvars, cx, resolveShadow, resolveSize } from "@serenity-ui/styles";
 import classes from "./paper.module.scss";
 import { resolveBorder } from "@serenity-ui/utils";
 
@@ -57,5 +57,4 @@ function Paper(props: PaperProps) {
 	)
 }
 
-export { Paper, defaultPaperProps };
-export type { PaperProps };
+export { Paper, defaultPaperProps, PaperProps };
