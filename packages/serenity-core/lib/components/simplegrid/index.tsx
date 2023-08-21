@@ -1,5 +1,5 @@
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { Size, cssvars, cx, resolveGridSpacing } from "@serenity-ui/styles";
+import { Size, cssvars, cx, resolveGridCols, resolveGridSpacing } from "@serenity-ui/styles";
 import { Tuple } from "@serenity-ui/utils";
 import classes from "./simplegrid.module.scss";
 
@@ -35,10 +35,11 @@ function SimpleGrid(props: SimpleGridProps) {
 	const cssVariables = () => {
 
 		const spacing = resolveGridSpacing(baseProps.spacing, "serenity-spacing", "px");
+		const cols = resolveGridCols(baseProps.breakpoints, 3, "serenity-cols");
 
-		return cssvars({
-			spacing
-		});
+		const variables = cssvars({ spacing });
+
+		return Object.assign(variables, cols);
 	};
 
 	return (

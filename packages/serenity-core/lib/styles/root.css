@@ -36,7 +36,7 @@
 	--serenity-shadow-xl: 0 16px 24px 0 rgba(0, 0, 0, 0.05);
 
 	/** default breakpoints **/
-	--serenity-breakpoint-xs: 0;
+	--serenity-breakpoint-xs: 0px;
 	--serenity-breakpoint-sm: 576px;
 	--serenity-breakpoint-md: 768px;
 	--serenity-breakpoint-lg: 992px;

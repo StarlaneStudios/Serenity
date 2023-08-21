@@ -1,4 +1,4 @@
-import { Tuple } from "packages/serenity-utils/dist";
+import { Tuple } from "@serenity-ui/utils";
 import { Size } from "../../types/theme";
 
 /**
@@ -100,13 +100,6 @@ export const resolveGridCols = (
 ) => {
 
 	const keys = Object.keys(breakpoints) as Size[];
-
-	if (keys.length === 1) {
-		return {
-			["--cols"]: cols
-		};
-	}
-
 	const variables = {} as Record<string, any>;
 
 	for (let i = 0; i < keys.length; i++) {

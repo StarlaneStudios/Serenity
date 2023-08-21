@@ -9,6 +9,12 @@
 	"dependencies": {
 		"@serenity-ui/utils": "*"
 	},
+	"devDependencies": {
+		"rollup-preset-solid": "2.0.1"
+	},
+	"peerDependencies": {
+		"solid-js": "1.7.11"
+	},
 	"files": [
 		"dist"
 	],
