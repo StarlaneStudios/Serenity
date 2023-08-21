@@ -50,6 +50,8 @@ function Button(props: ButtonProps) {
 		}, cssvars(variantVariables));
 	};
 
+	console.log(root.children);
+
 	return (
 		<button
 			class={cx(baseProps.class, classes.button)}

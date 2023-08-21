@@ -1,6 +1,6 @@
 import { resolveFilledVariant, resolveLightVariant, resolveOutlineVariant, resolveSubtleVariant, resolveTransparentVariant, resolveWhiteVariant } from "@serenity-ui/styles";
 
-type Variant = "default" | "filled" | "light" | "outline" | "subtle" | "transparent" | "white";
+export type Variant = "default" | "filled" | "light" | "outline" | "subtle" | "transparent" | "white";
 
 export const variants = new Map<Variant, (color: string) => Record<string, string>>([
 	["default", (_: string) => ({})],
