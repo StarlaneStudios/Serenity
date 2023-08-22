@@ -22,7 +22,7 @@ const stackSplitProps = [
 const defaultStackProps = {
 	align: "unset",
 	justify: "unset",
-	direction: "column-reverse",
+	direction: "column",
 	spacing: "md"
 } as Required<Pick<StackProps, "spacing" | "justify" | "align" | "direction">>;
 

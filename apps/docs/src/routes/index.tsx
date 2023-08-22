@@ -1,3 +1,5 @@
+import { AccordionItem } from "@serenity-ui/core";
+import { Accordion } from "@serenity-ui/core";
 import { Button, Divider } from "@serenity-ui/core";
 
 export default function Home() {
@@ -12,6 +14,17 @@ export default function Home() {
 					Test
 				</Button>
 			</Divider>
+			<Accordion>
+				<AccordionItem value="22">
+					1
+				</AccordionItem>
+				<AccordionItem value="22">
+					2
+				</AccordionItem>
+				<AccordionItem value="22">
+					3
+				</AccordionItem>
+			</Accordion>
 		</>
 	);
 }

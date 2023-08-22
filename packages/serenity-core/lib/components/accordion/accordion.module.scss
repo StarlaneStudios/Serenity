@@ -1,0 +1,38 @@
+@import "../../../../serenity-styles/lib/sass/mixin.scss";
+
+.accordion {
+
+	&[data-variant="contained"] {
+		border: 1px solid var(--accordion-border-color);
+
+		> .accordion--header:is(:not(:last-child)) {
+			border-bottom: 1px solid var(--accordion-border-color);
+		}
+	}
+
+	&[data-variant="filled"] {
+
+	}
+
+	&[data-variant="seperated"] {
+
+	}
+
+	&[data-variant="default"] {
+
+	}
+
+	&--header {
+		position: inherit;
+	}
+}
+
+@include cssVarLight {
+	--accordion-border-color: var(--serenity-color-gray-3);
+	--accordion-filled-color: var(--serenity-color-gray-0);
+}
+
+@include cssVarDark {
+	--accordion-border-color: var(--serenity-color-dark-4);
+	--accordion-filled-color: var(--serenity-color-dark-6);
+}
