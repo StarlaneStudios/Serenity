@@ -1,11 +1,61 @@
+@import "../../../../serenity-styles/lib/sass/mixin.scss";
+
 .divider {
-	position: relative;
 	border-bottom-style: initial;
 	border-right-color: initial;
 	border-image: initial;
+
+	&:not(:empty)>.divider--label {
+		position: relative;
+		display: flex;
+		align-items: center;
+		font-size: 0.75rem;
+		white-space: nowrap;
+		color: var(--label-color);
+
+		&[data-position="left"]::after {
+			content: "";
+			flex: 1 1;
+			height: 0.0625rem;
+			border-top: 0.0625rem solid var(--border-color, var(--divider-color));
+			margin-left: 0.75rem;
+		}
+
+		&[data-position="center"] {
+			justify-content: center;
+
+			&::after,
+			&::before {
+				content: "";
+				flex: 1 1;
+				height: 0.0625rem;
+				border-top: 0.0625rem solid var(--border-color, var(--divider-color));
+			}
+
+			&::after {
+				margin-left: 0.75rem;
+			}
+
+			&::before {
+				margin-right: 0.75rem;
+			}
+		}
+
+		&[data-position="right"] {
+			justify-content: flex-end;
+
+			&::before {
+				content: "";
+				flex: 1 1;
+				height: 0.0625rem;
+				border-top: 0.0625rem solid var(--border-color, var(--divider-color));
+				margin-right: 0.75rem;
+			}
+		}
+	}
 }
 
-.divider[aria-orientation='horizontal'] {
+.divider[aria-orientation='horizontal']:empty {
 	border-width: var(--border-thickness) 0px 0px;
 	border-left-style: initial;
 	border-bottom-color: initial;
@@ -15,7 +65,7 @@
 	margin: 0.75rem 0px;
 }
 
-.divider[aria-orientation='vertical'] {
+.divider[aria-orientation='vertical']:empty {
 	border-width: 0px 0px 0px var(--border-thickness);
 	border-top-style: initial;
 	border-right-style: initial;
@@ -33,4 +83,14 @@
 	--divider-thickness-md: 0.1875rem;
 	--divider-thickness-lg: 0.25rem;
 	--divider-thickness-xl: 0.3125rem;
+}
+
+@include cssVarDark {
+	--divider-color: var(--serenity-color-dark-4);
+	--label-color: var(--serenity-color-dark-2);
+}
+
+@include cssVarLight {
+	--divider-color: var(--serenity-color-gray-4);
+	--label-color: var(--serenity-color-gray-6);
 }

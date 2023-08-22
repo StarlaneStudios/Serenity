@@ -10,12 +10,10 @@
 		"test": "turbo run test",
 		"docs:start": "pnpm --filter \"@serenity-ui/docs\" start",
 		"docs:build": "pnpm --filter \"@serenity-ui/docs\" build",
-
 		"core:build": "pnpm --filter \"@serenity-ui/core\" build",
 		"styles:build": "pnpm --filter \"@serenity-ui/styles\" build",
 		"utils:build": "pnpm --filter \"@serenity-ui/utils\" build",
 		"primitives:build": "pnpm --filter \"@serenity-ui/primitives\" build",
-
 		"core:dev": "pnpm --filter \"@serenity-ui/core\" dev"
 	},
 	"workspaces": [
@@ -23,27 +21,28 @@
 		"apps/*"
 	],
 	"dependencies": {
+		"@kobalte/core": "^0.10.0",
 		"@solidjs/meta": "^0.28.6",
 		"@solidjs/router": "^0.8.3",
 		"solid-js": "1.7.11",
 		"solid-start": "^0.3.3"
 	},
 	"devDependencies": {
-		"@types/node": "^18.16.19",
-		"esbuild": "^0.14.54",
+		"@types/node": "^20.5.1",
+		"esbuild": "^0.19.2",
 		"eslint": "^8.47.0",
-		"eslint-plugin-solid": "^0.12.1",
+		"eslint-plugin-solid": "^0.13.0",
 		"eslint-plugin-unused-imports": "^3.0.0",
-		"rollup": "^3.28.0",
+		"rollup": "^3.28.1",
+		"rollup-plugin-postcss": "4.0.2",
 		"rollup-preset-solid": "^2.0.1",
-		"sass": "1.65.1",
+		"sass": "1.66.1",
 		"solid-start-node": "^0.3.3",
 		"turbo": "^1.10.12",
 		"typescript": "5.1.6",
 		"typescript-plugin-css-modules": "^5.0.1",
 		"vite": "^4.4.9",
 		"vite-plugin-solid": "^2.7.0",
-		"vitest": "0.34.2",
-		"rollup-plugin-postcss": "4.0.2"
+		"vitest": "0.34.2"
 	}
 }

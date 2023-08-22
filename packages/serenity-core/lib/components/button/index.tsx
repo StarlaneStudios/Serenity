@@ -3,6 +3,7 @@ import classes from "./button.module.scss";
 import { cssvars, cx, resolveSize } from "@serenity-ui/styles";
 import { Color, Size } from "@serenity-ui/styles";
 import { Variant, variants } from "../../constants/variants";
+import { Button as KobalteButton } from "@kobalte/core";
 
 interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: Color;
@@ -17,7 +18,11 @@ const defaultButtonProps = {
 	color: "blue",
 	size: "sm",
 	radius: "sm",
-	variant: "filled"
+	variant: "filled",
+	classes: {
+		inner: classes["button--inner"],
+		label: classes["button--label"]
+	}
 } as const;
 
 const buttonSplitProps = [
@@ -29,7 +34,8 @@ const buttonSplitProps = [
 	"variant",
 	"radius",
 	"children",
-	"loading"
+	"loading",
+	"classes"
 ] as const;
 
 function Button(props: ButtonProps) {
@@ -53,7 +59,7 @@ function Button(props: ButtonProps) {
 	console.log(root.children);
 
 	return (
-		<button
+		<KobalteButton.Root
 			class={cx(baseProps.class, classes.button)}
 			data-variant={baseProps.variant}
 			data-size={baseProps.size}
@@ -62,12 +68,12 @@ function Button(props: ButtonProps) {
 			aria-disabled={other.disabled}
 			{...other}
 		>
-			<span class={cx(classes.buttonInner, root.classes?.inner)}>
-				<span class={cx(classes.buttonLabel, root.classes?.label)}>
+			<span class={baseProps.classes.inner}>
+				<span class={baseProps.classes.label}>
 					{root.children}
 				</span>
 			</span>
-		</button>
+		</KobalteButton.Root>
 	);
 };
 

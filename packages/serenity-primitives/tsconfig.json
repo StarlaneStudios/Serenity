@@ -6,7 +6,8 @@
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
 		"composite": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"preserveWatchOutput": true,
 	},
 	"include": [
 		"lib/**/*"

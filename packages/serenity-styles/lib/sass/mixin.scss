@@ -15,3 +15,21 @@
 		@content;
 	}
 }
+
+@mixin cssVarDark {
+	:root[data-theme="dark"] {
+		@content;
+	}
+}
+
+@mixin cssVarLight {
+	:root[data-theme="light"] {
+		@content;
+	}
+}
+
+@mixin cssVarTheme ($theme) {
+	:root[data-theme="#{$theme}"] {
+		@content;
+	}
+}

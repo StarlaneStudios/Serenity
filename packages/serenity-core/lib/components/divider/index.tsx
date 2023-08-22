@@ -8,7 +8,8 @@ interface DividerProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	thickness?: Size | number;
 	orientation?: "horizontal" | "vertical";
 	variant?: JSX.CSSProperties['border-top-style'];
-	contentPosition?: "left" | "center" | "right";
+	labelPosition?: "left" | "center" | "right";
+	classes?: Record<'dividerLabel', string>;
 }
 
 const dividerSplitProps = [
@@ -16,19 +17,21 @@ const dividerSplitProps = [
 	"thickness",
 	"orientation",
 	"variant",
-	"contentPosition",
+	"labelPosition",
 	"class",
 	"style",
 	"children"
 ] as const;
 
 const defaultDividerProps = {
-	color: "rgb(55, 58, 64)",
-	thickness: "1px",
+	thickness: "sm",
 	orientation: "horizontal",
 	variant: "solid",
-	contentPosition: "center"
-} as Required<Pick<DividerProps, "color" | "thickness" | "orientation" | "variant" | "contentPosition">>
+	labelPosition: "center",
+	classes: {
+		dividerLabel: classes["divider--label"]
+	}
+} as Required<Pick<DividerProps, "color" | "thickness" | "orientation" | "variant" | "labelPosition" | "classes">>;
 
 function Divider(props: DividerProps) {
 
@@ -43,20 +46,25 @@ function Divider(props: DividerProps) {
 		return cssvars({
 			"border-color": color,
 			"border-thickness": thickness,
-			"border-variant": props.variant
+			"border-variant": baseProps.variant
 		});
 	};
 
 	return (
 		<div
-			class={cx(classes.divider, root.class)}
+			class={cx(classes.divider, baseProps.class)}
 			role="separator"
 			aria-orientation={baseProps.orientation}
-			data-content-position={baseProps.contentPosition}
-			style={Object.assign(cssVariables(), root.style)}
+			style={Object.assign(cssVariables(), baseProps.style)}
 			{...other}
 		>
-			{props.children}
+			<span
+				class={baseProps.classes.dividerLabel}
+				data-position={baseProps.labelPosition}
+				aria-hidden={baseProps.orientation === "vertical"}
+			>
+				{baseProps.children}
+			</span>
 		</div>
 	);
 };

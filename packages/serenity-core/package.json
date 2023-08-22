@@ -12,7 +12,8 @@
 	"dependencies": {
 		"@serenity-ui/styles": "*",
 		"@serenity-ui/utils": "*",
-		"@serenity-ui/primitives": "*"
+		"@serenity-ui/primitives": "*",
+		"@kobalte/core": "0.10.0"
 	},
 	"devDependencies": {
 		"sass": "1.65.1",

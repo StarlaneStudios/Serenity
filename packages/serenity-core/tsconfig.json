@@ -16,14 +16,14 @@
 			{
 				"name": "typescript-plugin-css-modules",
 				"options": {
-					"classnameTransform": "camelCaseOnly",
 					"goToDefinition": true
 				}
 			}
 		]
 	},
 	"include": [
-		"lib/**/*"
+		"lib/**/*",
+		"declarations.d.ts"
 	],
 	"exclude": [
 		"lib/**/*.test.ts(x)"
