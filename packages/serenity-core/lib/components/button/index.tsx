@@ -3,6 +3,7 @@ import classes from "./button.module.scss";
 import { cssvars, cx, resolveSize } from "@serenity-ui/styles";
 import { Color, Size } from "@serenity-ui/styles";
 import { Variant, variants } from "../../constants/variants";
+import { Button as KobalteButton } from "@kobalte/core";
 
 interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: Color;
@@ -58,7 +59,7 @@ function Button(props: ButtonProps) {
 	};
 
 	return (
-		<button
+		<KobalteButton.Root
 			class={cx(baseProps.class, classes.button)}
 			data-variant={baseProps.variant}
 			data-size={baseProps.size}
@@ -73,7 +74,7 @@ function Button(props: ButtonProps) {
 					{root.children}
 				</span>
 			</span>
-		</button>
+		</KobalteButton.Root>
 	);
 };
 
