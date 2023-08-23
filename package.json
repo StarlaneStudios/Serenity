@@ -25,10 +25,10 @@
 		"@solidjs/meta": "^0.28.6",
 		"@solidjs/router": "^0.8.3",
 		"solid-js": "1.7.11",
-		"solid-start": "^0.3.3"
+		"solid-start": "^0.3.4"
 	},
 	"devDependencies": {
-		"@types/node": "^20.5.1",
+		"@types/node": "^20.5.3",
 		"esbuild": "^0.19.2",
 		"eslint": "^8.47.0",
 		"eslint-plugin-solid": "^0.13.0",
@@ -38,7 +38,7 @@
 		"rollup-preset-solid": "^2.0.1",
 		"sass": "1.66.1",
 		"solid-devtools": "^0.27.7",
-		"solid-start-node": "^0.3.3",
+		"solid-start-node": "^0.3.4",
 		"turbo": "^1.10.12",
 		"typescript": "5.1.6",
 		"typescript-plugin-css-modules": "^5.0.1",

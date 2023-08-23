@@ -15,10 +15,10 @@
 		"vite": "^4.4.6"
 	},
 	"dependencies": {
-		"@solidjs/meta": "^0.28.5",
-		"@solidjs/router": "^0.8.2",
+		"@solidjs/meta": "^0.28.6",
+		"@solidjs/router": "^0.8.3",
 		"solid-js": "^1.7.11",
-		"solid-start": "^0.3.3",
+		"solid-start": "^0.3.4",
 		"@serenity-ui/core": "*",
 		"@serenity-ui/styles": "*",
 		"@serenity-ui/utils": "*",
