@@ -23,7 +23,7 @@
 	},
 	"include": [
 		"lib/**/*",
-		"declarations.d.ts"
+		"lib/declarations.d.ts"
 	],
 	"exclude": [
 		"lib/**/*.test.ts(x)"

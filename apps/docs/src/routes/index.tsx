@@ -1,43 +1,40 @@
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger } from "@serenity-ui/core";
+import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, SimpleGrid } from "@serenity-ui/core";
 import { Accordion } from "@serenity-ui/core";
 import { Button, Divider } from "@serenity-ui/core";
 
 const SomeAccordion = (props: AccordionProps) => (
-	<div style={{ "margin-block": "3rem" }}>
-		<div style={{ color: "var(--serenity-text-color)"}}>{props.variant}</div>
-		<Accordion multiple radius="sm" variant={props.variant}>
-			<AccordionItem value="24">
-				<AccordionHeader>
-					<AccordionTrigger>
-						Accordion A
-					</AccordionTrigger>
-				</AccordionHeader>
-				<AccordionContent>
-					Dit is content
-				</AccordionContent>
-			</AccordionItem>
-			<AccordionItem value="22">
-				<AccordionHeader>
-					<AccordionTrigger>
-						Accordion B
-					</AccordionTrigger>
-				</AccordionHeader>
-				<AccordionContent>
-					Dit is content
-				</AccordionContent>
-			</AccordionItem>
-			<AccordionItem value="1">
-				<AccordionHeader>
-					<AccordionTrigger>
-						Accordion C
-					</AccordionTrigger>
-				</AccordionHeader>
-				<AccordionContent>
-					Dit is content
-				</AccordionContent>
-			</AccordionItem>
-		</Accordion>
-	</div>
+	<Accordion collapsible radius="sm" variant={props.variant}>
+		<AccordionItem value="24">
+			<AccordionHeader>
+				<AccordionTrigger>
+					Accordion A
+				</AccordionTrigger>
+			</AccordionHeader>
+			<AccordionContent>
+				Dit is content
+			</AccordionContent>
+		</AccordionItem>
+		<AccordionItem value="22">
+			<AccordionHeader>
+				<AccordionTrigger>
+					Accordion B
+				</AccordionTrigger>
+			</AccordionHeader>
+			<AccordionContent>
+				Dit is content
+			</AccordionContent>
+		</AccordionItem>
+		<AccordionItem value="1">
+			<AccordionHeader>
+				<AccordionTrigger>
+					Accordion C
+				</AccordionTrigger>
+			</AccordionHeader>
+			<AccordionContent>
+				Dit is content
+			</AccordionContent>
+		</AccordionItem>
+	</Accordion>
 );
 
 export default function Home() {
@@ -53,10 +50,24 @@ export default function Home() {
 				</Button>
 			</Divider>
 
-			<SomeAccordion variant="contained" />
-			<SomeAccordion variant="filled" />
-			<SomeAccordion variant="default" />
-			<SomeAccordion variant="seperated" />
+			<SimpleGrid breakpoints={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 2 }}>
+
+				<Paper border>
+					<SomeAccordion variant="contained" />
+				</Paper>
+
+				<Paper border>
+					<SomeAccordion variant="filled" />
+				</Paper>
+				<Paper border>
+					<SomeAccordion variant="default" />
+				</Paper>
+
+				<Paper border>
+					<SomeAccordion variant="seperated" />
+				</Paper>
+
+			</SimpleGrid>
 		</>
 	);
 }

@@ -3,7 +3,6 @@ import { Stack, StackProps } from "../stack";
 import { Size, cx, resolveSize } from "@serenity-ui/styles";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import classes from "./accordion.module.scss";
-import { defaultChevronProps } from "../chevron";
 
 interface AccordionProps extends Omit<StackProps, 'align' | 'justify'> {
 	variant?: "default" | "contained" | "seperated" | "filled";

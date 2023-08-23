@@ -78,6 +78,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@kobalte/core':
+        specifier: 0.10.0
+        version: 0.10.0(solid-js@1.7.11)
       '@serenity-ui/core':
         specifier: '*'
         version: link:../../packages/serenity-core

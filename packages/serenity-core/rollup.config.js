@@ -25,5 +25,9 @@ export default withSolid({
 		"solid-js",
 		"solid-js/web",
 		"solid-js/store"
-	]
+	],
+	solidOptions: {
+		generate: "ssr",
+		hydratable: false
+	}
 });
