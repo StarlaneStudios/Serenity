@@ -1,30 +1,128 @@
 @import "../../../../serenity-styles/lib/sass/mixin.scss";
 
+@keyframes slideDown {
+	from {
+		height: 0;
+	}
+
+	to {
+		height: var(--kb-accordion-content-height);
+	}
+}
+
+@keyframes slideUp {
+	from {
+		height: var(--kb-accordion-content-height);
+	}
+
+	to {
+		height: 0;
+	}
+}
+
 .accordion {
+	color: var(--serenity-text-color) !important;
 
-	&[data-variant="contained"] {
-		border: 1px solid var(--accordion-border-color);
+	&:not([data-no-chevron-animation="true"]) .accordion--item[data-expanded] .accordion--chevron {
+		transform: rotate(180deg);
+	}
+}
 
-		> .accordion--header:is(:not(:last-child)) {
-			border-bottom: 1px solid var(--accordion-border-color);
+.accordion[data-variant="contained"] {
+	border: 0.0625rem solid var(--accordion-border-color);
+	border-radius: var(--radius);
+
+	.accordion--item {
+
+		&:not(:first-child) .accordion--trigger {
+			border-top: 1px solid var(--accordion-border-color);
+		}
+
+		&[data-expanded],
+		.accordion--content {
+			background-color: var(--accordion-filled-color);
 		}
 	}
 
-	&[data-variant="filled"] {
+	.accordion--header:hover {
+		background-color: var(--accordion-filled-color);
+	}
+}
 
+.accordion[data-variant="filled"] {
+
+	row-gap: 1rem;
+
+	.accordion--item {
+		border-radius: var(--radius);
+
+		&[data-expanded] {
+			background-color: var(--accordion-filled-color);
+		}
+	}
+}
+
+.accordion[data-variant="default"] {
+
+	.accordion--item:not(:first-child) .accordion--trigger {
+		border-top: 1px solid var(--accordion-border-color);
 	}
 
-	&[data-variant="seperated"] {
+	.accordion--header:hover {
+		background-color: var(--accordion-filled-color);
+	}
+}
 
+.accordion[data-variant="seperated"] {
+
+	.accordion--item {
+		border-radius: var(--radius);
+		border: 0.0625rem solid transparent;
 	}
 
-	&[data-variant="default"] {
-
+	.accordion--item[data-closed] {
+		background-color: var(--accordion-filled-color);
 	}
 
-	&--header {
-		position: inherit;
+	.accordion--item[data-expanded] {
+		border: 0.0625rem solid var(--accordion-border-color);
 	}
+}
+
+.accordion--header {
+	margin-block: 0;
+	user-select: none;
+	font-weight: 400;
+	font-size: 1rem;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.accordion--item[data-expanded] .accordion--content {
+	animation: slideDown 300ms;
+}
+
+.accordion--trigger {
+	padding: 1rem;
+	font-weight: 600;
+}
+
+.accordion--content {
+	overflow: hidden;
+	font-size: 16px;
+	animation: slideUp 300ms;
+
+	&__text {
+		padding: calc(0.625rem / 2) 1rem 1rem 1rem;
+		margin-block: 0;
+	}
+}
+
+.accordion--chevron {
+	transform: 0;
+	transition: 300ms ease-in-out;
 }
 
 @include cssVarLight {

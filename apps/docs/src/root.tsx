@@ -17,7 +17,7 @@ import "@serenity-ui/core/dist/esm/index.css";
 
 export default function Root() {
 	return (
-		<Html lang="en" data-theme="light">
+		<Html lang="en" data-theme="dark">
 			<Head>
 				<Title>SolidStart - Bare</Title>
 				<Meta charset="utf-8" />

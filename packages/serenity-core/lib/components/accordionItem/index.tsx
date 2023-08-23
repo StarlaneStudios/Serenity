@@ -33,7 +33,7 @@ function AccordionItem(props: AccordionItemProps) {
 
 	return (
 		<Accordion.Item 
-			class={cx(classes["accordion--header"], baseProps.class)}
+			class={cx(classes["accordion--item"], baseProps.class)}
 			asChild
 			value={kobalte.value}
 		>

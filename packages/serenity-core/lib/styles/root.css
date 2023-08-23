@@ -1,3 +1,5 @@
+
+
 :root {
 
 	/** default radius values **/
@@ -51,11 +53,13 @@
 }
 
 :root[data-theme='dark'] {
-	--serenity-body-background-color: var(--serenity-color-dark-7);
+	--serenity-body-background-color: #1a1b1e;
+	--serenity-text-color: var(--serenity-color-dark-0);
 }
 
 :root[data-theme='light'] {
-	--serenity-body-background-color: var(--serenity-color-gray-0);
+	--serenity-body-background-color: #fff;
+	--serenity-text-color: #000;
 }
 
 body {
