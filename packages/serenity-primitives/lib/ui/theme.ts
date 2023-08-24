@@ -1,19 +1,23 @@
 import { ThemeScheme } from "@serenity-ui/styles";
+import { createEffect, createSignal } from "solid-js";
 
 /**
  * A hook that manages the theme of the application. It can be scoped to a specific element or the entire document.
  * @param target 
  * @returns 
  */
-export function useThemeSwitcher(target?: HTMLElement | null) {
+export function useTheme(target?: HTMLElement | null) {
+
 	const htmlElement = target ?? document.querySelector("html");
+	const initialTheme = htmlElement?.getAttribute('data-theme') as ThemeScheme | undefined;
+
+	const [theme, setCurrentTheme] = createSignal<ThemeScheme | (string & {})>(initialTheme ?? 'light');
 
 	/**
 	 * Toggles the theme between light and dark
 	 */
 	const toggleTheme = (): void => {
-		const currentTheme = htmlElement?.getAttribute('data-theme') as ThemeScheme;
-		setTheme(currentTheme === "dark" ? 'light' : 'dark');
+		setCurrentTheme(prev => prev === 'light' ? 'dark' : 'light');
 	};
 
 	/**
@@ -21,11 +25,19 @@ export function useThemeSwitcher(target?: HTMLElement | null) {
 	 * @param theme 
 	 */
 	const setTheme = (theme: ThemeScheme | (string & {})) => {
-		htmlElement?.setAttribute('data-theme', theme);
+		setCurrentTheme(theme);
 	};
+	
+	/**
+	 * Listens for changes to the theme and updates the html element
+	 */
+	createEffect(() => {
+		htmlElement?.setAttribute('data-theme', theme());
+	});
 
 	return {
 		toggleTheme,
-		setTheme
+		setTheme,
+		theme
 	} as const;
 };
