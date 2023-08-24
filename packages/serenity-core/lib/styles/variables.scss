@@ -1,5 +1,3 @@
-
-
 :root {
 
 	/** default radius values **/
@@ -29,7 +27,7 @@
 	--serenity-font-size-md: 1rem;
 	--serenity-font-size-lg: 1.25rem;
 	--serenity-font-size-xl: 1.5rem;
-
+ 
 	/** default shadow values **/
 	--serenity-shadow-xs: 0 0 0 1px rgba(0, 0, 0, 0.05);
 	--serenity-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -52,16 +50,12 @@
 	--serenity-spacing-xl: 40px;
 }
 
-:root[data-theme='dark'] {
-	--serenity-body-background-color: #1a1b1e;
-	--serenity-text-color: var(--serenity-color-dark-0);
-}
-
-:root[data-theme='light'] {
+@include isLight {
 	--serenity-body-background-color: #fff;
 	--serenity-text-color: #000;
 }
 
-body {
-	background-color: var(--serenity-body-background-color);
+@include isDark {
+	--serenity-body-background-color: #1a1b1e;
+	--serenity-text-color: var(--serenity-color-dark-0);
 }
