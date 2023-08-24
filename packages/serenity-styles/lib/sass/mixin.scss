@@ -1,34 +1,16 @@
 @mixin isDark {
-	html[data-theme="dark"] {
-		@content;
-	}
-}
-
-@mixin isLight {
-	html[data-theme="light"] {
-		@content;
-	}
-}
-
-@mixin isTheme ($theme) {
-	html[data-theme="#{$theme}"] {
-		@content;
-	}
-}
-
-@mixin cssVarDark {
 	:root[data-theme="dark"] {
 		@content;
 	}
 }
 
-@mixin cssVarLight {
+@mixin isLight {
 	:root[data-theme="light"] {
 		@content;
 	}
 }
 
-@mixin cssVarTheme ($theme) {
+@mixin isTheme ($theme) {
 	:root[data-theme="#{$theme}"] {
 		@content;
 	}

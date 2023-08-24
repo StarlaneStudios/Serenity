@@ -2,6 +2,7 @@ import { JSX, mergeProps, splitProps } from "solid-js";
 import { Stack, StackProps } from "../stack";
 import { Size, cx, resolveSize } from "@serenity-ui/styles";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
+
 import classes from "./accordion.module.scss";
 
 interface AccordionProps extends Omit<StackProps, 'align' | 'justify'> {

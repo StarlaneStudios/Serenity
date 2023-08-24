@@ -125,12 +125,12 @@
 	transition: 300ms ease-in-out;
 }
 
-@include cssVarLight {
+@include isLight {
 	--accordion-border-color: var(--serenity-color-gray-3);
 	--accordion-filled-color: var(--serenity-color-gray-0);
 }
 
-@include cssVarDark {
+@include isDark {
 	--accordion-border-color: var(--serenity-color-dark-4);
 	--accordion-filled-color: var(--serenity-color-dark-6);
 }

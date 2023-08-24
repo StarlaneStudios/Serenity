@@ -1,9 +1,9 @@
 import { mergeProps, splitProps } from "solid-js";
 import _classes from "../accordion/accordion.module.scss";
-import { Group, GroupProps } from "../group";
+import { Group, GroupProps } from "../../group";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { cx } from "@serenity-ui/styles";
-import { Chevron } from "../chevron";
+import { Chevron } from "../../chevron";
 
 interface AccordionTriggerProps extends GroupProps {
 

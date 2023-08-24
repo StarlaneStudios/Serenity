@@ -1,9 +1,9 @@
 // components
 export * from "./components/accordion";
-export * from "./components/accordionContent";
-export * from "./components/accordionItem";
-export * from "./components/accordionHeader";
-export * from "./components/accordionTrigger";
+export * from "./components/accordion/content";
+export * from "./components/accordion/item";
+export * from "./components/accordion/header";
+export * from "./components/accordion/trigger";
  
 export * from "./components/button";
 
