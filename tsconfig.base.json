@@ -16,15 +16,6 @@
 		"declarationMap": true,
 		"declarationDir": "dist",
 		"strict": true,
-		"skipLibCheck": true,
-		"plugins": [
-			{
-				"name": "typescript-plugin-css-modules",
-				"options": {
-					"classnameTransform": "camelCaseOnly",
-					"goToDefinition": true
-				}
-			}
-		]
+		"skipLibCheck": true
 	}
 }

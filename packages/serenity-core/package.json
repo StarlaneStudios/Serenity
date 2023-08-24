@@ -1,28 +1,6 @@
 {
 	"name": "@serenity-ui/core",
 	"type": "module",
-	"scripts": {
-		"build": "rollup -c",
-		"test": "vitest",
-		"dev": "rollup -c -w"
-	},
-	"files": [
-		"dist"
-	],
-	"dependencies": {
-		"@serenity-ui/styles": "*",
-		"@serenity-ui/utils": "*",
-		"@serenity-ui/primitives": "*",
-		"@kobalte/core": "0.10.0"
-	},
-	"devDependencies": {
-		"sass": "1.65.1",
-		"typescript-plugin-css-modules": "^5.0.1",
-		"rollup-preset-solid": "2.0.1"
-	},
-	"peerDependencies": {
-		"solid-js": "1.7.11"
-	},
 	"main": "./dist/cjs/index.js",
 	"module": "./dist/esm/index.js",
 	"types": "./dist/types/index.d.ts",
@@ -42,5 +20,26 @@
 			"import": "./dist/esm/index.css",
 			"require": "./dist/cjs/index.css"
 		}
+	},
+	"scripts": {
+		"build": "rollup -c",
+		"test": "vitest",
+		"dev": "rollup -c -w"
+	},
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"@serenity-ui/styles": "*",
+		"@serenity-ui/utils": "*",
+		"@serenity-ui/primitives": "*",
+		"@kobalte/core": "0.10.0"
+	},
+	"devDependencies": {
+		"sass": "1.65.1",
+		"rollup-preset-solid": "2.0.1"
+	},
+	"peerDependencies": {
+		"solid-js": "1.7.11"
 	}
 }

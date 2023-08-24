@@ -11,15 +11,7 @@
 			"node"
 		],
 		"composite": true,
-		"preserveWatchOutput": true,
-		"plugins": [
-			{
-				"name": "typescript-plugin-css-modules",
-				"options": {
-					"goToDefinition": true
-				}
-			}
-		]
+		"preserveWatchOutput": true
 	},
 	"include": [
 		"lib/**/*",
