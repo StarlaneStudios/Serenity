@@ -1,7 +1,6 @@
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout, Variables } from "@serenity-ui/core";
+import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout, Variables, ThemeProvider, useTheme } from "@serenity-ui/core";
 import { Accordion } from "@serenity-ui/core";
 import { Button, Divider } from "@serenity-ui/core";
-import { useTheme } from "@serenity-ui/primitives";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -38,7 +37,7 @@ const SomeAccordion = (props: AccordionProps) => (
 	</Accordion>
 );
 
-export default function Home() {
+const Page = () => {
 
 	const { setTheme, toggleTheme, theme } = useTheme();
 
@@ -53,7 +52,7 @@ export default function Home() {
 				</Button>
 			</Divider>
 
-		
+
 			<Layout breakpoints={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 2 }}>
 
 				<Paper border>
@@ -74,7 +73,7 @@ export default function Home() {
 			</Layout>
 
 			<Variables
-				cssThemeVariables={{ 
+				cssThemeVariables={{
 					dark: {
 						"--serenity-color-primary": "red"
 					},
@@ -84,10 +83,19 @@ export default function Home() {
 				}}
 				cssVariables={{}}
 			>
-				<div style={{ color: "var(--serenity-color-primary)"}}>
+				<div style={{ color: "var(--serenity-color-primary)" }}>
 					Test1234
 				</div>
 			</Variables>
 		</>
+	);
+};
+
+export default function Home() {
+
+	return (
+		<ThemeProvider initialTheme="dark">
+			<Page />
+		</ThemeProvider>
 	);
 }

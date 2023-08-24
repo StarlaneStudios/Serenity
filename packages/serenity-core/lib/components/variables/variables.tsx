@@ -1,6 +1,6 @@
 import { ThemeScheme } from "@serenity-ui/styles";
 import { children, createEffect, mergeProps } from "solid-js";
-import { useTheme } from "@serenity-ui/primitives";
+import { useTheme } from "../../providers/theme";
 
 interface VariablesProps {
 	children: any;
@@ -28,14 +28,10 @@ function Variables(props: VariablesProps) {
 		return Object.assign(props.cssVariables, themeVariables);
 	};
 
-	createEffect(() => {
-		console.log(theme());
-	});
-
 	return (
 		<pre>
 			{theme()}
-			{JSON.stringify(themeVariables(), null, 2)}
+			{JSON.stringify(props.cssThemeVariables[theme()], null, 2)}
 		</pre>
 	)
 }
