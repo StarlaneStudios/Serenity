@@ -1,4 +1,4 @@
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout } from "@serenity-ui/core";
+import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout, Variables } from "@serenity-ui/core";
 import { Accordion } from "@serenity-ui/core";
 import { Button, Divider } from "@serenity-ui/core";
 import { useTheme } from "@serenity-ui/primitives";
@@ -72,6 +72,22 @@ export default function Home() {
 				</Paper>
 
 			</Layout>
+
+			<Variables
+				cssThemeVariables={{ 
+					dark: {
+						"--serenity-color-primary": "red"
+					},
+					light: {
+						"--serenity-color-primary": "blue"
+					}
+				}}
+				cssVariables={{}}
+			>
+				<div style={{ color: "var(--serenity-color-primary)"}}>
+					Test1234
+				</div>
+			</Variables>
 		</>
 	);
 }
