@@ -1,6 +1,7 @@
 import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, SimpleGrid } from "@serenity-ui/core";
 import { Accordion } from "@serenity-ui/core";
 import { Button, Divider } from "@serenity-ui/core";
+import { useThemeSwitcher } from "@serenity-ui/primitives";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -39,13 +40,15 @@ const SomeAccordion = (props: AccordionProps) => (
 
 export default function Home() {
 
+	const { setTheme, toggleTheme } = useThemeSwitcher();
+
 	return (
 		<>
 			<Button>
 				Test
 			</Button>
 			<Divider labelPosition="right">
-				<Button size="xs">
+				<Button size="xs" onClick={toggleTheme}>
 					Test
 				</Button>
 			</Divider>
