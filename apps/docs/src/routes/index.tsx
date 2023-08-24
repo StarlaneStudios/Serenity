@@ -1,4 +1,4 @@
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, SimpleGrid } from "@serenity-ui/core";
+import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout } from "@serenity-ui/core";
 import { Accordion } from "@serenity-ui/core";
 import { Button, Divider } from "@serenity-ui/core";
 import { useThemeSwitcher } from "@serenity-ui/primitives";
@@ -53,7 +53,7 @@ export default function Home() {
 				</Button>
 			</Divider>
 
-			<SimpleGrid breakpoints={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 2 }}>
+			<Layout breakpoints={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 2 }}>
 
 				<Paper border>
 					<SomeAccordion variant="contained" />
@@ -70,7 +70,7 @@ export default function Home() {
 					<SomeAccordion variant="seperated" />
 				</Paper>
 
-			</SimpleGrid>
+			</Layout>
 		</>
 	);
 }

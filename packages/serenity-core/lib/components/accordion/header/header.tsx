@@ -1,7 +1,7 @@
+import classes from "../accordion.module.scss";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { JSX, splitProps } from "solid-js";
 import { cx } from "@serenity-ui/styles";
-import _classes from "../accordion/accordion.module.scss";
 
 interface AccordionHeaderProps extends JSX.HTMLAttributes<HTMLDivElement> {
 
@@ -19,7 +19,7 @@ function AccordionHeader(props: AccordionHeaderProps) {
 	return (
 		<KobalteAccordion.Header
 			asChild
-			class={cx(_classes['accordion--header'], root.class)}
+			class={cx(classes['accordion--header'], root.class)}
 		>
 			<As 
 				component="h3"

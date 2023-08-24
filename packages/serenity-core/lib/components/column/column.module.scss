@@ -1,4 +1,4 @@
-.stack {
+.column {
 	display: flex;
 	row-gap: var(--row-gap);
 	justify-content: var(--justify-content);
@@ -14,9 +14,9 @@
 }
 
 :root {
-	--serenity-stack-spacing-xs: 0.875rem;
-	--serenity-stack-spacing-sm: 1.125rem;
-	--serenity-stack-spacing-md: 1.375rem;
-	--serenity-stack-spacing-lg: 1.625rem;
-	--serenity-stack-spacing-xl: 2rem;
+	--serenity-column-spacing-xs: 0.875rem;
+	--serenity-column-spacing-sm: 1.125rem;
+	--serenity-column-spacing-md: 1.375rem;
+	--serenity-column-spacing-lg: 1.625rem;
+	--serenity-column-spacing-xl: 2rem;
 }

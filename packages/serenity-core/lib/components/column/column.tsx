@@ -1,15 +1,15 @@
+import classes from "./column.module.scss";
 import { splitProps, JSX, mergeProps } from "solid-js";
 import { cssvars, cx, resolveSize, Size } from "@serenity-ui/styles";
-import classes from "./stack.module.scss";
 
-interface StackProps extends JSX.HTMLAttributes<HTMLDivElement> {
+interface ColumnProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	spacing?: number | Size;
 	direction?: "column" | "column-reverse";
 	justify?: JSX.CSSProperties["justify-content"];
 	align?: JSX.CSSProperties["align-items"];
 }
 
-const stackSplitProps = [
+const columnSplitProps = [
 	"children",
 	"class",
 	"spacing",
@@ -19,20 +19,21 @@ const stackSplitProps = [
 	"style"
 ] as const;
 
-const defaultStackProps = {
+const defaultColumnProps = {
 	align: "unset",
 	justify: "unset",
 	direction: "column",
 	spacing: "md"
-} as Required<Pick<StackProps, "spacing" | "justify" | "align" | "direction">>;
+} as Required<Pick<ColumnProps, "spacing" | "justify" | "align" | "direction">>;
 
-function Stack(props: StackProps) {
+function Column(props: ColumnProps) {
 
-	const [root, other] = splitProps(props, stackSplitProps);
-	const baseProps = mergeProps(defaultStackProps, root);
+	const [root, other] = splitProps(props, columnSplitProps);
+	const baseProps = mergeProps(defaultColumnProps, root);
 
 	const cssVariables = () => {
-		const size = resolveSize(baseProps.spacing, "serenity-stack-spacing", "px");
+		const size = resolveSize(baseProps.spacing, "serenity-column-spacing", "px");
+		
 		return cssvars({
 			"row-gap": size,
 			"justify-content": baseProps.justify,
@@ -42,7 +43,7 @@ function Stack(props: StackProps) {
 
 	return (
 		<div
-			class={cx(classes.stack, root.class)}
+			class={cx(classes.column, root.class)}
 			data-spacing={baseProps.spacing}
 			data-direction={baseProps.direction}
 			style={Object.assign(cssVariables(), root.style)}
@@ -53,4 +54,8 @@ function Stack(props: StackProps) {
 	);
 }
 
-export { Stack, defaultStackProps, StackProps };
+export {
+	Column,
+	defaultColumnProps,
+	ColumnProps
+};

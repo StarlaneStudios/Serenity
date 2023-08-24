@@ -1,14 +1,14 @@
+import classes from "./layout.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { Size, cssvars, cx, resolveGridCols, resolveGridSpacing } from "@serenity-ui/styles";
 import { Tuple } from "@serenity-ui/utils";
-import classes from "./simplegrid.module.scss";
 
-interface SimpleGridProps extends JSX.HTMLAttributes<HTMLDivElement> {
+interface LayoutProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	breakpoints?: Record<Size, number>;
 	spacing?: Size | number | Tuple<Size | number, 2>;
 }
 
-const defaultSimpleGridProps = {
+const defaultLayoutProps = {
 	spacing: "md",
 	breakpoints: {
 		xs: 1,
@@ -17,9 +17,9 @@ const defaultSimpleGridProps = {
 		lg: 3,
 		xl: 4
 	}
-} as Required<Pick<SimpleGridProps, 'spacing' | 'breakpoints'>>;
+} as Required<Pick<LayoutProps, 'spacing' | 'breakpoints'>>;
 
-const simpleGridSplitProps = [
+const layoutSplitProps = [
 	"breakpoints",
 	"spacing",
 	"class",
@@ -27,10 +27,10 @@ const simpleGridSplitProps = [
 	"children"
 ] as const;
 
-function SimpleGrid(props: SimpleGridProps) {
+function Layout(props: LayoutProps) {
 
-	const [root, other] = splitProps(props, simpleGridSplitProps);
-	const baseProps = mergeProps(defaultSimpleGridProps, root);
+	const [root, other] = splitProps(props, layoutSplitProps);
+	const baseProps = mergeProps(defaultLayoutProps, root);
 
 	const cssVariables = () => {
 
@@ -44,7 +44,7 @@ function SimpleGrid(props: SimpleGridProps) {
 
 	return (
 		<div
-			class={cx(classes.simplegrid, root.class)}
+			class={cx(classes.layout, root.class)}
 			role="grid"
 			style={Object.assign(cssVariables(), root.style)}
 			{...other}
@@ -54,4 +54,4 @@ function SimpleGrid(props: SimpleGridProps) {
 	);
 }
 
-export { SimpleGrid, defaultSimpleGridProps, SimpleGridProps };
+export { Layout, defaultLayoutProps, LayoutProps };

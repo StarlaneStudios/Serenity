@@ -1,9 +1,9 @@
+import classes from "./row.module.scss";
 import { Size, cssvars, cx, resolveSize } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
-import classes from "./group.module.scss";
 
-interface GroupProps extends Omit<JSX.HTMLAttributes<HTMLDivElement>, 'size'> {
+interface RowProps extends Omit<JSX.HTMLAttributes<HTMLDivElement>, 'size'> {
 	justify?: JSX.CSSProperties["justify-content"];
 	align?: JSX.CSSProperties["align-items"];
 	spacing?: Size;
@@ -12,7 +12,7 @@ interface GroupProps extends Omit<JSX.HTMLAttributes<HTMLDivElement>, 'size'> {
 	direction?: "row" | "row-reverse";
 }
 
-const groupSplitProps = [
+const rowSplitProps = [
 	"children",
 	"class",
 	"spacing",
@@ -24,22 +24,22 @@ const groupSplitProps = [
 	"direction"
 ] as const;
 
-const defaultGroupProps = {
+const defaultRowProps = {
 	align: "center",
 	justify: "flex-start",
 	direction: "row",
 	grow: false,
 	noWrap: false,
 	spacing: "md"
-} as Required<Pick<GroupProps, "spacing" | "justify" | "align" | "grow" | "noWrap" | "direction">>;
+} as Required<Pick<RowProps, "spacing" | "justify" | "align" | "grow" | "noWrap" | "direction">>;
 
-function Group(props: GroupProps) {
+function Row(props: RowProps) {
 
-	const [root, other] = splitProps(props, groupSplitProps);
-	const baseProps = mergeProps(defaultGroupProps, root);
+	const [root, other] = splitProps(props, rowSplitProps);
+	const baseProps = mergeProps(defaultRowProps, root);
 
 	const cssVariables = () => {
-		const size = resolveSize(baseProps.spacing, "group-spacing", "px");
+		const size = resolveSize(baseProps.spacing, "serenity-row-spacing", "px");
 
 		return cssvars({
 			spacing: size,
@@ -50,7 +50,7 @@ function Group(props: GroupProps) {
 
 	return (
 		<div
-			class={cx(classes.group, root.class)}
+			class={cx(classes.row, root.class)}
 			data-grow={root.grow}
 			data-no-wrap={root.noWrap}
 			data-direction={root.direction ?? "row"}
@@ -62,4 +62,4 @@ function Group(props: GroupProps) {
 	);
 }
 
-export { Group, defaultGroupProps, GroupProps };
+export { Row, defaultRowProps, RowProps };

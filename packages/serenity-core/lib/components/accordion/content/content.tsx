@@ -1,6 +1,6 @@
+import classes from "../accordion.module.scss";
 import { JSX } from "solid-js";
 import { Accordion as KobalteAccordion } from "@kobalte/core";
-import classes from "../accordion/accordion.module.scss";
 
 interface AccordionContentProps extends JSX.HTMLAttributes<HTMLDivElement> {
 

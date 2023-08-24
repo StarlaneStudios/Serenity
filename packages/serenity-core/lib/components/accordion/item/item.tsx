@@ -1,4 +1,4 @@
-import classes from "../accordion/accordion.module.scss";
+import classes from "../accordion.module.scss";
 import { JSX, splitProps } from "solid-js";
 import { Accordion, As } from "@kobalte/core";
 import { cx } from "@serenity-ui/styles";

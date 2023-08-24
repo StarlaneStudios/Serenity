@@ -1,4 +1,4 @@
-.group {
+.row {
 	display: flex;
 	column-gap: var(--spacing);
 	align-items: var(--align);
@@ -22,9 +22,9 @@
 }
 
 :root {
-	--group-spacing-xs: 0.625rem;
-	--group-spacing-sm: 0.750rem;
-	--group-spacing-md: 1.000rem;
-	--group-spacing-lg: 1.250rem;
-	--group-spacing-xl: 1.500rem;
+	--serenity-row-spacing-xs: 0.625rem;
+	--serenity-row-spacing-sm: 0.750rem;
+	--serenity-row-spacing-md: 1.000rem;
+	--serenity-row-spacing-lg: 1.250rem;
+	--serenity-row-spacing-xl: 1.500rem;
 }

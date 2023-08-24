@@ -1,11 +1,11 @@
+import classes from "../accordion.module.scss";
 import { mergeProps, splitProps } from "solid-js";
-import _classes from "../accordion/accordion.module.scss";
-import { Group, GroupProps } from "../../group";
+import { Row, RowProps } from "../../row";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { cx } from "@serenity-ui/styles";
 import { Chevron } from "../../chevron";
 
-interface AccordionTriggerProps extends GroupProps {
+interface AccordionTriggerProps extends RowProps {
 
 }
 
@@ -33,18 +33,18 @@ function AccordionTrigger(props: AccordionTriggerProps) {
 
 	return (
 		<KobalteAccordion.Trigger
-			class={cx(_classes['accordion--trigger'], root.class)}
+			class={cx(classes['accordion--trigger'], root.class)}
 			asChild
 		>
 			<As
-				component={Group}
+				component={Row}
 				noWrap={baseProps.noWrap}
 				align={baseProps.align}
 				justify={baseProps.justify}
 				{...other}
 			>
 				{root.children}
-				<Chevron class={_classes['accordion--chevron']} />
+				<Chevron class={classes['accordion--chevron']} />
 			</As>
 		</KobalteAccordion.Trigger>
 	);
