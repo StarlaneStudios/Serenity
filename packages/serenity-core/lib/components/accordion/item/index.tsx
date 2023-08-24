@@ -1,23 +1,13 @@
-import { JSX, mergeProps, splitProps } from "solid-js";
-import { defaultAccrodionProps } from "../accordion";
+import classes from "../accordion/accordion.module.scss";
+import { JSX, splitProps } from "solid-js";
 import { Accordion, As } from "@kobalte/core";
 import { cx } from "@serenity-ui/styles";
-import classes from "../accordion/accordion.module.scss";
 
 interface AccordionItemProps extends JSX.HTMLAttributes<HTMLDivElement> {
-	variant?: "default" | "bordered" | "contained" | "seperated";
 	value: string;
 }
 
-const defaultAccordionItemProps: Required<Pick<
-	Omit<AccordionItemProps, keyof JSX.HTMLAttributes<HTMLDivElement>>,
-	'variant'
->> = {
-	variant: defaultAccrodionProps.variant
-};
-
 const splitAccordionItemProps = [
-	"variant",
 	"children",
 	"class"
 ] as const;
@@ -27,13 +17,11 @@ const splitAccordionItemKobalteProps = [
 ] as const;
 
 function AccordionItem(props: AccordionItemProps) {
-
-	const [root, kobalte ,other] = splitProps(props, splitAccordionItemProps, splitAccordionItemKobalteProps);
-	const baseProps = mergeProps(defaultAccordionItemProps, root);
+	const [root, kobalte, other] = splitProps(props, splitAccordionItemProps, splitAccordionItemKobalteProps);
 
 	return (
 		<Accordion.Item 
-			class={cx(classes["accordion--item"], baseProps.class)}
+			class={cx(classes["accordion--item"], root.class)}
 			asChild
 			value={kobalte.value}
 		>
@@ -41,7 +29,7 @@ function AccordionItem(props: AccordionItemProps) {
 				component="div"
 				{...other}
 			>
-				{baseProps.children}
+				{root.children}
 			</As>
 		</Accordion.Item>
 	);
@@ -49,6 +37,5 @@ function AccordionItem(props: AccordionItemProps) {
 
 export {
 	AccordionItem,
-	defaultAccordionItemProps,
 	AccordionItemProps
 };

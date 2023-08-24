@@ -1,7 +1,6 @@
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { JSX, splitProps } from "solid-js";
 import { cx } from "@serenity-ui/styles";
-import { Group, GroupProps } from "../group";
 import _classes from "../accordion/accordion.module.scss";
 
 interface AccordionHeaderProps extends JSX.HTMLAttributes<HTMLDivElement> {
