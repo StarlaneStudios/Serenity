@@ -85,12 +85,12 @@
 	--divider-thickness-xl: 0.3125rem;
 }
 
-@include cssVarDark {
+@include isDark {
 	--divider-color: var(--serenity-color-dark-4);
 	--label-color: var(--serenity-color-dark-2);
 }
 
-@include cssVarLight {
+@include isLight {
 	--divider-color: var(--serenity-color-gray-4);
 	--label-color: var(--serenity-color-gray-6);
 }
