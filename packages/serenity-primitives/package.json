@@ -7,7 +7,8 @@
 		"test": "vitest"
 	},
 	"dependencies": {
-		"@serenity-ui/utils": "*"
+		"@serenity-ui/utils": "*",
+		"@serenity-ui/styles": "*"
 	},
 	"devDependencies": {
 		"rollup-preset-solid": "2.0.1"
