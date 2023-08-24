@@ -16,6 +16,7 @@
 		"declarationMap": true,
 		"declarationDir": "dist",
 		"strict": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"preserveWatchOutput": true
 	}
 }
