@@ -71,22 +71,6 @@ const Page = () => {
 				</Paper>
 
 			</Layout>
-
-			<Variables
-				cssThemeVariables={{
-					dark: {
-						"--serenity-color-primary": "red"
-					},
-					light: {
-						"--serenity-color-primary": "blue"
-					}
-				}}
-				cssVariables={{}}
-			>
-				<div style={{ color: "var(--serenity-color-primary)" }}>
-					Test1234
-				</div>
-			</Variables>
 		</>
 	);
 };

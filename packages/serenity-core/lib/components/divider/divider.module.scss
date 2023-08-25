@@ -9,13 +9,13 @@
 		align-items: center;
 		font-size: 0.75rem;
 		white-space: nowrap;
-		color: var(--label-color);
+		color: var(--serenity-divider-label-color);
 
 		&[data-position="left"]::after {
 			content: "";
 			flex: 1 1;
 			height: 0.0625rem;
-			border-top: 0.0625rem solid var(--border-color, var(--divider-color));
+			border-top: 0.0625rem solid var(--border-color, var(--serenity-divider-color));
 			margin-left: 0.75rem;
 		}
 
@@ -27,7 +27,7 @@
 				content: "";
 				flex: 1 1;
 				height: 0.0625rem;
-				border-top: 0.0625rem solid var(--border-color, var(--divider-color));
+				border-top: 0.0625rem solid var(--border-color, var(--serenity-divider-color));
 			}
 
 			&::after {
@@ -46,7 +46,7 @@
 				content: "";
 				flex: 1 1;
 				height: 0.0625rem;
-				border-top: 0.0625rem solid var(--border-color, var(--divider-color));
+				border-top: 0.0625rem solid var(--border-color, var(--serenity-divider-color));
 				margin-right: 0.75rem;
 			}
 		}
@@ -84,11 +84,11 @@
 }
 
 @include isDark {
-	--divider-color: var(--serenity-color-dark-4);
-	--label-color: var(--serenity-color-dark-2);
+	--serenity-divider-color: var(--serenity-color-dark-4);
+	--serenity-divider-label-color: var(--serenity-color-dark-2);
 }
 
 @include isLight {
-	--divider-color: var(--serenity-color-gray-4);
-	--label-color: var(--serenity-color-gray-6);
+	--serenity-divider-color: var(--serenity-color-gray-4);
+	--serenity-divider-label-color: var(--serenity-color-gray-6);
 }

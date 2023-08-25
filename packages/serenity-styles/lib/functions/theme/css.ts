@@ -14,7 +14,7 @@ export const cx = (...args: (string | false | undefined)[]) => {
  * Converts a map of CSS variables into a string.
  * @param map
  */
-export const cssvars = <T extends Record<string, string | undefined | null>>(map: T): T => {
+export function cssvars<T extends Record<string, string | undefined | null>>(map: T): T {
 
 	if (!map) {
 		return {} as T;

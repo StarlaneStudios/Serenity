@@ -24,8 +24,7 @@ const dividerSplitProps = [
 	"children"
 ] as const;
 
-const defaultDividerProps: DefaultProps<DividerProps, 'color' | 'thickness' | 'orientation' | 'variant' | 'labelPosition' | 'classes'> = {
-	color: 'gray',
+const defaultDividerProps: DefaultProps<DividerProps, 'thickness' | 'orientation' | 'variant' | 'labelPosition' | 'classes'> = {
 	thickness: "sm",
 	orientation: "horizontal",
 	variant: "solid",
@@ -46,7 +45,7 @@ function Divider(props: DividerProps) {
 		const thickness = resolveSize(baseProps.thickness, "divider-thickness", "px");
 
 		return cssvars({
-			"border-color": color || '',
+			"border-color": color,
 			"border-thickness": thickness,
 			"border-variant": baseProps.variant
 		});
