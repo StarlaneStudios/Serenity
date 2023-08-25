@@ -2,6 +2,7 @@ import classes from "./divider.module.scss";
 import { Size, Color, cssvars, cx, resolveSize, resolveColorInput } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
+import { DefaultProps } from "../../util/types";
 
 interface DividerProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	color?: Color;
@@ -23,7 +24,8 @@ const dividerSplitProps = [
 	"children"
 ] as const;
 
-const defaultDividerProps = {
+const defaultDividerProps: DefaultProps<DividerProps, 'color' | 'thickness' | 'orientation' | 'variant' | 'labelPosition' | 'classes'> = {
+	color: 'gray',
 	thickness: "sm",
 	orientation: "horizontal",
 	variant: "solid",
@@ -31,7 +33,7 @@ const defaultDividerProps = {
 	classes: {
 		dividerLabel: classes["divider--label"]
 	}
-} as Required<Pick<DividerProps, "color" | "thickness" | "orientation" | "variant" | "labelPosition" | "classes">>;
+};
 
 function Divider(props: DividerProps) {
 
@@ -44,7 +46,7 @@ function Divider(props: DividerProps) {
 		const thickness = resolveSize(baseProps.thickness, "divider-thickness", "px");
 
 		return cssvars({
-			"border-color": color,
+			"border-color": color || '',
 			"border-thickness": thickness,
 			"border-variant": baseProps.variant
 		});

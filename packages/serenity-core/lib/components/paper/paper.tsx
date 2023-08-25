@@ -2,6 +2,7 @@ import classes from "./paper.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { Size, cssvars, cx, resolveShadow, resolveSize } from "@serenity-ui/styles";
 import { resolveBorder } from "@serenity-ui/utils";
+import { DefaultProps } from "../../util/types";
 
 interface PaperProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	border?: boolean | ("t" | "l" | "r" | "b")[];
@@ -9,13 +10,6 @@ interface PaperProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	padding?: Size | number;
 	shadow?: Size | undefined;
 }
-
-const defaultPaperProps = {
-	border: false,
-	radius: "sm",
-	padding: "sm",
-	shadow: undefined
-} as Required<Pick<PaperProps, "border" | "radius" | "padding">> & Pick<PaperProps, 'shadow'>;
 
 const paperSplitProps = [
 	"border", 
@@ -26,6 +20,12 @@ const paperSplitProps = [
 	"shadow",
 	"padding"
 ] as const;
+
+const defaultPaperProps: DefaultProps<PaperProps, 'border' | 'radius' | 'padding'> = {
+	border: false,
+	radius: "sm",
+	padding: "sm"
+};
 
 function Paper(props: PaperProps) {
 
@@ -43,7 +43,7 @@ function Paper(props: PaperProps) {
 		return cssvars({
 			"border-radius": radius,
 			"padding": padding,
-			"shadow": shadow
+			"shadow": shadow || ''
 		});
 	};
 

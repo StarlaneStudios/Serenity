@@ -1,13 +1,11 @@
 import { JSX, mergeProps } from "solid-js";
+import { DefaultProps } from "../../util/types";
 
 interface DialogProps extends JSX.DialogHtmlAttributes<HTMLDialogElement> {
 
 }
 
-const defaultDialogProps: Required<Pick<
-	DialogProps,
-	'open'
->> = {
+const defaultDialogProps: DefaultProps<DialogProps, 'open'> = {
 	open: false
 };
 

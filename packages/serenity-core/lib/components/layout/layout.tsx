@@ -2,22 +2,12 @@ import classes from "./layout.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { Size, cssvars, cx, resolveGridCols, resolveGridSpacing } from "@serenity-ui/styles";
 import { Tuple } from "@serenity-ui/utils";
+import { DefaultProps } from "../../util/types";
 
 interface LayoutProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	breakpoints?: Record<Size, number>;
 	spacing?: Size | number | Tuple<Size | number, 2>;
 }
-
-const defaultLayoutProps = {
-	spacing: "md",
-	breakpoints: {
-		xs: 1,
-		sm: 2,
-		md: 3,
-		lg: 3,
-		xl: 4
-	}
-} as Required<Pick<LayoutProps, 'spacing' | 'breakpoints'>>;
 
 const layoutSplitProps = [
 	"breakpoints",
@@ -26,6 +16,17 @@ const layoutSplitProps = [
 	"style",
 	"children"
 ] as const;
+
+const defaultLayoutProps: DefaultProps<LayoutProps, 'spacing' | 'breakpoints'> = {
+	spacing: "md",
+	breakpoints: {
+		xs: 1,
+		sm: 2,
+		md: 3,
+		lg: 3,
+		xl: 4
+	}
+};
 
 function Layout(props: LayoutProps) {
 

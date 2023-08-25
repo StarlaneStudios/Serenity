@@ -3,6 +3,7 @@ import { JSX, mergeProps, splitProps } from "solid-js";
 import { Column, ColumnProps } from "../column";
 import { Size, cx, resolveSize } from "@serenity-ui/styles";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
+import { DefaultProps } from "../../util/types";
 
 interface AccordionProps extends Omit<ColumnProps, 'align' | 'justify'> {
 	variant?: "default" | "contained" | "seperated" | "filled";
@@ -12,10 +13,7 @@ interface AccordionProps extends Omit<ColumnProps, 'align' | 'justify'> {
 	noChevronAnimation?: boolean;
 }
 
-const defaultAccrodionProps: Required<Pick<
-	Omit<AccordionProps, keyof JSX.HTMLAttributes<HTMLDivElement>>,
-	'variant' | 'spacing' | 'multiple' | 'radius' | 'collapsible' | 'noChevronAnimation'
->> = {
+const defaultAccrodionProps: DefaultProps<AccordionProps, 'variant' | 'spacing' | 'multiple' | 'radius' | 'collapsible' | 'noChevronAnimation'> = {
 	variant: "contained",
 	spacing: "sm",
 	multiple: false,

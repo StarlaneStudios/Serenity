@@ -323,7 +323,7 @@ export const setColorOpacity = (
  * @param defaultShade number
  * @return string
  */
-export const resolveColorInput = (input?: string, defaultShade: number = 6) => {
+export function resolveColorInput(input?: string, defaultShade: number = 6): string | undefined {
 
 	if(!input) {
 		return input;

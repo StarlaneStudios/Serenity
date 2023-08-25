@@ -1,6 +1,7 @@
 import classes from "./column.module.scss";
 import { splitProps, JSX, mergeProps } from "solid-js";
 import { cssvars, cx, resolveSize, Size } from "@serenity-ui/styles";
+import { DefaultProps } from "../../util/types";
 
 interface ColumnProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	spacing?: number | Size;
@@ -19,12 +20,12 @@ const columnSplitProps = [
 	"style"
 ] as const;
 
-const defaultColumnProps = {
+const defaultColumnProps: DefaultProps<ColumnProps, 'spacing' | 'justify' | 'align' | 'direction'> = {
 	align: "unset",
 	justify: "unset",
 	direction: "column",
 	spacing: "md"
-} as Required<Pick<ColumnProps, "spacing" | "justify" | "align" | "direction">>;
+};
 
 function Column(props: ColumnProps) {
 

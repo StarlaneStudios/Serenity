@@ -1,13 +1,11 @@
 import { JSX } from "solid-js";
+import { DefaultProps } from "../../util/types";
 
 type TextProps<T extends keyof JSX.IntrinsicElements> = {
 	as?: T;
 } & JSX.IntrinsicElements[T];
 
-const defaultTextProps: Required<Pick<
-	TextProps<"p">,
-	'as'
->> = {
+const defaultTextProps: DefaultProps<TextProps<"p">, 'as'> = {
 	as: "p"
 };
 

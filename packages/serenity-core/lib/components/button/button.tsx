@@ -4,6 +4,7 @@ import { cssvars, cx, resolveSize } from "@serenity-ui/styles";
 import { Color, Size } from "@serenity-ui/styles";
 import { Variant, variants } from "../../constants/variants";
 import { Button as KobalteButton } from "@kobalte/core";
+import { DefaultProps } from "../../util/types";
 
 interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: Color;
@@ -13,18 +14,6 @@ interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	radius?: Size | number;
 	loading?: boolean;
 }
-
-const defaultButtonProps = {
-	color: "blue",
-	size: "sm",
-	radius: "sm",
-	variant: "filled",
-	type: "button",
-	classes: {
-		inner: classes["button--inner"],
-		label: classes["button--label"]
-	},
-} as const;
 
 const buttonSplitProps = [
 	"color",
@@ -39,6 +28,18 @@ const buttonSplitProps = [
 	"classes",
 	"type"
 ] as const;
+
+const defaultButtonProps: DefaultProps<ButtonProps, 'color' | 'size' | 'radius' | 'variant' | 'type' | 'classes'> = {
+	color: "blue",
+	size: "sm",
+	radius: "sm",
+	variant: "filled",
+	type: "button",
+	classes: {
+		inner: classes["button--inner"],
+		label: classes["button--label"]
+	},
+} as const;
 
 function Button(props: ButtonProps) {
 

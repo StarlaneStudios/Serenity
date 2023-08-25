@@ -1,5 +1,6 @@
 import { Color, resolveColorInput } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
+import { DefaultProps } from "../../util/types";
 
 interface ChevronProps extends Omit<JSX.SvgSVGAttributes<SVGSVGElement>, 'children'> {
 	orientation?: "up" | "down" | "left" | "right";
@@ -7,10 +8,7 @@ interface ChevronProps extends Omit<JSX.SvgSVGAttributes<SVGSVGElement>, 'childr
 	disableAnimation?: boolean;
 }
 
-const defaultChevronProps: Required<Pick<
-	ChevronProps,
-	'orientation' | 'color' | 'disableAnimation'
->> = {
+const defaultChevronProps: DefaultProps<ChevronProps, 'orientation' | 'color' | 'disableAnimation'> = {
 	orientation: "down",
 	color: "gray.6",
 	disableAnimation: false

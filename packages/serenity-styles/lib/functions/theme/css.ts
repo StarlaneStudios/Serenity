@@ -6,7 +6,7 @@ import { Size } from "../../types/theme";
  * @param args 
  * @returns 
  */
-export const cx = (...args: (string | undefined)[]) => {
+export const cx = (...args: (string | false | undefined)[]) => {
 	return args.filter(Boolean).join(' ');
 };
 

@@ -4,6 +4,7 @@ import { Row, RowProps } from "../../row";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { cx } from "@serenity-ui/styles";
 import { Chevron } from "../../chevron";
+import { DefaultProps } from "../../../util/types";
 
 interface AccordionTriggerProps extends RowProps {
 
@@ -17,10 +18,7 @@ const accordionTriggerSplitProps = [
 	"noWrap"
 ] as const;
 
-const defaultAccordionTriggerProps: Required<Pick<
-	AccordionTriggerProps,
-	'align' | 'justify' | 'noWrap'
->> = {
+const defaultAccordionTriggerProps: DefaultProps<AccordionTriggerProps, 'align' | 'justify' | 'noWrap'> = {
 	align: 'center',
 	justify: 'space-between',
 	noWrap: true
