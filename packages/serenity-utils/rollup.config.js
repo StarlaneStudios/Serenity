@@ -1,4 +1,4 @@
-import withSolid from "rollup-preset-solid";
+import withSolid from "@serenity-ui/rollup-preset-solid";
 import postcss from "rollup-plugin-postcss";
 
 export default withSolid({
@@ -11,5 +11,8 @@ export default withSolid({
 			minimize: true,
 			modules: true
 		})
-	]
+	],
+	tsCompilerOptions: {
+		declarationMap: true
+	}
 });

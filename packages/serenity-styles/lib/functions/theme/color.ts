@@ -337,16 +337,21 @@ export function resolveColorInput(input?: string, defaultShade: number = 6): str
 		return input;
 	}
 
-	const base = input.split('.');
+	const parts = input.split('.');
 
-	const color = base[0];
-	const shade = base[1];
+	const color = parts[0];
+	const shade = parts[1];
+	const base = DEFAULT_COLORS[color];
 
-	if (!shade) {
-		return DEFAULT_COLORS[color][defaultShade];
+	if (!base) {
+		return input;
 	}
 
-	return DEFAULT_COLORS[color][+shade];
+	if (!shade) {
+		return base[defaultShade];
+	}
+
+	return base[+shade];
 };
 
 /**

@@ -3,10 +3,11 @@ import { JSX, mergeProps, splitProps } from "solid-js";
 import { Size, cssvars, cx, resolveShadow, resolveSize } from "@serenity-ui/styles";
 import { resolveBorder } from "@serenity-ui/utils";
 import { DefaultProps } from "../../util/types";
+import { Variant } from "../../constants/variants";
 
 interface PaperProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	border?: boolean | ("t" | "l" | "r" | "b")[];
-	radius?: Size | number;
+	radius?: Variant | number;
 	padding?: Size | number;
 	shadow?: Size | undefined;
 }

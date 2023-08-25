@@ -1,10 +1,13 @@
 import { Tuple } from "@serenity-ui/utils";
+import { ColorNames, ColorValue, ThemeNames } from "./values";
+
+export * from "./values";
 
 // ==============================
 // Colors
 // ==============================
 
-export type DefaultThemeColor = | "dark" | "gray" | "red" | "pink" | "grape" | "violet" | "indigo" | "blue" | "cyan" | "teal" | "green" | "lime" | "yellow" | "orange" | (string & {});
+export type DefaultThemeColor = ColorNames | (string & {});
 export type ColorPaletteOverride = {};
 export type ColorPalette = ColorPaletteOverride extends {
 	colors: Record<infer CustomColors, Tuple<string, 10>>;
@@ -13,12 +16,13 @@ export type ColorPalette = ColorPaletteOverride extends {
 	: Record<DefaultThemeColor, Tuple<string, 10>>;
 
 export type Color = keyof ColorPalette;
+export type AnyColor = Color | ColorValue;
 
 // ==============================
 // ThemeScheme
 // ==============================
 
-export type DefaultColorScheme = "light" | "dark";
+export type DefaultColorScheme = ThemeNames | (string & {});
 export type ColorSchemeOverride = {};
 
 export type ColorScheme = ColorSchemeOverride extends {
@@ -26,5 +30,3 @@ export type ColorScheme = ColorSchemeOverride extends {
 } ? Record<CustomColorScheme, ColorPalette> : Record<DefaultColorScheme, ColorPalette>;
 
 export type ThemeScheme = keyof ColorScheme;
-
-export * from "./sizes";

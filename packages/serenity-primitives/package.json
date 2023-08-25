@@ -10,9 +10,6 @@
 		"@serenity-ui/utils": "*",
 		"@serenity-ui/styles": "*"
 	},
-	"devDependencies": {
-		"rollup-preset-solid": "2.0.1"
-	},
 	"peerDependencies": {
 		"solid-js": "1.7.11"
 	},

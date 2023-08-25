@@ -7,6 +7,7 @@ export * from "./components/button";
 export * from "./components/chevron";
 export * from "./components/column";
 export * from "./components/divider";
+export * from "./components/icon";
 export * from "./components/layout";
 export * from "./components/paper";
 export * from "./components/row";

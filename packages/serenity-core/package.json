@@ -36,8 +36,7 @@
 		"@kobalte/core": "0.10.0"
 	},
 	"devDependencies": {
-		"sass": "1.65.1",
-		"rollup-preset-solid": "2.0.1"
+		"sass": "1.65.1"
 	},
 	"peerDependencies": {
 		"solid-js": "1.7.11"

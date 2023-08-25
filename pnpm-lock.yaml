@@ -24,6 +24,9 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4(@solidjs/meta@0.28.6)(@solidjs/router@0.8.3)(solid-js@1.7.11)(solid-start-node@0.3.4)(vite@4.4.9)
     devDependencies:
+      '@serenity-ui/rollup-preset-solid':
+        specifier: 2.0.1-fix.1
+        version: 2.0.1-fix.1
       '@types/node':
         specifier: ^20.5.4
         version: 20.5.4
@@ -45,9 +48,6 @@ importers:
       rollup-plugin-postcss:
         specifier: 4.0.2
         version: 4.0.2(postcss@8.4.28)
-      rollup-preset-solid:
-        specifier: ^2.0.1
-        version: 2.0.1
       sass:
         specifier: 1.66.1
         version: 1.66.1
@@ -81,6 +81,9 @@ importers:
       '@kobalte/core':
         specifier: 0.10.0
         version: 0.10.0(solid-js@1.7.11)
+      '@mdi/js':
+        specifier: ^7.2.96
+        version: 7.2.96
       '@serenity-ui/core':
         specifier: '*'
         version: link:../../packages/serenity-core
@@ -143,9 +146,6 @@ importers:
         specifier: 1.7.11
         version: 1.7.11
     devDependencies:
-      rollup-preset-solid:
-        specifier: 2.0.1
-        version: 2.0.1
       sass:
         specifier: 1.65.1
         version: 1.65.1
@@ -161,10 +161,6 @@ importers:
       solid-js:
         specifier: 1.7.11
         version: 1.7.11
-    devDependencies:
-      rollup-preset-solid:
-        specifier: 2.0.1
-        version: 2.0.1
 
   packages/serenity-styles:
     dependencies:
@@ -2070,6 +2066,10 @@ packages:
       solid-js: 1.7.11
     dev: false
 
+  /@mdi/js@7.2.96:
+    resolution: {integrity: sha512-paR9M9ZT7rKbh2boksNUynuSZMHhqRYnEZOm/KrZTjQ4/FzyhjLHuvw/8XYzP+E7fS4+/Ms/82EN1pl/OFsiIA==}
+    dev: false
+
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -2203,6 +2203,26 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 3.28.1
+
+  /@serenity-ui/rollup-preset-solid@2.0.1-fix.1:
+    resolution: {integrity: sha512-48U8mU8E2GE9haJrYJ07+p64L2NsrPEOpCHhSqJsk0ae7mpbmJuoajlhOBvZRzKiFGxgmdF+++fFVxF4ipibOg==}
+    dependencies:
+      '@babel/core': 7.22.10
+      '@babel/preset-env': 7.22.10(@babel/core@7.22.10)
+      '@babel/preset-typescript': 7.22.5(@babel/core@7.22.10)
+      '@rollup/plugin-babel': 6.0.3(@babel/core@7.22.10)(rollup@3.28.1)
+      '@rollup/plugin-node-resolve': 15.2.1(rollup@3.28.1)
+      '@rollup/plugin-terser': 0.1.0(rollup@3.28.1)
+      babel-preset-solid: 1.7.7(@babel/core@7.22.10)
+      colorette: 2.0.20
+      esbuild: 0.15.18
+      merge-anything: 5.1.7
+      rollup: 3.28.1
+      typescript: 4.9.5
+    transitivePeerDependencies:
+      - '@types/babel__core'
+      - supports-color
+    dev: true
 
   /@sideway/address@4.1.4:
     resolution: {integrity: sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==}
@@ -5864,26 +5884,6 @@ packages:
     resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
     dependencies:
       estree-walker: 0.6.1
-    dev: true
-
-  /rollup-preset-solid@2.0.1:
-    resolution: {integrity: sha512-CPJn3SqADlIxhAW3jwZuAFRyZcz7HPeUAz4f+6BzulxHnK4v6tgoTbMvk8vEsfsvHwiTmX93KHIKdf79aTdVSA==}
-    dependencies:
-      '@babel/core': 7.22.10
-      '@babel/preset-env': 7.22.10(@babel/core@7.22.10)
-      '@babel/preset-typescript': 7.22.5(@babel/core@7.22.10)
-      '@rollup/plugin-babel': 6.0.3(@babel/core@7.22.10)(rollup@3.28.1)
-      '@rollup/plugin-node-resolve': 15.1.0(rollup@3.28.1)
-      '@rollup/plugin-terser': 0.1.0(rollup@3.28.1)
-      babel-preset-solid: 1.7.7(@babel/core@7.22.10)
-      colorette: 2.0.20
-      esbuild: 0.15.18
-      merge-anything: 5.1.7
-      rollup: 3.28.1
-      typescript: 4.9.5
-    transitivePeerDependencies:
-      - '@types/babel__core'
-      - supports-color
     dev: true
 
   /rollup-route-manifest@1.0.0(rollup@3.28.1):

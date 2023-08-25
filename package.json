@@ -28,6 +28,7 @@
 		"solid-start": "^0.3.4"
 	},
 	"devDependencies": {
+		"@serenity-ui/rollup-preset-solid": "2.0.1-fix.1",
 		"@types/node": "^20.5.4",
 		"esbuild": "^0.19.2",
 		"eslint": "^8.47.0",
@@ -35,7 +36,6 @@
 		"eslint-plugin-unused-imports": "^3.0.0",
 		"rollup": "^3.28.1",
 		"rollup-plugin-postcss": "4.0.2",
-		"rollup-preset-solid": "^2.0.1",
 		"sass": "1.66.1",
 		"solid-devtools": "^0.27.7",
 		"solid-start-node": "^0.3.4",

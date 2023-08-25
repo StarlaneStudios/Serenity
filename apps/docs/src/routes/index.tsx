@@ -1,4 +1,5 @@
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout, Variables, ThemeProvider, useTheme } from "@serenity-ui/core";
+import { mdiAccount, mdiCheck, mdiDownload } from "@mdi/js";
+import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout, Variables, ThemeProvider, useTheme, Icon } from "@serenity-ui/core";
 import { Accordion } from "@serenity-ui/core";
 import { Button, Divider } from "@serenity-ui/core";
 
@@ -43,8 +44,12 @@ const Page = () => {
 
 	return (
 		<>
-			<Button>
-				Test
+			<Button size="md">
+				Save
+				<Icon
+					path={mdiCheck}
+					right
+				/>
 			</Button>
 			<Divider labelPosition="right">
 				<Button size="xs" color="cyan" onClick={toggleTheme}>
