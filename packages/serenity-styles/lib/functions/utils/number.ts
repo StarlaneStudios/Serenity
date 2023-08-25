@@ -5,7 +5,9 @@
  * @param max 
  * @returns number
  */
-export const clamp = (num: number, min: number, max: number) => Math.min(Math.max(min, num), max);
+export const clamp = (num: number, min: number, max: number) => {
+	return (num < min) ? min : (num > max) ? max : num;
+};
 
 /**
  * Pads a hex value with a leading zero if it is only one character long.

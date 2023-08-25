@@ -1,4 +1,4 @@
-import { clamp, padZero } from "../utils/number";
+import { clamp } from "../utils/number";
 import { DEFAULT_COLORS } from "../../constants/color";
 import type { Color } from "../../types/theme";
 import type { Tuple } from "@serenity-ui/utils";
@@ -11,14 +11,10 @@ import type { Tuple } from "@serenity-ui/utils";
  */
 export const darkenHex = (color: string, amount: number) => {
 
-	let c = color;
-
-	if (c.startsWith('#')) {
-		c = c.slice(1);
-	}
+	let c = color.slice(1);
 
 	if (c.length === 3) {
-		c = c.split('').map(v => v + v).join('');
+		c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
 	}
 
 	const bigint = parseInt(c, 16);
@@ -32,7 +28,7 @@ export const darkenHex = (color: string, amount: number) => {
 	g = clamp(g - amount, 0, 255);
 	b = clamp(b - amount, 0, 255);
 
-	return `#${(r << 16 | g << 8 | b).toString(16)}`;
+	return `#${(r << 16 | g << 8 | b).toString(16).padStart(6, '0')}`;
 };
 
 /**
@@ -51,9 +47,9 @@ export const darkenRGB = (color: string, amount: number) => {
 	}
 
 	// clamp every value to 0 - 255
-	const r = clamp(Number(rgb[1]) - amount, 0, 255);
-	const g = clamp(Number(rgb[2]) - amount, 0, 255);
-	const b = clamp(Number(rgb[3]) - amount, 0, 255);
+	const r = clamp(+rgb[1] - amount, 0, 255);
+	const g = clamp(+rgb[2] - amount, 0, 255);
+	const b = clamp(+rgb[3] - amount, 0, 255);
 
 	return `rgb(${r}, ${g}, ${b})`;
 };
@@ -76,7 +72,7 @@ export const darkenHSL = (color: string, amount: number) => {
 
 	const hue = hsl[1];
 	const saturation = hsl[2];
-	const light = clamp(Number(hsl[3]) - amount, 0, 100);
+	const light = clamp(+hsl[3] - amount, 0, 100);
 
 	return `hsl(${hue}, ${saturation}%, ${light}%)`;
 };
@@ -87,7 +83,11 @@ export const darkenHSL = (color: string, amount: number) => {
  * @param amount number
  * @return string 
  */
-export const darkenColor = (color: string, amount: number) => {
+export const darkenColor = (color: string | undefined, amount: number) => {
+
+	if(!color) {
+		return color;
+	}
 
 	if (color.startsWith('#')) {
 		return darkenHex(color, amount);
@@ -132,7 +132,7 @@ export const lightenHex = (input: string, amount: number) => {
 	g = clamp(g + amount, 0, 255);
 	b = clamp(b + amount, 0, 255);
 
-	return `#${(r << 16 | g << 8 | b).toString(16)}`;
+	return `#${(r << 16 | g << 8 | b).toString(16).padStart(6, '0')}`;
 };
 
 /**
@@ -152,9 +152,9 @@ export const lightenRGB = (input: string, amount: number) => {
 	}
 
 	// clamp every value to 0 - 255
-	const r = clamp(Number(rgb[1]) + amount, 0, 255);
-	const g = clamp(Number(rgb[2]) + amount, 0, 255);
-	const b = clamp(Number(rgb[3]) + amount, 0, 255);
+	const r = clamp(+rgb[1] + amount, 0, 255);
+	const g = clamp(+rgb[2] + amount, 0, 255);
+	const b = clamp(+rgb[3] + amount, 0, 255);
 
 	return `rgb(${r}, ${g}, ${b})`;
 };
@@ -248,9 +248,9 @@ export const setRGBOpacity = (color: string, opacity: number) => {
 		return color;
 	}
 
-	const r = Number(rgb[1]);
-	const g = Number(rgb[2]);
-	const b = Number(rgb[3]);
+	const r = +rgb[1];
+	const g = +rgb[2];
+	const b = +rgb[3];
 
 	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 };
@@ -271,9 +271,9 @@ export const setHSLOpacity = (color: string, opacity: number) => {
 		return color;
 	}
 
-	const h = Number(hsl[1]);
-	const s = Number(hsl[2]);
-	const l = Number(hsl[3]);
+	const h = +hsl[1];
+	const s = +hsl[2];
+	const l = +hsl[3];
 
 	return `hsla(${h}, ${s}%, ${l}%, ${opacity})`;
 };
@@ -285,10 +285,14 @@ export const setHSLOpacity = (color: string, opacity: number) => {
  * @return string
  */
 export const setColorOpacity = (
-	color: string,
+	color: string | undefined,
 	opacity: number,
 	themeColors: Record<Color, Tuple<string, 10>>
 ) => {
+
+	if(!color) {
+		return color;
+	}
 
 	if (color.startsWith('#')) {
 		return setHexOpacity(color, opacity);
@@ -308,7 +312,7 @@ export const setColorOpacity = (
 		const base = output[0] as Color;
 		const shade = output[1];
 
-		const hex = themeColors[base][parseInt(shade)];
+		const hex = themeColors[base][+shade];
 
 		return setHexOpacity(hex, opacity);
 	}
@@ -342,7 +346,7 @@ export function resolveColorInput(input?: string, defaultShade: number = 6): str
 		return DEFAULT_COLORS[color][defaultShade];
 	}
 
-	return DEFAULT_COLORS[color][parseInt(shade)];
+	return DEFAULT_COLORS[color][+shade];
 };
 
 /**
@@ -358,5 +362,5 @@ export const getThemeColor = (name: string, shade: number = 6): string => {
 	}
 
 	const [base, _shade] = name.split('.');
-	return DEFAULT_COLORS[base][parseInt(_shade)];
+	return DEFAULT_COLORS[base][+_shade];
 };
