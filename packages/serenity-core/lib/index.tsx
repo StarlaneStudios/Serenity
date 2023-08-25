@@ -12,8 +12,5 @@ export * from "./components/paper";
 export * from "./components/row";
 export * from "./components/spacer";
 
-// utility components
-export * from "./components/variables";
-
 // providers
 export * from "./providers/theme";
