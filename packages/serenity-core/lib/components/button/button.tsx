@@ -1,6 +1,6 @@
 import classes from "./button.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { cssvars, cx, resolveSize } from "@serenity-ui/styles";
+import { cssvars, cx, resolveModifier, resolveSize } from "@serenity-ui/styles";
 import { Color, Size } from "@serenity-ui/styles";
 import { Variant, variants } from "../../constants/variants";
 import { Button as KobalteButton } from "@kobalte/core";
@@ -54,16 +54,19 @@ function Button(props: ButtonProps) {
 
 		const variantVariables = variants.get(defaultVariant)!(defaultColor);
 
-		return Object.assign({
-			"border-radius": resolveSize(defaultRadius, "serenity-radius", "px")
-		}, cssvars(variantVariables));
+		return cssvars({
+			...variantVariables,
+			'border-radius': resolveSize('radius', defaultRadius, 'rem'),
+			'font-size': resolveModifier('button-font', baseProps.size),
+			'padding': resolveModifier('button-padding', baseProps.size),
+			'height': resolveModifier('button-height', baseProps.size),
+		});
 	};
 
 	return (
 		<KobalteButton.Root
 			class={cx(baseProps.class, classes.button)}
 			data-variant={baseProps.variant}
-			data-size={baseProps.size}
 			data-loading={baseProps.loading}
 			aria-disabled={other.disabled}
 			type={baseProps.type}

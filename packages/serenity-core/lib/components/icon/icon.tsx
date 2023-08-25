@@ -39,7 +39,7 @@ function Icon(props: IconProps) {
 	}
 
 	const cssVariables = () => cssvars({
-		'icon-size': resolveSize(baseProps.size, 'icon-size', 'em')
+		'icon-size': resolveSize('icon-size', baseProps.size, 'em')
 	});
 
 	return (

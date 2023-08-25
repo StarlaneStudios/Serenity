@@ -1,4 +1,4 @@
-@keyframes spin {
+@keyframes icon-spin {
 	from {
 		transform: rotate(0deg);
 	}
@@ -27,7 +27,7 @@
 	// Spinning
 
 	&[data-spinning] {
-		animation: spin 1s linear infinite;
+		animation: icon-spin 1s linear infinite;
 	}
 }
 

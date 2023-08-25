@@ -1,9 +1,22 @@
+@keyframes button-loading {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
 .button {
 	display: inline-block;
 	line-height: 1;
 	border: 0.0625rem solid transparent;
 	cursor: pointer;
 	border-radius: var(--border-radius);
+	padding-inline: var(--padding);
+	font-size: var(--font-size);
+	height: var(--height);
 	font-weight: 600;
 
 	&__inner {
@@ -25,38 +38,6 @@
 
 	&[disabled] {
 		cursor: not-allowed;
-	}
-
-	// Sizes
-
-	&[data-size='xs'] {
-		padding-inline: 0.875rem;
-		height: 1.875rem;
-		font-size: 0.75rem;
-	}
-
-	&[data-size='sm'] {
-		padding-inline: 1.125rem;
-		height: 2.25rem;
-		font-size: 0.875rem;
-	}
-
-	&[data-size='md'] {
-		padding-inline: 1.375rem;
-		height: 2.625rem;
-		font-size: 1rem;
-	}
-
-	&[data-size='lg'] {
-		padding-inline: 1.625rem;
-		height: 3.125rem;
-		font-size: 1.125rem;
-	}
-
-	&[data-size='xl'] {
-		padding-inline: 2rem;
-		height: 3.75rem;
-		font-size: 1.25rem;
 	}
 
 	// Variants
@@ -134,14 +115,21 @@
 	}
 }
 
-// loading animation
+:root {
+	--serenity-button-padding-xs: 0.875rem;
+	--serenity-button-padding-sm: 1.125rem;
+	--serenity-button-padding-md: 1.375rem;
+	--serenity-button-padding-lg: 1.625rem;
+	--serenity-button-padding-xl: 2rem;
 
-@keyframes button-loading {
-	0% {
-		transform: translate(-50%, -50%) rotate(0deg);
-	}
+	--serenity-button-font-xs: 0.75rem;
+	--serenity-button-font-sm: 0.875rem;
+	--serenity-button-font-md: 1rem;
+	--serenity-button-font-lg: 1.125rem;
 
-	100% {
-		transform: translate(-50%, -50%) rotate(360deg);
-	}
+	--serenity-button-height-xs: 1.875rem;
+	--serenity-button-height-sm: 2.25rem;
+	--serenity-button-height-md: 2.625rem;
+	--serenity-button-height-lg: 3.125rem;
+	--serenity-button-height-xl: 3.75rem;
 }

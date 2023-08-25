@@ -1,5 +1,15 @@
 import { Tuple } from "@serenity-ui/utils";
-import { Size } from "../../types/theme";
+import { Size, UnitType, UnitValue } from "../../types/theme";
+
+/**
+ * Returns a namespaced CSS variable
+ * 
+ * @param name The variable name
+ * @returns The CSS value
+ */
+export function $var(name: string, namespace = 'serenity') {	
+	return `var(--${namespace}-${name})`;
+}
 
 /**
  * Combines multiple class names into a single string.
@@ -37,35 +47,43 @@ export function cssvars<T extends Record<string, string | undefined | null>>(map
 };
 
 /**
- * resolves the size input and returns a string.
- * @param size string | number
+ * resolves the size input dynamically or as constant and returns a string.
+ * 
+ * @param size Size | number
  * @return string
  */
-export const resolveSize = (
-	size: Size | number | string,
-	cssvariable: string,
-	unit: "rem" | "em" | "px"
-) => {
+export function resolveSize(varName: string, size: Size | number, unit: UnitType) {
 
 	if (typeof size === 'number') {
 		return `${size}${unit}`;
 	}
 
-	return `var(--serenity-${cssvariable}-${size})`;
-};
+	return resolveModifier(varName, size);
+}
+
+/**
+ * Returns a modifier variable with a name and value
+ * 
+ * @param name The variable name
+ * @param value The modifier value
+ * @return string
+ */
+export function resolveModifier(name: string, value: string) {
+	return $var(`${name}-${value}`);
+}
 
 /**
  * Resolves the shadow input and returns a css variable.
  * @param shadow
  * @returns string
  */
-export const resolveShadow = (shadow: Size | undefined): string | undefined => {
+export function resolveShadow(shadow: Size | undefined): string | undefined {
 
 	if(!shadow) {
 		return undefined;
 	}
 
-	return `var(--serenity-shadow-${shadow})`;
+	return $var(`shadow-${shadow}`);
 }
 
 /**
@@ -73,7 +91,11 @@ export const resolveShadow = (shadow: Size | undefined): string | undefined => {
  * @param spacing
  * @return string
  */
-export const resolveGridSpacing = (spacing: Size | number | Tuple<Size | number, 2>, cssvariable: string, unit: "px" | "rem" | "em") => {
+export function resolveGridSpacing(
+	spacing: Size | number | Tuple<Size | number, 2>,
+	varName: string,
+	unit: UnitType
+) {
 
 	if(typeof spacing === 'number') {
 		return `${spacing}${unit}`;
@@ -81,23 +103,23 @@ export const resolveGridSpacing = (spacing: Size | number | Tuple<Size | number,
 
 	if(Array.isArray(spacing)) {
 		
-		const x = resolveSize(spacing[0], cssvariable, unit);
-		const y = resolveSize(spacing[1], cssvariable, unit);
+		const x = resolveSize(varName, spacing[0], unit);
+		const y = resolveSize(varName, spacing[1], unit);
 
 		return `${x} ${y}`;
 	}
 
-	return `var(--${cssvariable}-${spacing})`;
+	return $var(`${varName}-${spacing}`);
 }
 
 /**
  * 
  */
-export const resolveGridCols = (
+export function resolveGridCols(
 	breakpoints: Record<Size, number>,
 	cols: number,
 	cssvariable: string
-) => {
+) {
 
 	const keys = Object.keys(breakpoints) as Size[];
 	const variables = {} as Record<string, any>;

@@ -1,5 +1,5 @@
-
-export type UnitValue = `${number}px` | `${number}rem` | `${number}em`;
+export type UnitType = "rem" | "em";
+export type UnitValue = `${number}${UnitType}`;
 export type ColorValue = `#${string}` | `rgb(${number}, ${number}, ${number})` | `rgba(${number}, ${number}, ${number}, ${number})` | `hsl(${number}, ${number}%, ${number}%)` | `hsla(${number}, ${number}%, ${number}%, ${number})`;
 export type ColorNames = "dark" | "gray" | "red" | "pink" | "grape" | "violet" | "indigo" | "blue" | "cyan" | "teal" | "green" | "lime" | "yellow" | "orange";
 export type ThemeNames = "light" | "dark";
