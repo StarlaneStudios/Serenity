@@ -6,9 +6,9 @@ import { Size } from "../../types/theme";
  * @param args 
  * @returns 
  */
-export const cx = (...args: (string | false | undefined)[]) => {
+export function cx(...args: (string | false | undefined)[]) {
 	return args.filter(Boolean).join(' ');
-};
+}
 
 /**
  * Converts a map of CSS variables into a string.
@@ -51,7 +51,7 @@ export const resolveSize = (
 		return `${size}${unit}`;
 	}
 
-	return `var(--${cssvariable}-${size})`;
+	return `var(--serenity-${cssvariable}-${size})`;
 };
 
 /**

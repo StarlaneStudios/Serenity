@@ -1,0 +1,40 @@
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.icon {
+	width: var(--icon-size);
+	height: var(--icon-size);
+	vertical-align: middle;
+
+	// Nudges
+	$nudge-amount: 0.5rem;
+
+	&[data-nudge-left] {
+		margin-right: $nudge-amount;
+	}
+
+	&[data-nudge-right] {
+		margin-left: $nudge-amount;
+	}
+
+	// Spinning
+
+	&[data-spinning] {
+		animation: spin 1s linear infinite;
+	}
+}
+
+:root {
+	--serenity-icon-size-xs: 0.6rem;
+	--serenity-icon-size-sm: 0.8rem;
+	--serenity-icon-size-md: 1rem;
+	--serenity-icon-size-lg: 1.2rem;
+	--serenity-icon-size-xl: 1.4rem;
+}
