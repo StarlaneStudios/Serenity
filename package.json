@@ -44,6 +44,6 @@
 		"typescript-plugin-css-modules": "^5.0.1",
 		"vite": "^4.4.9",
 		"vite-plugin-solid": "^2.7.0",
-		"vitest": "0.34.2"
+		"vitest": "0.34.3"
 	}
 }

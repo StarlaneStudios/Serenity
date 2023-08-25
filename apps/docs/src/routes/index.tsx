@@ -1,5 +1,5 @@
 import { mdiAccount, mdiCheck, mdiDownload } from "@mdi/js";
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout, Variables, ThemeProvider, useTheme, Icon } from "@serenity-ui/core";
+import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout, ThemeProvider, useTheme, Icon } from "@serenity-ui/core";
 import { Accordion } from "@serenity-ui/core";
 import { Button, Divider } from "@serenity-ui/core";
 
@@ -57,7 +57,6 @@ const Page = () => {
 				</Button>
 			</Divider>
 
-
 			<Layout breakpoints={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 2 }}>
 
 				<Paper border>
@@ -76,6 +75,12 @@ const Page = () => {
 				</Paper>
 
 			</Layout>
+
+			<TextInput 
+				label="test"
+			/>
+
+			<TextAreaInput />
 		</>
 	);
 };

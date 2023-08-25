@@ -31,7 +31,7 @@ const buttonSplitProps = [
 
 const defaultButtonProps: DefaultProps<ButtonProps, 'color' | 'size' | 'radius' | 'variant' | 'type' | 'classes'> = {
 	color: "blue",
-	size: "sm",
+	size: "md",
 	radius: "sm",
 	variant: "filled",
 	type: "button",
