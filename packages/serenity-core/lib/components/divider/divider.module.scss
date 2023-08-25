@@ -75,20 +75,20 @@
 	border-left-style: var(--border-variant, solid);
 }
 
-:root {
-	--divider-thickness-xs: 0.0625rem;
-	--divider-thickness-sm: 0.125rem;
-	--divider-thickness-md: 0.1875rem;
-	--divider-thickness-lg: 0.25rem;
-	--divider-thickness-xl: 0.3125rem;
-}
+@include defineDarkVariables((
+	'divider-color': var(--serenity-color-dark-4),
+	'divider-label-color': var(--serenity-color-dark-2)
+));
 
-@include isDark {
-	--serenity-divider-color: var(--serenity-color-dark-4);
-	--serenity-divider-label-color: var(--serenity-color-dark-2);
-}
+@include defineLightVariables((
+	'divider-color': var(--serenity-color-gray-4),
+	'divider-label-color': var(--serenity-color-gray-6)
+));
 
-@include isLight {
-	--serenity-divider-color: var(--serenity-color-gray-4);
-	--serenity-divider-label-color: var(--serenity-color-gray-6);
-}
+@include defineVariables((
+	'divider-thickness-xs': 0.0625rem,
+	'divider-thickness-sm': 0.125rem,
+	'divider-thickness-md': 0.1875rem,
+	'divider-thickness-lg': 0.25rem,
+	'divider-thickness-xl': 0.3125rem
+));

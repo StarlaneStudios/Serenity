@@ -115,21 +115,21 @@
 	}
 }
 
-:root {
-	--serenity-button-padding-xs: 0.875rem;
-	--serenity-button-padding-sm: 1.125rem;
-	--serenity-button-padding-md: 1.375rem;
-	--serenity-button-padding-lg: 1.625rem;
-	--serenity-button-padding-xl: 2rem;
+@include defineVariables((
+	'button-padding-xs': 0.875rem,
+	'button-padding-sm': 1.125rem,
+	'button-padding-md': 1.375rem,
+	'button-padding-lg': 1.625rem,
+	'button-padding-xl': 2rem,
 
-	--serenity-button-font-xs: 0.75rem;
-	--serenity-button-font-sm: 0.875rem;
-	--serenity-button-font-md: 1rem;
-	--serenity-button-font-lg: 1.125rem;
+	'button-font-xs': 0.75rem,
+	'button-font-sm': 0.875rem,
+	'button-font-md': 1rem,
+	'button-font-lg': 1.125rem,
 
-	--serenity-button-height-xs: 1.875rem;
-	--serenity-button-height-sm: 2.25rem;
-	--serenity-button-height-md: 2.625rem;
-	--serenity-button-height-lg: 3.125rem;
-	--serenity-button-height-xl: 3.75rem;
-}
+	'button-height-xs': 1.875rem,
+	'button-height-sm': 2.25rem,
+	'button-height-md': 2.625rem,
+	'button-height-lg': 3.125rem,
+	'button-height-xl': 3.75rem
+));

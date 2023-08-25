@@ -3,6 +3,7 @@
 	row-gap: var(--row-gap);
 	justify-content: var(--justify-content);
 	align-items: var(--align-items);
+	flex-direction: var(--flex-direction);
 
 	&[data-direction='column'] {
 		flex-direction: column;
@@ -13,10 +14,10 @@
 	}
 }
 
-:root {
-	--serenity-column-spacing-xs: 0.875rem;
-	--serenity-column-spacing-sm: 1.125rem;
-	--serenity-column-spacing-md: 1.375rem;
-	--serenity-column-spacing-lg: 1.625rem;
-	--serenity-column-spacing-xl: 2rem;
-}
+@include defineVariables((
+	"column-spacing-xs": 0.875rem,
+	"column-spacing-sm": 1.125rem,
+	"column-spacing-md": 1.375rem,
+	"column-spacing-lg": 1.625rem,
+	"column-spacing-xl": 2rem,
+));

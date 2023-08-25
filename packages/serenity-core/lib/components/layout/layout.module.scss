@@ -3,22 +3,22 @@
 	gap: var(--spacing);
 
 	@media (min-width: 0) {
-		grid-template-columns: repeat(var(--serenity-cols-xs), 1fr);		
+		grid-template-columns: repeat(var(--cols-xs), 1fr);		
 	}
 
 	@media (min-width: 576px) {
-		grid-template-columns: repeat(var(--serenity-cols-sm), 1fr);
+		grid-template-columns: repeat(var(--cols-sm), 1fr);
 	}
 
 	@media (min-width: 768px) {
-		grid-template-columns: repeat(var(--serenity-cols-md), 1fr);
+		grid-template-columns: repeat(var(--cols-md), 1fr);
 	}
 
 	@media (min-width: 992px) {
-		grid-template-columns: repeat(var(--serenity-cols-lg), 1fr);
+		grid-template-columns: repeat(var(--cols-lg), 1fr);
 	}
 
 	@media (min-width: 1200px) {
-		grid-template-columns: repeat(var(--serenity-cols-xl), 1fr);
+		grid-template-columns: repeat(var(--cols-xl), 1fr);
 	}
 }

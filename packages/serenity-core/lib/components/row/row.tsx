@@ -40,7 +40,7 @@ function Row(props: RowProps) {
 	const baseProps = mergeProps(defaultRowProps, root);
 
 	const cssVariables = () => {
-		const size = resolveSize(baseProps.spacing, "serenity-row-spacing", "px");
+		const size = resolveSize("row-spacing", baseProps.spacing, "rem");
 
 		return cssvars({
 			spacing: size,

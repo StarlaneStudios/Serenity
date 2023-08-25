@@ -3,7 +3,6 @@
 		@content;
 	}
 }
-
 @mixin isLight {
 	:root[data-theme="light"] {
 		@content;
@@ -13,5 +12,41 @@
 @mixin isTheme ($theme) {
 	:root[data-theme="#{$theme}"] {
 		@content;
+	}
+}
+
+@mixin defineVariables($variables) {
+	:root {
+		@each $key,
+		$value in $variables {
+			--serenity-#{$key}: #{$value};
+		}
+	}
+}
+
+@mixin defineDarkVariables($variables) {
+	:root[data-theme="dark"] {
+		@each $key,
+		$value in $variables {
+			--serenity-#{$key}: #{$value};
+		}
+	}
+}
+
+@mixin defineThemeVariables($variables) {
+	:root[data-theme="theme"] {
+		@each $key,
+		$value in $variables {
+			--serenity-#{$key}: #{$value};
+		}
+	}
+}
+
+@mixin defineLightVariables($variables) {
+	:root[data-theme="light"] {
+		@each $key,
+		$value in $variables {
+			--serenity-#{$key}: #{$value};
+		}
 	}
 }

@@ -39,17 +39,11 @@ function Divider(props: DividerProps) {
 	const [root, other] = splitProps(props, dividerSplitProps);
 	const baseProps = mergeProps(defaultDividerProps, root);
 
-	const cssVariables = () => {
-
-		const color = resolveColorInput(baseProps.color);
-		const thickness = resolveSize(baseProps.thickness, "divider-thickness", "px");
-
-		return cssvars({
-			"border-color": color,
-			"border-thickness": thickness,
-			"border-variant": baseProps.variant
-		});
-	};
+	const cssVariables = () => cssvars({
+		"border-color": resolveColorInput(baseProps.color),
+		"border-thickness": resolveSize("divider-thickness", baseProps.thickness, "rem"),
+		"border-variant": baseProps.variant
+	});
 
 	return (
 		<div

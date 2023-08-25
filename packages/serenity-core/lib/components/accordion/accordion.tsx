@@ -1,7 +1,7 @@
 import classes from "./accordion.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { Column, ColumnProps } from "../column";
-import { Size, cx, resolveSize } from "@serenity-ui/styles";
+import { Size, cssvars, cx, resolveSize } from "@serenity-ui/styles";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";
 
@@ -42,9 +42,12 @@ function Accordion(props: AccordionProps) {
 	const [root, kobalte, other] = splitProps(props, AccordionSplitProps, KobalteAccordionProps);
 	const baseProps = mergeProps(defaultAccrodionProps, root);
 
-	const cssVariables = () => ({
-		"--radius": resolveSize(baseProps.radius, "serenity-radius", "px")
-	});
+	const cssVariables = () => {
+
+		return cssvars({
+			"radius": resolveSize("radius", baseProps.radius, "rem")
+		});
+	};
 
 	return (
 		<KobalteAccordion.Root

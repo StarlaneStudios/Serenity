@@ -27,23 +27,23 @@
 }
 
 .accordion[data-variant="contained"] {
-	border: 0.0625rem solid var(--accordion-border-color);
+	border: 0.0625rem solid var(--serenity-accordion-border-color);
 	border-radius: var(--radius);
 
 	.accordion--item {
 
 		&:not(:first-child) .accordion--trigger {
-			border-top: 1px solid var(--accordion-border-color);
+			border-top: 1px solid var(--serenity-accordion-border-color);
 		}
 
 		&[data-expanded],
 		.accordion--content {
-			background-color: var(--accordion-filled-color);
+			background-color: var(--serenity-accordion-filled-color);
 		}
 	}
 
 	.accordion--header:hover {
-		background-color: var(--accordion-filled-color);
+		background-color: var(--serenity-accordion-filled-color);
 	}
 }
 
@@ -55,7 +55,7 @@
 		border-radius: var(--radius);
 
 		&[data-expanded] {
-			background-color: var(--accordion-filled-color);
+			background-color: var(--serenity-accordion-filled-color);
 		}
 	}
 }
@@ -63,11 +63,11 @@
 .accordion[data-variant="default"] {
 
 	.accordion--item:not(:first-child) .accordion--trigger {
-		border-top: 1px solid var(--accordion-border-color);
+		border-top: 1px solid var(--serenity-accordion-border-color);
 	}
 
 	.accordion--header:hover {
-		background-color: var(--accordion-filled-color);
+		background-color: var(--serenity-accordion-filled-color);
 	}
 }
 
@@ -79,11 +79,11 @@
 	}
 
 	.accordion--item[data-closed] {
-		background-color: var(--accordion-filled-color);
+		background-color: var(--serenity-accordion-filled-color);
 	}
 
 	.accordion--item[data-expanded] {
-		border: 0.0625rem solid var(--accordion-border-color);
+		border: 0.0625rem solid var(--serenity-accordion-border-color);
 	}
 }
 
@@ -124,11 +124,11 @@
 }
 
 @include isLight {
-	--accordion-border-color: var(--serenity-color-gray-3);
-	--accordion-filled-color: var(--serenity-color-gray-0);
+	--serenity-accordion-border-color: var(--serenity-color-gray-3);
+	--serenity-accordion-filled-color: var(--serenity-color-gray-0);
 }
 
 @include isDark {
-	--accordion-border-color: var(--serenity-color-dark-4);
-	--accordion-filled-color: var(--serenity-color-dark-6);
+	--serenity-accordion-border-color: var(--serenity-color-dark-4);
+	--serenity-accordion-filled-color: var(--serenity-color-dark-6);
 }

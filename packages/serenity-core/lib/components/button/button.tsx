@@ -1,8 +1,8 @@
 import classes from "./button.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { cssvars, cx, resolveModifier, resolveSize } from "@serenity-ui/styles";
+import { Variant, cssvars, cx, resolveModifier, resolveSize } from "@serenity-ui/styles";
 import { Color, Size } from "@serenity-ui/styles";
-import { Variant, variants } from "../../constants/variants";
+import { variants } from "../../constants/variants";
 import { Button as KobalteButton } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";
 
@@ -29,15 +29,14 @@ const buttonSplitProps = [
 	"style"
 ] as const;
 
-const defaultButtonProps: DefaultProps<ButtonProps, 'color' | 'size' | 'radius' | 'variant' | 'type' | 'classes'> = {
+const defaultButtonProps: DefaultProps<ButtonProps, 'color' | 'size' | 'radius' | 'variant' | 'classes'> = {
 	color: "blue",
 	size: "md",
 	radius: "sm",
 	variant: "filled",
-	type: "button",
 	classes: {
-		inner: classes["button--inner"],
-		label: classes["button--label"]
+		inner: classes["button__inner"],
+		label: classes["button__label"]
 	},
 } as const;
 
@@ -69,7 +68,6 @@ function Button(props: ButtonProps) {
 			data-variant={baseProps.variant}
 			data-loading={baseProps.loading}
 			aria-disabled={other.disabled}
-			type={baseProps.type}
 			style={Object.assign(cssVariables(), baseProps.style)}
 			{...other}
 		>

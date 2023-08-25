@@ -1,5 +1,5 @@
 import { mdiAccount, mdiCheck, mdiDownload } from "@mdi/js";
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout, ThemeProvider, useTheme, Icon } from "@serenity-ui/core";
+import { AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Paper, Layout, ThemeProvider, useTheme, Icon, TextInput, TextAreaInput } from "@serenity-ui/core";
 import { Accordion } from "@serenity-ui/core";
 import { Button, Divider } from "@serenity-ui/core";
 

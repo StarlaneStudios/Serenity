@@ -74,16 +74,16 @@ export function resolveModifier(name: string, value: string) {
 
 /**
  * Resolves the shadow input and returns a css variable.
- * @param shadow
+ * @param value
  * @returns string
  */
-export function resolveShadow(shadow: Size | undefined): string | undefined {
+export function resolveShadow(value: Size | undefined): string | undefined {
 
-	if(!shadow) {
+	if(!value) {
 		return undefined;
 	}
 
-	return $var(`shadow-${shadow}`);
+	return resolveModifier('shadow', value);
 }
 
 /**
@@ -109,17 +109,15 @@ export function resolveGridSpacing(
 		return `${x} ${y}`;
 	}
 
-	return $var(`${varName}-${spacing}`);
+	return resolveModifier(varName, spacing);
 }
 
 /**
- * 
+ * Resolves the grid columns input and returns a string.
+ * @param breakpoints
+ * @returns string
  */
-export function resolveGridCols(
-	breakpoints: Record<Size, number>,
-	cols: number,
-	cssvariable: string
-) {
+export function resolveGridCols(breakpoints: Record<Size, number>) {
 
 	const keys = Object.keys(breakpoints) as Size[];
 	const variables = {} as Record<string, any>;
@@ -129,7 +127,7 @@ export function resolveGridCols(
 		const value = breakpoints[key];
 
 		if (value) {
-			variables[`--${cssvariable}-${key}`] = value;
+			variables[`--cols-${key}`] = value;
 		}
 	}
 

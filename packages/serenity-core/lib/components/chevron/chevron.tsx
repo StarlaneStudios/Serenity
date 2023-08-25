@@ -1,9 +1,9 @@
-import { Color, resolveColorInput } from "@serenity-ui/styles";
+import { Color, resolveColorInput, resolveModifier } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 
 interface ChevronProps extends Omit<JSX.SvgSVGAttributes<SVGSVGElement>, 'children'> {
-	orientation?: "up" | "down" | "left" | "right";
+	orientation?: "up" | "down" | "left" | "right" | number;
 	color?: Color;
 	disableAnimation?: boolean;
 }
@@ -21,6 +21,13 @@ const chevronSplitProps = [
 	"disableAnimation"
 ] as const;
 
+const chevronOrientationValues = new Map([
+	["up", "180deg"],
+	["down", "0deg"],
+	["left", "90deg"],
+	["right", "-90deg"]
+]);
+
 function Chevron(props: ChevronProps) {
 
 	const [root, other] = splitProps(props, chevronSplitProps);
@@ -31,16 +38,12 @@ function Chevron(props: ChevronProps) {
 	};
 
 	const orientation = () => {
-		switch (baseProps.orientation) {
-			case "up":
-				return "rotate(180deg)";
-			case "left":
-				return "rotate(90deg)";
-			case "right":
-				return "rotate(-90deg)";
-			default:
-				return "";
+
+		if(typeof baseProps.orientation === "number") {
+			return `rotate(${baseProps.orientation}deg)`;
 		}
+
+		return chevronOrientationValues.get(baseProps.orientation);
 	};
 
 	return (

@@ -21,5 +21,7 @@ function Text<T extends keyof JSX.IntrinsicElements>(props: TextProps<T>) {
 }
 
 export {
-	Text
+	Text,
+	TextProps,
+	defaultTextProps
 };

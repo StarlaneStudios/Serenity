@@ -35,8 +35,8 @@ function Layout(props: LayoutProps) {
 
 	const cssVariables = () => {
 
-		const spacing = resolveGridSpacing(baseProps.spacing, "serenity-spacing", "px");
-		const cols = resolveGridCols(baseProps.breakpoints, 3, "serenity-cols");
+		const spacing = resolveGridSpacing(baseProps.spacing, "spacing", "rem");
+		const cols = resolveGridCols(baseProps.breakpoints, "cols");
 
 		const variables = cssvars({ spacing });
 

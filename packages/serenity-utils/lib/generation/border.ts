@@ -7,10 +7,8 @@ export const resolveBorder = (border?: boolean | string[]): string | undefined =
 
 	if(!border) {
 		return undefined;
-	}
-
-	if(typeof border === "boolean") {
-		return border ? "true" : undefined;
+	}else if(typeof border === "boolean") {
+		return border ? "trbl" : undefined;
 	}
 
 	return border.join("");

@@ -19,7 +19,6 @@ const ThemeContext = createContext<{
 	theme: Accessor<ThemeScheme>;
 	setTheme: Setter<ThemeScheme>;
 	toggleTheme: () => void;
-
 }>();
 
 function ThemeProvider(props: ThemeProviderProps) {

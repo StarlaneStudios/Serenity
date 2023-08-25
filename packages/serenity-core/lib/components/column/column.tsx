@@ -33,19 +33,19 @@ function Column(props: ColumnProps) {
 	const baseProps = mergeProps(defaultColumnProps, root);
 
 	const cssVariables = () => {
-		const size = resolveSize(baseProps.spacing, "serenity-column-spacing", "px");
+		const size = resolveSize("column-spacing", baseProps.spacing, "rem");
 		
 		return cssvars({
 			"row-gap": size,
 			"justify-content": baseProps.justify,
-			"align-items": baseProps.align
+			"align-items": baseProps.align,
+			"flex-direction": baseProps.direction
 		});
 	};
 
 	return (
 		<div
 			class={cx(classes.column, root.class)}
-			data-spacing={baseProps.spacing}
 			data-direction={baseProps.direction}
 			style={Object.assign(cssVariables(), root.style)}
 			{...other}
