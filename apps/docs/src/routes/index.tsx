@@ -47,7 +47,7 @@ const Page = () => {
 				Test
 			</Button>
 			<Divider labelPosition="right">
-				<Button size="xs" onClick={toggleTheme}>
+				<Button size="xs" color="cyan" onClick={toggleTheme}>
 					Test
 				</Button>
 			</Divider>
