@@ -4,8 +4,8 @@ import { useTheme } from "../../providers/theme";
 
 interface VariablesProps {
 	children: JSX.Element;
-	cssVariables: Record<string, any>;
-	cssThemeVariables: Record<
+	cssVariables?: Record<string, any>;
+	cssThemeVariables?: Record<
 		ThemeScheme | (string & {}),
 		Record<string, any>
 	>;
@@ -17,7 +17,7 @@ function Variables(props: VariablesProps) {
 	const child = children(() => props.children) as unknown as () => HTMLElement;
 
 	const themeVariables = () => {
-		return props.cssThemeVariables[theme()] ?? {};
+		return props.cssThemeVariables?.[theme()] ?? {};
 	};
 
 	createEffect(() => {
