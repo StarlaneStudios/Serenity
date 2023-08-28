@@ -1,9 +1,25 @@
-.input {
+.base-input {
+
 	position: relative;
+	display: flex;
+	flex-direction: column;
 
+	color: var(--base-input-text-color, #000);
 
-
-	&__label, &__error {
+	&__label,
+	&__error,
+	&__description {
 		display: block;
 	}
+
+	input, textarea {
+		background-color: var(--base-input-background-color);
+		border: none;
+	}
 }
+
+@include defineDarkVariables((
+	"base-input-background-color": "var(--serenity-color-dark-6)",
+	"base-input-border-color": "#d9d9d9",
+	"base-input-text-color": "#fff",
+));

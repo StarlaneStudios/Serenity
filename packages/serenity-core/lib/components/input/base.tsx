@@ -1,50 +1,86 @@
-import { JSX, Show } from "solid-js";
+import { Show, splitProps } from "solid-js";
 import { TextField } from "@kobalte/core";
 import classes from "./base.module.scss";
 import { cx } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 
-interface BaseInputProps<T> extends JSX.InputHTMLAttributes<T> {
+type DefaultBaseInputProps = TextField.TextFieldRootProps & TextField.TextFieldLabelProps & TextField.TextFieldDescriptionProps & TextField.TextFieldErrorMessageProps;
+type BaseInputProps<P> = DefaultBaseInputProps & {
 	label?: string;
 	description?: string;
 	error?: string;
 	variant?: 'outlined' | 'filled' | 'default';
-	styles?: Record<'label', string>;
-}
+	styles?: Record<'root' | 'label' | 'description' | 'error', string>;
+} & P;
 
 const defaultBaseInputProps: DefaultProps<
-	BaseInputProps<HTMLInputElement>,
+	BaseInputProps<{}>,
 	'variant' | 'styles'
 > = {
 	variant: 'outlined',
 	styles: {
-		label: classes['input--label']
+		root: classes['base-input'],
+		label: classes['base-input__label'],
+		description: classes['base-input__description'],
+		error: classes['base-input__error']
 	}
 };
 
-function BaseInput<E, T extends JSX.InputHTMLAttributes<E> = JSX.InputHTMLAttributes<E>>(props: BaseInputProps<T>) {
+const splitBaseInputProps = [
+	"variant",
+	"styles",
+	"label",
+	"description",
+	"error",
+	"class"
+] as const;
+
+const kobalteTextFieldProps = [
+	"value",
+	"defaultValue",
+	"onChange",
+	"name",
+	"validationState",
+	"required",
+	"disabled",
+	"readOnly"
+] as const;
+
+const kobalteTextFieldErrorProps = [
+	"forceMount"
+] as const;
+
+function BaseInput<P>(props: BaseInputProps<P>) {
+
+	const [root, kobalte, error] = splitProps(
+		props, splitBaseInputProps, 
+		kobalteTextFieldProps, 
+		kobalteTextFieldErrorProps
+	);
 
 	return (
 		<TextField.Root
-			class={cx(classes.input, classes.root)}
+			class={cx(defaultBaseInputProps.styles.root, root.class)}
 			data-variant={props.variant}
+			{...kobalte} 
 		>
-			<Show when={!!props.label}>
-				<div class={defaultBaseInputProps.styles.label}>
+	 		<Show when={props.label}>
+				<TextField.Label class={defaultBaseInputProps.styles.label}>
 					{props.label}
-				</div>
+				</TextField.Label>
 			</Show>
-			<Show when={!!props.description}>
-				<div class={classes['input--description']}>
+			<Show when={props.description}>
+				<TextField.Description class={defaultBaseInputProps.styles.description}>
 					{props.description}
-				</div>
+				</TextField.Description>
 			</Show>
 			{props.children}
-			<Show when={!!props.error}>
-				<TextField.ErrorMessage>
-					{props.error}
-				</TextField.ErrorMessage>
-			</Show>
+			<TextField.ErrorMessage 
+				class={defaultBaseInputProps.styles.error}
+				{...error}
+			>
+				{props.error}
+			</TextField.ErrorMessage>
 		</TextField.Root>
 	);
 }
@@ -52,5 +88,7 @@ function BaseInput<E, T extends JSX.InputHTMLAttributes<E> = JSX.InputHTMLAttrib
 export {
 	BaseInput,
 	BaseInputProps,
-	defaultBaseInputProps
+	DefaultBaseInputProps,
+	defaultBaseInputProps,
+	kobalteTextFieldProps
 };

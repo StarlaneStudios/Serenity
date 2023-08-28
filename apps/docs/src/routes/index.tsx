@@ -76,11 +76,10 @@ const Page = () => {
 
 			</Layout>
 
-			<TextInput 
-				label="test"
+			<TextInput
 			/>
 
-			<TextAreaInput />
+			<TextAreaInput error={"bruh moment"} validationState="invalid" />
 		</>
 	);
 };
