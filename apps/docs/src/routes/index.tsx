@@ -105,8 +105,6 @@ const Page = () => {
 export default function Home() {
 
 	return (
-		<SerenityProvider initialTheme="dark" withResetCSS>
-			<Page />
-		</SerenityProvider>
+		<Page />
 	);
 }

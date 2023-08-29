@@ -1,6 +1,5 @@
 import { Theme } from "@serenity-ui/styles";
-import { Accessor, ParentProps, Setter, createContext, createEffect, createSignal, onMount, useContext } from "solid-js";
-import { applyStyleReset } from "./util/normalize";
+import { Accessor, ParentProps, Setter, createContext, createEffect, createSignal, useContext } from "solid-js";
 
 const SerenityContext = createContext<{
 	theme: Accessor<Theme>;
@@ -9,11 +8,6 @@ const SerenityContext = createContext<{
 }>();
 
 interface SerenityProviderProps {
-
-	/**
-	 * Whether to reset all user agent styles.
-	 */
-	withResetCSS?: boolean;
 
 	/**
 	 * Sets the initial theme of the provider.
@@ -40,11 +34,7 @@ function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 
 	createEffect(() => {
 		target.dataset.theme = currentTheme();
-	})
-
-	if (props.withResetCSS) {
-		import('./styles/normalize.scss?inline');
-	}
+	});
 
 	return (
 		<SerenityContext.Provider
