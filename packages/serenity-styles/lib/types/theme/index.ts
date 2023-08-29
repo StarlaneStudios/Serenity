@@ -29,4 +29,4 @@ export type ColorScheme = ColorSchemeOverride extends {
 	theme: Record<infer CustomColorScheme, ColorPalette>;
 } ? Record<CustomColorScheme, ColorPalette> : Record<DefaultColorScheme, ColorPalette>;
 
-export type ThemeScheme = keyof ColorScheme;
+export type Theme = keyof ColorScheme;

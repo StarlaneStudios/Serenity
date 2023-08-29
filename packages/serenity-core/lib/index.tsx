@@ -1,7 +1,8 @@
 import "./styles/variables.scss";
 import "./styles/global.scss";
 
-// components
+export * from "./provider";
+
 export * from "./components/accordion";
 export * from "./components/button";
 export * from "./components/chevron";
@@ -13,6 +14,3 @@ export * from "./components/layout";
 export * from "./components/paper";
 export * from "./components/row";
 export * from "./components/spacer";
-
-// providers
-export * from "./providers/theme";
