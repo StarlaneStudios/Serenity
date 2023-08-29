@@ -27,7 +27,7 @@ function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 	const target = props.target ?? document.documentElement;
 
 	const toggleTheme = () => {
-		setCurrentTheme(currentTheme() === "light" ? "dark" : "light");
+		setCurrentTheme(theme => theme === "light" ? "dark" : "light");
 	};
 
 	createEffect(() => {
