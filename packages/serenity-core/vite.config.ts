@@ -12,6 +12,7 @@ export default defineConfig({
 			name: 'serenity-core',
 			fileName: 'serenity-core'
 		},
+		copyPublicDir: true,
 		rollupOptions: {
 			external: [
 				'solid-js',
