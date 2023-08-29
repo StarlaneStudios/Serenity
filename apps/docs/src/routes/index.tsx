@@ -59,6 +59,9 @@ const Page = () => {
 
 	return (
 		<>
+			<h1>
+				This is an test
+			</h1>
 			<Button size="md">
 				Save
 				<Icon
@@ -102,8 +105,6 @@ const Page = () => {
 export default function Home() {
 
 	return (
-		<SerenityProvider initialTheme="dark" withResetCSS>
-			<Page />
-		</SerenityProvider>
+		<Page />
 	);
 }

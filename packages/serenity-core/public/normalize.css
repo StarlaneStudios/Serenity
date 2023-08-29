@@ -1,0 +1,126 @@
+.serenity-css-reset html {
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+}
+.serenity-css-reset body {
+	margin: 0;
+}
+.serenity-css-reset main {
+	display: block;
+}
+.serenity-css-reset h1 {
+	font-size: 2em;
+	margin: 0.67em 0;
+}
+.serenity-css-reset hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+.serenity-css-reset pre {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+.serenity-css-reset a {
+	background-color: transparent;
+}
+.serenity-css-reset abbr[title] {
+	border-bottom: none;
+	text-decoration: underline;
+	text-decoration: underline dotted;
+}
+.serenity-css-reset b, .serenity-css-reset strong {
+	font-weight: bolder;
+}
+.serenity-css-reset code, .serenity-css-reset kbd, .serenity-css-reset samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+.serenity-css-reset small {
+	font-size: 80%;
+}
+.serenity-css-reset sub, .serenity-css-reset sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+.serenity-css-reset sub {
+	bottom: -0.25em;
+}
+.serenity-css-reset sup {
+	top: -0.5em;
+}
+.serenity-css-reset img {
+	border-style: none;
+}
+.serenity-css-reset button, .serenity-css-reset input, .serenity-css-reset optgroup, .serenity-css-reset select, .serenity-css-reset textarea {
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+   
+}
+.serenity-css-reset button, .serenity-css-reset input {
+	overflow: visible;
+}
+.serenity-css-reset button, .serenity-css-reset select {
+	text-transform: none;
+}
+.serenity-css-reset button, .serenity-css-reset [type="button"], .serenity-css-reset [type="reset"], .serenity-css-reset [type="submit"] {
+	-webkit-appearance: button;
+	appearance: button;
+}
+.serenity-css-reset button::-moz-focus-inner, .serenity-css-reset [type="button"]::-moz-focus-inner, .serenity-css-reset [type="reset"]::-moz-focus-inner, .serenity-css-reset [type="submit"]::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+.serenity-css-reset button:-moz-focusring, .serenity-css-reset [type="button"]:-moz-focusring, .serenity-css-reset [type="reset"]:-moz-focusring, .serenity-css-reset [type="submit"]:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+.serenity-css-reset fieldset {
+	padding: 0.35em 0.75em 0.625em;
+}
+.serenity-css-reset legend {
+	box-sizing: border-box;
+	color: inherit;
+	display: table;
+	max-width: 100%;
+	padding: 0;
+	white-space: normal;
+}
+.serenity-css-reset progress {
+	vertical-align: baseline;
+}
+.serenity-css-reset textarea {
+	overflow: auto;
+}
+.serenity-css-reset [type="checkbox"], .serenity-css-reset [type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+.serenity-css-reset [type="number"]::-webkit-inner-spin-button, .serenity-css-reset [type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+.serenity-css-reset [type="search"] {
+	-webkit-appearance: textfield;
+	appearance: textfield;
+	outline-offset: -2px;
+}
+.serenity-css-reset [type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+.serenity-css-reset ::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	font: inherit;
+}
+.serenity-css-reset details {
+	display: block;
+}
+.serenity-css-reset summary {
+	display: list-item;
+}
+.serenity-css-reset template,
+.serenity-css-reset [hidden] {
+	display: none;
+}
