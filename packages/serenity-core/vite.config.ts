@@ -6,6 +6,7 @@ export default defineConfig({
 	plugins: [solid(), dts()],
 	build: {
 		emptyOutDir: false,
+		cssCodeSplit: true,
 		lib: {
 			entry: './lib/index.tsx',
 			name: 'serenity-core',
@@ -23,6 +24,7 @@ export default defineConfig({
 		}
 	},
 	css: {
+		devSourcemap: true,
 		preprocessorOptions: {
 			scss: {
 				additionalData: `@import '../serenity-styles/lib/sass/mixin.scss';`

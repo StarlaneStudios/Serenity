@@ -16,9 +16,13 @@
 			"require": "./dist/serenity-core.umd.cjs",
 			"node": "./dist/serenity-core.umd.cjs"
 		},
-		"./dist/style.css": {
-			"import": "./dist/style.css",
-			"require": "./dist/style.css"
+		"./dist/index.css": {
+			"import": "./dist/index.css",
+			"require": "./dist/index.css"
+		},
+		"./dist/normalize.css": {
+			"import": "./dist/normalize.css",
+			"require": "./dist/normalize.css"
 		}
 	},
 	"scripts": {

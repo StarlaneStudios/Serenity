@@ -24,7 +24,6 @@ interface SerenityProviderProps {
 	 * Applies the theme to the target element instead of the root element.
 	 */
 	target?: HTMLElement | null;
-
 }
 
 /**
@@ -44,7 +43,7 @@ function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 	})
 
 	if (props.withResetCSS) {
-		import('./styles/normalize.scss');
+		import('./styles/normalize.scss?inline');
 	}
 
 	return (
