@@ -1,34 +1,34 @@
 {
 	"name": "@serenity-ui/styles",
 	"type": "module",
+	"main": "./dist/serenity-styles.umd.cjs",
+	"module": "./dist/serenity-styles.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/serenity-styles.js",
+			"browser": {
+				"import": "./dist/serenity-styles.js",
+				"require": "./dist/serenity-styles.umd.cjs"
+			},
+			"require": "./dist/serenity-styles.umd.cjs",
+			"node": "./dist/serenity-styles.umd.cjs"
+		},
+		"./dist/style.css": {
+			"import": "./dist/style.css",
+			"require": "./dist/style.css"
+		}
+	},
 	"scripts": {
-		"build": "rollup -c",
-		"test": "vitest",
-		"dev": "rollup -c -w"
+		"build": "vite build",
+		"dev": "vite build --watch",
+		"test": "vitest"
 	},
 	"files": [
 		"dist"
 	],
 	"dependencies": {
 		"@serenity-ui/utils": "*"
-	},
-	"main": "./dist/cjs/index.js",
-	"module": "./dist/esm/index.js",
-	"types": "dist/types/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/esm/index.js",
-			"browser": {
-				"import": "./dist/esm/index.js",
-				"require": "./dist/cjs/index.js"
-			},
-			"require": "./dist/cjs/index.js",
-			"node": "./dist/cjs/index.js"
-		},
-		"./dist/**/index.css": {
-			"import": "./dist/esm/index.css",
-			"require": "./dist/cjs/index.css"
-		}
 	}
 }

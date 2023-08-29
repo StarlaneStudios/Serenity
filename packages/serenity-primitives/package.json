@@ -1,9 +1,24 @@
 {
 	"name": "@serenity-ui/primitives",
 	"type": "module",
+	"main": "./dist/serenity-primitives.umd.cjs",
+	"module": "./dist/serenity-primitives.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/serenity-primitives.js",
+			"browser": {
+				"import": "./dist/serenity-primitives.js",
+				"require": "./dist/serenity-primitives.umd.cjs"
+			},
+			"require": "./dist/serenity-primitives.umd.cjs",
+			"node": "./dist/serenity-primitives.umd.cjs"
+		}
+	},
 	"scripts": {
-		"build": "rollup -c",
-		"dev": "rollup -c -w",
+		"build": "vite build",
+		"dev": "vite build --watch",
 		"test": "vitest"
 	},
 	"dependencies": {
@@ -15,20 +30,5 @@
 	},
 	"files": [
 		"dist"
-	],
-	"main": "./dist/cjs/index.js",
-	"module": "./dist/esm/index.js",
-	"types": "dist/types/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/esm/index.js",
-			"browser": {
-				"import": "./dist/esm/index.js",
-				"require": "./dist/cjs/index.js"
-			},
-			"require": "./dist/cjs/index.js",
-			"node": "./dist/cjs/index.js"
-		}
-	}
+	]
 }

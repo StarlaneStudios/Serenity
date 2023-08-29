@@ -1,7 +1,13 @@
 import { ThemeScheme } from "@serenity-ui/styles";
-import { Accessor, JSX, Setter, createContext, createEffect, createSignal, onMount, useContext } from "solid-js";
+import { Accessor, ParentProps, Setter, createContext, createEffect, createSignal, onMount, useContext } from "solid-js";
 
-interface ThemeProviderProps {
+const SerenityContext = createContext<{
+	theme: Accessor<ThemeScheme>;
+	setTheme: Setter<ThemeScheme>;
+	toggleTheme: () => void;
+}>();
+
+interface SerenityProviderProps {
 
 	/**
 	 * Sets the initial theme of the provider.
@@ -12,54 +18,40 @@ interface ThemeProviderProps {
 	 * Applies the theme to the target element instead of the root element.
 	 */
 	target?: HTMLElement | null;
-	children: JSX.Element | JSX.Element[];
+
 }
 
-const ThemeContext = createContext<{
-	theme: Accessor<ThemeScheme>;
-	setTheme: Setter<ThemeScheme>;
-	toggleTheme: () => void;
-}>();
+const Reee = createContext(false);
 
-function ThemeProvider(props: ThemeProviderProps) {
+function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 
-	const [currentTheme, setCurrentTheme] = createSignal<ThemeScheme>(props.initialTheme);
-	const target = props.target ?? document.documentElement;
+	// const [currentTheme, setCurrentTheme] = createSignal<ThemeScheme>(props.initialTheme);
+	// const target = props.target ?? document.documentElement;
 
-	const toggleTheme = () => {
-		setCurrentTheme(currentTheme() === "light" ? "dark" : "light");
-	};
-
-	onMount(() => {
-		target.dataset.theme = currentTheme();
-	});
+	// const toggleTheme = () => {
+	// 	setCurrentTheme(currentTheme() === "light" ? "dark" : "light");
+	// };
 
 	createEffect(() => {
-		target.dataset.theme = currentTheme();
+		// target.dataset.theme = currentTheme();
 	})
 
 	return (
-		<ThemeContext.Provider
-			value={{
-				theme: currentTheme,
-				setTheme: setCurrentTheme,
-				toggleTheme
-			}}
-		>
+		<Reee.Provider value>
 			{props.children}
-		</ThemeContext.Provider>
-	);
+		</Reee.Provider>
+	)
 }
 
-function useTheme() {
+function useSerenity() {
 	
-	const context = useContext(ThemeContext);
+	const context = useContext(SerenityContext);
 
 	if(!context) {
-		throw new Error("useTheme must be used within a ThemeProvider");
+		throw new Error("useSerenity must be used within a SerenityProvider");
 	}
 
 	return context;
 }
 
-export { ThemeProvider, useTheme };
+export { SerenityProvider, useSerenity };

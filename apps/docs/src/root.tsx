@@ -12,8 +12,9 @@ import {
 	Title,
 } from "solid-start";
 import "./root.css";
-import "@serenity-ui/styles/dist/esm/index.css";
-import "@serenity-ui/core/dist/esm/index.css";
+
+import "@serenity-ui/styles/dist/style.css";
+import "@serenity-ui/core/dist/style.css";
 
 export default function Root() {
 	return (

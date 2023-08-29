@@ -5,7 +5,7 @@
 		"outDir": "dist",
 		"composite": true,
 		"esModuleInterop": true,
-		"preserveWatchOutput": true,
+		"preserveWatchOutput": true
 	},
 	"include": [
 		"lib/**/*"

@@ -10,6 +10,7 @@
 		"@types/node": "^18.16.19",
 		"esbuild": "^0.14.54",
 		"postcss": "^8.4.26",
+		"solid-devtools": "^0.27.7",
 		"solid-start-node": "^0.3.0",
 		"typescript": "5.2.2",
 		"vite": "^4.4.6"
