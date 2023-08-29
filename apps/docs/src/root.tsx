@@ -15,6 +15,7 @@ import "./root.css";
 
 import "@serenity-ui/styles/dist/style.css";
 import "@serenity-ui/core/dist/style.css";
+import { Button, SerenityProvider } from "@serenity-ui/core";
 
 export default function Root() {
 	return (
@@ -25,13 +26,15 @@ export default function Root() {
 				<Meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 			<Body>
-				<Suspense>
-					<ErrorBoundary>
-						<Routes>
-							<FileRoutes />
-						</Routes>
-					</ErrorBoundary>
-				</Suspense>
+				<SerenityProvider initialTheme="dark">
+					<Suspense>
+						<ErrorBoundary>
+							<Routes>
+								<FileRoutes />
+							</Routes>
+						</ErrorBoundary>
+					</Suspense>
+				</SerenityProvider>
 				<Scripts />
 			</Body>
 		</Html>
