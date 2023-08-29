@@ -10,6 +10,11 @@ export default defineConfig({
 			entry: './lib/index.ts',
 			name: 'serenity-primitives',
 			fileName: 'serenity-primitives'
+		},
+		rollupOptions: {
+			external: [
+				"@serenity-ui/utils"
+			]
 		}
 	}
 });

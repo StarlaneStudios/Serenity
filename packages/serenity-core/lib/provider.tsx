@@ -36,7 +36,7 @@ function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 	const target = props.target ?? document.documentElement;
 
 	const toggleTheme = () => {
-		setCurrentTheme(currentTheme() === 'light' ? 'dark' : 'light');
+		setCurrentTheme(theme => theme === 'light' ? 'dark' : 'light');
 	};
 
 	createEffect(() => {
@@ -44,7 +44,7 @@ function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 	})
 
 	if (props.withResetCSS) {
-		applyStyleReset();
+		import('./styles/normalize.scss');
 	}
 
 	return (

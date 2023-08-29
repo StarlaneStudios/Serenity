@@ -10,6 +10,12 @@ export default defineConfig({
 			entry: './lib/index.ts',
 			name: 'serenity-styles',
 			fileName: 'serenity-styles'
+		},
+		rollupOptions: {
+			external: [
+				"@serenity-ui/utils",
+				"@serenity-ui/styles"
+			]
 		}
 	}
 });
