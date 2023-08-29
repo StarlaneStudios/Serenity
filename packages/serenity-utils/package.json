@@ -20,7 +20,8 @@
 	"scripts": {
 		"build": "vite build",
 		"dev": "vite build --watch",
-		"test": "vitest"
+		"test": "vitest",
+		"publish": "pnpm build && pnpm publish --access public"
 	},
 	"files": [
 		"dist"
