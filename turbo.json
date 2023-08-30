@@ -5,10 +5,6 @@
 			"dependsOn": ["^build"],
 			"outputs": ["dist"]
 		},
-		"publish": {
-			"dependsOn": ["^publish"],
-			"outputs": ["dist"]
-		},
 		"test": {
 			"cache": true,
 			"persistent": true

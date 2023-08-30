@@ -21,7 +21,7 @@
 		"build": "vite build",
 		"dev": "vite build --watch",
 		"test": "vitest",
-		"publish": "pnpm build && pnpm publish --access public"
+		"prepublishOnly": "pnpm build"
 	},
 	"dependencies": {
 		"@serenity-ui/utils": "*",

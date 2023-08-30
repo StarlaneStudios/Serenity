@@ -8,7 +8,7 @@
 		"build": "turbo run build --no-daemon",
 		"dev": "turbo run dev --no-daemon",
 		"test": "turbo run test --no-daemon",
-		"publish": "turbo run publish --no-daemon --filter={./packages/*}",
+		"publish": "pnpm publish -r --access public --filter={./packages/*}",
 		"docs:start": "pnpm --filter \"@serenity-ui/docs\" start",
 		"docs:build": "pnpm --filter \"@serenity-ui/docs\" build",
 		"core:build": "pnpm --filter \"@serenity-ui/core\" build",
