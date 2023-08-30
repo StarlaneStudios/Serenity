@@ -1,0 +1,56 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "dev",
+			"problemMatcher": [],
+			"label": "Start development environment",
+			"detail": "run dev",
+			"group": "build",
+			"icon": {
+				"id": "wrench"
+			},
+			"presentation": {
+				"reveal": "always"
+			}
+		},
+		{
+			"type": "npm",
+			"script": "build",
+			"problemMatcher": [],
+			"label": "Build production dist",
+			"detail": "run build",
+			"group": "build",
+			"icon": {
+				"id": "tools"
+			},
+			"presentation": {
+				"reveal": "always"
+			}
+		},
+		{
+			"type": "npm",
+			"script": "test",
+			"problemMatcher": [],
+			"label": "Run testing suite",
+			"detail": "run test",
+			"icon": {
+				"id": "pulse"
+			},
+			"presentation": {
+				"reveal": "always"
+			}
+		},
+		{
+			"type": "npm",
+			"script": "release",
+			"problemMatcher": [],
+			"label": "Release new version",
+			"detail": "run release",
+			"icon": {
+				"id": "rocket"
+			}
+		}
+	]
+}
