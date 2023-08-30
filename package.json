@@ -1,5 +1,6 @@
 {
 	"name": "serenity-ui",
+	"version": "0.1.1",
 	"private": true,
 	"type": "module",
 	"license": "MIT",
@@ -8,14 +9,16 @@
 		"build": "turbo run build --no-daemon",
 		"dev": "turbo run dev --no-daemon",
 		"test": "turbo run test --no-daemon",
-		"publish": "pnpm publish -r --access public --filter={./packages/*}",
-		"docs:start": "pnpm --filter \"@serenity-ui/docs\" start",
-		"docs:build": "pnpm --filter \"@serenity-ui/docs\" build",
-		"core:build": "pnpm --filter \"@serenity-ui/core\" build",
-		"styles:build": "pnpm --filter \"@serenity-ui/styles\" build",
-		"utils:build": "pnpm --filter \"@serenity-ui/utils\" build",
-		"primitives:build": "pnpm --filter \"@serenity-ui/primitives\" build",
-		"core:dev": "pnpm --filter \"@serenity-ui/core\" dev"
+		"release": "pnpm release:bump && pnpm release:commit && pnpm release:publish",
+		"release:bump": "node --no-warnings ./scripts/bump-versions.js",
+		"release:commit": "node --no-warnings ./scripts/commit-versions.js",
+		"release:publish": "pnpm publish -r --no-git-checks --access public --filter={./packages/*}",
+		"docs:start": "pnpm --filter '@serenity-ui/docs' start",
+		"docs:build": "pnpm --filter '@serenity-ui/docs' build",
+		"core:build": "pnpm --filter '@serenity-ui/core' build",
+		"styles:build": "pnpm --filter '@serenity-ui/styles' build",
+		"utils:build": "pnpm --filter '@serenity-ui/utils' build",
+		"primitives:build": "pnpm --filter '@serenity-ui/primitives' build"
 	},
 	"workspaces": [
 		"packages/*",
@@ -35,6 +38,7 @@
 		"eslint": "^8.47.0",
 		"eslint-plugin-solid": "^0.13.0",
 		"eslint-plugin-unused-imports": "^3.0.0",
+		"glob": "^10.3.3",
 		"rollup": "^3.28.1",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass": "1.66.1",
@@ -44,8 +48,8 @@
 		"typescript": "5.2.2",
 		"typescript-plugin-css-modules": "^5.0.1",
 		"vite": "^4.4.9",
-		"vite-plugin-solid": "^2.7.0",
 		"vite-plugin-dts": "^3.5.3",
+		"vite-plugin-solid": "^2.7.0",
 		"vitest": "0.34.3"
 	}
 }
