@@ -22,10 +22,10 @@
 	}
 }
 
-:root {
-	--serenity-row-spacing-xs: 0.625rem;
-	--serenity-row-spacing-sm: 0.750rem;
-	--serenity-row-spacing-md: 1.000rem;
-	--serenity-row-spacing-lg: 1.250rem;
-	--serenity-row-spacing-xl: 1.500rem;
-}
+@include defineVariables((
+	'row-spacing-xs': 0.625rem,
+	'row-spacing-sm': 0.750rem,
+	'row-spacing-md': 1.000rem,
+	'row-spacing-lg': 1.250rem,
+	'row-spacing-xl': 1.500rem
+))

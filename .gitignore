@@ -19,3 +19,6 @@ Thumbs.db
 
 # Typescript files
 *.tsbuildinfo
+
+# Vite temp files
+vite.config.ts.timestamp*

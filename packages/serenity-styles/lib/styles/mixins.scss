@@ -1,22 +1,17 @@
 @mixin isDark {
-	:root[data-theme="dark"] {
-		@content;
-	}
-}
-@mixin isLight {
-	:root[data-theme="light"] {
+	.serenity-ui[data-theme="dark"] {
 		@content;
 	}
 }
 
-@mixin isTheme ($theme) {
-	:root[data-theme="#{$theme}"] {
+@mixin isLight {
+	.serenity-ui[data-theme="light"] {
 		@content;
 	}
 }
 
 @mixin defineVariables($variables) {
-	:root {
+	.serenity-ui {
 		@each $key,
 		$value in $variables {
 			--serenity-#{$key}: #{$value};
@@ -25,16 +20,7 @@
 }
 
 @mixin defineDarkVariables($variables) {
-	:root[data-theme="dark"] {
-		@each $key,
-		$value in $variables {
-			--serenity-#{$key}: #{$value};
-		}
-	}
-}
-
-@mixin defineThemeVariables($variables) {
-	:root[data-theme="theme"] {
+	.serenity-ui[data-theme="dark"] {
 		@each $key,
 		$value in $variables {
 			--serenity-#{$key}: #{$value};
@@ -43,7 +29,7 @@
 }
 
 @mixin defineLightVariables($variables) {
-	:root[data-theme="light"] {
+	.serenity-ui[data-theme="light"] {
 		@each $key,
 		$value in $variables {
 			--serenity-#{$key}: #{$value};

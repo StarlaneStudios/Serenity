@@ -1,4 +1,8 @@
-body {
+@import '@serenity-ui/styles/dist/style.css';
+@import './normalize.scss';
+@import './variables.scss';
+
+.serenity-ui {
 	background-color: var(--serenity-body-background-color);
 	color: var(--serenity-text-color);
 }

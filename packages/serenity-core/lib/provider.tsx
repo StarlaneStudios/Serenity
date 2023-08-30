@@ -1,5 +1,5 @@
 import { Theme } from "@serenity-ui/styles";
-import { Accessor, ParentProps, Setter, createContext, createEffect, createSignal, useContext } from "solid-js";
+import { Accessor, ParentProps, Setter, createContext, createSignal, useContext } from "solid-js";
 
 const SerenityContext = createContext<{
 	theme: Accessor<Theme>;
@@ -11,30 +11,29 @@ interface SerenityProviderProps {
 
 	/**
 	 * Sets the initial theme of the provider.
+	 * 
+	 * @default 'light'
 	 */
-	initialTheme: Theme;
+	initialTheme?: Theme;
 
 	/**
-	 * Applies the theme to the target element instead of the root element.
+	 * Whether or not to apply global styles to the document.
+	 * 
+	 * @default true
 	 */
-	target?: HTMLElement | null;
+	withGlobalStyle?: boolean;
+
 }
 
 /**
  * A provider used to configure Serenity UI components.
  */
 function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
-
-	const [currentTheme, setCurrentTheme] = createSignal<Theme>(props.initialTheme);
-	const target = props.target ?? document.documentElement;
+	const [currentTheme, setCurrentTheme] = createSignal<Theme>(props.initialTheme || 'light');
 
 	const toggleTheme = () => {
 		setCurrentTheme(theme => theme === 'light' ? 'dark' : 'light');
 	};
-
-	createEffect(() => {
-		target.dataset.theme = currentTheme();
-	});
 
 	return (
 		<SerenityContext.Provider
@@ -44,13 +43,19 @@ function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 				toggleTheme
 			}}
 		>
-			{props.children}
+			<div class="serenity-ui" data-theme={currentTheme()}>
+				{props.children}
+			</div>
 		</SerenityContext.Provider>
 	);
 }
 
+/**
+ * Access the Serenity UI context.
+ * 
+ * @returns The Serenity UI context.
+ */
 function useSerenity() {
-	
 	const context = useContext(SerenityContext);
 
 	if(!context) {

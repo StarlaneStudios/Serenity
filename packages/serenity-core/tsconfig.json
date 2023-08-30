@@ -1,7 +1,6 @@
 {
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
-		"rootDir": "lib",
 		"outDir": "dist",
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
@@ -14,8 +13,8 @@
 		"preserveWatchOutput": true
 	},
 	"include": [
-		"lib/**/*",
-		"lib/declarations.d.ts"
+		"src",
+		"lib"
 	],
 	"exclude": [
 		"lib/**/*.test.ts(x)"

@@ -16,18 +16,14 @@
 			"require": "./dist/serenity-core.umd.cjs",
 			"node": "./dist/serenity-core.umd.cjs"
 		},
-		"./dist/index.css": {
+		"./dist/serenity.css": {
 			"import": "./dist/index.css",
 			"require": "./dist/index.css"
-		},
-		"./dist/normalize.css": {
-			"import": "./dist/normalize.css",
-			"require": "./dist/normalize.css"
 		}
 	},
 	"scripts": {
 		"build": "vite build",
-		"dev": "vite build --watch",
+		"dev": "vite dev",
 		"test": "vitest",
 		"prepublishOnly": "pnpm build"
 	},
@@ -35,12 +31,13 @@
 		"dist"
 	],
 	"dependencies": {
-		"@serenity-ui/styles": "*",
-		"@serenity-ui/utils": "*",
+		"@kobalte/core": "0.10.0",
 		"@serenity-ui/primitives": "*",
-		"@kobalte/core": "0.10.0"
+		"@serenity-ui/styles": "*",
+		"@serenity-ui/utils": "*"
 	},
 	"devDependencies": {
+		"@mdi/js": "^7.2.96",
 		"sass": "1.65.1"
 	},
 	"peerDependencies": {

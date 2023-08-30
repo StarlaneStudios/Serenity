@@ -1,22 +1,21 @@
 import { mdiCheck } from "@mdi/js";
 
 import {
+	Accordion,
 	AccordionContent,
 	AccordionHeader,
 	AccordionItem,
 	AccordionProps,
 	AccordionTrigger,
-	Paper,
-	Layout,
-	Icon,
-	TextInput,
-	TextAreaInput,
-	useSerenity,
-	SerenityProvider,
-	Accordion,
 	Button,
-	Divider
-} from "@serenity-ui/core";
+	Divider,
+	Icon,
+	Layout,
+	Paper,
+	TextAreaInput,
+	TextInput,
+	useSerenity
+} from "../lib";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -53,7 +52,7 @@ const SomeAccordion = (props: AccordionProps) => (
 	</Accordion>
 );
 
-const Page = () => {
+export const DemoPage = () => {
 
 	const { setTheme, toggleTheme, theme } = useSerenity();
 
@@ -101,10 +100,3 @@ const Page = () => {
 		</>
 	);
 };
-
-export default function Home() {
-
-	return (
-		<Page />
-	);
-}

@@ -21,8 +21,7 @@
 		"primitives:build": "pnpm --filter '@serenity-ui/primitives' build"
 	},
 	"workspaces": [
-		"packages/*",
-		"apps/*"
+		"packages/*"
 	],
 	"dependencies": {
 		"@kobalte/core": "^0.10.0",

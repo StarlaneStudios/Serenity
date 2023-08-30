@@ -31,10 +31,10 @@
 	}
 }
 
-:root {
-	--serenity-icon-size-xs: 0.6rem;
-	--serenity-icon-size-sm: 0.8rem;
-	--serenity-icon-size-md: 1rem;
-	--serenity-icon-size-lg: 1.2rem;
-	--serenity-icon-size-xl: 1.4rem;
-}
+@include defineVariables((
+	'icon-size-xs': 0.6rem,
+	'icon-size-sm': 0.8rem,
+	'icon-size-md': 1rem,
+	'icon-size-lg': 1.2rem,
+	'icon-size-xl': 1.4rem
+))

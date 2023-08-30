@@ -3,10 +3,10 @@ import dts from "vite-plugin-dts";
 import solid from "vite-plugin-solid";
 
 export default defineConfig({
-	plugins: [solid(), dts()],
+	plugins: [solid(), dts({
+		entryRoot: './lib'
+	})],
 	build: {
-		emptyOutDir: false,
-		cssCodeSplit: true,
 		lib: {
 			entry: './lib/index.tsx',
 			name: 'serenity-core',
@@ -14,6 +14,9 @@ export default defineConfig({
 		},
 		copyPublicDir: true,
 		rollupOptions: {
+			output: {
+				assetFileNames: "serenity.[ext]",
+			},
 			external: [
 				'solid-js',
 				'solid-js/web',
@@ -29,8 +32,13 @@ export default defineConfig({
 		devSourcemap: true,
 		preprocessorOptions: {
 			scss: {
-				additionalData: `@import '../serenity-styles/lib/sass/mixin.scss';`
+				additionalData: `@import '../serenity-styles/lib/styles/mixins.scss';`
 			}
+		},
+		modules: {
+			generateScopedName(name) {
+				return name == 'serenity-ui' ? name : `serenity-${name}`;
+			},
 		}
 	}
 });
