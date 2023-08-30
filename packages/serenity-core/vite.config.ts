@@ -21,6 +21,7 @@ export default defineConfig({
 				'@serenity-ui/styles',
 				'@serenity-ui/utils',
 				'@serenity-ui/primitives',
+				"@kobalte/core"
 			]
 		}
 	},
