@@ -38,7 +38,7 @@ export function cssvars<T extends Record<string, string | undefined | null>>(map
 		const key = keys[i];
 		const value = map[key];
 
-		if (value !== undefined) {
+		if (value) {
 			variables[`--${key}`] = value;
 		}
 	}
