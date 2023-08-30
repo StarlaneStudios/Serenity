@@ -17,8 +17,8 @@
 			"node": "./dist/serenity-core.umd.cjs"
 		},
 		"./dist/serenity.css": {
-			"import": "./dist/index.css",
-			"require": "./dist/index.css"
+			"import": "./dist/serenity.css",
+			"require": "./dist/serenity.css"
 		}
 	},
 	"scripts": {
