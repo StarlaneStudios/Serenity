@@ -72,6 +72,8 @@ const fieldInputSplitProps = [
 
 function BaseInput<P>(props: BaseInputProps<P>) {
 
+	let ref: HTMLInputElement | HTMLTextAreaElement | undefined;
+
 	const [root, kobalte, error] = splitProps(
 		props, splitBaseInputProps,
 		kobalteTextFieldProps,

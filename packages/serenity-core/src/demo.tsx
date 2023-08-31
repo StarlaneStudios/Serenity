@@ -106,13 +106,13 @@ export const DemoPage = () => {
 				type="password"
 			/>
 
-			<TextAreaInput
+			{/* <TextAreaInput
 				variant="filled"
 				error={"This is an error"}
 				validationState="invalid"
 				label="Bericht"
 				description="Hier kan je je bericht invullen"
-			/>
+			/> */}
 		</div>
 	);
 };
