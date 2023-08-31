@@ -93,10 +93,24 @@ export const DemoPage = () => {
 
 			</Layout>
 
-			<TextInput
+			<InputField
+				variant="default"
+				name="test"
+				label="Gebruikersnaam"
+				description="Hier kan je je gebruikersnaam invullen"
+				placeholder="Gebruikersnaam"
+				onchange={console.log}
+				oninput={console.log}
+				defaultValue="Dit is een test"
 			/>
 
-			<TextAreaInput error={"bruh moment"} validationState="invalid" />
+			<TextAreaInput
+				variant="filled"
+				error={"bruh moment"} 
+				validationState="invalid"
+				label="Bericht"
+				description="Hier kan je je bericht invullen"
+			/>
 		</>
 	);
 };

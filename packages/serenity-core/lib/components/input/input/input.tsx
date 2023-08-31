@@ -2,22 +2,22 @@ import { splitProps } from "solid-js";
 import { BaseInput, BaseInputProps, fieldInputSplitProps } from "../base";
 import { TextField as KobalteTextField } from "@kobalte/core";
 
-interface TextAreaProps extends BaseInputProps<KobalteTextField.TextFieldTextAreaProps> {
+interface InputFieldProps extends BaseInputProps<KobalteTextField.TextFieldInputProps> {
 
 }
 
-function TextAreaInput(props: TextAreaProps) {
+function InputField(props: InputFieldProps) {
 
 	const [input, other] = splitProps(props, fieldInputSplitProps);
 
 	return (
-		<BaseInput<TextAreaProps> {...other}>
-			<KobalteTextField.TextArea {...input} />
+		<BaseInput<InputFieldProps> {...other}>
+			<KobalteTextField.Input {...input} />
 		</BaseInput>
 	);
 }
 
 export {
-	TextAreaInput,
-	TextAreaProps
+	InputField,
+	InputFieldProps
 };
