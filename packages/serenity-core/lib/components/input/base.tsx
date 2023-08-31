@@ -1,4 +1,4 @@
-import { Show, mergeProps, splitProps } from "solid-js";
+import { JSX, Show, children, mergeProps, splitProps } from "solid-js";
 import { TextField } from "@kobalte/core";
 import classes from "./base.module.scss";
 import { Size, cssvars, cx, resolveModifier, resolveSize } from "@serenity-ui/styles";
@@ -11,9 +11,11 @@ type BaseInputProps<P> = DefaultBaseInputProps & {
 	description?: string;
 	error?: string;
 	variant?: 'outlined' | 'filled' | 'default';
-	styles?: Record<'root' | 'label' | 'description' | 'error' | 'wrapper', string>;
+	styles?: Record<'root' | 'label' | 'description' | 'error' | 'wrapper' | 'leftSection' | 'rightSection', string>;
 	radius?: Size | number;
 	size?: Size;
+	rightSection?: JSX.Element;
+	leftSection?: JSX.Element;
 } & P;
 
 const defaultBaseInputProps: DefaultProps<
@@ -28,7 +30,9 @@ const defaultBaseInputProps: DefaultProps<
 		label: classes['base-input__label'],
 		description: classes['base-input__description'],
 		error: classes['base-input__error'],
-		wrapper: classes['base-input__wrapper']
+		wrapper: classes['base-input__wrapper'],
+		leftSection: classes['base-input__left-section'],
+		rightSection: classes['base-input__right-section']
 	}
 };
 
@@ -41,7 +45,9 @@ const splitBaseInputProps = [
 	"class",
 	"radius",
 	"style",
-	"size"
+	"size",
+	"leftSection",
+	"rightSection"
 ] as const;
 
 const kobalteTextFieldProps = [
@@ -49,14 +55,14 @@ const kobalteTextFieldProps = [
 	"defaultValue",
 	"onChange",
 	"name",
-	"validationState",
 	"required",
 	"disabled",
 	"readOnly"
 ] as const;
 
 const kobalteTextFieldErrorProps = [
-	"forceMount"
+	"forceMount",
+	"validationState"
 ] as const;
 
 const fieldInputSplitProps = [
@@ -81,32 +87,43 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 		return cssvars({ radius, height });
 	};
 
+	console.log(props.children);
+
 	return (
 		<TextField.Root
 			class={cx(defaultBaseInputProps.styles.root, root.class)}
 			data-variant={props.variant}
 			style={Object.assign(cssVariables(), root.style)}
+			validationState={props.error ? 'invalid' : 'valid'}
 			{...kobalte}
 		>
 			<Show when={props.label}>
 				<TextField.Label class={defaultBaseInputProps.styles.label}>
-					{props.label}
+					{baseProps.label}
 				</TextField.Label>
 			</Show>
 			<Show when={props.description}>
 				<TextField.Description class={defaultBaseInputProps.styles.description}>
-					{props.description}
+					{baseProps.description}
 				</TextField.Description>
 			</Show>
-			<Row class={defaultBaseInputProps.styles.wrapper}>
+			<Row class={defaultBaseInputProps.styles.wrapper} spacing={0}>
+				<div class={defaultBaseInputProps.styles.leftSection}>
+					{baseProps.leftSection}
+				</div>
 				{props.children}
+				<div class={defaultBaseInputProps.styles.rightSection}>
+					{baseProps.rightSection}
+				</div>
 			</Row>
-			<TextField.ErrorMessage
-				class={defaultBaseInputProps.styles.error}
-				{...error}
-			>
-				{props.error}
-			</TextField.ErrorMessage>
+			<Show when={props.error}>
+				<TextField.ErrorMessage
+					class={defaultBaseInputProps.styles.error}
+					forceMount={error.forceMount}
+				>
+					{baseProps.error}
+				</TextField.ErrorMessage>
+			</Show>
 		</TextField.Root>
 	);
 }

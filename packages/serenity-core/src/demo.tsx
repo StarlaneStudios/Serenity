@@ -57,7 +57,7 @@ export const DemoPage = () => {
 	const { setTheme, toggleTheme, theme } = useSerenity();
 
 	return (
-		<>
+		<div style={{ "padding-inline": "2rem" }}>
 			<h1>
 				This is an test
 			</h1>
@@ -97,20 +97,22 @@ export const DemoPage = () => {
 				variant="default"
 				name="test"
 				label="Gebruikersnaam"
-				description="Hier kan je je gebruikersnaam invullen"
 				placeholder="Gebruikersnaam"
 				onchange={console.log}
 				oninput={console.log}
 				defaultValue="Dit is een test"
+				leftSection={<Icon path={lock} color="dark.1" size={1} />}
+				rightSection={<Icon path={lock} color="dark.1" size={1} />}
+				type="password"
 			/>
 
 			<TextAreaInput
 				variant="filled"
-				error={"bruh moment"} 
+				error={"This is an error"}
 				validationState="invalid"
 				label="Bericht"
 				description="Hier kan je je bericht invullen"
 			/>
-		</>
+		</div>
 	);
 };

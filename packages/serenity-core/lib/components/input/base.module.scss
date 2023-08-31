@@ -10,6 +10,7 @@
 		border: 1px solid var(--serenity-input-border-color);
 		border-radius: var(--radius);
 		margin-block: 5px;
+		cursor: text;
 
 		min-height: var(--height);
 		flex: 1;
@@ -30,6 +31,10 @@
 				outline: none;
 			}
 		}
+
+		input, textarea {
+			min-height: var(--height);
+		}
 	}
 
 	&__label {
@@ -40,16 +45,24 @@
 	}
 
 	&__description {
-		color: var(--serenity-input-label-color);
+		color: var(--serenity-input-description-color);
 		font-size: var(--serenity-font-size-sm);
 		font-weight: lighter;
-		line-height: 0.5;
+		line-height: 0.6;
 		margin-bottom: 5px;
 	}
 
 	&__error {
 		color: var(--serenity-input-error-color);
 		font-size: var(--serenity-font-size-xs);
+	}
+
+	&__left-section:not(:empty) {
+		padding-left: 12px;
+	}
+
+	&__right-section:not(:empty) {
+		padding-right: 12px;
 	}
 
 	input {
@@ -105,6 +118,7 @@
 	"input-text-color": "var(--serenity-color-dark-0)",
 	"input-focus-color": "var(--serenity-color-blue-6)",
 	"input-label-color": "var(--serenity-color-dark-0)",
+	"input-description-color": "var(--serenity-color-dark-2)",
 	"input-placeholder-color": "var(--serenity-color-dark-2)",
 	"input-error-color": "var(--serenity-color-red-6)",
 ));
@@ -114,8 +128,9 @@
 	"input-border-color": "var(--serenity-color-gray-4)",
 	"input-text-color": "#000",
 	"input-focus-color": "var(--serenity-color-blue-6)",
-	"input-label-color": "var(--serenity-color-gray-6)",
-	"input-placeholder-color": "var(--serenity-color-gray-4)",
+	"input-label-color": "var(--serenity-color-gray-9)",
+	"input-placeholder-color": "var(--serenity-color-gray-6)",
+	"input-description-color": "var(--serenity-color-gray-6)",
 	"input-error-color": "var(--serenity-color-red-6)",
 ));
 
