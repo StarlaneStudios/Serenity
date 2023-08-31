@@ -2,15 +2,11 @@
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"outDir": "dist",
-		"jsx": "preserve",
-		"jsxImportSource": "solid-js",
-		"esModuleInterop": true,
+		"composite": true,
 		"types": [
 			"solid-js",
 			"node"
-		],
-		"composite": true,
-		"preserveWatchOutput": true
+		]
 	},
 	"include": [
 		"src",

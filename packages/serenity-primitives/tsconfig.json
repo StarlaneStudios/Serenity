@@ -3,11 +3,7 @@
 	"compilerOptions": {
 		"rootDir": "lib",
 		"outDir": "dist",
-		"jsx": "preserve",
-		"jsxImportSource": "solid-js",
-		"composite": true,
-		"esModuleInterop": true,
-		"preserveWatchOutput": true,
+		"composite": true
 	},
 	"include": [
 		"lib/**/*"

@@ -17,6 +17,8 @@
 		"declarationDir": "dist",
 		"strict": true,
 		"skipLibCheck": true,
-		"preserveWatchOutput": true
+		"preserveWatchOutput": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
 	}
 }

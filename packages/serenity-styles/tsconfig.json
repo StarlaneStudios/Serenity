@@ -4,7 +4,6 @@
 		"rootDir": "lib",
 		"outDir": "dist",
 		"composite": true,
-		"esModuleInterop": true,
 		"paths": {
 			"@serenity-ui/utils": ["../serenity-utils/lib"]
 		}

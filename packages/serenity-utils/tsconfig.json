@@ -3,9 +3,7 @@
 	"compilerOptions": {
 		"rootDir": "lib",
 		"outDir": "dist",
-		"composite": true,
-		"esModuleInterop": true,
-		"preserveWatchOutput": true
+		"composite": true
 	},
 	"include": [
 		"lib/**/*"
