@@ -87,8 +87,6 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 		return cssvars({ radius, height });
 	};
 
-	console.log(props.children);
-
 	return (
 		<TextField.Root
 			class={cx(defaultBaseInputProps.styles.root, root.class)}
