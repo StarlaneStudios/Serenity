@@ -1,6 +1,8 @@
-import { defineConfig } from "vite";
+import { resolve, dirname, join } from 'node:path';
 import solid from "vite-plugin-solid";
-import { resolve } from 'node:path';
+import { defineConfig } from "vite";
+import { copyFileSync, mkdirSync } from "fs";
+import { globSync } from 'glob';
 import ts from 'typescript';
 
 export default defineConfig({
@@ -9,8 +11,11 @@ export default defineConfig({
 		{
 			name: 'solid-source',
 			enforce: 'pre',
-			writeBundle() {
-				const program = ts.createProgram([resolve('./lib/index.tsx')], {
+			generateBundle() {
+				const libDir = resolve('lib');
+				const destDir = resolve('dist/source');
+
+				const program = ts.createProgram([resolve(libDir, 'index.tsx')], {
 					target: ts.ScriptTarget.ESNext,
 					module: ts.ModuleKind.ESNext,
 					moduleResolution: ts.ModuleResolutionKind.Node10,
@@ -25,6 +30,17 @@ export default defineConfig({
 				});
 
 				program.emit();
+
+				globSync('**/*.scss', {
+					cwd: libDir
+				}).forEach((filePath) => {
+					const srcPath = join(libDir, filePath);
+					const destPath = join(destDir, filePath);
+					const destDirPath = dirname(destPath);
+
+					mkdirSync(destDirPath, { recursive: true });
+					copyFileSync(srcPath, destPath);
+				});
 			}
 		}
 	],
