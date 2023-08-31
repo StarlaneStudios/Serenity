@@ -8,19 +8,11 @@ interface InputFieldProps extends BaseInputProps<KobalteTextField.TextFieldInput
 
 function InputField(props: InputFieldProps) {
 
-	let ref: HTMLInputElement | undefined;
 	const [input, other] = splitProps(props, fieldInputSplitProps);
 
-	onMount(() => ref?.parentElement?.setAttribute('for', ref.id));
-
 	return (
-		<BaseInput<InputFieldProps>
-			{...other}
-		>
-			<KobalteTextField.Input
-				ref={ref}
-				{...input}
-			/>
+		<BaseInput<InputFieldProps> {...other}>
+			<KobalteTextField.Input {...input} />
 		</BaseInput>
 	);
 }

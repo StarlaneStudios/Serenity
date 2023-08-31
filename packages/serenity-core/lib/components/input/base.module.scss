@@ -26,7 +26,7 @@
 
 		transition: outline-color .2s, outline-width .2s;
 
-		&:focus-within, &:active, &:focus {
+		&:focus-within, &:active {
 			outline-color: var(--serenity-input-focus-color);
 			outline-width: 1px;
 			border-color: transparent;

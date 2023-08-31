@@ -8,14 +8,11 @@ interface TextAreaProps extends BaseInputProps<KobalteTextField.TextFieldTextAre
 
 function TextAreaInput(props: TextAreaProps) {
 
-	let ref: HTMLTextAreaElement | undefined;
 	const [input, other] = splitProps(props, fieldInputSplitProps);
-
-	onMount(() => ref?.parentElement?.setAttribute('for', ref.id));
 
 	return (
 		<BaseInput<TextAreaProps> {...other}>
-			<KobalteTextField.TextArea ref={ref} {...input} />
+			<KobalteTextField.TextArea {...input} />
 		</BaseInput>
 	);
 }
