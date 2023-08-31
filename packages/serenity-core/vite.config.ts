@@ -1,11 +1,33 @@
 import { defineConfig } from "vite";
-import dts from "vite-plugin-dts";
 import solid from "vite-plugin-solid";
+import { resolve } from 'node:path';
+import ts from 'typescript';
 
 export default defineConfig({
-	plugins: [solid(), dts({
-		entryRoot: './lib'
-	})],
+	plugins: [
+		solid(),
+		{
+			name: 'solid-source',
+			enforce: 'pre',
+			writeBundle() {
+				const program = ts.createProgram([resolve('./lib/index.tsx')], {
+					target: ts.ScriptTarget.ESNext,
+					module: ts.ModuleKind.ESNext,
+					moduleResolution: ts.ModuleResolutionKind.Node10,
+					jsx: ts.JsxEmit.Preserve,
+					jsxImportSource: "solid-js",
+					allowSyntheticDefaultImports: true,
+					esModuleInterop: true,
+					outDir: 'dist/source',
+					declarationDir: 'dist/types',
+					declaration: true,
+					allowJs: true,
+				});
+
+				program.emit();
+			}
+		}
+	],
 	build: {
 		lib: {
 			entry: './lib/index.tsx',
@@ -13,6 +35,7 @@ export default defineConfig({
 			fileName: 'serenity-core'
 		},
 		copyPublicDir: true,
+		emptyOutDir: false,
 		rollupOptions: {
 			output: {
 				assetFileNames: "serenity.[ext]",
