@@ -1,4 +1,4 @@
-import { mdiCheck } from "@mdi/js";
+import { mdiCheck, mdiLock } from "@mdi/js";
 
 import {
 	Accordion,
@@ -7,14 +7,14 @@ import {
 	Button,
 	Divider,
 	Icon,
+	InputField,
 	Layout,
 	Paper,
 	Row,
-	TextAreaInput,
-	TextInput,
 	useSerenity
 } from "../lib";
 import { Unit } from "../lib/components/unit";
+import { Tabs } from "../lib/components/tabs";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -100,8 +100,8 @@ export const DemoPage = () => {
 				placeholder="Gebruikersnaam"
 				onchange={console.log}
 				oninput={console.log}
-				leftSection={<Icon path={lock} color="dark.1" size={1} />}
-				rightSection={<Icon path={lock} color="dark.1" size={1} />}
+				leftSection={<Icon path={mdiLock} color="dark.1" size={1} />}
+				rightSection={<Icon path={mdiLock} color="dark.1" size={1} />}
 				type="password"
 			/>
 
@@ -121,6 +121,9 @@ export const DemoPage = () => {
 					Bbbbbb
 				</Unit>
 			</Row>
+			<Tabs>
+				asdasd
+			</Tabs>
 		</div>
 	);
 };
