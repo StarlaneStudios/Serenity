@@ -7,7 +7,6 @@
 	"types": "./dist/types/index.d.ts",
 	"exports": {
 		".": {
-			"solid": "./dist/source/index.jsx",
 			"types": "./dist/types/index.d.ts",
 			"import": "./dist/serenity-core.js",
 			"browser": {
