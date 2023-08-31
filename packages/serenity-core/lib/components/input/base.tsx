@@ -66,7 +66,8 @@ const kobalteTextFieldErrorProps = [
 
 const fieldInputSplitProps = [
 	"onchange", "onChange",
-	"oninput", "onInput"
+	"oninput", "onInput",
+	"placeholder"
 ] as const;
 
 function BaseInput<P>(props: BaseInputProps<P>) {

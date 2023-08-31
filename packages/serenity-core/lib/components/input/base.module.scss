@@ -86,6 +86,11 @@
 		border: none;
 		width: 100%;
 		min-height: var(--height);
+
+		&::placeholder {
+			color: var(--serenity-input-placeholder-color);
+			font-size: var(--serenity-font-size-md);
+		}
 	}
 
 	&[data-variant="default"] {
