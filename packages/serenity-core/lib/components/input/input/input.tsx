@@ -1,4 +1,4 @@
-import { splitProps } from "solid-js";
+import { onMount, splitProps } from "solid-js";
 import { BaseInput, BaseInputProps, fieldInputSplitProps } from "../base";
 import { TextField as KobalteTextField } from "@kobalte/core";
 
@@ -10,6 +10,8 @@ function InputField(props: InputFieldProps) {
 
 	let ref: HTMLInputElement | undefined;
 	const [input, other] = splitProps(props, fieldInputSplitProps);
+
+	onMount(() => ref?.parentElement?.setAttribute('for', ref.id));
 
 	return (
 		<BaseInput<InputFieldProps>

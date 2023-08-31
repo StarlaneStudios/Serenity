@@ -1,11 +1,16 @@
+.base-input, .base-input__wrapper {
+	display: flex;
+}
+
 .base-input {
 
 	position: relative;
-	display: flex;
 	flex-direction: column;
 	max-width: max-content;
 
 	&__wrapper {
+
+		align-items: center;
 
 		border: 1px solid var(--serenity-input-border-color);
 		border-radius: var(--radius);
@@ -21,7 +26,7 @@
 
 		transition: outline-color .2s, outline-width .2s;
 
-		&:focus-within {
+		&:focus-within, &:active, &:focus {
 			outline-color: var(--serenity-input-focus-color);
 			outline-width: 1px;
 			border-color: transparent;
@@ -30,10 +35,6 @@
 			textarea {
 				outline: none;
 			}
-		}
-
-		input, textarea {
-			min-height: var(--height);
 		}
 	}
 
@@ -55,6 +56,11 @@
 	&__error {
 		color: var(--serenity-input-error-color);
 		font-size: var(--serenity-font-size-xs);
+	}
+
+	&__left-section,
+	&__right-section {
+		user-select: none;
 	}
 
 	&__left-section:not(:empty) {
@@ -79,6 +85,7 @@
 		background-color: var(--input-background-color);
 		border: none;
 		width: 100%;
+		min-height: var(--height);
 	}
 
 	&[data-variant="default"] {

@@ -5,7 +5,6 @@ import { JSX } from "solid-js/jsx-runtime";
 import { DefaultProps } from "../../util/types";
 
 interface RowProps extends Omit<JSX.HTMLAttributes<HTMLDivElement>, 'size'> {
-	as?: keyof JSX.IntrinsicElements;
 	justify?: JSX.CSSProperties["justify-content"];
 	align?: JSX.CSSProperties["align-items"];
 	spacing?: Size;
@@ -23,18 +22,16 @@ const rowSplitProps = [
 	"style",
 	"grow",
 	"noWrap",
-	"direction",
-	"as"
+	"direction"
 ] as const;
 
-const defaultRowProps: DefaultProps<RowProps, 'spacing' | 'justify' | 'align' | 'grow' | 'noWrap' | 'direction' | 'as'> = {
+const defaultRowProps: DefaultProps<RowProps, 'spacing' | 'justify' | 'align' | 'grow' | 'noWrap' | 'direction'> = {
 	align: "center",
 	justify: "flex-start",
 	direction: "row",
 	grow: false,
 	noWrap: false,
-	spacing: "md",
-	as: "div"
+	spacing: "md"
 };
 
 function Row(props: RowProps) {
@@ -52,10 +49,8 @@ function Row(props: RowProps) {
 		});
 	};
 
-	const Component = root.as;
-
 	return (
-		<Component
+		<div
 			class={cx(classes.row, root.class)}
 			data-grow={root.grow}
 			data-no-wrap={root.noWrap}
@@ -64,7 +59,7 @@ function Row(props: RowProps) {
 			{...other}
 		>
 			{root.children}
-		</Component>
+		</div>
 	);
 }
 

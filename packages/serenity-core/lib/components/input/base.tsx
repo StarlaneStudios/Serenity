@@ -3,7 +3,6 @@ import { TextField } from "@kobalte/core";
 import classes from "./base.module.scss";
 import { Size, cssvars, cx, resolveModifier, resolveSize } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
-import { Row } from "../row";
 
 type DefaultBaseInputProps = TextField.TextFieldRootProps & TextField.TextFieldLabelProps & TextField.TextFieldDescriptionProps & TextField.TextFieldErrorMessageProps;
 type BaseInputProps<P> = DefaultBaseInputProps & {
@@ -72,8 +71,6 @@ const fieldInputSplitProps = [
 
 function BaseInput<P>(props: BaseInputProps<P>) {
 
-	let ref: HTMLInputElement | HTMLTextAreaElement | undefined;
-
 	const [root, kobalte, error] = splitProps(
 		props, splitBaseInputProps,
 		kobalteTextFieldProps,
@@ -107,7 +104,7 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 					{baseProps.description}
 				</TextField.Description>
 			</Show>
-			<Row class={defaultBaseInputProps.styles.wrapper} spacing={0}>
+			<label class={defaultBaseInputProps.styles.wrapper}>
 				<div class={defaultBaseInputProps.styles.leftSection}>
 					{baseProps.leftSection}
 				</div>
@@ -115,7 +112,7 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 				<div class={defaultBaseInputProps.styles.rightSection}>
 					{baseProps.rightSection}
 				</div>
-			</Row>
+			</label>
 			<Show when={props.error}>
 				<TextField.ErrorMessage
 					class={defaultBaseInputProps.styles.error}
