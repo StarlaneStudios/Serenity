@@ -1,25 +1,155 @@
+.base-input, .base-input__wrapper {
+	display: flex;
+}
+
 .base-input {
 
 	position: relative;
-	display: flex;
 	flex-direction: column;
+	max-width: max-content;
 
-	color: var(--base-input-text-color, #000);
+	&__wrapper {
 
-	&__label,
-	&__error,
-	&__description {
-		display: block;
+		align-items: center;
+
+		border: 1px solid var(--serenity-input-border-color);
+		border-radius: var(--radius);
+		margin-block: 5px;
+		cursor: text;
+
+		min-height: var(--height);
+		flex: 1;
+
+		outline-color: transparent;
+		outline-width: 0px;
+		outline-style: solid;
+
+		transition: outline-color .2s, outline-width .2s;
+
+		&:focus-within, &:active {
+			outline-color: var(--serenity-input-focus-color);
+			outline-width: 1px;
+			border-color: transparent;
+
+			input,
+			textarea {
+				outline: none;
+			}
+		}
 	}
 
-	input, textarea {
-		background-color: var(--base-input-background-color);
+	&__label {
+		margin-block: 5px;
+		color: var(--serenity-input-label-color);
+		font-size: var(--serenity-font-size-md);
+		font-weight: 600;
+	}
+
+	&__description {
+		color: var(--serenity-input-description-color);
+		font-size: var(--serenity-font-size-sm);
+		font-weight: lighter;
+		line-height: 0.6;
+		margin-bottom: 5px;
+	}
+
+	&__error {
+		color: var(--serenity-input-error-color);
+		font-size: var(--serenity-font-size-xs);
+	}
+
+	&__left-section,
+	&__right-section {
+		user-select: none;
+	}
+
+	&__left-section:not(:empty) {
+		padding-left: 12px;
+	}
+
+	&__right-section:not(:empty) {
+		padding-right: 12px;
+	}
+
+	input {
+		padding-inline: 12px;
+	}
+
+	textarea {
+		padding: 12px;
+	}
+
+	input,
+	textarea {
+		color: var(--serenity-input-text-color);
+		background-color: var(--input-background-color);
 		border: none;
+		width: 100%;
+		min-height: var(--height);
+
+		&::placeholder {
+			color: var(--serenity-input-placeholder-color);
+			font-size: var(--serenity-font-size-md);
+		}
+	}
+
+	&[data-variant="default"] {
+		.base-input__wrapper, input, textarea {
+			background-color: var(--serenity-input-background-color);
+		}
+	}
+
+	&[data-variant="filled"] {
+		.base-input__wrapper, input, textarea {
+			background-color: var(--serenity-input-border-color);
+		}
+	}
+}
+
+.base-input[data-invalid] {
+
+	.base-input__wrapper {
+		outline-style: solid;
+		outline-color: var(--serenity-color-red-6);
+		outline-width: 1px;
+
+		&:focus-within {
+			outline-color: var(--serenity-input-focus-color);
+		}
+
+		input,
+		textarea {
+			color: var(--serenity-color-red-6);
+		}
 	}
 }
 
 @include defineDarkVariables((
-	"base-input-background-color": "var(--serenity-color-dark-6)",
-	"base-input-border-color": "#d9d9d9",
-	"base-input-text-color": "#fff",
+	"input-background-color": "var(--serenity-color-dark-6)",
+	"input-border-color": "var(--serenity-color-dark-4)",
+	"input-text-color": "var(--serenity-color-dark-0)",
+	"input-focus-color": "var(--serenity-color-blue-6)",
+	"input-label-color": "var(--serenity-color-dark-0)",
+	"input-description-color": "var(--serenity-color-dark-2)",
+	"input-placeholder-color": "var(--serenity-color-dark-2)",
+	"input-error-color": "var(--serenity-color-red-6)",
+));
+
+@include defineLightVariables((
+	"input-background-color": "#fff",
+	"input-border-color": "var(--serenity-color-gray-4)",
+	"input-text-color": "#000",
+	"input-focus-color": "var(--serenity-color-blue-6)",
+	"input-label-color": "var(--serenity-color-gray-9)",
+	"input-placeholder-color": "var(--serenity-color-gray-6)",
+	"input-description-color": "var(--serenity-color-gray-6)",
+	"input-error-color": "var(--serenity-color-red-6)",
+));
+
+@include defineVariables((
+	"input-height-xs": 1.875rem,
+	"input-height-sm": 2.25rem,
+	"input-height-md": 2.625rem,
+	"input-height-lg": 3.125rem,
+	"input-height-xl": 3.75rem
 ));
