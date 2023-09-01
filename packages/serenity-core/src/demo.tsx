@@ -15,6 +15,8 @@ import {
 } from "../lib";
 import { Unit } from "../lib/components/unit";
 import { Tabs } from "../lib/components/tabs";
+import { Accordion, AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Button, Divider, Icon, InputField, Layout, Paper, useSerenity } from "../lib";
+import { Tab, TabList, Tabs } from "../lib/components/tabs";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -123,6 +125,15 @@ export const DemoPage = () => {
 			</Row>
 			<Tabs>
 				asdasd
+			<Tabs orientation="vertical">
+				<TabList>
+					<Tab value="a">
+						Tab 1
+					</Tab>
+					<Tab value="b">
+						Tab 2
+					</Tab>
+				</TabList>
 			</Tabs>
 		</div>
 	);
