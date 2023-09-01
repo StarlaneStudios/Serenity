@@ -1,3 +1,27 @@
 .tabs {
-	position: relative;
+	display: grid;
+
+	&[data-orientation="horizontal"] {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto 1fr;
+	}
+
+	&[data-orientation="vertical"] {
+		grid-template-columns: auto 1fr;
+		grid-template-rows: 1fr;
+	}
+}
+
+.tabs__list {
+	display: flex;
+
+	&[data-orientation="horizontal"] {
+		flex-direction: row;
+		column-gap: var(--spacing);
+	}
+
+	&[data-orientation="vertical"] {
+		flex-direction: column;
+		row-gap: var(--spacing);
+	}
 }

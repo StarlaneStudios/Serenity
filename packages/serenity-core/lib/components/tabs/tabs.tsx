@@ -33,11 +33,12 @@ function Tabs(props: TabsProps) {
 	const cssVariables = () => {
 		const color = resolveColorInput(baseProps.color, 6);
 		return cssvars({ color });
-	}
+	};
 
 	return (
 		<KobalteTabs.Root
 			class={cx(classes.tabs, root.class)}
+			data-variant={baseProps.variant}
 			style={Object.assign(cssVariables(), root.style)}
 			{...other}
 		>
