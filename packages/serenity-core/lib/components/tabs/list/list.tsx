@@ -51,7 +51,7 @@ function TabList(props: TabListProps) {
 			{...other}
 		>
 			{baseProps.children}
-			<KobalteTabs.Indicator />
+			<KobalteTabs.Indicator class={classes["tabs__indicator"]} />
 		</KobalteTabs.List>
 	);
 }
