@@ -1,5 +1,5 @@
 import classes from "./accordion.module.scss";
-import { JSX, mergeProps, splitProps } from "solid-js";
+import { mergeProps, splitProps } from "solid-js";
 import { Column, ColumnProps } from "../column";
 import { Size, cssvars, cx, resolveSize } from "@serenity-ui/styles";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";

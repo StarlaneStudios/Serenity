@@ -1,5 +1,5 @@
 import { Tuple } from "@serenity-ui/utils";
-import { Size, UnitType, UnitValue } from "../../types/theme";
+import { Size, UnitType } from "../../types/values";
 
 /**
  * Returns a namespaced CSS variable

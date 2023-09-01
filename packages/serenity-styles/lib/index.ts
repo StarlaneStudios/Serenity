@@ -1,6 +1,10 @@
 import "./styles/colors.scss";
 
-export * from "./types/theme/index";
+export * from "./utilities";
+
+export * from "./types/theme";
+export * from "./types/values";
+export * from "./types/props";
 
 export * from "./functions/theme/css";
 export * from "./functions/theme/color";

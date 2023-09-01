@@ -2,9 +2,6 @@ import { mdiCheck } from "@mdi/js";
 
 import {
 	Accordion,
-	AccordionContent,
-	AccordionHeader,
-	AccordionItem,
 	AccordionProps,
 	AccordionTrigger,
 	Button,
@@ -12,43 +9,45 @@ import {
 	Icon,
 	Layout,
 	Paper,
+	Row,
 	TextAreaInput,
 	TextInput,
 	useSerenity
 } from "../lib";
+import { Unit } from "../lib/components/unit";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
-		<AccordionItem value="24">
-			<AccordionHeader>
+		<Accordion.Item value="24">
+			<Accordion.Header>
 				<AccordionTrigger>
 					Accordion A
 				</AccordionTrigger>
-			</AccordionHeader>
-			<AccordionContent>
+			</Accordion.Header>
+			<Accordion.Content>
 				Dit is content
-			</AccordionContent>
-		</AccordionItem>
-		<AccordionItem value="22">
-			<AccordionHeader>
+			</Accordion.Content>
+		</Accordion.Item>
+		<Accordion.Item value="25">
+			<Accordion.Header>
 				<AccordionTrigger>
 					Accordion B
 				</AccordionTrigger>
-			</AccordionHeader>
-			<AccordionContent>
+			</Accordion.Header>
+			<Accordion.Content>
 				Dit is content
-			</AccordionContent>
-		</AccordionItem>
-		<AccordionItem value="1">
-			<AccordionHeader>
+			</Accordion.Content>
+		</Accordion.Item>
+		<Accordion.Item value="26">
+			<Accordion.Header>
 				<AccordionTrigger>
 					Accordion C
 				</AccordionTrigger>
-			</AccordionHeader>
-			<AccordionContent>
+			</Accordion.Header>
+			<Accordion.Content>
 				Dit is content
-			</AccordionContent>
-		</AccordionItem>
+			</Accordion.Content>
+		</Accordion.Item>
 	</Accordion>
 );
 
@@ -113,6 +112,15 @@ export const DemoPage = () => {
 				label="Bericht"
 				description="Hier kan je je bericht invullen"
 			/> */}
+
+			<Row>
+				<Unit bg="red" w={15}>
+					Aaaaa
+				</Unit>
+				<Unit bg="blue" flex={1}>
+					Bbbbbb
+				</Unit>
+			</Row>
 		</div>
 	);
 };

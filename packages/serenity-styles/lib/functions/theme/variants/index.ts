@@ -1,4 +1,4 @@
-import { DEFAULT_COLORS } from "../../../constants/color";
+import { DEFAULT_COLORS } from "../../../constants/colors";
 import { darkenColor, resolveColorInput, setColorOpacity } from "../color";
 
 export const resolveWhiteVariant = (color: string, defaultShade?: number) => ({

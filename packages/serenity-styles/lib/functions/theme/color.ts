@@ -1,5 +1,5 @@
 import { clamp } from "../utils/number";
-import { DEFAULT_COLORS } from "../../constants/color";
+import { DEFAULT_COLORS } from "../../constants/colors";
 import type { Color } from "../../types/theme";
 import type { Tuple } from "@serenity-ui/utils";
 

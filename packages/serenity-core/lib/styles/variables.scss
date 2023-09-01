@@ -7,20 +7,6 @@
 	--serenity-radius-lg: 1rem;
 	--serenity-radius-xl: 2rem;
 
-	/** default padding values **/
-	--serenity-padding-xs: 8px;
-	--serenity-padding-sm: 16px;
-	--serenity-padding-md: 24px;
-	--serenity-padding-lg: 32px;
-	--serenity-padding-xl: 40px;
-
-	/** default margin values **/
-	--serenity-margin-xs: 8px;
-	--serenity-margin-sm: 16px;
-	--serenity-margin-md: 24px;
-	--serenity-margin-lg: 32px;
-	--serenity-margin-xl: 40px;
-
 	/** default font sizes **/
 	--serenity-font-size-xs: 0.75rem;
 	--serenity-font-size-sm: 0.875rem;
@@ -42,12 +28,12 @@
 	--serenity-breakpoint-lg: 992px;
 	--serenity-breakpoint-xl: 1200px;
 
-	/** default grid spacing **/
-	--serenity-spacing-xs: 8px;
-	--serenity-spacing-sm: 16px;
-	--serenity-spacing-md: 24px;
-	--serenity-spacing-lg: 32px;
-	--serenity-spacing-xl: 40px;
+	/** default spacing values **/
+	--serenity-spacing-xs: 0.5rem;
+	--serenity-spacing-sm: 0.75rem;
+	--serenity-spacing-md: 1rem;
+	--serenity-spacing-lg: 1.5rem;
+	--serenity-spacing-xl: 2rem;
 }
 
 @include defineLightVariables((

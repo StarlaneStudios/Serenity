@@ -5,4 +5,39 @@
 .serenity-ui {
 	background-color: var(--serenity-body-background-color);
 	color: var(--serenity-text-color);
+
+	* {
+		margin: var(--serenity-utility-margin);
+		margin-top: var(--serenity-utility-margin-top);
+		margin-bottom: var(--serenity-utility-margin-bottom);
+		margin-left: var(--serenity-utility-margin-left);
+		margin-right: var(--serenity-utility-margin-right);
+		margin-inline: var(--serenity-utility-margin-inline);
+		margin-block: var(--serenity-utility-margin-block);
+		padding: var(--serenity-utility-padding);
+		padding-top: var(--serenity-utility-padding-top);
+		padding-bottom: var(--serenity-utility-padding-bottom);
+		padding-left: var(--serenity-utility-padding-left);
+		padding-right: var(--serenity-utility-padding-right);
+		padding-inline: var(--serenity-utility-padding-inline);
+		padding-block: var(--serenity-utility-padding-block);
+		background-color: var(--serenity-utility-background-color);
+		color: var(--serenity-utility-text-color);
+		width: var(--serenity-utility-width);
+		min-width: var(--serenity-utility-min-width);
+		max-width: var(--serenity-utility-max-width);
+		height: var(--serenity-utility-height);
+		min-height: var(--serenity-utility-min-height);
+		max-height: var(--serenity-utility-max-height);
+		position: var(--serenity-utility-position);
+		top: var(--serenity-utility-top);
+		left: var(--serenity-utility-left);
+		bottom: var(--serenity-utility-bottom);
+		right: var(--serenity-utility-right);
+		inset: var(--serenity-utility-inset);
+		flex: var(--serenity-utility-flex);
+		display: var(--serenity-utility-display, ignore);
+		cursor: var(--serenity-utility-cursor);
+		z-index: var(--serenity-utility-z-index);
+	}
 }
