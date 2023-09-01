@@ -4,24 +4,92 @@
 	&[data-orientation="horizontal"] {
 		grid-template-columns: 1fr;
 		grid-template-rows: auto 1fr;
+
+		.tabs__indicator {
+			height: 0.125rem;
+		}
 	}
 
 	&[data-orientation="vertical"] {
 		grid-template-columns: auto 1fr;
 		grid-template-rows: 1fr;
+
+		.tabs__indicator {
+			width: 0.125rem;
+		}
+	}
+
+	&[data-variant="default"] {
+
+		.tabs__list {
+			
+		}
+	}
+
+	&[data-variant="outline"] {
+
+	}
+
+	&[data-variant="pills"] {
+
+	}
+
+	&__indicator {
+		position: absolute;
+		background-color: var(--color);
+
+		&[data-orientation="horizontal"] {
+			bottom: -2px;
+		}
+
+		&[data-orientation="vertical"] {
+			right: -2px;
+		}
 	}
 }
 
 .tabs__list {
+	position: relative;
 	display: flex;
 
 	&[data-orientation="horizontal"] {
 		flex-direction: row;
 		column-gap: var(--spacing);
+		border-bottom: 0.125rem solid var(--serenity-tabs-border-color);
 	}
 
 	&[data-orientation="vertical"] {
 		flex-direction: column;
 		row-gap: var(--spacing);
+		border-right: 0.125rem solid var(--serenity-tabs-border-color);
 	}
 }
+
+.tabs__item {
+	border: none;
+	background-color: unset;
+	color: var(--serenity-tabs-text-color);
+	cursor: pointer;
+	padding-block: 0.625rem;
+	padding-inline: 1rem 0.625rem;
+
+	&[data-selected] {
+		background-color: var(--serenity-tabs-border-color);
+	}
+
+	&:not([data-selected]):hover {
+		background-color: var(--serenity-tabs-hover-color);
+	}
+}
+
+@include defineDarkVariables((
+	"tabs-border-color": rgb(55, 58, 64),
+	"tabs-text-color": #fff,
+	"tabs-hover-color": rgb(37, 38, 43)
+));
+
+@include defineLightVariables((
+	"tabs-border-color": rgb(222, 226, 230),
+	"tabs-text-color": #000,
+	"tabs-hover-color": rgb(248, 249, 250)
+));
