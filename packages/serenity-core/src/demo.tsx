@@ -1,21 +1,5 @@
 import { mdiCheck, mdiLock } from "@mdi/js";
-
-import {
-	Accordion,
-	AccordionProps,
-	AccordionTrigger,
-	Button,
-	Divider,
-	Icon,
-	InputField,
-	Layout,
-	Paper,
-	Row,
-	useSerenity
-} from "../lib";
-import { Unit } from "../lib/components/unit";
-import { Tabs } from "../lib/components/tabs";
-import { Accordion, AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Button, Divider, Icon, InputField, Layout, Paper, useSerenity } from "../lib";
+import { Accordion, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, useSerenity } from "../lib";
 import { Tab, TabList, Tabs } from "../lib/components/tabs";
 
 const SomeAccordion = (props: AccordionProps) => (
