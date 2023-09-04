@@ -107,34 +107,73 @@ export const DemoPage = () => {
 				type="password"
 			/>
 
-			{/* <TextAreaInput
-				variant="filled"
-				error={"This is an error"}
-				validationState="invalid"
-				label="Bericht"
-				description="Hier kan je je bericht invullen"
-			/> */}
+			<Column spacing={3}>
+				<Tabs orientation="horizontal">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
 
-			<Row>
-				<Unit bg="red" w={15}>
-					Aaaaa
-				</Unit>
-				<Unit bg="blue" flex={1}>
-					Bbbbbb
-				</Unit>
-			</Row>
-			<Tabs>
-				asdasd
-			<Tabs orientation="vertical">
-				<TabList>
-					<Tab value="a">
-						Tab 1
-					</Tab>
-					<Tab value="b">
-						Tab 2
-					</Tab>
-				</TabList>
-			</Tabs>
+				<Tabs orientation="horizontal" variant="outline">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="horizontal" variant="pills">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="vertical">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="vertical" variant="outline">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="vertical" variant="pills">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+			</Column>
 		</div>
 	);
 };

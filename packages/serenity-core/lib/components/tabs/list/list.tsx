@@ -29,7 +29,7 @@ const defaultTabListProps: DefaultProps<
 	TabListProps,
 	'spacing' | 'grow'
 > = {
-	spacing: 'sm',
+	spacing: "sm",
 	grow: false
 };
 

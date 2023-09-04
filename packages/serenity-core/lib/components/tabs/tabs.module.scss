@@ -19,24 +19,26 @@
 		}
 	}
 
-	&[data-variant="default"] {
-
-		.tabs__list {
-			
-		}
-	}
-
-	&[data-variant="outline"] {
-
-	}
-
-	&[data-variant="pills"] {
-
-	}
-
 	&__indicator {
+		display: none;
+	}
+}
+
+.tabs[data-variant="default"],
+.tabs[data-variant="pills"] {
+
+	.tabs__item:hover {
+		background-color: var(--serenity-tabs-hover-color);
+	}
+}
+
+.tabs[data-variant="default"] {
+
+	.tabs__indicator {
+		display: block;
 		position: absolute;
 		background-color: var(--color);
+		transition: 0.2s;
 
 		&[data-orientation="horizontal"] {
 			bottom: -2px;
@@ -46,6 +48,74 @@
 			right: -2px;
 		}
 	}
+
+	.tabs__list {
+
+		&[data-orientation="horizontal"] {
+			border-bottom: 0.125rem solid var(--serenity-tabs-border-color);
+		}
+
+		&[data-orientation="vertical"] {
+			border-right: 0.125rem solid var(--serenity-tabs-border-color);
+		}
+	}
+}
+
+.tabs[data-variant="outline"] {
+
+	.tabs__list {
+
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			transition: .2s;
+		}
+
+		&[data-orientation="horizontal"]::before {
+			border-top: 0.0625rem solid var(--serenity-tabs-border-color);
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
+		&[data-orientation="vertical"]::before {
+			border-left: 0.0625rem solid var(--serenity-tabs-border-color);
+			top: 0;
+			bottom: 0;
+			right: 0;
+		}
+	}
+
+	.tabs__item[data-selected] {
+		z-index: 1;
+
+		&[data-orientation="horizontal"] {
+			border-left: 0.0625rem solid var(--serenity-tabs-border-color);
+			border-right: 0.0625rem solid var(--serenity-tabs-border-color);
+			border-top: 0.0625rem solid var(--serenity-tabs-border-color);
+			border-bottom: 0.0625rem solid var(--serenity-body-background-color);
+		}
+
+		&[data-orientation="vertical"] {
+			border-left: 0.0625rem solid var(--serenity-tabs-border-color);
+			border-right: 0.0625rem solid var(--serenity-body-background-color);
+			border-top: 0.0625rem solid var(--serenity-tabs-border-color);
+			border-bottom: 0.0625rem solid var(--serenity-tabs-border-color);
+		}
+	}
+}
+
+.tabs[data-variant="pills"] {
+
+	.tabs__list {
+		gap: var(--spacing);
+	}
+
+	.tabs__item[data-selected] {
+		background-color: var(--color);
+		border-radius: var(--radius);
+	}
 }
 
 .tabs__list {
@@ -54,14 +124,10 @@
 
 	&[data-orientation="horizontal"] {
 		flex-direction: row;
-		column-gap: var(--spacing);
-		border-bottom: 0.125rem solid var(--serenity-tabs-border-color);
 	}
 
 	&[data-orientation="vertical"] {
 		flex-direction: column;
-		row-gap: var(--spacing);
-		border-right: 0.125rem solid var(--serenity-tabs-border-color);
 	}
 }
 
@@ -70,17 +136,22 @@
 	background-color: unset;
 	color: var(--serenity-tabs-text-color);
 	cursor: pointer;
-	padding-block: 0.625rem;
-	padding-inline: 1rem 0.625rem;
+	padding: var(--serenity-tabs-item-padding);
 
-	&[data-selected] {
-		background-color: var(--serenity-tabs-border-color);
+	&[data-orientation="horizontal"] {
+		border-top-left-radius: var(--radius);
+		border-top-right-radius: var(--radius);
 	}
 
-	&:not([data-selected]):hover {
-		background-color: var(--serenity-tabs-hover-color);
+	&[data-orientation="vertical"] {
+		border-top-left-radius: var(--radius);
+		border-bottom-left-radius: var(--radius);
 	}
 }
+
+@include defineVariables((
+	"tabs-item-padding": "0.625rem 1.125rem",
+));
 
 @include defineDarkVariables((
 	"tabs-border-color": rgb(55, 58, 64),
@@ -91,5 +162,5 @@
 @include defineLightVariables((
 	"tabs-border-color": rgb(222, 226, 230),
 	"tabs-text-color": #000,
-	"tabs-hover-color": rgb(248, 249, 250)
+	"tabs-hover-color": rgb(248, 249, 250),
 ));
