@@ -3,7 +3,6 @@
 	column-gap: var(--spacing);
 	align-items: var(--align);
 	justify-content: var(--justify);
-	flex-direction: var(--direction);
 
 	&[data-direction='row'] {
 		flex-direction: row;
