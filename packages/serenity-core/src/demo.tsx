@@ -1,20 +1,6 @@
-import { mdiCheck } from "@mdi/js";
-
-import {
-	Accordion,
-	AccordionProps,
-	AccordionTrigger,
-	Button,
-	Divider,
-	Icon,
-	Layout,
-	Paper,
-	Row,
-	TextAreaInput,
-	TextInput,
-	useSerenity
-} from "../lib";
-import { Unit } from "../lib/components/unit";
+import { mdiCheck, mdiLock } from "@mdi/js";
+import { Accordion, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, useSerenity } from "../lib";
+import { Tab, TabList, Tabs } from "../lib/components/tabs";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -100,27 +86,78 @@ export const DemoPage = () => {
 				placeholder="Gebruikersnaam"
 				onchange={console.log}
 				oninput={console.log}
-				leftSection={<Icon path={lock} color="dark.1" size={1} />}
-				rightSection={<Icon path={lock} color="dark.1" size={1} />}
+				leftSection={<Icon path={mdiLock} color="dark.1" size={1} />}
+				rightSection={<Icon path={mdiLock} color="dark.1" size={1} />}
 				type="password"
 			/>
 
-			{/* <TextAreaInput
-				variant="filled"
-				error={"This is an error"}
-				validationState="invalid"
-				label="Bericht"
-				description="Hier kan je je bericht invullen"
-			/> */}
+			<Column spacing={3}>
+				<Tabs orientation="horizontal">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
 
-			<Row>
-				<Unit bg="red" w={15}>
-					Aaaaa
-				</Unit>
-				<Unit bg="blue" flex={1}>
-					Bbbbbb
-				</Unit>
-			</Row>
+				<Tabs orientation="horizontal" variant="outline">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="horizontal" variant="pills">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="vertical">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="vertical" variant="outline">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="vertical" variant="pills">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+			</Column>
 		</div>
 	);
 };
