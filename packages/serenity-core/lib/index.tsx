@@ -3,6 +3,7 @@ import "./styles/global.scss";
 export * from "./provider";
 
 export * from "./components/accordion";
+export * from "./components/badge";
 export * from "./components/button";
 export * from "./components/chevron";
 export * from "./components/column";
