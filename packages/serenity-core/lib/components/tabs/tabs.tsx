@@ -1,12 +1,26 @@
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { Color, cssvars, cx, resolveColorInput } from "@serenity-ui/styles";
+import { Color, Size, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 import { mergeProps, splitProps } from "solid-js";
 import classes from "./tabs.module.scss";
 
 interface TabsProps extends KobalteTabs.TabsRootProps {
+
+	/**
+	 * Different styles how to present the tabs component.
+	 */
 	variant?: "default" | "outline" | "pills";
+
+	/**
+	 * the background color of the tab and indicator when active.
+	 * only applies to the default variant and the pills variant.
+	*/
 	color?: Color;
+
+	/**
+	 * The border-radius of the tab items within the component.
+	 */
+	radius?: Size | number;
 }
 
 const splitTabsProps = [
@@ -14,15 +28,17 @@ const splitTabsProps = [
 	"style",
 	"variant",
 	"color",
-	"children"
+	"children",
+	"radius"
 ] as const;
 
 const defaultTabsProps: DefaultProps<
 	TabsProps,
-	'variant' | 'color'
+	'variant' | 'color' | 'radius'
 > = {
 	variant: "default",
-	color: "blue"
+	color: "blue",
+	radius: 'sm'
 };
 
 function Tabs(props: TabsProps) {
@@ -32,7 +48,8 @@ function Tabs(props: TabsProps) {
 
 	const cssVariables = () => {
 		const color = resolveColorInput(baseProps.color, 6);
-		return cssvars({ color });
+		const radius = resolveSize("radius", baseProps.radius, "rem");
+		return cssvars({ color, radius });
 	};
 
 	return (

@@ -1,5 +1,5 @@
 import { mdiCheck, mdiLock } from "@mdi/js";
-import { Accordion, AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Button, Divider, Icon, InputField, Layout, Paper, useSerenity } from "../lib";
+import { Accordion, AccordionContent, AccordionHeader, AccordionItem, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
 import { Tab, TabList, Tabs } from "../lib/components/tabs";
 
 const SomeAccordion = (props: AccordionProps) => (
@@ -91,16 +91,73 @@ export const DemoPage = () => {
 				type="password"
 			/>
 
-			<Tabs orientation="vertical">
-				<TabList>
-					<Tab value="a">
-						Tab 1
-					</Tab>
-					<Tab value="b">
-						Tab 2
-					</Tab>
-				</TabList>
-			</Tabs>
+			<Column spacing={3}>
+				<Tabs orientation="horizontal">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="horizontal" variant="outline">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="horizontal" variant="pills">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="vertical">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="vertical" variant="outline">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+
+				<Tabs orientation="vertical" variant="pills">
+					<TabList>
+						<Tab value="a">
+							Gallery
+						</Tab>
+						<Tab value="b">
+							Messages
+						</Tab>
+					</TabList>
+				</Tabs>
+			</Column>
 		</div>
 	);
 };
