@@ -1,27 +1,24 @@
-import { JSX } from "solid-js";
-import { DefaultProps } from "../../util/types";
+import { JSX, splitProps } from "solid-js";
+import { SerenityBaseProps, UTILITY_NAMES, buildStyles } from "@serenity-ui/styles";
 
-type TextProps<T extends keyof JSX.IntrinsicElements> = {
-	as?: T;
-} & JSX.IntrinsicElements[T];
+interface TextProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLParagraphElement> {
 
-const defaultTextProps: DefaultProps<TextProps<"p">, 'as'> = {
-	as: "p"
-};
+}
 
-function Text<T extends keyof JSX.IntrinsicElements>(props: TextProps<T>) {
+function Text(props: TextProps) {
+	const [utils, rest] = splitProps(props, UTILITY_NAMES);
+	const styles = buildStyles(utils, rest.style);
 
 	const Component = "p";
 
 	return (
-		<Component>
+		<Component
+			{...styles}
+			{...rest}
+		>
 			{props.children as JSX.Element}
 		</Component>
 	);
 }
 
-export {
-	Text,
-	TextProps,
-	defaultTextProps
-};
+export { Text, TextProps };

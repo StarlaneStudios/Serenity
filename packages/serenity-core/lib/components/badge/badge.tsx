@@ -1,10 +1,10 @@
-import { Color, Size, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, cssvars, cx, resolveColorInput, resolveSize, buildStyles } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./badge.module.scss";
 import { variants } from "../../constants/variants";
 
-interface BadgeProps extends JSX.HTMLAttributes<HTMLDivElement> {
+interface BadgeProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 
 	/**
 	 * The color of the badge.
@@ -61,7 +61,7 @@ const defaultBadgeProps: DefaultProps<
 
 function Badge(props: BadgeProps) {
 
-	const [root, other] = splitProps(props, badgeSplitProps);
+	const [root, utils, other] = splitProps(props, badgeSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultBadgeProps, root);
 
 	const cssVariables = () => {
@@ -80,11 +80,13 @@ function Badge(props: BadgeProps) {
 		return cssvars({ radius, size, padding, height, "font-size": fontSize, ...variant });
 	};
 
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
+
 	return (
 		<div
 			class={cx(classes.badge, baseProps.class)}
-			style={Object.assign(cssVariables(), baseProps.style)}
 			data-variant={baseProps.variant}
+			{...styles}
 			{...other}
 		>
 			<span class={baseProps.styles.label}>

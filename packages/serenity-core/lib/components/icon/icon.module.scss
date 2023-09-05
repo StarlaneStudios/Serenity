@@ -16,11 +16,11 @@
 	// Nudges
 	$nudge-amount: 0.5rem;
 
-	&[data-nudge-left] {
+	&[data-nudge-start] {
 		margin-right: $nudge-amount;
 	}
 
-	&[data-nudge-right] {
+	&[data-nudge-left] {
 		margin-left: $nudge-amount;
 	}
 

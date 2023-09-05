@@ -1,9 +1,9 @@
-import { Color, Size, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./loader.module.scss";
 
-interface LoaderProps extends JSX.HTMLAttributes<HTMLSpanElement> {
+interface LoaderProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLSpanElement> {
 
 	/**
 	 * The duration of the animation in milliseconds.
@@ -43,7 +43,7 @@ const defaultLoaderProps: DefaultProps<
 
 function Loader(props: LoaderProps) {
 
-	const [root, other] = splitProps(props, loaderSplitProps);
+	const [root, utils, other] = splitProps(props, loaderSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultLoaderProps, root);
 
 	const cssVariables = () => cssvars({
@@ -53,11 +53,13 @@ function Loader(props: LoaderProps) {
 		"background-color": resolveColorInput(baseProps.color, 6) + "aa"
 	});
 
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
+
 	return (
 		<span
 			class={cx(classes.loader, baseProps.class)}
-			style={Object.assign(cssVariables(), baseProps.style)}
 			role="presentation"
+			{...styles}
 			{...other}
 		/>
 	);

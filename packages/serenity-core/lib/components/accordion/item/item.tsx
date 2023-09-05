@@ -1,15 +1,16 @@
 import classes from "../accordion.module.scss";
 import { JSX, splitProps } from "solid-js";
 import { Accordion, As } from "@kobalte/core";
-import { cx } from "@serenity-ui/styles";
+import { SerenityBaseProps, UTILITY_NAMES, buildStyles, cx } from "@serenity-ui/styles";
 
-interface AccordionItemProps extends JSX.HTMLAttributes<HTMLDivElement> {
+interface AccordionItemProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	value: string;
 }
 
 const splitAccordionItemProps = [
 	"children",
-	"class"
+	"class",
+	"style"
 ] as const;
 
 const splitAccordionItemKobalteProps = [
@@ -17,7 +18,8 @@ const splitAccordionItemKobalteProps = [
 ] as const;
 
 function AccordionItem(props: AccordionItemProps) {
-	const [root, kobalte, other] = splitProps(props, splitAccordionItemProps, splitAccordionItemKobalteProps);
+	const [root, kobalte, util, other] = splitProps(props, splitAccordionItemProps, splitAccordionItemKobalteProps, UTILITY_NAMES);
+	const styles = buildStyles(util, root.style);
 
 	return (
 		<Accordion.Item 
@@ -27,6 +29,7 @@ function AccordionItem(props: AccordionItemProps) {
 		>
 			<As
 				component="div"
+				{...styles}
 				{...other}
 			>
 				{root.children}

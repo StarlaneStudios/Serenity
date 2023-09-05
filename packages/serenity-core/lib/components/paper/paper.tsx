@@ -45,11 +45,11 @@ function Paper(props: PaperProps) {
 		});
 	};
 
-	const styles = buildStyles(utils, root.style, cssVariables());
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<div
-			class={cx(classes.paper, root.class)}
+			class={cx(classes.paper, baseProps.class)}
 			data-border={resolveBorder(baseProps.border)}
 			{...styles}
 			{...other}

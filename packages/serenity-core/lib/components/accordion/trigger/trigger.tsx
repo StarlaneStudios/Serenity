@@ -2,11 +2,11 @@ import classes from "../accordion.module.scss";
 import { mergeProps, splitProps } from "solid-js";
 import { Row, RowProps } from "../../row";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
-import { cx } from "@serenity-ui/styles";
+import { SerenityBaseProps, UTILITY_NAMES, buildStyles, cx } from "@serenity-ui/styles";
 import { Chevron } from "../../chevron";
 import { DefaultProps } from "../../../util/types";
 
-interface AccordionTriggerProps extends RowProps {
+interface AccordionTriggerProps extends SerenityBaseProps, RowProps {
 
 }
 
@@ -15,7 +15,8 @@ const accordionTriggerSplitProps = [
 	"class",
 	"align",
 	"justify",
-	"noWrap"
+	"noWrap",
+	"style"
 ] as const;
 
 const defaultAccordionTriggerProps: DefaultProps<AccordionTriggerProps, 'align' | 'justify' | 'noWrap'> = {
@@ -26,8 +27,9 @@ const defaultAccordionTriggerProps: DefaultProps<AccordionTriggerProps, 'align' 
 
 function AccordionTrigger(props: AccordionTriggerProps) {
 
-	const [root, other] = splitProps(props, accordionTriggerSplitProps);
+	const [root, utils, other] = splitProps(props, accordionTriggerSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultAccordionTriggerProps, root);
+	const styles = buildStyles(utils, baseProps.style);
 
 	return (
 		<KobalteAccordion.Trigger
@@ -39,6 +41,7 @@ function AccordionTrigger(props: AccordionTriggerProps) {
 				noWrap={baseProps.noWrap}
 				align={baseProps.align}
 				justify={baseProps.justify}
+				{...styles}
 				{...other}
 			>
 				{root.children}

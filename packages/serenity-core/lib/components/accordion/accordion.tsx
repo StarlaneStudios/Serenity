@@ -1,11 +1,11 @@
 import classes from "./accordion.module.scss";
 import { mergeProps, splitProps } from "solid-js";
 import { Column, ColumnProps } from "../column";
-import { Size, cssvars, cx, resolveSize } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveSize } from "@serenity-ui/styles";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";
 
-interface AccordionProps extends Omit<ColumnProps, 'align' | 'justify'> {
+interface AccordionProps extends SerenityBaseProps, Omit<ColumnProps, 'align' | 'justify'> {
 	variant?: "default" | "contained" | "seperated" | "filled";
 	multiple?: boolean;
 	radius?: Size | number;
@@ -39,7 +39,7 @@ const AccordionSplitProps = [
 
 function Accordion(props: AccordionProps) {
 
-	const [root, kobalte, other] = splitProps(props, AccordionSplitProps, KobalteAccordionProps);
+	const [root, kobalte, utils, other] = splitProps(props, AccordionSplitProps, KobalteAccordionProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultAccrodionProps, root);
 
 	const cssVariables = () => {
@@ -48,6 +48,8 @@ function Accordion(props: AccordionProps) {
 			"radius": resolveSize("radius", baseProps.radius, "rem")
 		});
 	};
+
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<KobalteAccordion.Root
@@ -61,7 +63,7 @@ function Accordion(props: AccordionProps) {
 				data-no-chevron-animation={baseProps.noChevronAnimation}
 				spacing={baseProps.variant === "seperated" ? baseProps.spacing : 0}
 				children={baseProps.children}
-				style={Object.assign(cssVariables(), baseProps.style)}
+				{...styles}
 				{...other}
 			/>
 		</KobalteAccordion.Root>

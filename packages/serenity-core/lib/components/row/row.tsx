@@ -49,18 +49,18 @@ function Row(props: RowProps) {
 		});
 	};
 
-	const styles = buildStyles(utils, root.style);
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<div
-			class={cx(classes.row, root.class)}
-			data-grow={root.grow}
-			data-no-wrap={root.noWrap}
-			data-direction={root.direction ?? "row"}
+			class={cx(classes.row, baseProps.class)}
+			data-grow={baseProps.grow}
+			data-no-wrap={baseProps.noWrap}
+			data-direction={baseProps.direction ?? "row"}
 			{...styles}
 			{...other}
 		>
-			{root.children}
+			{baseProps.children}
 		</div>
 	);
 }

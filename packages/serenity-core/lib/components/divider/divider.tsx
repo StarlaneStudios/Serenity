@@ -1,10 +1,10 @@
 import classes from "./divider.module.scss";
-import { Size, Color, cssvars, cx, resolveSize, resolveColorInput } from "@serenity-ui/styles";
+import { Size, Color, cssvars, cx, resolveSize, resolveColorInput, SerenityBaseProps, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import { DefaultProps } from "../../util/types";
 
-interface DividerProps extends JSX.HTMLAttributes<HTMLDivElement> {
+interface DividerProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	color?: Color;
 	thickness?: Size | number;
 	orientation?: "horizontal" | "vertical";
@@ -36,7 +36,7 @@ const defaultDividerProps: DefaultProps<DividerProps, 'thickness' | 'orientation
 
 function Divider(props: DividerProps) {
 
-	const [root, other] = splitProps(props, dividerSplitProps);
+	const [root, utils, other] = splitProps(props, dividerSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultDividerProps, root);
 
 	const cssVariables = () => cssvars({
@@ -45,12 +45,14 @@ function Divider(props: DividerProps) {
 		"border-variant": baseProps.variant
 	});
 
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
+
 	return (
 		<div
 			class={cx(classes.divider, baseProps.class)}
 			role="separator"
 			aria-orientation={baseProps.orientation}
-			style={Object.assign(cssVariables(), baseProps.style)}
+			{...styles}
 			{...other}
 		>
 			<span
