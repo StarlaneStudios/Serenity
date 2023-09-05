@@ -1,5 +1,5 @@
 import classes from "./unit.module.scss";
-import { JSX, splitProps } from "solid-js";
+import { JSX, createUniqueId, splitProps } from "solid-js";
 import { SerenityBaseProps, UTILITY_NAMES, cx, buildStyles } from "@serenity-ui/styles";
 
 interface UnitProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {

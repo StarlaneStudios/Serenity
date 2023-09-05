@@ -63,9 +63,11 @@ export function buildStyles<
 	const variables: JSX.CSSProperties = {};
 	const keys: string[] = [];
 
-	for (const [key, value] of Object.entries(utils)) {
+	for (const key in utils) {
+
+		const value = utils[key as keyof U];
 		const parser = UTILITY_PARSERS[key as keyof UtilityParsers];
-		
+
 		variables[`--serenity-util-${key}`] = parser ? parser(value) : value;
 		keys.push(key);
 	}

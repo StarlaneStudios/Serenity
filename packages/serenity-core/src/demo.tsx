@@ -1,4 +1,5 @@
-import { Accordion, AccordionProps, AccordionTrigger, useSerenity } from "../lib";
+import { Accordion, AccordionProps, AccordionTrigger, Badge, Button, Column, Divider, Icon, InputField, Layout, Loader, Paper, Row, Tab, TabList, Tabs, useSerenity } from "../lib";
+import { Unit } from "../lib/components/unit";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -50,15 +51,11 @@ export const DemoPage = () => {
 			>
 				Reee
 			</Unit>
-			{/* <h1>
+			<h1>
 				This is an test
 			</h1>
 			<Button size="md">
 				Save
-				<Icon
-					path={mdiCheck}
-					right
-				/>
 			</Button>
 			<Divider labelPosition="right">
 				<Button size="xs" color="cyan" onClick={toggleTheme}>
@@ -93,8 +90,8 @@ export const DemoPage = () => {
 				placeholder="Gebruikersnaam"
 				onchange={console.log}
 				oninput={console.log}
-				leftSection={<Icon path={mdiLock} color="dark.1" size={1} />}
-				rightSection={<Icon path={mdiLock} color="dark.1" size={1} />}
+				// leftSection={<Icon path={mdiLock} color="dark.1" size={1} />}
+				// rightSection={<Icon path={mdiLock} color="dark.1" size={1} />}
 				type="password"
 			/>
 

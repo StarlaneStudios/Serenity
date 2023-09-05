@@ -56,7 +56,7 @@ export function cssvars<T extends Record<string, string | undefined | null>,>(ma
 export function resolveSize(varName: string, size: Size | number, unit: UnitType) {
 
 	if (typeof size === 'number') {
-		return `${size}${unit}`;
+		return size + unit;
 	}
 
 	return resolveModifier(varName, size);
@@ -99,15 +99,15 @@ export function resolveGridSpacing(
 ) {
 
 	if(typeof spacing === 'number') {
-		return `${spacing}${unit}`;
+		return spacing + unit;
 	}
 
 	if(Array.isArray(spacing)) {
 		
-		const x = resolveSize(varName, spacing[0], unit);
-		const y = resolveSize(varName, spacing[1], unit);
+		const block = resolveSize(varName, spacing[0], unit);
+		const inline = resolveSize(varName, spacing[1], unit);
 
-		return `${x} ${y}`;
+		return `${block} ${inline}`;
 	}
 
 	return resolveModifier(varName, spacing);

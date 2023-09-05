@@ -49,16 +49,6 @@ const splitBaseInputProps = [
 	"rightSection"
 ] as const;
 
-const kobalteTextFieldProps = [
-	"value",
-	"defaultValue",
-	"onChange",
-	"name",
-	"required",
-	"disabled",
-	"readOnly"
-] as const;
-
 const kobalteTextFieldErrorProps = [
 	"forceMount",
 	"validationState"
@@ -72,10 +62,9 @@ const fieldInputSplitProps = [
 
 function BaseInput<P>(props: BaseInputProps<P>) {
 
-	const [root, kobalte, error, util] = splitProps(
+	const [root, error, util, other] = splitProps(
 		props,
 		splitBaseInputProps,
-		kobalteTextFieldProps,
 		kobalteTextFieldErrorProps,
 		UTILITY_NAMES
 	);
@@ -97,7 +86,7 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 			data-variant={props.variant}
 			validationState={props.error ? 'invalid' : 'valid'}
 			{...styles}
-			{...kobalte}
+			{...other}
 		>
 			<Show when={props.label}>
 				<TextField.Label class={defaultBaseInputProps.styles.label}>
