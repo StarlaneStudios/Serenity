@@ -74,6 +74,6 @@ export function buildStyles<
 
 	return {
 		style: Object.assign(variables, ...style),
-		'data-style': `-${keys.join('-')}-`
+		'data-style': keys.length > 0 ? `-${keys.join('-')}-` : undefined
 	};
 }
