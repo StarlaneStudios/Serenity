@@ -1,10 +1,10 @@
-import { Tabs as KobalteTabs } from "@kobalte/core";
-import { Size, cssvars, cx, resolveSize } from "@serenity-ui/styles";
-import { mergeProps, splitProps } from "solid-js";
 import classes from "../tabs.module.scss";
+import { Tabs as KobalteTabs } from "@kobalte/core";
+import { SerenityBaseProps, Size, cssvars, cx, resolveSize, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
+import { mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../../util/types";
 
-interface TabListProps extends KobalteTabs.TabsListProps {
+interface TabListProps extends SerenityBaseProps, KobalteTabs.TabsListProps {
 
 	/**
 	 * How much spacing should be applied between the items
@@ -35,7 +35,7 @@ const defaultTabListProps: DefaultProps<
 
 function TabList(props: TabListProps) {
 
-	const [root, other] = splitProps(props, tabListSplitProps);
+	const [root, utils, other] = splitProps(props, tabListSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultTabListProps, root);
 
 	const cssVariables = () => {
@@ -43,11 +43,13 @@ function TabList(props: TabListProps) {
 		return cssvars({ spacing });
 	};
 
+	const styles = buildStyles(utils, root.style, cssVariables());
+
 	return (
 		<KobalteTabs.List
 			class={cx(classes['tabs__list'], root.class)}
 			data-grow={baseProps.grow}
-			style={Object.assign(cssVariables(), root.style)}
+			{...styles}
 			{...other}
 		>
 			{baseProps.children}

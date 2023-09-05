@@ -1,24 +1,27 @@
-import { Tabs as KobalteTabs } from "@kobalte/core";
-import { splitProps } from "solid-js";
 import classes from "../tabs.module.scss";
-import { cx } from "@serenity-ui/styles";
+import { Tabs as KobalteTabs } from "@kobalte/core";
+import { SerenityBaseProps, cx, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
+import { splitProps } from "solid-js";
 
-interface TabProps extends KobalteTabs.TabsTriggerProps {
+interface TabProps extends SerenityBaseProps, KobalteTabs.TabsTriggerProps {
 
 }
 
 const tabSplitProps = [
 	"class",
+	"style",
 	"children"
 ] as const;
 
 function Tab(props: TabProps) {
 
-	const [root, other] = splitProps(props, tabSplitProps);
-
+	const [root, utils, other] = splitProps(props, tabSplitProps, UTILITY_NAMES);
+	const styles = buildStyles(utils, root.style);
+	
 	return (
 		<KobalteTabs.Trigger
 			class={cx(classes['tabs__item'], root.class)}
+			{...styles}
 			{...other}
 		>
 			{root.children}

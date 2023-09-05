@@ -1,6 +1,6 @@
 import classes from "./unit.module.scss";
-import { JSX } from "solid-js";
-import { SerenityBaseProps, cx, splitPropsWithStyle, } from "@serenity-ui/styles";
+import { JSX, splitProps } from "solid-js";
+import { SerenityBaseProps, UTILITY_NAMES, cx, buildStyles } from "@serenity-ui/styles";
 
 interface UnitProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 }
@@ -13,12 +13,13 @@ const unitSplitProps = [
 
 function Unit(props: UnitProps) {
 
-	const [style, root, other] = splitPropsWithStyle(props, unitSplitProps);
+	const [root, utils, other] = splitProps(props, unitSplitProps, UTILITY_NAMES);
+	const styles = buildStyles(utils, root.style);
 
 	return (
 		<div
 			class={cx(classes.unit, root.class)}
-			style={Object.assign(style, root.style)}
+			{...styles}
 			{...other}
 		>
 			{root.children}

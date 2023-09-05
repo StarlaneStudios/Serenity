@@ -1,9 +1,4 @@
-import { mdiCheck, mdiLock } from "@mdi/js";
-import { Accordion, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
-import { Tab, TabList, Tabs } from "../lib/components/tabs";
-import { Badge } from "../lib/components/badge";
-import { Loader } from "../lib/components/loader";
-import { createEffect, createSignal } from "solid-js";
+import { Accordion, AccordionProps, AccordionTrigger, useSerenity } from "../lib";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -46,7 +41,16 @@ export const DemoPage = () => {
 
 	return (
 		<div style={{ "padding-inline": "2rem" }}>
-			<h1>
+			<Unit
+				mt={3}
+				mb={2}
+				pos="relative"
+				z={4}
+				bg="red"
+			>
+				Reee
+			</Unit>
+			{/* <h1>
 				This is an test
 			</h1>
 			<Button size="md">
