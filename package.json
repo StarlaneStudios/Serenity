@@ -18,7 +18,8 @@
 		"core:build": "pnpm --filter '@serenity-ui/core' build",
 		"styles:build": "pnpm --filter '@serenity-ui/styles' build",
 		"utils:build": "pnpm --filter '@serenity-ui/utils' build",
-		"primitives:build": "pnpm --filter '@serenity-ui/primitives' build"
+		"primitives:build": "pnpm --filter '@serenity-ui/primitives' build",
+		"git:prune": "git fetch --prune && git branch --merged | grep -v '\\*' | xargs -r git branch -d && git remote prune origin"
 	},
 	"workspaces": [
 		"packages/*"

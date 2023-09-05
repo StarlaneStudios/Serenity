@@ -51,6 +51,15 @@
 			"icon": {
 				"id": "rocket"
 			}
+		},
+		{
+			"type": "npm",
+			"script": "git:prune",
+			"label": "Prune git branches",
+			"detail": "run git:prune",
+			"icon": {
+				"id": "git-branch"
+			}
 		}
 	]
 }
