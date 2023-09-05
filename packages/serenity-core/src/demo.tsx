@@ -4,6 +4,7 @@ import { Tab, TabList, Tabs } from "../lib/components/tabs";
 import { Badge } from "../lib/components/badge";
 import { Loader } from "../lib/components/loader";
 import { createEffect, createSignal } from "solid-js";
+import { Text } from "../lib/components/text";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -284,6 +285,14 @@ export const DemoPage = () => {
 				</Row>
 			</Column>
 			<Loader />
+
+			<Text as={Column} justify="center" style={{ height: "100%"}}>
+				<p>Hello Bruh momoasdf</p>
+				<p>Hello Bruh momoasdf</p>
+				<p>Hello Bruh momoasdf</p>
+				<p>Hello Bruh momoasdf</p>
+				<p>Hello Bruh momoasdf</p>
+			</Text>
 		</div>
 	);
 };

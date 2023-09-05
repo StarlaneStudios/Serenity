@@ -1,22 +1,32 @@
-import { JSX } from "solid-js";
+import { Component, ComponentProps, JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
+import { Dynamic } from "solid-js/web";
+import { Row } from "../row";
+import { ElementType } from "../../typings/polymorphic";
 
-type TextProps<T extends keyof JSX.IntrinsicElements> = {
+type TextProps<T extends ElementType = ElementType> = {
 	as?: T;
-} & JSX.IntrinsicElements[T];
+	children?: JSX.Element;
+}
 
-const defaultTextProps: DefaultProps<TextProps<"p">, 'as'> = {
+const defaultTextProps: DefaultProps<TextProps, 'as'> = {
 	as: "p"
 };
 
-function Text<T extends keyof JSX.IntrinsicElements>(props: TextProps<T>) {
+const textSplitProps = [
+	"as"
+] as const;
 
-	const Component = "p";
+function Text<T extends ElementType = "div">(props: TextProps<T> & Omit<ComponentProps<T>, keyof TextProps<T>>) {
+
+	const [root, other] = splitProps(props, textSplitProps);
+	const baseProps = mergeProps(defaultTextProps, root);
 
 	return (
-		<Component>
-			{props.children as JSX.Element}
-		</Component>
+		<Dynamic
+			component={baseProps.as || "p"}
+			{...other}
+		/>
 	);
 }
 
