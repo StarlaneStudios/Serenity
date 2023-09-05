@@ -1,6 +1,7 @@
 import { mdiCheck, mdiLock } from "@mdi/js";
-import { Accordion, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, useSerenity } from "../lib";
+import { Accordion, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
 import { Tab, TabList, Tabs } from "../lib/components/tabs";
+import { Badge } from "../lib/components/badge";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -39,7 +40,7 @@ const SomeAccordion = (props: AccordionProps) => (
 
 export const DemoPage = () => {
 
-	const { setTheme, toggleTheme, theme } = useSerenity();
+	const { toggleTheme } = useSerenity();
 
 	return (
 		<div style={{ "padding-inline": "2rem" }}>
@@ -157,6 +158,128 @@ export const DemoPage = () => {
 						</Tab>
 					</TabList>
 				</Tabs>
+
+				<div></div>
+
+				<Row>
+					<Badge variant="default" size="xs">
+						Default
+					</Badge>
+					<Badge variant="dot" size="xs">
+						Dot
+					</Badge>
+					<Badge variant="filled" size="xs">
+						Filled
+					</Badge>
+					<Badge variant="light" size="xs">
+						Light
+					</Badge>
+					<Badge variant="outline" size="xs">
+						Outline
+					</Badge>
+					<Badge variant="transparent" size="xs">
+						Transparent
+					</Badge>
+					<Badge variant="white" size="xs">
+						White
+					</Badge>
+				</Row>
+
+				<Row>
+					<Badge variant="default" size="sm">
+						Default
+					</Badge>
+					<Badge variant="dot" size="sm">
+						Dot
+					</Badge>
+					<Badge variant="filled" size="sm">
+						Filled
+					</Badge>
+					<Badge variant="light" size="sm">
+						Light
+					</Badge>
+					<Badge variant="outline" size="sm">
+						Outline
+					</Badge>
+					<Badge variant="transparent" size="sm">
+						Transparent
+					</Badge>
+					<Badge variant="white" size="sm">
+						White
+					</Badge>
+				</Row>
+
+				<Row>
+					<Badge variant="default" size="md">
+						Default
+					</Badge>
+					<Badge variant="dot" size="md">
+						Dot
+					</Badge>
+					<Badge variant="filled" size="md">
+						Filled
+					</Badge>
+					<Badge variant="light" size="md">
+						Light
+					</Badge>
+					<Badge variant="outline" size="md">
+						Outline
+					</Badge>
+					<Badge variant="transparent" size="md">
+						Transparent
+					</Badge>
+					<Badge variant="white" size="md">
+						White
+					</Badge>
+				</Row>
+
+				<Row>
+					<Badge variant="default" size="lg">
+						Default
+					</Badge>
+					<Badge variant="dot" size="lg">
+						Dot
+					</Badge>
+					<Badge variant="filled" size="lg">
+						Filled
+					</Badge>
+					<Badge variant="light" size="lg">
+						Light
+					</Badge>
+					<Badge variant="outline" size="lg">
+						Outline
+					</Badge>
+					<Badge variant="transparent" size="lg">
+						Transparent
+					</Badge>
+					<Badge variant="white" size="lg">
+						White
+					</Badge>
+				</Row>
+
+				<Row>
+					<Badge variant="default" size="xl">
+						Default
+					</Badge>
+					<Badge variant="dot" size="xl" radius="xl">
+						Dot
+					</Badge>
+					<Badge variant="filled" size="xl">
+						Filled
+					</Badge>
+					<Badge variant="light" size="xl">
+						Light
+					</Badge>
+					<Badge variant="outline" size="xl">
+						Outline
+					</Badge>
+					<Badge variant="transparent" size="xl">
+						Transparent
+					</Badge>
+					<Badge variant="white" size="xl" radius="xl">
+						White
+					</Badge>
+				</Row>
 			</Column>
 		</div>
 	);
