@@ -1,0 +1,41 @@
+.loader {
+	width: var(--size);
+	height: var(--size);
+	display: inline-block;
+	
+	&::after {
+		content: "";
+		display: block;
+		border-radius: 100%;
+		border-width: calc(var(--size) / 6);
+		border-style: solid;
+		border-color: var(--background-color) var(--background-color) var(--background-color) var(--color);
+		height: var(--size);
+		width: var(--size);
+		animation: rotate var(--duration) linear infinite;
+	}
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg)
+	}
+
+	to {
+		transform: rotate(360deg)
+	}
+}
+
+@include defineVariables((
+	"loader-size-xs": 1rem,
+	"loader-size-sm": 1.5rem,
+	"loader-size-md": 2rem,
+	"loader-size-lg": 2.5rem,
+	"loader-size-xl": 3rem,
+
+	"loader-border-width-xs": 0.125rem,
+	"loader-border-width-sm": 0.25rem,
+	"loader-border-width-md": 0.375rem,
+	"loader-border-width-lg": 0.5rem,
+	"loader-border-width-xl": 0.625rem
+));
