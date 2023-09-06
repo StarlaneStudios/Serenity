@@ -1,5 +1,3 @@
-import "./styles/global.scss";
-
 export * from "./provider";
 
 export * from "./components/accordion";
@@ -17,3 +15,5 @@ export * from "./components/row";
 export * from "./components/spacer";
 export * from "./components/tabs";
 export * from "./components/unit";
+
+import "./styles/global.scss";
