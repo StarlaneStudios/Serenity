@@ -1,8 +1,8 @@
-import { type JSX } from 'solid-js';
-import { parseLength } from './functions/values';
-import { UtilityStyleProps } from './types/props';
+import { parseColor, parseLength } from './functions/values';
+import type { JSX } from 'solid-js';
+import type { UtilityStyleProps } from './types/props';
 
-type UtilityParsers = Partial<Record<keyof UtilityStyleProps, (arg: any) => string>>;
+type UtilityParsers = Partial<Record<keyof UtilityStyleProps, (arg: any) => string | undefined>>;
 
 export const UTILITY_NAMES = [
 	'm', 'my', 'mx', 'mt', 'mb', 'mr', 'ml',
@@ -46,6 +46,8 @@ export const UTILITY_PARSERS: UtilityParsers  = {
 	'bottom': parseLength,
 	'right': parseLength,
 	'inset': parseLength,
+	'bg': parseColor,
+	'tc': parseColor
 };
 
 /**
@@ -60,12 +62,12 @@ export function buildStyles<
 	S extends string | JSX.CSSProperties | undefined,
 	U extends UtilityStyleProps
 >(utils: U, ...style: S[]) {
-	const variables: JSX.CSSProperties = {};
+	const variables: Record<string, string | undefined> = {};
 	const keys: string[] = [];
 
 	for (const key in utils) {
 
-		const value = utils[key as keyof U];
+		const value = utils[key] as string;
 		const parser = UTILITY_PARSERS[key as keyof UtilityParsers];
 
 		variables[`--serenity-util-${key}`] = parser ? parser(value) : value;
