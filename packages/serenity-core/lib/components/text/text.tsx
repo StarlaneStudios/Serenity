@@ -1,31 +1,42 @@
-import { splitProps } from "solid-js";
-import { DefaultProps } from "../../util/types";
+import { JSX, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
-import { ElementType, PolymorphicUtilProps, PolymorphicProps } from "../../typings/polymorphic";
-import { UTILITY_NAMES, buildStyles } from "@serenity-ui/styles";
+import { ElementType, PolymorphicProps } from "../../typings/polymorphic";
+import { UTILITY_NAMES, buildStyles, cssvars, cx } from "@serenity-ui/styles";
+import classes from "./text.module.scss";
 
 interface TextProps {
-	weight?: "light" | "normal" | "medium" | "bold";
+	fontStyle?: JSX.CSSProperties['font-style'];
+	weight?: JSX.CSSProperties['font-weight'];
+	transform?: JSX.CSSProperties['text-transform'];
 }
 
-const defaultTextProps: DefaultProps<PolymorphicProps<TextProps>, 'as'> = {
-	as: "p"
-};
-
 const textSplitProps = [
-	"as"
+	'as',
+	'style',
+	'class',
+	'fontStyle',
+	'weight',
+	'transform'
 ] as const;
 
-function Text<T extends ElementType>(props: PolymorphicUtilProps<TextProps, T>) {
+function Text<TElement extends ElementType = "a">(props: PolymorphicProps<TextProps, TElement>) {
 
-	const [utils, root, other] = splitProps(props, UTILITY_NAMES, textSplitProps);
-	const styles = buildStyles(utils, other.style);
+	const [root, utils, other] = splitProps(props, textSplitProps, UTILITY_NAMES);
+
+	const cssVariables = () => cssvars({
+		'font-style': root.fontStyle,
+		'font-weight': root.weight,
+		'text-transform': root.transform
+	});
+
+	const styles = buildStyles(utils, root.style, cssVariables());
 
 	return (
 		<Dynamic
-			component={root.as || "p"}
-			{...other}
+			class={cx(classes.text, root.class)}
+			component={root.as || 'a'}
 			{...styles}
+			{...other}
 		/>
 	);
 }

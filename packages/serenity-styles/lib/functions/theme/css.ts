@@ -25,7 +25,7 @@ export function cx(...args: (string | false | undefined)[]) {
  * Converts a map of CSS variables into a string.
  * @param map
  */
-export function cssvars<T extends Record<string, string | undefined | null>>(map: T): JSX.CSSProperties {
+export function cssvars<T extends Record<string, string | undefined | number | null>>(map: T): JSX.CSSProperties {
 
 	if (!map) {
 		return {};

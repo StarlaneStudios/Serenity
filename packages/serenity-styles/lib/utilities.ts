@@ -20,7 +20,7 @@ export const UTILITY_NAMES = [
 	'z',
 ] as const;
 
-export const UTILITY_PARSERS: UtilityParsers  = {
+export const UTILITY_PARSERS: UtilityParsers = {
 	'm': parseLength,
 	'mt': parseLength,
 	'mb': parseLength,
@@ -59,9 +59,9 @@ export const UTILITY_PARSERS: UtilityParsers  = {
  * @returns Spreadable props
  */
 export function buildStyles<
-	S extends string | JSX.CSSProperties | undefined,
+	S extends string | JSX.CSSProperties,
 	U extends UtilityStyleProps
->(utils: U, ...style: S[]) {
+>(utils: U, ...style: (S | undefined)[]) {
 	const variables: Record<string, string | undefined> = {};
 	const keys: string[] = [];
 
