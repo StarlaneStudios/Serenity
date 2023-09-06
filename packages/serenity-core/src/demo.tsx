@@ -48,6 +48,11 @@ export const DemoPage = () => {
 
 	return (
 		<div style={{ "padding-inline": "2rem" }}>
+			<Paper
+				bg="transparent"
+			>
+				Ree
+			</Paper>
 			<Unit
 				mt={3}
 				mb={2}

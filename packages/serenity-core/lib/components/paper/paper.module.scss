@@ -1,25 +1,22 @@
 .paper {
 	display: block;
-	padding: var(--padding);
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow);
 }
 
 @mixin paper-border($color) {
 
-	$map: (t: top,
+	$map: (
+		t: top,
 		r: right,
 		b: bottom,
-		l: left);
+		l: left
+	);
 
 	.paper {
-
 		@content;
 
-		@each $dir in t,
-		r,
-		b,
-		l {
+		@each $dir in t, r, b, l {
 			$_dir: map-get($map, $dir);
 
 			&[data-border*=#{$dir}] {
