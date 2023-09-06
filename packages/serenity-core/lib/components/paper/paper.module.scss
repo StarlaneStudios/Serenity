@@ -2,6 +2,7 @@
 	display: block;
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow);
+	background-color: var(--serenity-body-background-color);
 }
 
 @mixin paper-border($color) {
@@ -32,7 +33,5 @@
 }
 
 @include isLight {
-	@include paper-border("--serenity-color-gray-3") {
-		background-color: white;
-	}
+	@include paper-border("--serenity-color-gray-3");
 }

@@ -49,7 +49,7 @@ export const DemoPage = () => {
 	return (
 		<div style={{ "padding-inline": "2rem" }}>
 			<Paper
-				bg="transparent"
+				bg="violet"
 			>
 				Ree
 			</Paper>
