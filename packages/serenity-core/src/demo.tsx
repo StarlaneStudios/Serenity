@@ -6,6 +6,7 @@ import { Loader } from "../lib/components/loader";
 import { createEffect, createSignal } from "solid-js";
 import { Text } from "../lib/components/text";
 import { Unit } from "../lib/components/unit";
+import { Alert } from "../lib/components/alert";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -47,9 +48,11 @@ export const DemoPage = () => {
 	const { toggleTheme } = useSerenity();
 
 	return (
-		<div>
-			
-		</div>
+		<Alert onClose={(event) => {}}>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+			libero ducimus voluptatem natus, 
+			id ipsa, sed enim minus eos aliquam quae totam quaerat nulla dignissimos?
+		</Alert>
 		// <div style={{ "padding-inline": "2rem" }}>
 		// 	<Unit
 		// 		mt={3}

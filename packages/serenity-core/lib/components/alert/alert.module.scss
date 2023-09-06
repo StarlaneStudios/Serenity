@@ -1,3 +1,19 @@
 .alert {
-	
+	display: flex;
+	padding: 1rem;
+
+	&__icon {}
+
+	&__body {}
+
+	&__title {}
+
+	&__message {}
+
+	&__close-icon {}
+}
+
+.alert[data-variant="default"] {
+	background-color: var(--serenity-body-background-color);
+	color: var(--serenity-text-color);
 }
