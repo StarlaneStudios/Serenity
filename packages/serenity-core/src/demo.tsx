@@ -1,4 +1,10 @@
-import { Accordion, AccordionProps, AccordionTrigger, Badge, Button, Column, Divider, Icon, InputField, Layout, Loader, Paper, Row, Tab, TabList, Tabs, useSerenity } from "../lib";
+import { mdiCheck, mdiLock } from "@mdi/js";
+import { Accordion, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
+import { Tab, TabList, Tabs } from "../lib/components/tabs";
+import { Badge } from "../lib/components/badge";
+import { Loader } from "../lib/components/loader";
+import { createEffect, createSignal } from "solid-js";
+import { Text } from "../lib/components/text";
 import { Unit } from "../lib/components/unit";
 
 const SomeAccordion = (props: AccordionProps) => (
@@ -285,6 +291,19 @@ export const DemoPage = () => {
 				</Row>
 			</Column>
 			<Loader />
+
+			<Text 
+				as={Column} 
+				justify="center" 
+				h={40}
+				bg="blue"
+			>
+				<p>Hello Bruh momoasdf</p>
+				<p>Hello Bruh momoasdf</p>
+				<p>Hello Bruh momoasdf</p>
+				<p>Hello Bruh momoasdf</p>
+				<p>Hello Bruh momoasdf</p>
+			</Text>
 		</div>
 	);
 };

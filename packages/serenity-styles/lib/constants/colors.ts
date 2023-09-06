@@ -1,7 +1,7 @@
 import { Tuple } from "@serenity-ui/utils";
 import { ColorNames } from "../types/values";
 
-export const DEFAULT_COLORS: Record<ColorNames, Tuple<string, 10>> = {
+export const DEFAULT_COLORS: Record<ColorNames | (string & {}), Tuple<string, 10>> = {
 	dark: [
 	  '#C1C2C5',
 	  '#A6A7AB',

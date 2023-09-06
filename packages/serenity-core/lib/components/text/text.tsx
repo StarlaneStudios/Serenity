@@ -1,23 +1,43 @@
 import { JSX, splitProps } from "solid-js";
-import { SerenityBaseProps, UTILITY_NAMES, buildStyles } from "@serenity-ui/styles";
+import { Dynamic } from "solid-js/web";
+import { ElementType, PolymorphicProps } from "../../typings/polymorphic";
+import { UTILITY_NAMES, buildStyles, cssvars, cx } from "@serenity-ui/styles";
+import classes from "./text.module.scss";
 
-interface TextProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLParagraphElement> {
-
+interface TextProps {
+	fontStyle?: JSX.CSSProperties['font-style'];
+	weight?: JSX.CSSProperties['font-weight'];
+	transform?: JSX.CSSProperties['text-transform'];
 }
 
-function Text(props: TextProps) {
-	const [utils, rest] = splitProps(props, UTILITY_NAMES);
-	const styles = buildStyles(utils, rest.style);
+const textSplitProps = [
+	'as',
+	'style',
+	'class',
+	'fontStyle',
+	'weight',
+	'transform'
+] as const;
 
-	const Component = "p";
+function Text<TElement extends ElementType = "p">(props: PolymorphicProps<TextProps, TElement>) {
+
+	const [root, utils, other] = splitProps(props, textSplitProps, UTILITY_NAMES);
+
+	const cssVariables = () => cssvars({
+		'font-style': root.fontStyle,
+		'font-weight': root.weight,
+		'text-transform': root.transform
+	});
+
+	const styles = buildStyles(utils, root.style, cssVariables());
 
 	return (
-		<Component
+		<Dynamic
+			class={cx(classes.text, root.class)}
+			component={root.as || 'p'}
 			{...styles}
-			{...rest}
-		>
-			{props.children as JSX.Element}
-		</Component>
+			{...other}
+		/>
 	);
 }
 
