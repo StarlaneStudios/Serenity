@@ -31,16 +31,13 @@ export function cssvars<T extends Record<string, string | undefined | null>>(map
 		return {};
 	}
 
-	const variables: JSX.CSSProperties = {};
-	const keys = Object.keys(map);
-	const length = keys.length;
+	const variables: Record<string, any> = {};
 
-	for (let i = 0; i < length; i++) {
-		const key = keys[i];
+	for (const key in map) {
 		const value = map[key];
 
 		if (value) {
-			variables[`--${key}`] = value;
+			variables["--" + key] = value;
 		}
 	}
 
@@ -118,17 +115,15 @@ export function resolveGridSpacing(
  * @param breakpoints
  * @returns string
  */
-export function resolveGridCols(breakpoints: Record<Size, number>) {
+export function resolveGridCols(breakpoints: Record<Size, number>): JSX.CSSProperties {
 
-	const keys = Object.keys(breakpoints) as Size[];
 	const variables = {} as Record<string, any>;
 
-	for (let i = 0; i < keys.length; i++) {
-		const key = keys[i];
-		const value = breakpoints[key];
+	for (const key in breakpoints) {
+		const value = breakpoints[key as Size];
 
 		if (value) {
-			variables[`--cols-${key}`] = value;
+			variables["--cols-" + key] = value;
 		}
 	}
 
