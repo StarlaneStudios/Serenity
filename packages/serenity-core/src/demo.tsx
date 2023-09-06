@@ -292,7 +292,12 @@ export const DemoPage = () => {
 			</Column>
 			<Loader />
 
-			<Text as={Column} justify="center" style={{ height: "100%"}}>
+			<Text 
+				as={Column} 
+				justify="center" 
+				h={40}
+				bg="blue"
+			>
 				<p>Hello Bruh momoasdf</p>
 				<p>Hello Bruh momoasdf</p>
 				<p>Hello Bruh momoasdf</p>
