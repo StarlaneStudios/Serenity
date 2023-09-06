@@ -1,5 +1,7 @@
 import { SIZE_UNITS } from "../constants/values";
+import { Color } from "../types/theme";
 import { Length } from "../types/values";
+import { resolveColorInput } from "./theme/color";
 import { $var } from "./theme/css";
 
 export function rem(value: number): string {
@@ -7,6 +9,7 @@ export function rem(value: number): string {
 }
 
 export function parseLength(value: Length): string {
+
 	if (typeof value == 'number') {
 		return rem(value);
 	}
@@ -17,4 +20,8 @@ export function parseLength(value: Length): string {
 	}
 
 	return value;
+}
+
+export function parseColor(value: Color): string | undefined {
+	return resolveColorInput(value);
 }

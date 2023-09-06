@@ -339,7 +339,7 @@ export function resolveColorInput(input?: string, defaultShade: number = 6): str
 
 	const parts = input.split('.');
 
-	const color = parts[0];
+	const color = parts[0] as Color;
 	const shade = parts[1];
 	const base = DEFAULT_COLORS[color];
 
