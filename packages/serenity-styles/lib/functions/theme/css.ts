@@ -1,5 +1,6 @@
 import { Tuple } from "@serenity-ui/utils";
 import { Size, UnitType } from "../../types/values";
+import { JSX } from "solid-js/jsx-runtime";
 
 /**
  * Returns a namespaced CSS variable
@@ -24,13 +25,13 @@ export function cx(...args: (string | false | undefined)[]) {
  * Converts a map of CSS variables into a string.
  * @param map
  */
-export function cssvars<T extends Record<string, string | undefined | null>>(map: T): T {
+export function cssvars<T extends Record<string, string | undefined | null>>(map: T): JSX.CSSProperties {
 
 	if (!map) {
-		return {} as T;
+		return {};
 	}
 
-	const variables = {} as Record<string, any>;
+	const variables: JSX.CSSProperties = {};
 	const keys = Object.keys(map);
 	const length = keys.length;
 
@@ -43,7 +44,7 @@ export function cssvars<T extends Record<string, string | undefined | null>>(map
 		}
 	}
 
-	return variables as T;
+	return variables;
 };
 
 /**
@@ -55,7 +56,7 @@ export function cssvars<T extends Record<string, string | undefined | null>>(map
 export function resolveSize(varName: string, size: Size | number, unit: UnitType) {
 
 	if (typeof size === 'number') {
-		return `${size}${unit}`;
+		return size + unit;
 	}
 
 	return resolveModifier(varName, size);
@@ -98,15 +99,15 @@ export function resolveGridSpacing(
 ) {
 
 	if(typeof spacing === 'number') {
-		return `${spacing}${unit}`;
+		return spacing + unit;
 	}
 
 	if(Array.isArray(spacing)) {
 		
-		const x = resolveSize(varName, spacing[0], unit);
-		const y = resolveSize(varName, spacing[1], unit);
+		const block = resolveSize(varName, spacing[0], unit);
+		const inline = resolveSize(varName, spacing[1], unit);
 
-		return `${x} ${y}`;
+		return `${block} ${inline}`;
 	}
 
 	return resolveModifier(varName, spacing);

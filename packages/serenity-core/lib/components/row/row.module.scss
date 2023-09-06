@@ -12,7 +12,7 @@
 		flex-direction: row-reverse;
 	}
 
-	&[data-grow]>* {
+	&[data-grow="true"]>* {
 		flex-grow: 1;
 	}
 

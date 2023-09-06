@@ -1,10 +1,10 @@
 import classes from "./layout.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { Size, cssvars, cx, resolveGridCols, resolveGridSpacing } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveGridCols, resolveGridSpacing } from "@serenity-ui/styles";
 import { Tuple } from "@serenity-ui/utils";
 import { DefaultProps } from "../../util/types";
 
-interface LayoutProps extends JSX.HTMLAttributes<HTMLDivElement> {
+interface LayoutProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	breakpoints?: Record<Size, number>;
 	spacing?: Size | number | Tuple<Size | number, 2>;
 }
@@ -30,24 +30,26 @@ const defaultLayoutProps: DefaultProps<LayoutProps, 'spacing' | 'breakpoints'> =
 
 function Layout(props: LayoutProps) {
 
-	const [root, other] = splitProps(props, layoutSplitProps);
+	const [root, utils, other] = splitProps(props, layoutSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultLayoutProps, root);
 
 	const cssVariables = () => {
 
 		const spacing = resolveGridSpacing(baseProps.spacing, "spacing", "rem");
-		const cols = resolveGridCols(baseProps.breakpoints, "cols");
+		const cols = resolveGridCols(baseProps.breakpoints);
 
 		const variables = cssvars({ spacing });
 
 		return Object.assign(variables, cols);
 	};
 
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
+
 	return (
 		<div
-			class={cx(classes.layout, root.class)}
+			class={cx(classes.layout, baseProps.class)}
 			role="grid"
-			style={Object.assign(cssVariables(), root.style)}
+			{...styles}
 			{...other}
 		>
 			{root.children}

@@ -1,12 +1,12 @@
 import classes from "./button.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { Variant, cssvars, cx, resolveModifier, resolveSize } from "@serenity-ui/styles";
+import { SerenityBaseProps, UTILITY_NAMES, Variant, buildStyles, cssvars, cx, resolveModifier, resolveSize } from "@serenity-ui/styles";
 import { Color, Size } from "@serenity-ui/styles";
 import { variants } from "../../constants/variants";
 import { Button as KobalteButton } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";
 
-interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends SerenityBaseProps, JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: Color;
 	size?: Size;
 	classes?: Record<'inner' | 'label', string>;
@@ -42,7 +42,7 @@ const defaultButtonProps: DefaultProps<ButtonProps, 'color' | 'size' | 'radius' 
 
 function Button(props: ButtonProps) {
 
-	const [root, other] = splitProps(props, buttonSplitProps);
+	const [root, utils, other] = splitProps(props, buttonSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultButtonProps, root);
 
 	const cssVariables = () => {
@@ -62,13 +62,15 @@ function Button(props: ButtonProps) {
 		});
 	};
 
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
+
 	return (
 		<KobalteButton.Root
 			class={cx(baseProps.class, classes.button)}
 			data-variant={baseProps.variant}
 			data-loading={baseProps.loading}
 			aria-disabled={other.disabled}
-			style={Object.assign(cssVariables(), baseProps.style)}
+			{...styles}
 			{...other}
 		>
 			<span class={baseProps.classes.inner}>

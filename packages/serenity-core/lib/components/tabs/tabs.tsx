@@ -1,10 +1,10 @@
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { Color, Size, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, cssvars, cx, resolveColorInput, resolveSize, buildStyles } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 import { mergeProps, splitProps } from "solid-js";
 import classes from "./tabs.module.scss";
 
-interface TabsProps extends KobalteTabs.TabsRootProps {
+interface TabsProps extends SerenityBaseProps, KobalteTabs.TabsRootProps {
 
 	/**
 	 * Different styles how to present the tabs component.
@@ -43,20 +43,22 @@ const defaultTabsProps: DefaultProps<
 
 function Tabs(props: TabsProps) {
 
-	const [root, other] = splitProps(props, splitTabsProps);
+	const [root, utils, other] = splitProps(props, splitTabsProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultTabsProps, root);
-
+	
 	const cssVariables = () => {
 		const color = resolveColorInput(baseProps.color, 6);
 		const radius = resolveSize("radius", baseProps.radius, "rem");
 		return cssvars({ color, radius });
 	};
 
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
+
 	return (
 		<KobalteTabs.Root
-			class={cx(classes.tabs, root.class)}
+			class={cx(classes.tabs, baseProps.class)}
 			data-variant={baseProps.variant}
-			style={Object.assign(cssVariables(), root.style)}
+			{...styles}
 			{...other}
 		>
 			{props.children}

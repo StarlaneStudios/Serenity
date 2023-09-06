@@ -1,9 +1,9 @@
 import classes from "./column.module.scss";
 import { splitProps, JSX, mergeProps } from "solid-js";
-import { cssvars, cx, resolveSize, Size } from "@serenity-ui/styles";
+import { buildStyles, cssvars, cx, resolveSize, SerenityBaseProps, Size, UTILITY_NAMES } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 
-interface ColumnProps extends JSX.HTMLAttributes<HTMLDivElement> {
+interface ColumnProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	spacing?: number | Size;
 	direction?: "column" | "column-reverse";
 	justify?: JSX.CSSProperties["justify-content"];
@@ -29,7 +29,7 @@ const defaultColumnProps: DefaultProps<ColumnProps, 'spacing' | 'justify' | 'ali
 
 function Column(props: ColumnProps) {
 
-	const [root, other] = splitProps(props, columnSplitProps);
+	const [root, utils, other] = splitProps(props, columnSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultColumnProps, root);
 
 	const cssVariables = () => {
@@ -43,11 +43,13 @@ function Column(props: ColumnProps) {
 		});
 	};
 
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
+
 	return (
 		<div
 			class={cx(classes.column, root.class)}
 			data-direction={baseProps.direction}
-			style={Object.assign(cssVariables(), root.style)}
+			{...styles}
 			{...other}
 		>
 			{root.children}

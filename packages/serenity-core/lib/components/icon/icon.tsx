@@ -1,15 +1,15 @@
 import classes from './icon.module.scss';
-import { Color, Size, Variant, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, Variant, buildStyles, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from '../../util/types';
 
-interface IconProps extends JSX.HTMLAttributes<SVGSVGElement> {
+interface IconProps extends SerenityBaseProps, JSX.HTMLAttributes<SVGSVGElement> {
 	path: string;
 	size?: Size | number;
 	color?: Color;
 	variant?: Omit<Variant, 'transparent' | 'white'>;
-	right?: boolean;
-	left?: boolean;
+	start?: boolean;
+	end?: boolean;
 	spinning?: boolean;
 }
 
@@ -19,8 +19,8 @@ const iconSplitProps = [
 	"path",
 	"size",
 	"color",
-	"right",
-	"left",
+	"start",
+	"end",
 	"spinning"
 ] as const;
 
@@ -31,7 +31,7 @@ const defaultIconProps: DefaultProps<IconProps, 'size' | 'color'> = {
 
 function Icon(props: IconProps) {
 
-	const [root, other] = splitProps(props, iconSplitProps);
+	const [root, utils, other] = splitProps(props, iconSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultIconProps, root);
 	
 	const color = () => {
@@ -42,19 +42,18 @@ function Icon(props: IconProps) {
 		'icon-size': resolveSize('icon-size', baseProps.size, 'em')
 	});
 
+	const styles = buildStyles(utils, baseProps.style, cssVariables());
+
 	return (
 		<svg
 			role="img"
 			aria-hidden
 			viewBox="0 0 24 24"
-			style={Object.assign(cssVariables(), baseProps.style)} 
-			class={cx(
-				classes.icon,
-				root.class,
-				root.left && classes['icon--left'],
-				root.right && classes['icon--right'],
-				root.spinning && classes['icon--spinning']
-			)}
+			data-nudge-start={baseProps.start}
+			data-nudge-end={baseProps.end}
+			data-spinning={baseProps.spinning}
+			class={cx(classes.icon, root.class)}
+			{...styles}
 			{...other}
 		>
 			<path d={root.path} style={{ fill: color() }} />
