@@ -72,7 +72,15 @@ export default defineConfig({
 		devSourcemap: true,
 		preprocessorOptions: {
 			scss: {
-				additionalData: `@import '../serenity-styles/lib/styles/mixins.scss';`
+				additionalData: (content, path) => {
+					const mixins = `@import '../serenity-styles/lib/styles/mixins.scss';`;
+
+					if (path.endsWith('global.scss')) {
+						return `${mixins} ${content}`;
+					} else {
+						return `${mixins} @layer serenity { ${content} };`
+					}
+				}
 			}
 		},
 		modules: {
