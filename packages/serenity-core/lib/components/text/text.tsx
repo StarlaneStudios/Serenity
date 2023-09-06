@@ -19,7 +19,7 @@ const textSplitProps = [
 	'transform'
 ] as const;
 
-function Text<TElement extends ElementType = "a">(props: PolymorphicProps<TextProps, TElement>) {
+function Text<TElement extends ElementType = "p">(props: PolymorphicProps<TextProps, TElement>) {
 
 	const [root, utils, other] = splitProps(props, textSplitProps, UTILITY_NAMES);
 
@@ -34,7 +34,7 @@ function Text<TElement extends ElementType = "a">(props: PolymorphicProps<TextPr
 	return (
 		<Dynamic
 			class={cx(classes.text, root.class)}
-			component={root.as || 'a'}
+			component={root.as || 'p'}
 			{...styles}
 			{...other}
 		/>
