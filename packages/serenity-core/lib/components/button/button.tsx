@@ -5,6 +5,7 @@ import { Color, Size } from "@serenity-ui/styles";
 import { variants } from "../../constants/variants";
 import { Button as KobalteButton } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";
+import { bool } from "../../util/props";
 
 interface ButtonProps extends SerenityBaseProps, JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: Color;
