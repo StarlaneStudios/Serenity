@@ -92,7 +92,6 @@ export const DemoPage = () => {
 					)}
 				</For>
 			</Column>
-
 			<Loader />
 			{/* <Tabs>
 				<TabList>
