@@ -47,26 +47,22 @@ function Button(props: ButtonProps) {
 
 	const cssVariables = () => {
 
-		const defaultColor = baseProps.color;
-		const defaultRadius = baseProps.radius;
-		const defaultVariant = baseProps.variant;
-
-		const variantVariables = variants.get(defaultVariant)!(defaultColor);
+		const variantVariables = variants[baseProps.variant](baseProps.color, true);
 
 		return cssvars({
 			...variantVariables,
-			'border-radius': resolveSize('radius', defaultRadius, 'rem'),
+			'border-radius': resolveSize('radius', baseProps.radius, 'rem'),
 			'font-size': resolveModifier('button-font', baseProps.size),
 			'padding': resolveModifier('button-padding', baseProps.size),
 			'height': resolveModifier('button-height', baseProps.size),
 		});
 	};
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<KobalteButton.Root
-			class={cx(baseProps.class, classes.button)}
+			class={cx(classes.button, baseProps.class)}
 			data-variant={baseProps.variant}
 			data-loading={baseProps.loading}
 			aria-disabled={other.disabled}

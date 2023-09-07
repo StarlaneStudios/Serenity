@@ -76,7 +76,7 @@ function Badge(props: BadgeProps) {
 			return cssvars({ radius, size, color, height, padding, "font-size": fontSize });
 		}
 
-		const variant = variants.get(baseProps.variant)?.(baseProps.color) ?? {};
+		const variant = variants[baseProps.variant](baseProps.color, false);
 		return cssvars({ radius, size, padding, height, "font-size": fontSize, ...variant });
 	};
 
