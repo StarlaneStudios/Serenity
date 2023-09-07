@@ -38,7 +38,7 @@ const defaultButtonProps: DefaultProps<ButtonProps, 'color' | 'size' | 'radius' 
 		inner: classes["button__inner"],
 		label: classes["button__label"]
 	},
-} as const;
+};
 
 function Button(props: ButtonProps) {
 
@@ -49,13 +49,14 @@ function Button(props: ButtonProps) {
 
 		const variantVariables = variants[baseProps.variant](baseProps.color, true);
 
-		return localVars({
-			...variantVariables,
-			'border-radius': resolveSize('radius', baseProps.radius, 'rem'),
-			'font-size': resolveModifier('button-font', baseProps.size),
-			'padding': resolveModifier('button-padding', baseProps.size),
-			'height': resolveModifier('button-height', baseProps.size),
-		});
+		return localVars(
+			Object.assign(variantVariables, {
+				'border-radius': resolveLength('radius', baseProps.radius, "rem"),
+				'font-size': resolveSize('button-font', baseProps.size),
+				'padding': resolveSize('button-padding', baseProps.size),
+				'height': resolveSize('button-height', baseProps.size),
+			})
+		);
 	};
 
 	const styles = buildStyles(utils, cssVariables(), baseProps.style);

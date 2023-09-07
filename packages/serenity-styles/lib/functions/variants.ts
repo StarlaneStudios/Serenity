@@ -6,7 +6,7 @@ export const resolveWhiteVariant = (
 	color: string, 
 	defaultShade?: number
 ) => ({
-	"text-color": resolveColorInput(color, defaultShade),
+	"text-color": resolveColor(color, defaultShade),
 	"background-color": "#ffffff"
 });
 
@@ -14,7 +14,7 @@ export const resolveTransparentVariant = (
 	color: string, 
 	defaultShade?: number
 ) => ({
-	"text-color": resolveColorInput(color, defaultShade)
+	"text-color": resolveColor(color, defaultShade)
 });
 
 /**
@@ -29,7 +29,7 @@ export const resolveLightVariant = (
 	interactive = true
 ) => {
 
-	const output = resolveColorInput(color, defaultShade);
+	const output = resolveColor(color, defaultShade);
 	const base: Record<string, string | undefined> = {
 		"text-color": output,
 		"background-color": setColorOpacity(output, 0.1, DEFAULT_COLORS),
@@ -48,7 +48,7 @@ export const resolveOutlineVariant = (
 	interactive = true
 ) => {
 
-	const output = resolveColorInput(color, defaultShade);
+	const output = resolveColor(color, defaultShade);
 	const base: Record<string, string | undefined> = {
 		"text-color": output,
 		"border-color": output
@@ -67,7 +67,7 @@ export const resolveFilledVariant = (
 	interactive = true
 ) => {
 
-	const output = resolveColorInput(color, defaultShade);
+	const output = resolveColor(color, defaultShade);
 	const base: Record<string, string | undefined> = {
 		"text-color": "#ffffff",
 		"background-color": output,
@@ -89,7 +89,7 @@ export const resolveSubtleVariant = (
 	interactive = true
 ) => {
 
-	const output = resolveColorInput(color, defaultShade);
+	const output = resolveColor(color, defaultShade);
 	const base: Record<string, string | undefined> = {
 		"text-color": output,
 	};

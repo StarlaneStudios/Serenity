@@ -1,6 +1,6 @@
 import { mdiCheck, mdiLock } from "@mdi/js";
 import { Accordion, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
-import { Tab, TabContent, TabList, Tabs } from "../lib/components/tabs";
+import { Tabs } from "../lib/components/tabs";
 import { Badge } from "../lib/components/badge";
 import { Loader } from "../lib/components/loader";
 import { createEffect, createSignal } from "solid-js";
@@ -122,7 +122,7 @@ export const DemoPage = () => {
 			</Column>
 			
 			<Loader />
-			<Tabs>
+			{/* <Tabs>
 				<TabList>
 					<Tab value="a">
 						Gallery A
@@ -137,7 +137,7 @@ export const DemoPage = () => {
 				<TabContent value="b">
 					<p>Test B</p>
 				</TabContent>
-			</Tabs>
+			</Tabs> */}
 			<Badge variant="filled">
 				Mooi mooi
 			</Badge>

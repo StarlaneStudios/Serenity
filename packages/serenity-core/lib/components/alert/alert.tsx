@@ -1,4 +1,4 @@
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveSize } from "@serenity-ui/styles";
 import { JSX, Match, Show, Switch, createUniqueId, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./alert.module.scss";
@@ -116,11 +116,16 @@ function Alert(props: AlertProps) {
 	const baseProps = mergeProps(defaultAlertProps, root);
 
 	const cssVariables = () => {
-		const radius = resolveSize("radius", baseProps.radius, "rem");
-		const color = resolveColorInput(baseProps.color);
+		const radius = resolveSize("radius", baseProps.radius);
+		const color = resolveColor(baseProps.color);
 		const variant = variants[baseProps.variant](baseProps.color, false);
 		
-		return cssvars(Object.assign(variant, { "border-radius": radius, color }));
+		return localVars(
+			Object.assign(variant, { 
+				"border-radius": radius, 
+				color 
+			})
+		);
 	};
 
 	const style = buildStyles(utils, baseProps.style, cssVariables());
@@ -128,7 +133,7 @@ function Alert(props: AlertProps) {
 
 	return (
 		<div
-			class={cx(classes.alert, baseProps.class)}
+			class={c(classes.alert, baseProps.class)}
 			data-variant={baseProps.variant}
 			role="alert"
 			aria-describedby={descriptionIdentifier}
