@@ -48,20 +48,15 @@ export const DemoPage = () => {
 
 	return (
 		<div style={{ "padding-inline": "2rem" }}>
-			<Paper
-				bg="violet"
+			<Text
+				size="xl"
+				tc="cyan"
+				weight={900}
+				maw={50}
+				lineClamp={3}
 			>
-				Ree
-			</Paper>
-			<Unit
-				mt={3}
-				mb={2}
-				pos="relative"
-				z={4}
-				bg="red"
-			>
-				Reee
-			</Unit>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et metus egestas, ullamcorper ligula at, pretium justo. Aenean tincidunt risus posuere consequat efficitur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec vitae pulvinar leo. Proin posuere hendrerit sodales. Maecenas pretium ante id dapibus malesuada. Cras maximus quam a fermentum pellentesque. In fringilla gravida dui sit amet consequat. Maecenas volutpat nunc sit amet pulvinar rutrum. Pellentesque id dolor vulputate, sagittis lorem tristique, mattis ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer tincidunt orci sit amet risus volutpat, eget sagittis nulla congue. Ut aliquet faucibus dolor at sollicitudin. Ut id enim in lacus sodales dignissim vel quis diam.
+			</Text>
 			<h1>
 				This is an test
 			</h1>
@@ -302,6 +297,7 @@ export const DemoPage = () => {
 				justify="center" 
 				h={40}
 				bg="blue"
+				inline
 			>
 				<p>Hello Bruh momoasdf</p>
 				<p>Hello Bruh momoasdf</p>

@@ -14,6 +14,7 @@ export * from "./components/paper";
 export * from "./components/row";
 export * from "./components/spacer";
 export * from "./components/tabs";
+export * from "./components/text";
 export * from "./components/unit";
 
 import "./styles/global.scss";

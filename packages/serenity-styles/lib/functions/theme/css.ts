@@ -47,10 +47,13 @@ export function cssvars<T extends Record<string, string | undefined | number | n
 /**
  * resolves the size input dynamically or as constant and returns a string.
  * 
- * @param size Size | number
- * @return string
+ * @param size Size | number | undefined
+ * @return string | undefined
  */
-export function resolveSize(varName: string, size: Size | number, unit: UnitType) {
+export function resolveSize(varName: string, size: Size | number | undefined, unit: UnitType) {
+	if (size == undefined) {
+		return undefined;
+	}
 
 	if (typeof size === 'number') {
 		return size + unit;
