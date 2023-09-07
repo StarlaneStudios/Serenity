@@ -1,9 +1,9 @@
 /**
- * Converts a boolean value to a HTML attribute
+ * Converts any value to a boolean HTML attribute
  * 
- * @param value The boolean value
+ * @param value The value value
  * @returns Empty string or undefined
  */
-export function bool(value: boolean | undefined | null) {
+export function bool(value: any) {
 	return value ? '' : undefined;
 }

@@ -1,5 +1,22 @@
 .text {
-	font-style: var(--font-style, normal);
-	font-weight: var(--font-weight, normal);
-	text-transform: var(--text-transform, none);
+	font-size: var(--font-size, inherit);
+	font-style: var(--font-style, inherit);
+	font-weight: var(--font-weight, inherit);
+	text-transform: var(--text-transform, inherit);
+	text-align: var(--text-align, inherit);
+	white-space: var(--white-space, inherit);
+	text-decoration: var(--text-decoration, inherit);
+
+	&[data-truncate] {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&[data-clamp] {
+		overflow-y: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: var(--line-clamp);
+		-webkit-box-orient: vertical;
+	}
 }
