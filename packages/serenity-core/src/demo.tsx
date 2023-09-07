@@ -92,6 +92,26 @@ export const DemoPage = () => {
 				<Alert
 					title="Dit is een alert"
 					onClose={(event) => { }}
+					variant="transparent"
+					show={show()}
+				>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					libero ducimus voluptatem natus,
+					id ipsa, sed enim minus eos aliquam quae totam quaerat nulla dignissimos?
+				</Alert>
+				<Alert
+					title="Dit is een alert"
+					onClose={(event) => { }}
+					variant="white"
+					show={show()}
+				>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					libero ducimus voluptatem natus,
+					id ipsa, sed enim minus eos aliquam quae totam quaerat nulla dignissimos?
+				</Alert>
+				<Alert
+					title="Dit is een alert"
+					onClose={(event) => { }}
 					variant="light"
 					show={show()}
 				>
