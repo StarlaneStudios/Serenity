@@ -1,4 +1,3 @@
-import classes from "./button.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { SerenityBaseProps, UTILITY_NAMES, Variant, buildStyles, localVars, c, resolveLength, resolveSize, b } from "@serenity-ui/styles";
 import { Color, Size } from "@serenity-ui/styles";
