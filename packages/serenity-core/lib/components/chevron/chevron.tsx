@@ -1,8 +1,7 @@
 import classes from "./chevron.module.scss";
-import { Color, SerenityBaseProps, UTILITY_NAMES, buildStyles, cx, resolveColorInput } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, UTILITY_NAMES, b, buildStyles, c, resolveColor } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
-import { bool } from "../../util/props";
 
 interface ChevronProps extends SerenityBaseProps, Omit<JSX.SvgSVGAttributes<SVGSVGElement>, 'children' | 'cursor' | 'display'> {
 	orientation?: "up" | "down" | "left" | "right" | number;
@@ -37,11 +36,10 @@ function Chevron(props: ChevronProps) {
 	const baseProps = mergeProps(defaultChevronProps, root);
 
 	const color = () => {
-		return resolveColorInput(baseProps.color);
+		return resolveColor(baseProps.color);
 	};
 
 	const orientation = () => {
-
 		if(typeof baseProps.orientation === "number") {
 			return `rotate(${baseProps.orientation}deg)`;
 		}
@@ -58,8 +56,8 @@ function Chevron(props: ChevronProps) {
 			viewBox="0 0 15 15"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			data-no-animation={bool(baseProps.disableAnimation)}
-			class={cx(classes.chevron, root.class)}
+			data-no-animation={b(baseProps.disableAnimation)}
+			class={c(classes.chevron, root.class)}
 			{...styles}
 			{...other}
 		>

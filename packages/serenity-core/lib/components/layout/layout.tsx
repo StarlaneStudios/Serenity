@@ -1,6 +1,6 @@
 import classes from "./layout.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveGridCols, resolveGridSpacing } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, resolveGridCols, resolveGridSpacing, localVars } from "@serenity-ui/styles";
 import { Tuple } from "@serenity-ui/utils";
 import { DefaultProps } from "../../util/types";
 
@@ -37,8 +37,7 @@ function Layout(props: LayoutProps) {
 
 		const spacing = resolveGridSpacing(baseProps.spacing, "spacing", "rem");
 		const cols = resolveGridCols(baseProps.breakpoints);
-
-		const variables = cssvars({ spacing });
+		const variables = localVars({ spacing });
 
 		return Object.assign(variables, cols);
 	};
@@ -47,7 +46,7 @@ function Layout(props: LayoutProps) {
 
 	return (
 		<div
-			class={cx(classes.layout, baseProps.class)}
+			class={c(classes.layout, baseProps.class)}
 			role="grid"
 			{...styles}
 			{...other}

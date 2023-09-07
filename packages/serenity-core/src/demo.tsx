@@ -1,7 +1,7 @@
 import { Accordion, AccordionProps, AccordionTrigger, Badge, Button, Column, Divider, InputField, Layout, Loader, Paper, Row, Tabs, Text, useSerenity } from "../lib";
 
 const SomeAccordion = (props: AccordionProps) => (
-	<Accordion collapsible radius="sm" variant={props.variant}>
+	<Accordion collapsible radius="sm" variant={props.variant} mt="xs">
 		<Accordion.Item value="24">
 			<Accordion.Header>
 				<AccordionTrigger>

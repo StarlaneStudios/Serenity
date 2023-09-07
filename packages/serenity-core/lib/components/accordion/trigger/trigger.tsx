@@ -2,7 +2,7 @@ import classes from "../accordion.module.scss";
 import { mergeProps, splitProps } from "solid-js";
 import { Row, RowProps } from "../../row";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
-import { SerenityBaseProps, UTILITY_NAMES, buildStyles, cx } from "@serenity-ui/styles";
+import { SerenityBaseProps, UTILITY_NAMES, buildStyles, c } from "@serenity-ui/styles";
 import { Chevron } from "../../chevron";
 import { DefaultProps } from "../../../util/types";
 
@@ -33,7 +33,7 @@ function AccordionTrigger(props: AccordionTriggerProps) {
 
 	return (
 		<KobalteAccordion.Trigger
-			class={cx(classes['accordion--trigger'], root.class)}
+			class={c(classes['accordion--trigger'], root.class)}
 			asChild
 		>
 			<As

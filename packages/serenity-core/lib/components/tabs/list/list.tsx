@@ -1,9 +1,8 @@
 import classes from "../tabs.module.scss";
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { SerenityBaseProps, Size, cssvars, cx, resolveSize, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, localVars, c, resolveLength, buildStyles, UTILITY_NAMES, b } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../../util/types";
-import { bool } from "../../../util/props";
 
 interface TabsListProps extends SerenityBaseProps, KobalteTabs.TabsListProps {
 
@@ -41,16 +40,17 @@ function TabsList(props: TabsListProps) {
 	const baseProps = mergeProps(defaultTabListProps, root);
 
 	const cssVariables = () => {
-		const spacing = resolveSize("spacing", baseProps.spacing, "rem");
-		return cssvars({ spacing });
+		const spacing = resolveLength("spacing", baseProps.spacing);
+
+		return localVars({ spacing });
 	};
 
 	const styles = buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<KobalteTabs.List
-			class={cx(classes['tabs__list'], baseProps.class)}
-			data-grow={bool(baseProps.grow)}
+			class={c(classes['tabs__list'], baseProps.class)}
+			data-grow={b(baseProps.grow)}
 			{...styles}
 			{...other}
 		>

@@ -1,10 +1,9 @@
 import classes from "./accordion.module.scss";
 import { mergeProps, splitProps } from "solid-js";
 import { Column, ColumnProps } from "../column";
-import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveSize } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, resolveLength, b, localVars } from "@serenity-ui/styles";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";
-import { bool } from "../../util/props";
 
 interface AccordionProps extends SerenityBaseProps, Omit<ColumnProps, 'align' | 'justify'> {
 	variant?: "default" | "contained" | "seperated" | "filled";
@@ -44,9 +43,9 @@ function Accordion(props: AccordionProps) {
 	const baseProps = mergeProps(defaultAccrodionProps, root);
 
 	const cssVariables = () => {
-
-		return cssvars({
-			"radius": resolveSize("radius", baseProps.radius, "rem")
+ 
+		return localVars({
+			radius: resolveLength("radius", baseProps.radius)
 		});
 	};
 
@@ -54,14 +53,14 @@ function Accordion(props: AccordionProps) {
 
 	return (
 		<KobalteAccordion.Root
-			class={cx(classes.accordion, baseProps.class)}
+			class={c(classes.accordion, baseProps.class)}
 			asChild
 			{...kobalte}
 		>
 			<As
 				component={Column}
 				data-variant={baseProps.variant}
-				data-no-chevron-animation={bool(baseProps.noChevronAnimation)}
+				data-no-chevron-animation={b(baseProps.noChevronAnimation)}
 				spacing={baseProps.variant === "seperated" ? baseProps.spacing : 0}
 				children={baseProps.children}
 				{...styles}

@@ -1,7 +1,7 @@
 import classes from "../accordion.module.scss";
 import { JSX, splitProps } from "solid-js";
 import { Accordion, As } from "@kobalte/core";
-import { SerenityBaseProps, UTILITY_NAMES, buildStyles, cx } from "@serenity-ui/styles";
+import { SerenityBaseProps, UTILITY_NAMES, buildStyles, c } from "@serenity-ui/styles";
 
 interface AccordionItemProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	value: string;
@@ -23,7 +23,7 @@ function AccordionItem(props: AccordionItemProps) {
 
 	return (
 		<Accordion.Item 
-			class={cx(classes["accordion--item"], root.class)}
+			class={c(classes["accordion--item"], root.class)}
 			asChild
 			value={kobalte.value}
 		>

@@ -1,4 +1,4 @@
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, cssvars, cx, resolveColorInput, resolveSize, buildStyles } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveLength, buildStyles, resolveColor } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./badge.module.scss";
@@ -65,26 +65,39 @@ function Badge(props: BadgeProps) {
 	const baseProps = mergeProps(defaultBadgeProps, root);
 
 	const cssVariables = () => {
-		const size = resolveSize("size", baseProps.size, "rem");
-		const radius = resolveSize("radius", baseProps.radius, "rem");
-		const height = resolveSize("badge-height", baseProps.size, "rem");
-		const padding = resolveSize("badge-padding", baseProps.size, "rem");
-		const fontSize = resolveSize("badge-font-size", baseProps.size, "rem");
+		const size = resolveLength("size", baseProps.size);
+		const radius = resolveLength("radius", baseProps.radius);
+		const height = resolveLength("badge-height", baseProps.size);
+		const padding = resolveLength("badge-padding", baseProps.size);
+		const fontSize = resolveLength("badge-font-size", baseProps.size);
+
+		let vars: any = {
+			radius,
+			size,
+			padding,
+			height,
+			'font-size': fontSize
+		};
 
 		if (baseProps.variant === "dot") {
-			const color = resolveColorInput(baseProps.color);
-			return cssvars({ radius, size, color, height, padding, "font-size": fontSize });
+			vars.color = resolveColor(baseProps.color);
+		} else {
+			const variant = variants.get(baseProps.variant)?.(baseProps.color) ?? {};
+
+			vars = {
+				...vars,
+				...variant
+			}
 		}
 
-		const variant = variants.get(baseProps.variant)?.(baseProps.color) ?? {};
-		return cssvars({ radius, size, padding, height, "font-size": fontSize, ...variant });
+		return localVars(vars);
 	};
 
 	const styles = buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<div
-			class={cx(classes.badge, baseProps.class)}
+			class={c(classes.badge, baseProps.class)}
 			data-variant={baseProps.variant}
 			{...styles}
 			{...other}

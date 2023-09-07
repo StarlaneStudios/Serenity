@@ -1,9 +1,8 @@
 import { JSX, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { ElementType, PolymorphicProps } from "../../typings/polymorphic";
-import { Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveSize } from "@serenity-ui/styles";
+import { Size, UTILITY_NAMES, buildStyles, localVars, c, b, resolveLength } from "@serenity-ui/styles";
 import classes from "./text.module.scss";
-import { bool } from "../../util/props";
 
 interface TextProps {
 	size?: Size | number;
@@ -38,16 +37,16 @@ function Text<TElement extends ElementType = "div">(props: PolymorphicProps<Text
 	const [root, utils, other] = splitProps(props, textSplitProps, UTILITY_NAMES);
 
 	const cssVariables = () => {
-		const size = resolveSize("font-size", root.size, "rem");
+		const size = resolveLength("font-size", root.size);
 
-		return cssvars({
-			'font-size': size,
-			'font-style': root.fontStyle,
-			'font-weight': root.weight,
-			'text-transform': root.transform,
-			'text-align': root.align,
+		return localVars({
+			size: size,
+			style: root.fontStyle,
+			weight: root.weight,
+			transform: root.transform,
+			align: root.align,
+			decoration: root.decoration,
 			'white-space': root.whiteSpace,
-			'text-decoration': root.decoration,
 			'line-clamp': root.lineClamp
 		})
 	};
@@ -57,9 +56,9 @@ function Text<TElement extends ElementType = "div">(props: PolymorphicProps<Text
 
 	return (
 		<Dynamic
-			class={cx(classes.text, root.class)}
+			class={c(classes.text, root.class)}
 			component={root.as || component}
-			data-truncate={bool(root.truncate)}
+			data-truncate={b(root.truncate)}
 			data-clamp={root.lineClamp}
 			{...styles}
 			{...other}

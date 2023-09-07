@@ -1,8 +1,7 @@
 import classes from './icon.module.scss';
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, Variant, buildStyles, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, Variant, buildStyles, c, resolveColor, resolveLength, localVars, b } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from '../../util/types';
-import { bool } from '../../util/props';
 
 interface IconProps extends SerenityBaseProps, JSX.HTMLAttributes<SVGSVGElement> {
 	path: string;
@@ -36,11 +35,11 @@ function Icon(props: IconProps) {
 	const baseProps = mergeProps(defaultIconProps, root);
 	
 	const color = () => {
-		return resolveColorInput(baseProps.color);
+		return resolveColor(baseProps.color);
 	}
 
-	const cssVariables = () => cssvars({
-		'icon-size': resolveSize('icon-size', baseProps.size, 'em')
+	const cssVariables = () => localVars({
+		size: resolveLength('icon-size', baseProps.size, 'em')
 	});
 
 	const styles = buildStyles(utils, baseProps.style, cssVariables());
@@ -50,10 +49,10 @@ function Icon(props: IconProps) {
 			role="img"
 			aria-hidden
 			viewBox="0 0 24 24"
-			data-nudge-start={bool(baseProps.start)}
-			data-nudge-end={bool(baseProps.end)}
-			data-spinning={bool(baseProps.spinning)}
-			class={cx(classes.icon, root.class)}
+			data-nudge-start={b(baseProps.start)}
+			data-nudge-end={b(baseProps.end)}
+			data-spinning={b(baseProps.spinning)}
+			class={c(classes.icon, root.class)}
 			{...styles}
 			{...other}
 		>

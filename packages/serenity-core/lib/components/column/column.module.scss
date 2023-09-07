@@ -1,17 +1,9 @@
 .column {
 	display: flex;
-	row-gap: var(--row-gap);
-	justify-content: var(--justify-content);
-	align-items: var(--align-items);
-	flex-direction: var(--flex-direction);
-
-	&[data-direction='column'] {
-		flex-direction: column;
-	}
-
-	&[data-direction='column-reverse'] {
-		flex-direction: column-reverse;
-	}
+	gap: var(--gap);
+	justify-content: var(--justify);
+	align-items: var(--align);
+	flex-direction: var(--direction);
 }
 
 @include defineVariables((

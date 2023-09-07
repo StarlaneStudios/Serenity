@@ -1,6 +1,6 @@
 import classes from "./column.module.scss";
 import { splitProps, JSX, mergeProps } from "solid-js";
-import { buildStyles, cssvars, cx, resolveSize, SerenityBaseProps, Size, UTILITY_NAMES } from "@serenity-ui/styles";
+import { buildStyles, localVars, c, resolveLength, SerenityBaseProps, Size, UTILITY_NAMES } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 
 interface ColumnProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
@@ -33,13 +33,13 @@ function Column(props: ColumnProps) {
 	const baseProps = mergeProps(defaultColumnProps, root);
 
 	const cssVariables = () => {
-		const size = resolveSize("column-spacing", baseProps.spacing, "rem");
+		const size = resolveLength("column-spacing", baseProps.spacing);
 		
-		return cssvars({
-			"row-gap": size,
-			"justify-content": baseProps.justify,
-			"align-items": baseProps.align,
-			"flex-direction": baseProps.direction
+		return localVars({
+			gap: size,
+			justify: baseProps.justify,
+			align: baseProps.align,
+			direction: baseProps.direction
 		});
 	};
 
@@ -47,8 +47,7 @@ function Column(props: ColumnProps) {
 
 	return (
 		<div
-			class={cx(classes.column, root.class)}
-			data-direction={baseProps.direction}
+			class={c(classes.column, root.class)}
 			{...styles}
 			{...other}
 		>

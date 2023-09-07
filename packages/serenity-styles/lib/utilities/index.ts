@@ -1,6 +1,6 @@
-import { parseColor, parseLength } from './functions/values';
+import { parseColor, parseSpacing } from './parsers';
 import type { JSX } from 'solid-js';
-import type { UtilityStyleProps } from './types/props';
+import type { UtilityStyleProps } from '../types/props';
 
 type UtilityParsers = Partial<Record<keyof UtilityStyleProps, (arg: any) => string | undefined>>;
 
@@ -21,31 +21,31 @@ export const UTILITY_NAMES = [
 ] as const;
 
 export const UTILITY_PARSERS: UtilityParsers = {
-	'm': parseLength,
-	'mt': parseLength,
-	'mb': parseLength,
-	'ml': parseLength,
-	'mr': parseLength,
-	'mx': parseLength,
-	'my': parseLength,
-	'p': parseLength,
-	'pt': parseLength,
-	'pb': parseLength,
-	'pl': parseLength,
-	'pr': parseLength,
-	'px': parseLength,
-	'py': parseLength,
-	'w': parseLength,
-	'miw': parseLength,
-	'maw': parseLength,
-	'h': parseLength,
-	'mih': parseLength,
-	'mah': parseLength,
-	'top': parseLength,
-	'left': parseLength,
-	'bottom': parseLength,
-	'right': parseLength,
-	'inset': parseLength,
+	'm': parseSpacing,
+	'mt': parseSpacing,
+	'mb': parseSpacing,
+	'ml': parseSpacing,
+	'mr': parseSpacing,
+	'mx': parseSpacing,
+	'my': parseSpacing,
+	'p': parseSpacing,
+	'pt': parseSpacing,
+	'pb': parseSpacing,
+	'pl': parseSpacing,
+	'pr': parseSpacing,
+	'px': parseSpacing,
+	'py': parseSpacing,
+	'w': parseSpacing,
+	'miw': parseSpacing,
+	'maw': parseSpacing,
+	'h': parseSpacing,
+	'mih': parseSpacing,
+	'mah': parseSpacing,
+	'top': parseSpacing,
+	'left': parseSpacing,
+	'bottom': parseSpacing,
+	'right': parseSpacing,
+	'inset': parseSpacing,
 	'bg': parseColor,
 	'tc': parseColor
 };

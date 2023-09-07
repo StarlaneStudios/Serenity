@@ -29,11 +29,11 @@
 	--serenity-breakpoint-xl: 1200px;
 
 	/** default spacing values **/
-	--serenity-spacing-xs: 0.5rem;
-	--serenity-spacing-sm: 0.75rem;
-	--serenity-spacing-md: 1rem;
-	--serenity-spacing-lg: 1.5rem;
-	--serenity-spacing-xl: 2rem;
+	--serenity-spacing-xs: 1rem;
+	--serenity-spacing-sm: 2rem;
+	--serenity-spacing-md: 3rem;
+	--serenity-spacing-lg: 4rem;
+	--serenity-spacing-xl: 5rem;
 }
 
 @include defineLightVariables((

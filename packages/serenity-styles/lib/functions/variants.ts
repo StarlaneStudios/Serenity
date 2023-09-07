@@ -1,13 +1,14 @@
-import { DEFAULT_COLORS } from "../../../constants/colors";
-import { darkenColor, resolveColorInput, setColorOpacity } from "../color";
+import { DEFAULT_COLORS } from "../constants/colors";
+import { darkenColor, setColorOpacity } from "./colors";
+import { resolveColor } from "./resolvers";
 
 export const resolveWhiteVariant = (color: string, defaultShade?: number) => ({
-	"text-color": resolveColorInput(color, defaultShade),
+	"text-color": resolveColor(color, defaultShade),
 	"background-color": "#ffffff"
 });
 
 export const resolveTransparentVariant = (color: string, defaultShade?: number) => ({
-	"text-color": resolveColorInput(color, defaultShade)
+	"text-color": resolveColor(color, defaultShade)
 });
 
 /**
@@ -18,7 +19,7 @@ export const resolveTransparentVariant = (color: string, defaultShade?: number) 
  */
 export const resolveLightVariant = (color: string, defaultShade?: number) => {
 
-	const output = resolveColorInput(color, defaultShade);
+	const output = resolveColor(color, defaultShade);
 
 	return {
 		"text-color": output,
@@ -29,7 +30,7 @@ export const resolveLightVariant = (color: string, defaultShade?: number) => {
 
 export const resolveOutlineVariant = (color: string, defaultShade?: number) => {
 
-	const output = resolveColorInput(color, defaultShade);
+	const output = resolveColor(color, defaultShade);
 
 	return {
 		"text-color": output,
@@ -40,7 +41,7 @@ export const resolveOutlineVariant = (color: string, defaultShade?: number) => {
 
 export const resolveFilledVariant = (color: string, defaultShade?: number) => {
 
-	const output = resolveColorInput(color, defaultShade);
+	const output = resolveColor(color, defaultShade);
 
 	return {
 		"text-color": "#ffffff",
@@ -52,7 +53,7 @@ export const resolveFilledVariant = (color: string, defaultShade?: number) => {
 
 export const resolveSubtleVariant = (color: string, defaultShade?: number) => {
 
-	const output = resolveColorInput(color, defaultShade);
+	const output = resolveColor(color, defaultShade);
 
 	return {
 		"text-color": output,

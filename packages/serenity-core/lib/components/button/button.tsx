@@ -1,11 +1,10 @@
 import classes from "./button.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { SerenityBaseProps, UTILITY_NAMES, Variant, buildStyles, cssvars, cx, resolveModifier, resolveSize } from "@serenity-ui/styles";
+import { SerenityBaseProps, UTILITY_NAMES, Variant, buildStyles, localVars, c, resolveLength, resolveSize, b } from "@serenity-ui/styles";
 import { Color, Size } from "@serenity-ui/styles";
 import { variants } from "../../constants/variants";
 import { Button as KobalteButton } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";
-import { bool } from "../../util/props";
 
 interface ButtonProps extends SerenityBaseProps, JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: Color;
@@ -54,12 +53,12 @@ function Button(props: ButtonProps) {
 
 		const variantVariables = variants.get(defaultVariant)!(defaultColor);
 
-		return cssvars({
+		return localVars({
 			...variantVariables,
-			'border-radius': resolveSize('radius', defaultRadius, 'rem'),
-			'font-size': resolveModifier('button-font', baseProps.size),
-			'padding': resolveModifier('button-padding', baseProps.size),
-			'height': resolveModifier('button-height', baseProps.size),
+			radius: resolveLength('radius', defaultRadius),
+			padding: resolveSize('button-padding', baseProps.size),
+			height: resolveSize('button-height', baseProps.size),
+			'font-size': resolveSize('button-font', baseProps.size),
 		});
 	};
 
@@ -67,9 +66,9 @@ function Button(props: ButtonProps) {
 
 	return (
 		<KobalteButton.Root
-			class={cx(baseProps.class, classes.button)}
+			class={c(baseProps.class, classes.button)}
 			data-variant={baseProps.variant}
-			data-loading={bool(baseProps.loading)}
+			data-loading={b(baseProps.loading)}
 			aria-disabled={other.disabled}
 			{...styles}
 			{...other}
