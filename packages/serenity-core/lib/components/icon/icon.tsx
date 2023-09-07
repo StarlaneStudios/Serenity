@@ -2,6 +2,7 @@ import classes from './icon.module.scss';
 import { Color, SerenityBaseProps, Size, UTILITY_NAMES, Variant, buildStyles, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from '../../util/types';
+import { bool } from '../../util/props';
 
 interface IconProps extends SerenityBaseProps, JSX.HTMLAttributes<SVGSVGElement> {
 	path: string;
@@ -49,9 +50,9 @@ function Icon(props: IconProps) {
 			role="img"
 			aria-hidden
 			viewBox="0 0 24 24"
-			data-nudge-start={baseProps.start}
-			data-nudge-end={baseProps.end}
-			data-spinning={baseProps.spinning}
+			data-nudge-start={bool(baseProps.start)}
+			data-nudge-end={bool(baseProps.end)}
+			data-spinning={bool(baseProps.spinning)}
 			class={cx(classes.icon, root.class)}
 			{...styles}
 			{...other}

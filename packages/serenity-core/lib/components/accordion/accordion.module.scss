@@ -21,7 +21,7 @@
 .accordion {
 	color: var(--serenity-text-color) !important;
 
-	&:not([data-no-chevron-animation="true"]) .accordion--item[data-expanded] .accordion--chevron {
+	&:not([data-no-chevron-animation]) .accordion--item[data-expanded] .accordion--chevron {
 		transform: rotate(180deg);
 	}
 }
