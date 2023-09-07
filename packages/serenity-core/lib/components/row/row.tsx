@@ -3,6 +3,7 @@ import { SerenityBaseProps, Size, localVars, c, b, resolveLength, buildStyles, U
 import { mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import { DefaultProps } from "../../util/types";
+import { bool } from "../../util/props";
 
 interface RowProps extends SerenityBaseProps, Omit<JSX.HTMLAttributes<HTMLDivElement>, 'size'> {
 	justify?: JSX.CSSProperties["justify-content"];

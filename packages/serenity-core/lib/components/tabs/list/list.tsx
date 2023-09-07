@@ -3,6 +3,7 @@ import { Tabs as KobalteTabs } from "@kobalte/core";
 import { SerenityBaseProps, Size, localVars, c, resolveLength, buildStyles, UTILITY_NAMES, b } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../../util/types";
+import { bool } from "../../../util/props";
 
 interface TabsListProps extends SerenityBaseProps, KobalteTabs.TabsListProps {
 
