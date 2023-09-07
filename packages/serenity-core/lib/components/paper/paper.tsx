@@ -1,6 +1,6 @@
 import classes from "./paper.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { SerenityBaseProps, Size, cssvars, cx, resolveShadow, resolveSize, buildStyles, UTILITY_NAMES, Side } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, c, resolveShadow, resolveLength, buildStyles, UTILITY_NAMES, Side, localVars } from "@serenity-ui/styles";
 import { resolveBorder } from "@serenity-ui/utils";
 import { DefaultProps } from "../../util/types";
 
@@ -31,20 +31,17 @@ function Paper(props: PaperProps) {
 
 	const cssVariables = () => {
 
-		const radius = resolveSize("radius", baseProps.radius, "rem");
+		const radius = resolveLength("radius", baseProps.radius);
 		const shadow = resolveShadow(baseProps.shadow);
 
-		return cssvars({
-			"border-radius": radius,
-			"shadow": shadow
-		});
+		return localVars({ radius, shadow });
 	};
 
 	const styles = buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<div
-			class={cx(classes.paper, baseProps.class)}
+			class={c(classes.paper, baseProps.class)}
 			data-border={resolveBorder(baseProps.border)}
 			{...styles}
 			{...other}

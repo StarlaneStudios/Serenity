@@ -1,5 +1,5 @@
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, cssvars, cx, resolveColorInput, resolveSize, buildStyles } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveColor, resolveLength, buildStyles } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 import { mergeProps, splitProps } from "solid-js";
 import classes from "./tabs.module.scss";
@@ -47,16 +47,17 @@ function Tabs(props: TabsProps) {
 	const baseProps = mergeProps(defaultTabsProps, root);
 	
 	const cssVariables = () => {
-		const color = resolveColorInput(baseProps.color, 6);
-		const radius = resolveSize("radius", baseProps.radius, "rem");
-		return cssvars({ color, radius });
+		const color = resolveColor(baseProps.color, 6);
+		const radius = resolveLength("radius", baseProps.radius);
+
+		return localVars({ color, radius });
 	};
 
 	const styles = buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<KobalteTabs.Root
-			class={cx(classes.tabs, baseProps.class)}
+			class={c(classes.tabs, baseProps.class)}
 			data-variant={baseProps.variant}
 			{...styles}
 			{...other}

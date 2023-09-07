@@ -15,7 +15,7 @@
 			content: "";
 			flex: 1 1;
 			height: 0.0625rem;
-			border-top: 0.0625rem solid var(--border-color, var(--serenity-divider-color));
+			border-top: 0.0625rem solid var(--color, var(--serenity-divider-color));
 			margin-left: 0.75rem;
 		}
 
@@ -27,7 +27,7 @@
 				content: "";
 				flex: 1 1;
 				height: 0.0625rem;
-				border-top: 0.0625rem solid var(--border-color, var(--serenity-divider-color));
+				border-top: 0.0625rem solid var(--color, var(--serenity-divider-color));
 			}
 
 			&::after {
@@ -46,7 +46,7 @@
 				content: "";
 				flex: 1 1;
 				height: 0.0625rem;
-				border-top: 0.0625rem solid var(--border-color, var(--serenity-divider-color));
+				border-top: 0.0625rem solid var(--color, var(--serenity-divider-color));
 				margin-right: 0.75rem;
 			}
 		}
@@ -54,25 +54,25 @@
 }
 
 .divider[aria-orientation='horizontal']:empty {
-	border-width: var(--border-thickness) 0px 0px;
+	border-width: var(--thickness) 0px 0px;
 	border-left-style: initial;
 	border-bottom-color: initial;
 	border-left-color: initial;
-	border-top-color: var(--border-color);
-	border-top-style: var(--border-variant, solid);
+	border-top-color: var(--color);
+	border-top-style: var(--variant, solid);
 	margin: 0.75rem 0px;
 }
 
 .divider[aria-orientation='vertical']:empty {
-	border-width: 0px 0px 0px var(--border-thickness);
+	border-width: 0px 0px 0px var(--thickness);
 	border-top-style: initial;
 	border-right-style: initial;
 	border-top-color: initial;
 	border-bottom-color: initial;
 	align-self: stretch;
 	height: auto;
-	border-left-color: var(--border-color);
-	border-left-style: var(--border-variant, solid);
+	border-left-color: var(--color);
+	border-left-style: var(--variant, solid);
 }
 
 @include defineDarkVariables((

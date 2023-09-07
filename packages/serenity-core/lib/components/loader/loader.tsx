@@ -1,4 +1,4 @@
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveLength } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./loader.module.scss";
@@ -46,18 +46,18 @@ function Loader(props: LoaderProps) {
 	const [root, utils, other] = splitProps(props, loaderSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultLoaderProps, root);
 
-	const cssVariables = () => cssvars({
-		size: resolveSize("loader-size", baseProps.size, "rem"),
+	const cssVariables = () => localVars({
+		size: resolveLength("loader-size", baseProps.size),
+		color: resolveColor(baseProps.color),
 		duration: baseProps.duration + 'ms',
-		color: resolveColorInput(baseProps.color),
-		"background-color": resolveColorInput(baseProps.color, 6) + "aa"
+		'background-color': resolveColor(baseProps.color, 6) + "aa"
 	});
 
 	const styles = buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<span
-			class={cx(classes.loader, baseProps.class)}
+			class={c(classes.loader, baseProps.class)}
 			role="presentation"
 			{...styles}
 			{...other}

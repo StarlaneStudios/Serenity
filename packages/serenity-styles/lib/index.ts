@@ -6,7 +6,9 @@ export * from "./types/theme";
 export * from "./types/values";
 export * from "./types/props";
 
-export * from "./functions/theme/css";
-export * from "./functions/theme/color";
-export * from "./functions/theme/variants";
-export * from "./functions/utils/number";
+export * from "./functions/colors";
+export * from "./functions/css";
+export * from "./functions/helpers";
+export * from "./functions/math";
+export * from "./functions/resolvers";
+export * from "./functions/variants";

@@ -1,6 +1,6 @@
 import classes from "../tabs.module.scss";
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { SerenityBaseProps, cx, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
+import { SerenityBaseProps, c, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
 import { splitProps } from "solid-js";
 
 interface TabsContentProps extends SerenityBaseProps, KobalteTabs.TabsContentProps {
@@ -19,7 +19,7 @@ function TabsContent(props: TabsContentProps) {
 	
 	return (
 		<KobalteTabs.Content
-			class={cx(classes['tabs__content'], root.class)}
+			class={c(classes['tabs__content'], root.class)}
 			{...styles}
 			{...other}
 		/>

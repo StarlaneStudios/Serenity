@@ -1,11 +1,11 @@
 .text {
-	font-size: var(--font-size, inherit);
-	font-style: var(--font-style, inherit);
-	font-weight: var(--font-weight, inherit);
-	text-transform: var(--text-transform, inherit);
-	text-align: var(--text-align, inherit);
+	font-size: var(--size, inherit);
+	font-style: var(--style, inherit);
+	font-weight: var(--weight, inherit);
+	text-transform: var(--transform, inherit);
+	text-align: var(--align, inherit);
 	white-space: var(--white-space, inherit);
-	text-decoration: var(--text-decoration, inherit);
+	text-decoration: var(--decoration, inherit);
 
 	&[data-truncate] {
 		overflow: hidden;

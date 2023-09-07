@@ -34,7 +34,7 @@ export type Size = "xs" | "sm" | "md" | "lg" | "xl";
 export type Orientation = "horizontal" | "vertical";
 
 /**
- * A length value used in the styling system. Numbers will default to `rem` units
+ * A length value used in the styling system. Numbers will usually default to `rem` units
  */
 export type Length = (number & {}) | (string & {}) | Size;
 

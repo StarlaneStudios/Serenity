@@ -1,9 +1,8 @@
 import classes from "./row.module.scss";
-import { SerenityBaseProps, Size, cssvars, cx, resolveSize, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, localVars, c, b, resolveLength, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import { DefaultProps } from "../../util/types";
-import { bool } from "../../util/props";
 
 interface RowProps extends SerenityBaseProps, Omit<JSX.HTMLAttributes<HTMLDivElement>, 'size'> {
 	justify?: JSX.CSSProperties["justify-content"];
@@ -41,12 +40,13 @@ function Row(props: RowProps) {
 	const baseProps = mergeProps(defaultRowProps, root);
 
 	const cssVariables = () => {
-		const size = resolveSize("row-spacing", baseProps.spacing, "rem");
+		const size = resolveLength("row-spacing", baseProps.spacing);
 
-		return cssvars({
+		return localVars({
 			spacing: size,
 			justify: baseProps.justify,
-			align: baseProps.align
+			align: baseProps.align,
+			direction: baseProps.direction
 		});
 	};
 
@@ -54,10 +54,9 @@ function Row(props: RowProps) {
 
 	return (
 		<div
-			class={cx(classes.row, baseProps.class)}
-			data-grow={bool(baseProps.grow)}
-			data-no-wrap={bool(baseProps.noWrap)}
-			data-direction={baseProps.direction ?? "row"}
+			class={c(classes.row, baseProps.class)}
+			data-grow={b(baseProps.grow)}
+			data-no-wrap={b(baseProps.noWrap)}
 			{...styles}
 			{...other}
 		>

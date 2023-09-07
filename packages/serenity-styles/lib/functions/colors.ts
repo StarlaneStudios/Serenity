@@ -1,16 +1,16 @@
-import { clamp } from "../utils/number";
-import { DEFAULT_COLORS } from "../../constants/colors";
-import type { Color } from "../../types/theme";
+import { clamp } from "./math";
+import { DEFAULT_COLORS } from "../constants/colors";
+import type { Color } from "../types/theme";
 import type { Tuple } from "@serenity-ui/utils";
 
 /**
  * darkens a hex color supporting 3 and 6 digit hex values
+ * 
  * @param color string
  * @param amount number
  * @return string
  */
-export const darkenHex = (color: string, amount: number) => {
-
+export function darkenHex(color: string, amount: number) {
 	let c = color.slice(1);
 
 	if (c.length === 3) {
@@ -29,14 +29,15 @@ export const darkenHex = (color: string, amount: number) => {
 	b = clamp(b - amount, 0, 255);
 
 	return `#${(r << 16 | g << 8 | b).toString(16).padStart(6, '0')}`;
-};
+}
 
 /**
  * darkens a rgb or rgba color
+ * 
  * @param color 
  * @param amount 
  */
-export const darkenRGB = (color: string, amount: number) => {
+export function darkenRGB(color: string, amount: number) {
 
 	const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/g;
 	const rgb = regex.exec(color);
@@ -52,15 +53,16 @@ export const darkenRGB = (color: string, amount: number) => {
 	const b = clamp(+rgb[3] - amount, 0, 255);
 
 	return `rgb(${r}, ${g}, ${b})`;
-};
+}
 
 /**
  * darkens a hsl or hsla color
+ * 
  * @param color
  * @param amount
  * 
  */
-export const darkenHSL = (color: string, amount: number) => {
+export function darkenHSL(color: string, amount: number) {
 
 	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
 	const hsl = regex.exec(color);
@@ -75,15 +77,16 @@ export const darkenHSL = (color: string, amount: number) => {
 	const light = clamp(+hsl[3] - amount, 0, 100);
 
 	return `hsl(${hue}, ${saturation}%, ${light}%)`;
-};
+}
 
 /**
  * darkens the hex, rgba or hsl values
+ * 
  * @param color string
  * @param amount number
  * @return string 
  */
-export const darkenColor = (color: string | undefined, amount: number) => {
+export function darkenColor(color: string | undefined, amount: number) {
 
 	if(!color) {
 		return color;
@@ -102,16 +105,16 @@ export const darkenColor = (color: string | undefined, amount: number) => {
 	}
 
 	return color;
-};
+}
 
 /**
  * lightens a hex color supporting 3 and 6 digit hex values
+ * 
  * @param input 
  * @param defaultShade 
  * @returns 
  */
-export const lightenHex = (input: string, amount: number) => {
-
+export function lightenHex(input: string, amount: number) {
 	let c = input;
 
 	if (c.startsWith('#')) {
@@ -133,15 +136,16 @@ export const lightenHex = (input: string, amount: number) => {
 	b = clamp(b + amount, 0, 255);
 
 	return `#${(r << 16 | g << 8 | b).toString(16).padStart(6, '0')}`;
-};
+}
 
 /**
  * lightens a rgb or rgba color
+ * 
  * @param input
  * @param amount
  * @returns
  */
-export const lightenRGB = (input: string, amount: number) => {
+export function lightenRGB(input: string, amount: number) {
 
 	const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/g;
 	const rgb = regex.exec(input);
@@ -157,15 +161,16 @@ export const lightenRGB = (input: string, amount: number) => {
 	const b = clamp(+rgb[3] + amount, 0, 255);
 
 	return `rgb(${r}, ${g}, ${b})`;
-};
+}
 
 /**
  * lightens a hsl or hsla color
+ * 
  * @param input
  * @param amount
  * @returns string
  */
-export const lightenHSL = (input: string, amount: number) => {
+export function lightenHSL(input: string, amount: number) {
 
 	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
 	const hsl = regex.exec(input);
@@ -181,15 +186,16 @@ export const lightenHSL = (input: string, amount: number) => {
 	const lighten = clamp(Number(hsl[3]) + amount, 0, 100);
 
 	return `hsl(${hue}, ${saturation}%, ${lighten}%)`;
-};
+}
 
 /**
  * lightens the hex, rgba or hsl values
+ * 
  * @param color string
  * @param amount number
  * @return string
  */
-export const lightenColor = (color: string, amount: number) => {
+export function lightenColor(color: string, amount: number) {
 
 	if (color.startsWith('#')) {
 		return lightenHex(color, amount);
@@ -204,15 +210,16 @@ export const lightenColor = (color: string, amount: number) => {
 	}
 
 	return color;
-};
+}
 
 /**
  * Sets the opacity of a hex color
+ * 
  * @param color 
  * @param opacity 
  * @returns string
  */
-export const setHexOpacity = (color: string, opacity: number) => {
+export function setHexOpacity(color: string, opacity: number) {
 
 	let c = color;
 
@@ -230,15 +237,16 @@ export const setHexOpacity = (color: string, opacity: number) => {
 	const b = bigint & 255;
 
 	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-};
+}
 
 /**
  * Sets the opacity of a rgb or rgba color
+ * 
  * @param color 
  * @param opacity 
  * @returns string
  */
-export const setRGBOpacity = (color: string, opacity: number) => {
+export function setRGBOpacity(color: string, opacity: number) {
 
 	const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/g;
 	const rgb = regex.exec(color);
@@ -253,15 +261,16 @@ export const setRGBOpacity = (color: string, opacity: number) => {
 	const b = +rgb[3];
 
 	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-};
+}
 
 /**
  * Sets the opacity of a hsl or hsla color
+ * 
  * @param color 
  * @param opacity 
  * @returns string
  */
-export const setHSLOpacity = (color: string, opacity: number) => {
+export function setHSLOpacity(color: string, opacity: number) {
 
 	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
 	const hsl = regex.exec(color);
@@ -276,19 +285,20 @@ export const setHSLOpacity = (color: string, opacity: number) => {
 	const l = +hsl[3];
 
 	return `hsla(${h}, ${s}%, ${l}%, ${opacity})`;
-};
+}
 
 /**
  * Sets the opacity of a hex, rgb or hsl color
+ * 
  * @param color string
  * @param opacity number
  * @return string
  */
-export const setColorOpacity = (
+export function setColorOpacity(
 	color: string | undefined,
 	opacity: number,
 	themeColors: Record<Color, Tuple<string, 10>>
-) => {
+) {
 
 	if(!color) {
 		return color;
@@ -318,54 +328,24 @@ export const setColorOpacity = (
 	}
 
 	console.warn('invalid color', color);
+	
 	return color;
-};
-
-/**
- * Resolves the color input and returns a string.
- * @param input string
- * @param defaultShade number
- * @return string
- */
-export function resolveColorInput(input?: string, defaultShade: number = 6): string | undefined {
-
-	if(!input) {
-		return input;
-	}
-
-	if (input.startsWith('#') || input.startsWith('hsl') || input.startsWith('rgb')) {
-		return input;
-	}
-
-	const parts = input.split('.');
-
-	const color = parts[0] as Color;
-	const shade = parts[1];
-	const base = DEFAULT_COLORS[color];
-
-	if (!base) {
-		return input;
-	}
-
-	if (!shade) {
-		return base[defaultShade];
-	}
-
-	return base[+shade];
-};
+}
 
 /**
  * Returns hex color for the theme color
+ * 
  * @param name 
  * @param shade 
  * @return hex color
  */
-export const getThemeColor = (name: string, shade: number = 6): string => {
+export function getThemeColor(name: string, shade: number = 6) {
 
 	if (name.includes('.')) {
 		return DEFAULT_COLORS[name][shade];
 	}
 
 	const [base, _shade] = name.split('.');
+
 	return DEFAULT_COLORS[base][+_shade];
-};
+}

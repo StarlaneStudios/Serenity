@@ -1,7 +1,7 @@
 import { JSX, Show, mergeProps, splitProps } from "solid-js";
 import { TextField } from "@kobalte/core";
 import classes from "./base.module.scss";
-import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveModifier, resolveSize } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveLength, resolveSize } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 
 type DefaultBaseInputProps = TextField.TextFieldRootProps & TextField.TextFieldLabelProps & TextField.TextFieldDescriptionProps & TextField.TextFieldErrorMessageProps;
@@ -72,17 +72,17 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 	const baseProps = mergeProps(root, defaultBaseInputProps);
 
 	const cssVariables = () => {
-		const radius = resolveSize('radius', baseProps.radius, 'rem');
-		const height = resolveModifier('input-height', baseProps.size);
+		const radius = resolveLength('radius', baseProps.radius);
+		const height = resolveSize('input-height', baseProps.size);
 
-		return cssvars({ radius, height });
+		return localVars({ radius, height });
 	};
 
 	const styles = buildStyles(util, baseProps.style as JSX.CSSProperties, cssVariables());
 
 	return (
 		<TextField.Root
-			class={cx(defaultBaseInputProps.styles.root, root.class)}
+			class={c(defaultBaseInputProps.styles.root, root.class)}
 			data-variant={props.variant}
 			validationState={props.error ? 'invalid' : 'valid'}
 			{...styles}
