@@ -5,7 +5,7 @@ import { mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../../util/types";
 import { bool } from "../../../util/props";
 
-interface TabListProps extends SerenityBaseProps, KobalteTabs.TabsListProps {
+interface TabsListProps extends SerenityBaseProps, KobalteTabs.TabsListProps {
 
 	/**
 	 * How much spacing should be applied between the items
@@ -28,14 +28,14 @@ const tabListSplitProps = [
 ] as const;
 
 const defaultTabListProps: DefaultProps<
-	TabListProps,
+	TabsListProps,
 	'spacing' | 'grow'
 > = {
 	spacing: "sm",
 	grow: false
 };
 
-function TabList(props: TabListProps) {
+function TabsList(props: TabsListProps) {
 
 	const [root, utils, other] = splitProps(props, tabListSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultTabListProps, root);
@@ -60,4 +60,4 @@ function TabList(props: TabListProps) {
 	);
 }
 
-export { TabList, TabListProps };
+export { TabsList, TabsListProps };

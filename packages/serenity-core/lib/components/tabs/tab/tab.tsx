@@ -3,7 +3,7 @@ import { Tabs as KobalteTabs } from "@kobalte/core";
 import { SerenityBaseProps, cx, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
 import { splitProps } from "solid-js";
 
-interface TabProps extends SerenityBaseProps, KobalteTabs.TabsTriggerProps {
+interface TabsTabProps extends SerenityBaseProps, KobalteTabs.TabsTriggerProps {
 
 }
 
@@ -13,7 +13,7 @@ const tabSplitProps = [
 	"children"
 ] as const;
 
-function Tab(props: TabProps) {
+function TabsTab(props: TabsTabProps) {
 
 	const [root, utils, other] = splitProps(props, tabSplitProps, UTILITY_NAMES);
 	const styles = buildStyles(utils, root.style);
@@ -29,4 +29,4 @@ function Tab(props: TabProps) {
 	);
 }
 
-export { Tab, TabProps };
+export { TabsTab, TabsTabProps };

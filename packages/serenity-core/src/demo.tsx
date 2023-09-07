@@ -120,6 +120,7 @@ export const DemoPage = () => {
 					id ipsa, sed enim minus eos aliquam quae totam quaerat nulla dignissimos?
 				</Alert>
 			</Column>
+			
 			<Loader />
 			<Tabs>
 				<TabList>
