@@ -1,6 +1,6 @@
 import { mdiCheck, mdiLock } from "@mdi/js";
 import { Accordion, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
-import { Tab, TabList, Tabs } from "../lib/components/tabs";
+import { Tab, TabContent, TabList, Tabs } from "../lib/components/tabs";
 import { Badge } from "../lib/components/badge";
 import { Loader } from "../lib/components/loader";
 import { createEffect, createSignal } from "solid-js";
@@ -46,13 +46,81 @@ const SomeAccordion = (props: AccordionProps) => (
 export const DemoPage = () => {
 
 	const { toggleTheme } = useSerenity();
+	const [show, setShow] = createSignal(false);
 
 	return (
-		<Alert onClose={(event) => {}}>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-			libero ducimus voluptatem natus, 
-			id ipsa, sed enim minus eos aliquam quae totam quaerat nulla dignissimos?
-		</Alert>
+		<>
+			<Row m={1}>
+				<Button onClick={() => setShow(prev => !prev)}>
+					Click me
+				</Button>
+				<Button onclick={toggleTheme}>
+					Toggle theme
+				</Button>
+			</Row>
+			<Column p={1}>
+				<Alert
+					variant="default"
+					title="Dit is een alert"
+					onClose={(event) => setShow(false)}
+					show={show()}
+				>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					libero ducimus voluptatem natus,
+					id ipsa, sed enim minus eos aliquam quae totam quaerat nulla dignissimos?
+				</Alert>
+				<Alert
+					title="Dit is een alert"
+					onClose={(event) => { }}
+					variant="filled"
+					show={show()}
+				>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					libero ducimus voluptatem natus,
+					id ipsa, sed enim minus eos aliquam quae totam quaerat nulla dignissimos?
+				</Alert>
+				<Alert
+					title="Dit is een alert"
+					onClose={(event) => { }}
+					variant="outline"
+					show={show()}
+				>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					libero ducimus voluptatem natus,
+					id ipsa, sed enim minus eos aliquam quae totam quaerat nulla dignissimos?
+				</Alert>
+				<Alert
+					title="Dit is een alert"
+					onClose={(event) => { }}
+					variant="light"
+					show={show()}
+				>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					libero ducimus voluptatem natus,
+					id ipsa, sed enim minus eos aliquam quae totam quaerat nulla dignissimos?
+				</Alert>
+			</Column>
+			<Loader />
+			<Tabs>
+				<TabList>
+					<Tab value="a">
+						Gallery A
+					</Tab>
+					<Tab value="b">
+						Gallery B
+					</Tab>
+				</TabList>
+				<TabContent value="a">
+					<p>Test A</p>
+				</TabContent>
+				<TabContent value="b">
+					<p>Test B</p>
+				</TabContent>
+			</Tabs>
+			<Badge variant="filled">
+				Mooi mooi
+			</Badge>
+		</>
 		// <div style={{ "padding-inline": "2rem" }}>
 		// 	<Unit
 		// 		mt={3}

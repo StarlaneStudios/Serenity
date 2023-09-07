@@ -1,21 +1,23 @@
-import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cx } from "@serenity-ui/styles";
-import { JSX, Show, createUniqueId, mergeProps, splitProps } from "solid-js";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveColorInput, resolveSize } from "@serenity-ui/styles";
+import { JSX, Match, Show, Switch, createUniqueId, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./alert.module.scss";
+import { Button } from "../button";
+import { variants } from "../../constants/variants";
 
 interface AlertProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 
 	/**
 	 * The variant of the alert
-	 * @default fill
+	 * @default filled
 	 */
-	variant?: "default" | "fill" | "light" | "outline";
+	variant?: "default" | "filled" | "light" | "outline" | "transparent" | "white";
 
 	/**
-	 * The size of the alert.
-	 * @default md
+	 * The color of the alert.
+	 * @default blue
 	 */
-	size?: Size;
+	color?: Color;
 
 	/**
 	 * The border radius of the alert.
@@ -30,9 +32,15 @@ interface AlertProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElemen
 	title?: string;
 
 	/**
+	 * Wether to show the alert or not.
+	 * @default false
+	 */
+	show?: boolean;
+
+	/**
 	 * Event callback that closes the alert.
 	 */
-	onClose: JSX.ChangeEventHandlerUnion<HTMLInputElement, Event>;
+	onClose: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent>;
 
 	/**
 	 * The styles within the alert component that you can reference and override.
@@ -51,32 +59,48 @@ interface AlertProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElemen
 	 * @default true
 	 */
 	withIcon?: boolean;
+
+	/**
+	 * The icon to represent the alert.
+	 * @default undefined
+	 */
+	icon?: (classname: string) => JSX.Element;
+
+	/**
+	 * The icon of the close button.
+	 * @default undefined
+	 */
+	closeIcon?: (classname: string, close: this['onClose']) => JSX.Element;
 }
 
 const alertSplitProps = [
 	"class",
 	"style",
 	"variant",
-	"size",
 	"radius",
 	"title",
 	"onClose",
 	"styles",
 	"withCloseButton",
 	"withIcon",
-	"children"
+	"children",
+	"show",
+	"closeIcon",
+	"icon"
 ] as const;
 
 const defaultAlertProps: DefaultProps<
 	AlertProps,
-	'variant' | 'size' | 'radius' |
-	'withIcon' | 'withCloseButton' | 'styles'
+	'variant' | 'radius' | 'color' |
+	'withIcon' | 'withCloseButton' | 'styles' |
+	'show'
 > = {
+	color: "blue",
 	radius: "sm",
-	size: "md",
-	variant: "default",
+	variant: "filled",
 	withCloseButton: true,
 	withIcon: true,
+	show: false,
 	styles: {
 		title: classes['alert__title'],
 		message: classes['alert__message'],
@@ -90,8 +114,16 @@ function Alert(props: AlertProps) {
 
 	const [root, utils, other] = splitProps(props, alertSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultAlertProps, root);
-	const style = buildStyles(utils);
 
+	const cssVariables = () => {
+		const radius = resolveSize("radius", baseProps.radius, "rem");
+		const color = resolveColorInput(baseProps.color);
+		const variant = variants[baseProps.variant](baseProps.color, false);
+		
+		return cssvars(Object.assign(variant, { "border-radius": radius, color }));
+	};
+
+	const style = buildStyles(utils, baseProps.style, cssVariables());
 	const labelIdentifier = createUniqueId(), descriptionIdentifier = createUniqueId();
 
 	return (
@@ -101,8 +133,9 @@ function Alert(props: AlertProps) {
 			role="alert"
 			aria-describedby={descriptionIdentifier}
 			aria-label={labelIdentifier}
-			{...other}
+			aria-hidden={!baseProps.show}
 			{...style}
+			{...other}
 		>
 			<div class={baseProps.styles.icon}>
 				i
@@ -113,13 +146,33 @@ function Alert(props: AlertProps) {
 						{baseProps.title}
 					</span>
 				</Show>
-				<p id={descriptionIdentifier} class={baseProps.styles.message}>
+				<div
+					id={descriptionIdentifier}
+					class={baseProps.styles.message}
+					aria-relevant="all"
+					aria-atomic="true"
+					aria-live="assertive"
+				>
 					{baseProps.children}
-				</p>
+				</div>
 			</div>
-			<div class={baseProps.styles["close-icon"]}>
-				c
-			</div>
+			<Switch>
+				<Match when={baseProps.withCloseButton && !baseProps.closeIcon}>
+					<Button
+						class={baseProps.styles["close-icon"]}
+						size="xs"
+						variant="transparent"
+						px={0.75}
+						onclick={baseProps.onClose}
+						style={{ "--text-color": undefined }}
+					>
+						x
+					</Button>
+				</Match>
+				<Match when={baseProps.withCloseButton && baseProps.closeIcon}>
+					{baseProps.closeIcon!(baseProps.styles["close-icon"], baseProps.onClose)}
+				</Match>
+			</Switch>
 		</div>
 	);
 }
