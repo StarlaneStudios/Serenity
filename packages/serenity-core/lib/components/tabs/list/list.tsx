@@ -3,6 +3,7 @@ import { Tabs as KobalteTabs } from "@kobalte/core";
 import { SerenityBaseProps, Size, cssvars, cx, resolveSize, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../../util/types";
+import { bool } from "../../../util/props";
 
 interface TabListProps extends SerenityBaseProps, KobalteTabs.TabsListProps {
 
@@ -22,7 +23,8 @@ interface TabListProps extends SerenityBaseProps, KobalteTabs.TabsListProps {
 const tabListSplitProps = [
 	"class",
 	"style",
-	"children"
+	"children",
+	"grow"
 ] as const;
 
 const defaultTabListProps: DefaultProps<
@@ -48,7 +50,7 @@ function TabList(props: TabListProps) {
 	return (
 		<KobalteTabs.List
 			class={cx(classes['tabs__list'], baseProps.class)}
-			data-grow={baseProps.grow}
+			data-grow={bool(baseProps.grow)}
 			{...styles}
 			{...other}
 		>

@@ -12,11 +12,11 @@
 		flex-direction: row-reverse;
 	}
 
-	&[data-grow="true"]>* {
+	&[data-grow] > * {
 		flex-grow: 1;
 	}
 
-	&[data-no-wrap='true'] {
+	&[data-no-wrap] {
 		flex-wrap: nowrap;
 	}
 }

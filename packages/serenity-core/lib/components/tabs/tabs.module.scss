@@ -129,6 +129,10 @@
 	&[data-orientation="vertical"] {
 		flex-direction: column;
 	}
+
+	&[data-grow] .tabs__item {
+		flex-grow: 1;
+	}
 }
 
 .tabs__item {

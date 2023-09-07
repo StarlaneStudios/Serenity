@@ -4,6 +4,7 @@ import { Column, ColumnProps } from "../column";
 import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, cssvars, cx, resolveSize } from "@serenity-ui/styles";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";
+import { bool } from "../../util/props";
 
 interface AccordionProps extends SerenityBaseProps, Omit<ColumnProps, 'align' | 'justify'> {
 	variant?: "default" | "contained" | "seperated" | "filled";
@@ -60,7 +61,7 @@ function Accordion(props: AccordionProps) {
 			<As
 				component={Column}
 				data-variant={baseProps.variant}
-				data-no-chevron-animation={baseProps.noChevronAnimation}
+				data-no-chevron-animation={bool(baseProps.noChevronAnimation)}
 				spacing={baseProps.variant === "seperated" ? baseProps.spacing : 0}
 				children={baseProps.children}
 				{...styles}

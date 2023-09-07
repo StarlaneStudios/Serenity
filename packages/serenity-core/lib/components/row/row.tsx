@@ -3,6 +3,7 @@ import { SerenityBaseProps, Size, cssvars, cx, resolveSize, buildStyles, UTILITY
 import { mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import { DefaultProps } from "../../util/types";
+import { bool } from "../../util/props";
 
 interface RowProps extends SerenityBaseProps, Omit<JSX.HTMLAttributes<HTMLDivElement>, 'size'> {
 	justify?: JSX.CSSProperties["justify-content"];
@@ -54,8 +55,8 @@ function Row(props: RowProps) {
 	return (
 		<div
 			class={cx(classes.row, baseProps.class)}
-			data-grow={baseProps.grow}
-			data-no-wrap={baseProps.noWrap}
+			data-grow={bool(baseProps.grow)}
+			data-no-wrap={bool(baseProps.noWrap)}
 			data-direction={baseProps.direction ?? "row"}
 			{...styles}
 			{...other}
