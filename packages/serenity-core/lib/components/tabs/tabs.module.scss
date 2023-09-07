@@ -132,6 +132,7 @@
 
 	&[data-grow] .tabs__item {
 		flex-grow: 1;
+		flex-basis: 0;
 	}
 }
 
