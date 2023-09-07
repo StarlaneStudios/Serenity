@@ -182,4 +182,4 @@ function Alert(props: AlertProps) {
 	);
 }
 
-export { Alert, AlertProps };
+export { Alert, AlertProps, defaultAlertProps };
