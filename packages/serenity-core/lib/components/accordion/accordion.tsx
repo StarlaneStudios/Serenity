@@ -4,7 +4,6 @@ import { Column, ColumnProps } from "../column";
 import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, resolveLength, b, localVars } from "@serenity-ui/styles";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";
-import { bool } from "../../util/props";
 
 interface AccordionProps extends SerenityBaseProps, Omit<ColumnProps, 'align' | 'justify'> {
 	variant?: "default" | "contained" | "seperated" | "filled";
