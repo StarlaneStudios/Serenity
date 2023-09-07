@@ -1,11 +1,4 @@
-import { mdiCheck, mdiLock } from "@mdi/js";
-import { Accordion, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
-import { Tab, TabList, Tabs } from "../lib/components/tabs";
-import { Badge } from "../lib/components/badge";
-import { Loader } from "../lib/components/loader";
-import { createEffect, createSignal } from "solid-js";
-import { Text } from "../lib/components/text";
-import { Unit } from "../lib/components/unit";
+import { Accordion, AccordionProps, AccordionTrigger, Badge, Button, Column, Divider, InputField, Layout, Loader, Paper, Row, Tabs, Text, useSerenity } from "../lib";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant}>
@@ -103,69 +96,69 @@ export const DemoPage = () => {
 
 			<Column spacing={3}>
 				<Tabs orientation="horizontal">
-					<TabList>
-						<Tab value="a">
+					<Tabs.List>
+						<Tabs.Tab value="a">
 							Gallery
-						</Tab>
-						<Tab value="b">
+						</Tabs.Tab>
+						<Tabs.Tab value="b">
 							Messages
-						</Tab>
-					</TabList>
+						</Tabs.Tab>
+					</Tabs.List>
 				</Tabs>
 
 				<Tabs orientation="horizontal" variant="outline">
-					<TabList>
-						<Tab value="a">
+					<Tabs.List>
+						<Tabs.Tab value="a">
 							Gallery
-						</Tab>
-						<Tab value="b">
+						</Tabs.Tab>
+						<Tabs.Tab value="b">
 							Messages
-						</Tab>
-					</TabList>
+						</Tabs.Tab>
+					</Tabs.List>
 				</Tabs>
 
 				<Tabs orientation="horizontal" variant="pills">
-					<TabList>
-						<Tab value="a">
+					<Tabs.List>
+						<Tabs.Tab value="a">
 							Gallery
-						</Tab>
-						<Tab value="b">
+						</Tabs.Tab>
+						<Tabs.Tab value="b">
 							Messages
-						</Tab>
-					</TabList>
+						</Tabs.Tab>
+					</Tabs.List>
 				</Tabs>
 
 				<Tabs orientation="vertical">
-					<TabList>
-						<Tab value="a">
+					<Tabs.List>
+						<Tabs.Tab value="a">
 							Gallery
-						</Tab>
-						<Tab value="b">
+						</Tabs.Tab>
+						<Tabs.Tab value="b">
 							Messages
-						</Tab>
-					</TabList>
+						</Tabs.Tab>
+					</Tabs.List>
 				</Tabs>
 
 				<Tabs orientation="vertical" variant="outline">
-					<TabList>
-						<Tab value="a">
+					<Tabs.List>
+						<Tabs.Tab value="a">
 							Gallery
-						</Tab>
-						<Tab value="b">
+						</Tabs.Tab>
+						<Tabs.Tab value="b">
 							Messages
-						</Tab>
-					</TabList>
+						</Tabs.Tab>
+					</Tabs.List>
 				</Tabs>
 
 				<Tabs orientation="vertical" variant="pills">
-					<TabList>
-						<Tab value="a">
+					<Tabs.List>
+						<Tabs.Tab value="a">
 							Gallery
-						</Tab>
-						<Tab value="b">
+						</Tabs.Tab>
+						<Tabs.Tab value="b">
 							Messages
-						</Tab>
-					</TabList>
+						</Tabs.Tab>
+					</Tabs.List>
 				</Tabs>
 
 				<div></div>
@@ -290,6 +283,7 @@ export const DemoPage = () => {
 					</Badge>
 				</Row>
 			</Column>
+			
 			<Loader />
 
 			<Text 
