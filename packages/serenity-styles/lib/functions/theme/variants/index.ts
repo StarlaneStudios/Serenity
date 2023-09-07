@@ -1,12 +1,18 @@
 import { DEFAULT_COLORS } from "../../../constants/colors";
 import { darkenColor, resolveColorInput, setColorOpacity } from "../color";
 
-export const resolveWhiteVariant = (color: string, defaultShade?: number) => ({
+export const resolveWhiteVariant = (
+	color: string, 
+	defaultShade?: number
+) => ({
 	"text-color": resolveColorInput(color, defaultShade),
 	"background-color": "#ffffff"
 });
 
-export const resolveTransparentVariant = (color: string, defaultShade?: number) => ({
+export const resolveTransparentVariant = (
+	color: string, 
+	defaultShade?: number
+) => ({
 	"text-color": resolveColorInput(color, defaultShade)
 });
 
@@ -16,46 +22,80 @@ export const resolveTransparentVariant = (color: string, defaultShade?: number) 
  * @param defaultShade 
  * @returns
  */
-export const resolveLightVariant = (color: string, defaultShade?: number) => {
+export const resolveLightVariant = (
+	color: string, 
+	defaultShade?: number, 
+	interactive = true
+) => {
 
 	const output = resolveColorInput(color, defaultShade);
-
-	return {
+	const base: Record<string, string | undefined> = {
 		"text-color": output,
 		"background-color": setColorOpacity(output, 0.1, DEFAULT_COLORS),
-		"hover-color": setColorOpacity(output, 0.12, DEFAULT_COLORS)
 	};
+
+	if (interactive) {
+		base['hover-color'] = setColorOpacity(output, 0.12, DEFAULT_COLORS);
+	}
+
+	return base;
 };
 
-export const resolveOutlineVariant = (color: string, defaultShade?: number) => {
+export const resolveOutlineVariant = (
+	color: string,
+	defaultShade?: number,
+	interactive = true
+) => {
 
 	const output = resolveColorInput(color, defaultShade);
-
-	return {
+	const base: Record<string, string | undefined> = {
 		"text-color": output,
-		"border-color": output,
-		"hover-color": setColorOpacity(output, 0.12, DEFAULT_COLORS),
+		"border-color": output
 	};
-}
 
-export const resolveFilledVariant = (color: string, defaultShade?: number) => {
+	if (interactive) {
+		base["hover-color"] = setColorOpacity(output, 0.12, DEFAULT_COLORS);
+	}
+
+	return base;
+};
+
+export const resolveFilledVariant = (
+	color: string,
+	defaultShade?: number,
+	interactive = true
+) => {
 
 	const output = resolveColorInput(color, defaultShade);
-
-	return {
+	const base: Record<string, string | undefined> = {
 		"text-color": "#ffffff",
 		"background-color": output,
-		"hover-color": darkenColor(output, 12),
-		"active-color": darkenColor(output, 15)
 	};
+
+	if (interactive) {
+		Object.assign(base, {
+			"hover-color": darkenColor(output, 12),
+			"active-color": darkenColor(output, 15)
+		});
+	}
+
+	return base;
 };
 
-export const resolveSubtleVariant = (color: string, defaultShade?: number) => {
+export const resolveSubtleVariant = (
+	color: string, 
+	defaultShade?: number,
+	interactive = true
+) => {
 
 	const output = resolveColorInput(color, defaultShade);
-
-	return {
+	const base: Record<string, string | undefined> = {
 		"text-color": output,
-		"hover-color": setColorOpacity(output, 0.12, DEFAULT_COLORS)
 	};
-}
+
+	if(interactive) {
+		base["hover-color"] = setColorOpacity(output, 0.12, DEFAULT_COLORS);
+	}
+
+	return base;
+};
