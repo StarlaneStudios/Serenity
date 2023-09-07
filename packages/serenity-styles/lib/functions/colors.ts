@@ -303,7 +303,6 @@ export function setColorOpacity(
 	}
 
 	console.warn('invalid color', color);
-
 	return color;
 }
 

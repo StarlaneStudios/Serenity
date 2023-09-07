@@ -3,7 +3,6 @@ import { Dynamic } from "solid-js/web";
 import { ElementType, PolymorphicProps } from "../../typings/polymorphic";
 import { Size, UTILITY_NAMES, buildStyles, localVars, c, b, resolveLength } from "@serenity-ui/styles";
 import classes from "./text.module.scss";
-import { bool } from "../../util/props";
 
 interface TextProps {
 	size?: Size | number;
