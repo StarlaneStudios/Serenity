@@ -36,9 +36,6 @@ export function b(value: any) {
  * @param map The CSS variables
  */
 export function localVars<T extends Record<string, string | undefined | number | null>>(map: T): JSX.CSSProperties {
-	if (!map) {
-		return {};
-	}
 
 	const variables: Record<string, any> = {};
 
