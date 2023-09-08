@@ -1,5 +1,5 @@
 import { mdiCheck, mdiLock } from "@mdi/js";
-import { Accordion, AccordionProps, AccordionTrigger, Button, Column, Divider, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
+import { Accordion, AccordionProps, Button, Column, Divider, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
 import { Tabs } from "../lib/components/tabs";
 import { Badge } from "../lib/components/badge";
 import { Loader } from "../lib/components/loader";
@@ -9,35 +9,6 @@ import { Unit } from "../lib/components/unit";
 import { Alert } from "../lib/components/alert";
 import { createSign } from "crypto";
 import { Color, Variant, isColorLight } from "@serenity-ui/styles";
-
-const SomeAccordion = (props: AccordionProps) => (
-	<Accordion collapsible radius="sm" variant={props.variant} mt="xs">
-		<Accordion.Item value="24">
-			<Accordion.Header>
-				Accordion A
-			</Accordion.Header>
-			<Accordion.Content>
-				Dit is content
-			</Accordion.Content>
-		</Accordion.Item>
-		<Accordion.Item value="25">
-			<Accordion.Header>
-				Accordion B
-			</Accordion.Header>
-			<Accordion.Content>
-				Dit is content
-			</Accordion.Content>
-		</Accordion.Item>
-		<Accordion.Item value="26">
-			<Accordion.Header>
-				Accordion C
-			</Accordion.Header>
-			<Accordion.Content>
-				Dit is content
-			</Accordion.Content>
-		</Accordion.Item>
-	</Accordion>
-);
 
 export const DemoPage = () => {
 
@@ -57,6 +28,15 @@ export const DemoPage = () => {
 		setColor(color);
 	};
 
+	setInterval(generateColor, 2000);
+
+	const variants = () => {
+		const x = ['default', 'filled', 'outline', 'transparent', 'white', 'light'];
+
+		// fill array of length 100 with random variants
+		return Array.from({ length: 22 }, () => x[Math.floor(Math.random() * x.length)]);
+	};
+
 	return (
 		<>
 			{isColorLight(color()) ? "Light" : "Dark"} <br />
@@ -74,7 +54,7 @@ export const DemoPage = () => {
 			</Row>
 			<Column p={1}>
 				<For 
-					each={['default', 'filled', 'outline', 'transparent', 'white', 'light'] as const}
+					each={variants() as any}
 					fallback={<div>Failed</div>}
 				>
 					{(variant) => (
@@ -92,6 +72,7 @@ export const DemoPage = () => {
 					)}
 				</For>
 			</Column>
+
 			<Loader />
 			{/* <Tabs>
 				<TabList>
@@ -109,7 +90,7 @@ export const DemoPage = () => {
 					<p>Test B</p>
 				</TabContent>
 			</Tabs> */}
-			<Badge variant="filled">
+			<Badge variant="filled" color={color()}>
 				Mooi mooi
 			</Badge>
 		</>

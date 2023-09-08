@@ -87,16 +87,15 @@ function Badge(props: BadgeProps) {
 		}
 
 		return localVars(vars);
-		
 	};
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<div
 			class={c(classes.badge, baseProps.class)}
 			data-variant={baseProps.variant}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			<span class={baseProps.styles.label}>
