@@ -139,18 +139,6 @@ export function darkenHSL(color: string, amount: number) {
 	const [hue, saturation, lightness] = getHSLValues(color);
 	const light = Math.max(0, lightness - amount);
 
-	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
-	const hsl = regex.exec(color);
-
-	if (!hsl) {
-		console.warn('invalid hsl color', color);
-		return color;
-	}
-
-	const hue = hsl[1];
-	const saturation = hsl[2];
-	const light = clamp(+hsl[3] - amount, 0, 100);
-
 	return `hsl(${hue}, ${saturation}%, ${light}%)`;
 }
 
