@@ -1,6 +1,6 @@
 {
 	"name": "@serenity-ui/primitives",
-	"version": "0.1.11",
+	"version": "0.1.12",
 	"type": "module",
 	"main": "./dist/serenity-primitives.umd.cjs",
 	"module": "./dist/serenity-primitives.js",
