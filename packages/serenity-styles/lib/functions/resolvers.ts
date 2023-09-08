@@ -107,27 +107,19 @@ export function resolveGridCols(breakpoints: Record<Size, number>): JSX.CSSPrope
  * @param defaultShade number
  * @return string
  */
-export function resolveColor(input?: string, defaultShade: number = 6): string | undefined {
-
-	if (!input) {
-		return input;
-	}
+export function resolveColor(input: string, defaultShade: number = 6) {
 
 	if (input.startsWith('#') || input.startsWith('hsl') || input.startsWith('rgb')) {
 		return input;
 	}
 
-	const parts = input.split('.');
-
-	const color = parts[0] as Color;
-	const shade = parts[1];
+	const [color, shade] = input.split('.');
 	const base = DEFAULT_COLORS[color];
 
 	if (!base) {
 		return input;
 	}
-
-	if (!shade) {
+	else if (!shade) {
 		return base[defaultShade];
 	}
 

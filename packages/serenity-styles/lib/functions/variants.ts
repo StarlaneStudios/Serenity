@@ -1,5 +1,5 @@
 import { DEFAULT_COLORS } from "../constants/colors";
-import { darkenColor, setColorOpacity } from "./colors";
+import { darkenColor, isColorLight, setColorOpacity } from "./colors";
 import { resolveColor } from "./resolvers";
 
 export const resolveWhiteVariant = (
@@ -69,7 +69,7 @@ export const resolveFilledVariant = (
 
 	const output = resolveColor(color, defaultShade);
 	const base: Record<string, string | undefined> = {
-		"text-color": "#ffffff",
+		"text-color": isColorLight(output) ? "#000" : "#fff",
 		"background-color": output,
 	};
 
