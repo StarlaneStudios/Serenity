@@ -71,7 +71,7 @@ function Badge(props: BadgeProps) {
 		const padding = resolveLength("badge-padding", baseProps.size);
 		const fontSize = resolveLength("badge-font-size", baseProps.size);
 
-		let vars: any = {
+		const vars: Record<string, any> = {
 			radius,
 			size,
 			padding,
@@ -82,24 +82,20 @@ function Badge(props: BadgeProps) {
 		if (baseProps.variant === "dot") {
 			vars.color = resolveColor(baseProps.color);
 		} else {
-			const variant = variants.get(baseProps.variant)?.(baseProps.color) ?? {};
-
-			vars = {
-				...vars,
-				...variant
-			}
+			const variant = variants[baseProps.variant](baseProps.color, false);
+			Object.assign(vars, variant);
 		}
 
 		return localVars(vars);
 	};
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<div
 			class={c(classes.badge, baseProps.class)}
 			data-variant={baseProps.variant}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			<span class={baseProps.styles.label}>

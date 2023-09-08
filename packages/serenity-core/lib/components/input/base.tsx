@@ -9,7 +9,7 @@ type BaseInputProps<P> = DefaultBaseInputProps & SerenityBaseProps & {
 	label?: string;
 	description?: string;
 	error?: string;
-	variant?: 'outlined' | 'filled' | 'default';
+	variant?: 'outline' | 'filled' | 'default';
 	styles?: Record<'root' | 'label' | 'description' | 'error' | 'wrapper' | 'leftSection' | 'rightSection', string>;
 	radius?: Size | number;
 	size?: Size;

@@ -1,11 +1,14 @@
-import { Variant, resolveFilledVariant, resolveLightVariant, resolveOutlineVariant, resolveSubtleVariant, resolveTransparentVariant, resolveWhiteVariant } from "@serenity-ui/styles";
+import { Color, Variant, resolveFilledVariant, resolveLightVariant, resolveOutlineVariant, resolveSubtleVariant, resolveTransparentVariant, resolveWhiteVariant } from "@serenity-ui/styles";
 
-export const variants = new Map([
-	["default", (_: string) => ({})],
-	["light", (color: string) => resolveLightVariant(color, 6)],
-	["outline", (color: string) => resolveOutlineVariant(color, 6)],
-	["transparent", (color: string) => resolveTransparentVariant(color!, 6)],
-	["white", (color: string) => resolveWhiteVariant(color, 6)],
-	["filled", (color: string) => resolveFilledVariant(color, 6)],
-	["subtle", (color: string) => resolveSubtleVariant(color, 6)]
-]) as Map<Variant, (color: string) => any>;
+export const variants: Record<
+	Variant,
+	(color: Color, interactive: boolean) => Record<string, any>
+> = {
+	default: (_) => ({}),
+	light: (color, interactive) => resolveLightVariant(color, 6, interactive),
+	outline: (color, interactive) => resolveOutlineVariant(color, 6, interactive),
+	transparent: (color) => resolveTransparentVariant(color!, 6),
+	white: (color) => resolveWhiteVariant(color, 6),
+	filled: (color, interactive) => resolveFilledVariant(color, 6, interactive),
+	subtle: (color, interactive) => resolveSubtleVariant(color, 6, interactive)
+};

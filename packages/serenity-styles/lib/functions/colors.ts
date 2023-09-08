@@ -1,7 +1,97 @@
-import { clamp } from "./math";
 import { DEFAULT_COLORS } from "../constants/colors";
 import type { Color } from "../types/theme";
 import type { Tuple } from "@serenity-ui/utils";
+
+/**
+ * Retrieves the rgb values from a rgb or rgba color
+ * @param rgb
+ * @return number[]
+ */
+export function getRGBValues(rgb: string) {
+	return rgb.replace(/(rgb|rgba)|\(|\)/g, '').split(',').map(parseFloat);
+}
+
+/**
+ * Retrieves the hsl values from a hsl or hsla color
+ * @param hsl 
+ * @returns 
+ */
+export function getHSLValues(hsl: string) {
+	return hsl.replace(/(hsl|hsla)|\(|\)/g, '').split(',').map(parseFloat);
+}
+
+/**
+ * Converts a hex color to rgb
+ * @param hex
+ * @return number[]
+ */
+export function convertHexToRGB(hex: string) {
+
+	let c = hex.slice(1);
+
+	if (c.length === 3) {
+		c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
+	}
+
+	const rgb = parseInt(c, 16);
+
+	const r = (rgb >> 16) & 255;
+	const g = (rgb >> 8) & 255;
+	const b = rgb & 255;
+
+	return [r, g, b];
+}
+
+/**
+ * Converts a rgb color to hex color
+ * @param hsl 
+ */
+export function convertHSLToRGB(hsl: string) {
+	const [hue, saturation, lightness] = getHSLValues(hsl);
+	const chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
+	const prime = hue / 60;
+	const x = chroma * (1 - Math.abs(prime % 2 - 1));
+	const m = lightness - chroma / 2;
+
+	let red = 0, green = 0, blue = 0;
+
+	if (0 <= prime && prime < 1) {
+		red = chroma;
+		green = x;
+	} else if (1 <= prime && prime < 2) {
+		red = x;
+		green = chroma;
+	} else if (2 <= prime && prime < 3) {
+		green = chroma;
+		blue = x;
+	} else if (3 <= prime && prime < 4) {
+		green = x;
+		blue = chroma;
+	} else if (4 <= prime && prime < 5) {
+		red = x;
+		blue = chroma;
+	} else {
+		red = chroma;
+		blue = x;
+	}
+
+	red = Math.round((red + m) * 255);
+	green = Math.round((green + m) * 255);
+	blue = Math.round((blue + m) * 255);
+
+	return [red, green, blue];
+}
+
+/**
+ * Converts a hex color to hsl
+ * @param r 
+ * @param g 
+ * @param b 
+ * @returns 
+ */
+export function buildHexFromRGB(r: number, g: number, b: number) {
+	return "#" + (r << 16 | g << 8 | b).toString(16).padStart(6, '0');
+}
 
 /**
  * darkens a hex color supporting 3 and 6 digit hex values
@@ -11,24 +101,14 @@ import type { Tuple } from "@serenity-ui/utils";
  * @return string
  */
 export function darkenHex(color: string, amount: number) {
-	let c = color.slice(1);
+  
+	let [r, g, b] = convertHexToRGB(color);
 
-	if (c.length === 3) {
-		c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
-	}
+	r = Math.max(0, r - amount);
+	g = Math.max(0, g - amount);
+	b = Math.max(0, b - amount);
 
-	const bigint = parseInt(c, 16);
-
-	let r = (bigint >> 16) & 255;
-	let g = (bigint >> 8) & 255;
-	let b = bigint & 255;
-
-	// clamp every value to 0 - 255
-	r = clamp(r - amount, 0, 255);
-	g = clamp(g - amount, 0, 255);
-	b = clamp(b - amount, 0, 255);
-
-	return `#${(r << 16 | g << 8 | b).toString(16).padStart(6, '0')}`;
+	return buildHexFromRGB(r, g, b);
 }
 
 /**
@@ -39,18 +119,11 @@ export function darkenHex(color: string, amount: number) {
  */
 export function darkenRGB(color: string, amount: number) {
 
-	const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/g;
-	const rgb = regex.exec(color);
+	let [r, g, b] = getRGBValues(color);
 
-	if (!rgb) {
-		console.warn('invalid rgb color', color);
-		return color;
-	}
-
-	// clamp every value to 0 - 255
-	const r = clamp(+rgb[1] - amount, 0, 255);
-	const g = clamp(+rgb[2] - amount, 0, 255);
-	const b = clamp(+rgb[3] - amount, 0, 255);
+	r = Math.max(0, r - amount);
+	g = Math.max(0, g - amount);
+	b = Math.max(0, b - amount);
 
 	return `rgb(${r}, ${g}, ${b})`;
 }
@@ -63,6 +136,8 @@ export function darkenRGB(color: string, amount: number) {
  * 
  */
 export function darkenHSL(color: string, amount: number) {
+	const [hue, saturation, lightness] = getHSLValues(color);
+	const light = Math.max(0, lightness - amount);
 
 	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
 	const hsl = regex.exec(color);
@@ -87,20 +162,17 @@ export function darkenHSL(color: string, amount: number) {
  * @return string 
  */
 export function darkenColor(color: string | undefined, amount: number) {
-
-	if(!color) {
+  
+	if (!color) {
 		return color;
 	}
-
-	if (color.startsWith('#')) {
+	else if (color.startsWith('#')) {
 		return darkenHex(color, amount);
 	}
-
-	if (color.startsWith('rgb')) {
+	else if (color.startsWith('rgb')) {
 		return darkenRGB(color, amount);
 	}
-
-	if (color.startsWith('hsl')) {
+	else if (color.startsWith('hsl')) {
 		return darkenHSL(color, amount);
 	}
 
@@ -115,27 +187,14 @@ export function darkenColor(color: string | undefined, amount: number) {
  * @returns 
  */
 export function lightenHex(input: string, amount: number) {
-	let c = input;
 
-	if (c.startsWith('#')) {
-		c = c.slice(1);
-	}
+	let [r, g, b] = convertHexToRGB(input);
 
-	if (c.length === 3) {
-		c = c.split('').map(v => v + v).join('');
-	}
+	r = Math.min(255, r + amount);
+	g = Math.min(255, g + amount);
+	b = Math.min(255, b + amount);
 
-	const bigint = parseInt(c, 16);
-	
-	let r = (bigint >> 16) & 255;
-	let g = (bigint >> 8) & 255;
-	let b = bigint & 255;
-
-	r = clamp(r + amount, 0, 255);
-	g = clamp(g + amount, 0, 255);
-	b = clamp(b + amount, 0, 255);
-
-	return `#${(r << 16 | g << 8 | b).toString(16).padStart(6, '0')}`;
+	return buildHexFromRGB(r, g, b);
 }
 
 /**
@@ -146,19 +205,12 @@ export function lightenHex(input: string, amount: number) {
  * @returns
  */
 export function lightenRGB(input: string, amount: number) {
+  
+	let [r, g, b] = getRGBValues(input);
 
-	const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/g;
-	const rgb = regex.exec(input);
-
-	if (!rgb) {
-		console.warn('invalid rgb color', input);
-		return input;
-	}
-
-	// clamp every value to 0 - 255
-	const r = clamp(+rgb[1] + amount, 0, 255);
-	const g = clamp(+rgb[2] + amount, 0, 255);
-	const b = clamp(+rgb[3] + amount, 0, 255);
+	r = Math.min(255, r + amount);
+	g = Math.min(255, g + amount);
+	b = Math.min(255, b + amount);
 
 	return `rgb(${r}, ${g}, ${b})`;
 }
@@ -171,20 +223,9 @@ export function lightenRGB(input: string, amount: number) {
  * @returns string
  */
 export function lightenHSL(input: string, amount: number) {
-
-	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
-	const hsl = regex.exec(input);
-
-	if (!hsl) {
-		console.warn('invalid hsl color', input);
-		return input;
-	}
-
-	// clamp every value to 0 - 100
-	const hue = hsl[1];
-	const saturation = hsl[2];
-	const lighten = clamp(Number(hsl[3]) + amount, 0, 100);
-
+	let [hue, saturation, lightness] = getHSLValues(input);
+	const lighten = Math.min(255, lightness + amount);
+  
 	return `hsl(${hue}, ${saturation}%, ${lighten}%)`;
 }
 
@@ -200,12 +241,10 @@ export function lightenColor(color: string, amount: number) {
 	if (color.startsWith('#')) {
 		return lightenHex(color, amount);
 	}
-
-	if (color.startsWith('rgb')) {
+	else if (color.startsWith('rgb')) {
 		return lightenRGB(color, amount);
 	}
-
-	if (color.startsWith('hsl')) {
+	else if (color.startsWith('hsl')) {
 		return lightenHSL(color, amount);
 	}
 
@@ -220,22 +259,7 @@ export function lightenColor(color: string, amount: number) {
  * @returns string
  */
 export function setHexOpacity(color: string, opacity: number) {
-
-	let c = color;
-
-	if(c[0] === '#') {
-		c = c.slice(1);
-	}
-
-	if(c.length === 3) {
-		c = c.split('').map((v) => v + v).join('');
-	}
-
-	const bigint = parseInt(c, 16);
-	const r = (bigint >> 16) & 255;
-	const g = (bigint >> 8) & 255;
-	const b = bigint & 255;
-
+	const [r, g, b] = convertHexToRGB(color);
 	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
@@ -247,19 +271,7 @@ export function setHexOpacity(color: string, opacity: number) {
  * @returns string
  */
 export function setRGBOpacity(color: string, opacity: number) {
-
-	const regex = /rgba?\((\d+),\s*(\d+),\s*(\d+)/g;
-	const rgb = regex.exec(color);
-
-	if (!rgb) {
-		console.warn('invalid rgb color', color);
-		return color;
-	}
-
-	const r = +rgb[1];
-	const g = +rgb[2];
-	const b = +rgb[3];
-
+	const [r, g, b] = getRGBValues(color);
 	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
@@ -271,19 +283,7 @@ export function setRGBOpacity(color: string, opacity: number) {
  * @returns string
  */
 export function setHSLOpacity(color: string, opacity: number) {
-
-	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
-	const hsl = regex.exec(color);
-
-	if (!hsl) {
-		console.warn('invalid hsl color', color);
-		return color;
-	}
-
-	const h = +hsl[1];
-	const s = +hsl[2];
-	const l = +hsl[3];
-
+	const [h, s, l] = getHSLValues(color);
 	return `hsla(${h}, ${s}%, ${l}%, ${opacity})`;
 }
 
@@ -300,35 +300,26 @@ export function setColorOpacity(
 	themeColors: Record<Color, Tuple<string, 10>>
 ) {
 
-	if(!color) {
+	if (!color) {
 		return color;
 	}
-
-	if (color.startsWith('#')) {
+	else if (color.startsWith('#')) {
 		return setHexOpacity(color, opacity);
 	}
-
-	if (color.startsWith('rgb')) {
+	else if (color.startsWith('rgb')) {
 		return setRGBOpacity(color, opacity);
 	}
-
-	if (color.startsWith('hsl')) {
+	else if (color.startsWith('hsl')) {
 		return setHSLOpacity(color, opacity);
 	}
-
-	if (color.includes('.')) {
-		const output = color.split('.');
-
-		const base = output[0] as Color;
-		const shade = output[1];
-
+	else if (color.includes('.')) {
+		const [base, shade] = color.split('.') as [Color, string];
 		const hex = themeColors[base][+shade];
 
 		return setHexOpacity(hex, opacity);
 	}
 
 	console.warn('invalid color', color);
-	
 	return color;
 }
 
@@ -342,10 +333,49 @@ export function setColorOpacity(
 export function getThemeColor(name: string, shade: number = 6) {
 
 	if (name.includes('.')) {
-		return DEFAULT_COLORS[name][shade];
+		return DEFAULT_COLORS?.[name]?.[shade];
 	}
 
 	const [base, _shade] = name.split('.');
 
 	return DEFAULT_COLORS[base][+_shade];
+}
+
+/**
+ * Returns if the color is a light color or not.
+ * @param input 
+ * @param shade 
+ * @returns boolean
+ */
+export function isColorLight(color: string) {
+
+	let r, g, b;
+
+	if (color.startsWith('#')) {
+		[r, g, b] = convertHexToRGB(color);
+	}
+	else if (color.startsWith('rgb')) {
+		[r, g, b] = getRGBValues(color);
+	}
+	else if (color.startsWith('hsl')) {
+		[r, g, b] = convertHSLToRGB(color);
+	}
+	else if (color.includes('.')) {
+		const [base, shade] = color.split('.') as [Color, string];
+		[r, g, b] = convertHexToRGB(DEFAULT_COLORS[base][+shade]);
+	}
+	else {
+		console.warn('invalid color', color);
+		return false;
+	}
+
+	// HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+	const hsp = Math.sqrt(
+		0.299 * (r * r) +
+		0.587 * (g * g) +
+		0.114 * (b * b)
+	);
+
+	// Using the HSP value, determine whether the color is light or dark
+	return hsp > 130;
 }

@@ -1,319 +1,81 @@
-import { Accordion, AccordionProps, Badge, Button, Column, Divider, Entry, Icon, InputField, Layout, Loader, Paper, Row, Tabs, Text, useSerenity } from "../lib";
-import { mdiAccount, mdiApplication, mdiChevronRight, mdiHelpCircleOutline } from "@mdi/js";
-
-const SomeAccordion = (props: AccordionProps) => (
-	<Accordion collapsible radius="sm" variant={props.variant} mt="xs">
-		<Accordion.Item value="24">
-			<Accordion.Header>
-				Accordion A
-			</Accordion.Header>
-			<Accordion.Content>
-				Dit is content
-			</Accordion.Content>
-		</Accordion.Item>
-		<Accordion.Item value="25">
-			<Accordion.Header>
-				Accordion B
-			</Accordion.Header>
-			<Accordion.Content>
-				Dit is content
-			</Accordion.Content>
-		</Accordion.Item>
-		<Accordion.Item value="26">
-			<Accordion.Header>
-				Accordion C
-			</Accordion.Header>
-			<Accordion.Content>
-				Dit is content
-			</Accordion.Content>
-		</Accordion.Item>
-	</Accordion>
-);
+import { mdiCheck, mdiLock } from "@mdi/js";
+import { Accordion, AccordionProps, Button, Column, Divider, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
+import { Tabs } from "../lib/components/tabs";
+import { Badge } from "../lib/components/badge";
+import { Loader } from "../lib/components/loader";
+import { For, createEffect, createSignal, onMount } from "solid-js";
+import { Text } from "../lib/components/text";
+import { Unit } from "../lib/components/unit";
+import { Alert } from "../lib/components/alert";
+import { createSign } from "crypto";
+import { Color, Variant, isColorLight } from "@serenity-ui/styles";
 
 export const DemoPage = () => {
 
 	const { toggleTheme } = useSerenity();
+	const [show, setShow] = createSignal(true);
+	const [color, setColor] = createSignal<Color>('blue.6');
+
+	const colors: Color[] = ["red", "blue", "indigo"];
+	const shades: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+	const generateColor = () => {
+		const randomColor = colors[Math.floor(Math.random() * colors.length)];
+		const randomShade = shades[Math.floor(Math.random() * shades.length)];
+
+		const color = [randomColor, randomShade].join('.') as Color;
+
+		setColor(color);
+	};
+
+	setInterval(generateColor, 2000);
+
+	const variants = () => {
+		const x = ['default', 'filled', 'outline', 'transparent', 'white', 'light'];
+
+		// fill array of length 100 with random variants
+		return Array.from({ length: 22 }, () => x[Math.floor(Math.random() * x.length)]);
+	};
 
 	return (
-		<div style={{ "padding-inline": "2rem" }}>
-			<Text
-				size="xl"
-				tc="cyan"
-				weight={900}
-				maw={50}
-				lineClamp={3}
-			>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et metus egestas, ullamcorper ligula at, pretium justo. Aenean tincidunt risus posuere consequat efficitur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec vitae pulvinar leo. Proin posuere hendrerit sodales. Maecenas pretium ante id dapibus malesuada. Cras maximus quam a fermentum pellentesque. In fringilla gravida dui sit amet consequat. Maecenas volutpat nunc sit amet pulvinar rutrum. Pellentesque id dolor vulputate, sagittis lorem tristique, mattis ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer tincidunt orci sit amet risus volutpat, eget sagittis nulla congue. Ut aliquet faucibus dolor at sollicitudin. Ut id enim in lacus sodales dignissim vel quis diam.
-			</Text>
-			<h1>
-				This is an test
-			</h1>
-			<Button size="md">
-				Save
-			</Button>
-
-			<Divider />
-
-			<Entry
-				py={0}
-				title="Project"
-				subtitle="View your list of projects"
-				rightSection={
-					<Icon path={mdiChevronRight} />
-				}
-				onClick={() => {
-					console.log("click");
-				}}
-			/>
-			<Divider />
-			<Entry
-				title="Project"
-				subtitle="View your list of projects yeeeet, View your list of projects yeeeet."
-				subtitleLines={2}
-				onClick={() => {
-					console.log("click");
-				}}
-			/>
-
-			<Divider />
-
-			<Layout breakpoints={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 2 }}>
-
-				<Paper border>
-					<SomeAccordion variant="contained" />
-				</Paper>
-
-				<Paper border>
-					<SomeAccordion variant="filled" />
-				</Paper>
-				<Paper border>
-					<SomeAccordion variant="default" />
-				</Paper>
-
-				<Paper border>
-					<SomeAccordion variant="seperated" />
-				</Paper>
-
-			</Layout>
-
-			<InputField
-				variant="default"
-				name="test"
-				label="Gebruikersnaam"
-				description="Hier kan je je gebruikersnaam invullen"
-				placeholder="Gebruikersnaam"
-				onchange={console.log}
-				oninput={console.log}
-				// leftSection={<Icon path={mdiLock} color="dark.1" size={1} />}
-				// rightSection={<Icon path={mdiLock} color="dark.1" size={1} />}
-				type="password"
-			/>
-
-			<Column spacing={3}>
-				<Tabs orientation="horizontal">
-					<Tabs.List>
-						<Tabs.Tab value="a">
-							Gallery
-						</Tabs.Tab>
-						<Tabs.Tab value="b">
-							Messages
-						</Tabs.Tab>
-					</Tabs.List>
-				</Tabs>
-
-				<Tabs orientation="horizontal" variant="outline">
-					<Tabs.List>
-						<Tabs.Tab value="a">
-							Gallery
-						</Tabs.Tab>
-						<Tabs.Tab value="b">
-							Messages
-						</Tabs.Tab>
-					</Tabs.List>
-				</Tabs>
-
-				<Tabs orientation="horizontal" variant="pills">
-					<Tabs.List>
-						<Tabs.Tab value="a">
-							Gallery
-						</Tabs.Tab>
-						<Tabs.Tab value="b">
-							Messages
-						</Tabs.Tab>
-					</Tabs.List>
-				</Tabs>
-
-				<Tabs orientation="vertical">
-					<Tabs.List>
-						<Tabs.Tab value="a">
-							Gallery
-						</Tabs.Tab>
-						<Tabs.Tab value="b">
-							Messages
-						</Tabs.Tab>
-					</Tabs.List>
-				</Tabs>
-
-				<Tabs orientation="vertical" variant="outline">
-					<Tabs.List>
-						<Tabs.Tab value="a">
-							Gallery
-						</Tabs.Tab>
-						<Tabs.Tab value="b">
-							Messages
-						</Tabs.Tab>
-					</Tabs.List>
-				</Tabs>
-
-				<Tabs orientation="vertical" variant="pills">
-					<Tabs.List>
-						<Tabs.Tab value="a">
-							Gallery
-						</Tabs.Tab>
-						<Tabs.Tab value="b">
-							Messages
-						</Tabs.Tab>
-					</Tabs.List>
-				</Tabs>
-
-				<div></div>
-
-				<Row>
-					<Badge variant="default" size="xs">
-						Default
-					</Badge>
-					<Badge variant="dot" size="xs">
-						Dot
-					</Badge>
-					<Badge variant="filled" size="xs">
-						Filled
-					</Badge>
-					<Badge variant="light" size="xs">
-						Light
-					</Badge>
-					<Badge variant="outline" size="xs">
-						Outline
-					</Badge>
-					<Badge variant="transparent" size="xs">
-						Transparent
-					</Badge>
-					<Badge variant="white" size="xs">
-						White
-					</Badge>
-				</Row>
-
-				<Row>
-					<Badge variant="default" size="sm">
-						Default
-					</Badge>
-					<Badge variant="dot" size="sm">
-						Dot
-					</Badge>
-					<Badge variant="filled" size="sm">
-						Filled
-					</Badge>
-					<Badge variant="light" size="sm">
-						Light
-					</Badge>
-					<Badge variant="outline" size="sm">
-						Outline
-					</Badge>
-					<Badge variant="transparent" size="sm">
-						Transparent
-					</Badge>
-					<Badge variant="white" size="sm">
-						White
-					</Badge>
-				</Row>
-
-				<Row>
-					<Badge variant="default" size="md">
-						Default
-					</Badge>
-					<Badge variant="dot" size="md">
-						Dot
-					</Badge>
-					<Badge variant="filled" size="md">
-						Filled
-					</Badge>
-					<Badge variant="light" size="md">
-						Light
-					</Badge>
-					<Badge variant="outline" size="md">
-						Outline
-					</Badge>
-					<Badge variant="transparent" size="md">
-						Transparent
-					</Badge>
-					<Badge variant="white" size="md">
-						White
-					</Badge>
-				</Row>
-
-				<Row>
-					<Badge variant="default" size="lg">
-						Default
-					</Badge>
-					<Badge variant="dot" size="lg">
-						Dot
-					</Badge>
-					<Badge variant="filled" size="lg">
-						Filled
-					</Badge>
-					<Badge variant="light" size="lg">
-						Light
-					</Badge>
-					<Badge variant="outline" size="lg">
-						Outline
-					</Badge>
-					<Badge variant="transparent" size="lg">
-						Transparent
-					</Badge>
-					<Badge variant="white" size="lg">
-						White
-					</Badge>
-				</Row>
-
-				<Row>
-					<Badge variant="default" size="xl">
-						Default
-					</Badge>
-					<Badge variant="dot" size="xl" radius="xl">
-						Dot
-					</Badge>
-					<Badge variant="filled" size="xl">
-						Filled
-					</Badge>
-					<Badge variant="light" size="xl">
-						Light
-					</Badge>
-					<Badge variant="outline" size="xl">
-						Outline
-					</Badge>
-					<Badge variant="transparent" size="xl">
-						Transparent
-					</Badge>
-					<Badge variant="white" size="xl" radius="xl">
-						White
-					</Badge>
-				</Row>
+		<>
+			{isColorLight(color()) ? "Light" : "Dark"} <br />
+			{color()} <br />
+			<Row m={1}>
+				<Button onClick={() => setShow(prev => !prev)}>
+					Click me
+				</Button>
+				<Button onclick={toggleTheme}>
+					Toggle theme
+				</Button>
+				<Button onclick={generateColor}>
+					Generate color
+				</Button>
+			</Row>
+			<Column p={1}>
+				<For 
+					each={variants() as any}
+					fallback={<div>Failed</div>}
+				>
+					{(variant) => (
+						<Alert
+							variant={variant}
+							title="Dit is een alert"
+							onClose={(event) => setShow(false)}
+							show={show()}
+							color={color()}
+						>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit.
+							libero ducimus voluptatem natus,
+							id ipsa, sed enim minus eos aliquam quae totam quaerat nulla dignissimos?
+						</Alert>
+					)}
+				</For>
 			</Column>
-			
 			<Loader />
-
-			<Text 
-				as={Column} 
-				justify="center" 
-				h={40}
-				bg="blue"
-				inline
-			>
-				<p>Hello Bruh momoasdf</p>
-				<p>Hello Bruh momoasdf</p>
-				<p>Hello Bruh momoasdf</p>
-				<p>Hello Bruh momoasdf</p>
-				<p>Hello Bruh momoasdf</p>
-			</Text>
-		</div>
+			<Badge variant="filled" color={color()}>
+				Mooi mooi
+			</Badge>
+		</>
 	);
 };

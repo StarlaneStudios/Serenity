@@ -39,9 +39,13 @@
 @include defineLightVariables((
 	"body-background-color": #fff,
 	"text-color": #000,
+	"default-border-color": var(--serenity-color-gray-3),
+	"default-color": #000
 ));
 
 @include defineDarkVariables((
 	"body-background-color": #1a1b1e,
 	"text-color": var(--serenity-color-dark-0),
+	"default-border-color": var(--serenity-color-dark-3),
+	"default-color": #fff
 ));
