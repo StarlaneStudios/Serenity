@@ -1,12 +1,10 @@
-import { Accordion, AccordionProps, AccordionTrigger, Badge, Button, Column, Divider, InputField, Layout, Loader, Paper, Row, Tabs, Text, useSerenity } from "../lib";
+import { Accordion, AccordionProps, Badge, Button, Column, Divider, InputField, Layout, Loader, Paper, Row, Tabs, Text, useSerenity } from "../lib";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant} mt="xs">
 		<Accordion.Item value="24">
 			<Accordion.Header>
-				<AccordionTrigger>
-					Accordion A
-				</AccordionTrigger>
+				Accordion A
 			</Accordion.Header>
 			<Accordion.Content>
 				Dit is content
@@ -14,9 +12,7 @@ const SomeAccordion = (props: AccordionProps) => (
 		</Accordion.Item>
 		<Accordion.Item value="25">
 			<Accordion.Header>
-				<AccordionTrigger>
-					Accordion B
-				</AccordionTrigger>
+				Accordion B
 			</Accordion.Header>
 			<Accordion.Content>
 				Dit is content
@@ -24,9 +20,7 @@ const SomeAccordion = (props: AccordionProps) => (
 		</Accordion.Item>
 		<Accordion.Item value="26">
 			<Accordion.Header>
-				<AccordionTrigger>
-					Accordion C
-				</AccordionTrigger>
+				Accordion C
 			</Accordion.Header>
 			<Accordion.Content>
 				Dit is content
