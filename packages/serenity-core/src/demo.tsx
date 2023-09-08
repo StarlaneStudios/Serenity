@@ -63,15 +63,6 @@ export const DemoPage = () => {
 		setColor(color);
 	};
 
-	setInterval(generateColor, 1);
-
-	const variants = () => {
-		const x = ['default', 'filled', 'outline', 'transparent', 'white', 'light'];
-
-		// fill array of length 100 with random variants
-		return Array.from({ length: 1000 }, () => x[Math.floor(Math.random() * x.length)]);
-	};
-
 	return (
 		<>
 			{isColorLight(color()) ? "Light" : "Dark"} <br />
@@ -89,7 +80,7 @@ export const DemoPage = () => {
 			</Row>
 			<Column p={1}>
 				<For 
-					each={variants()}
+					each={['default', 'filled', 'outline', 'transparent', 'white', 'light'] as const}
 					fallback={<div>Failed</div>}
 				>
 					{(variant) => (
