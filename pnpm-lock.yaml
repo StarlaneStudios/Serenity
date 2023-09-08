@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -87,6 +83,9 @@ importers:
       '@kobalte/core':
         specifier: 0.10.0
         version: 0.10.0(solid-js@1.7.11)
+      '@kobalte/utils':
+        specifier: ^0.9.0
+        version: 0.9.0(solid-js@1.7.11)
       '@serenity-ui/primitives':
         specifier: '*'
         version: link:../serenity-primitives
@@ -3453,7 +3452,6 @@ packages:
     dependencies:
       '@solid-primitives/utils': 6.2.1(solid-js@1.7.11)
       solid-js: 1.7.11
-    dev: false
 
   /@solid-primitives/keyboard@1.2.4(solid-js@1.7.11):
     resolution: {integrity: sha512-m9Ly1VVIa3GjoM1MnkBJSS6nCcv/VbBazTGVkCrUTdKKDE3D33CgPv3zwErV8QmLaAWsRHKSRGsV2zGXi+7J9w==}
@@ -3545,7 +3543,7 @@ packages:
     peerDependencies:
       solid-js: ^1.6.12
     dependencies:
-      '@solid-primitives/event-listener': 2.2.14(solid-js@1.7.11)
+      '@solid-primitives/event-listener': 2.3.0(solid-js@1.7.11)
       '@solid-primitives/rootless': 1.4.2(solid-js@1.7.11)
       '@solid-primitives/static-store': 0.0.5(solid-js@1.7.11)
       '@solid-primitives/utils': 6.2.1(solid-js@1.7.11)
@@ -8298,3 +8296,7 @@ packages:
     optionalDependencies:
       commander: 9.5.0
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

@@ -101,6 +101,7 @@ export function buildHexFromRGB(r: number, g: number, b: number) {
  * @return string
  */
 export function darkenHex(color: string, amount: number) {
+  
 	let [r, g, b] = convertHexToRGB(color);
 
 	r = Math.max(0, r - amount);
@@ -137,6 +138,19 @@ export function darkenRGB(color: string, amount: number) {
 export function darkenHSL(color: string, amount: number) {
 	const [hue, saturation, lightness] = getHSLValues(color);
 	const light = Math.max(0, lightness - amount);
+
+	const regex = /hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g;
+	const hsl = regex.exec(color);
+
+	if (!hsl) {
+		console.warn('invalid hsl color', color);
+		return color;
+	}
+
+	const hue = hsl[1];
+	const saturation = hsl[2];
+	const light = clamp(+hsl[3] - amount, 0, 100);
+
 	return `hsl(${hue}, ${saturation}%, ${light}%)`;
 }
 
@@ -148,7 +162,7 @@ export function darkenHSL(color: string, amount: number) {
  * @return string 
  */
 export function darkenColor(color: string | undefined, amount: number) {
-
+  
 	if (!color) {
 		return color;
 	}
@@ -173,6 +187,7 @@ export function darkenColor(color: string | undefined, amount: number) {
  * @returns 
  */
 export function lightenHex(input: string, amount: number) {
+
 	let [r, g, b] = convertHexToRGB(input);
 
 	r = Math.min(255, r + amount);
@@ -190,7 +205,7 @@ export function lightenHex(input: string, amount: number) {
  * @returns
  */
 export function lightenRGB(input: string, amount: number) {
-
+  
 	let [r, g, b] = getRGBValues(input);
 
 	r = Math.min(255, r + amount);
@@ -210,6 +225,7 @@ export function lightenRGB(input: string, amount: number) {
 export function lightenHSL(input: string, amount: number) {
 	let [hue, saturation, lightness] = getHSLValues(input);
 	const lighten = Math.min(255, lightness + amount);
+  
 	return `hsl(${hue}, ${saturation}%, ${lighten}%)`;
 }
 
@@ -299,6 +315,7 @@ export function setColorOpacity(
 	else if (color.includes('.')) {
 		const [base, shade] = color.split('.') as [Color, string];
 		const hex = themeColors[base][+shade];
+
 		return setHexOpacity(hex, opacity);
 	}
 
