@@ -1,0 +1,5 @@
+import { SerenityBaseProps } from "@serenity-ui/styles";
+
+export type OptionalKeys<T> = { [K in keyof T]-?: {} extends Pick<T, K> ? K : never }[keyof T];
+
+export type DefaultProps<T extends object> = Omit<{ [K in OptionalKeys<T>]: T[K] }, keyof SerenityBaseProps>;
