@@ -1,4 +1,5 @@
-import { Accordion, AccordionProps, Badge, Button, Column, Divider, InputField, Layout, Loader, Paper, Row, Tabs, Text, useSerenity } from "../lib";
+import { Accordion, AccordionProps, Badge, Button, Column, Divider, Entry, Icon, InputField, Layout, Loader, Paper, Row, Tabs, Text, useSerenity } from "../lib";
+import { mdiAccount, mdiApplication, mdiChevronRight, mdiHelpCircleOutline } from "@mdi/js";
 
 const SomeAccordion = (props: AccordionProps) => (
 	<Accordion collapsible radius="sm" variant={props.variant} mt="xs">
@@ -50,11 +51,31 @@ export const DemoPage = () => {
 			<Button size="md">
 				Save
 			</Button>
-			<Divider labelPosition="right">
-				<Button size="xs" color="cyan" onClick={toggleTheme}>
-					Test
-				</Button>
-			</Divider>
+
+			<Divider />
+
+			<Entry
+				py={0}
+				title="Project"
+				subtitle="View your list of projects"
+				rightSection={
+					<Icon path={mdiChevronRight} />
+				}
+				onClick={() => {
+					console.log("click");
+				}}
+			/>
+			<Divider />
+			<Entry
+				title="Project"
+				subtitle="View your list of projects yeeeet, View your list of projects yeeeet."
+				subtitleLines={2}
+				onClick={() => {
+					console.log("click");
+				}}
+			/>
+
+			<Divider />
 
 			<Layout breakpoints={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 2 }}>
 

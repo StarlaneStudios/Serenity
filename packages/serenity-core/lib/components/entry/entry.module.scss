@@ -1,0 +1,68 @@
+.entry {
+
+	&__inner {
+		background-color: transparent;
+		border: none;
+		color: unset;
+		display: flex;
+		flex-wrap: nowrap;
+		flex-direction: row;
+		align-items: center;
+		padding: 0.65rem 0.75rem;
+		width: 100%;
+		gap: 1rem;
+	}
+
+	&[data-clickable] &__inner {
+		cursor: pointer;
+	}
+	
+	&__collapsible {
+		padding-left: 0.75rem;
+	}
+
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		flex-shrink: 1;
+		gap: 0.25rem;
+		flex: 1;
+	}
+	
+	&__title {
+		font-weight: 500;
+	}
+
+	&__subtitle {
+		font-weight: 400;
+		font-size: var(--serenity-font-size-xs);
+		color: var(--serenity-entry-subtitle-text-color);
+		
+		line-height: 1rem;
+		text-align: start;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: var(--subtitle-clamp);
+	}
+
+	&__chevron {
+		transform: 0;
+		transition: 300ms ease-in-out;
+	}
+
+	&[data-expanded] &__chevron {
+		transform: rotate(180deg);
+	}
+}
+
+@include defineDarkVariables((
+	"entry-subtitle-text-color": var(--serenity-color-gray-6)
+));
+
+@include defineLightVariables((
+	"entry-subtitle-text-color": var(--serenity-color-gray-4)
+));
