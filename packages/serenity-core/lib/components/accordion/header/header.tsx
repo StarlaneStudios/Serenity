@@ -2,14 +2,18 @@ import classes from "../accordion.module.scss";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { JSX, splitProps } from "solid-js";
 import { SerenityBaseProps, UTILITY_NAMES, buildStyles, c } from "@serenity-ui/styles";
+import { Chevron } from "../../chevron";
+import { Row } from "../../row";
+import { Spacer } from "../../spacer";
 
 interface AccordionHeaderProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
-
+	triggerClass?: string;
 }
 
 const accordionSplitProps = [
 	"children",
 	"class",
+	"triggerClass",
 	"style"
 ] as const;
 
@@ -20,16 +24,23 @@ function AccordionHeader(props: AccordionHeaderProps) {
 
 	return (
 		<KobalteAccordion.Header
-			asChild
 			class={c(classes['accordion--header'], root.class)}
+			{...styles}
+			{...other}
 		>
-			<As 
-				component="h3"
-				{...styles}
-				{...other}
+			<KobalteAccordion.Trigger
+				class={c(classes['accordion--trigger'], root.triggerClass)}
+				asChild
 			>
-				{root.children}
-			</As>
+				<As
+					component={Row}
+					noWrap
+				>
+					{root.children}
+					<Spacer />
+					<Chevron class={classes['accordion--chevron']} />
+				</As>
+			</KobalteAccordion.Trigger>
 		</KobalteAccordion.Header>
 	)
 }
