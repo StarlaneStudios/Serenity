@@ -4,7 +4,7 @@
 	column-gap: 2rem;
 	border-radius: var(--border-radius);
 	opacity: 1;
-	transition: opacity 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out, background-color 0.3s;
 	background-color: var(--background-color);
 
 	&__body {

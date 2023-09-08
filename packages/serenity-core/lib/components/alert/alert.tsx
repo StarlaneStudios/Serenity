@@ -1,9 +1,12 @@
 import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveSize } from "@serenity-ui/styles";
-import { JSX, Match, Show, Switch, createUniqueId, mergeProps, splitProps } from "solid-js";
+import { JSX, Match, Show, Switch, createEffect, createUniqueId, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./alert.module.scss";
 import { Button } from "../button";
 import { variants } from "../../constants/variants";
+import { Optional } from "../../typings/helpers";
+import { Icon } from "../icon";
+import { ALERT_ICON, CLOSE_ICON, INFORMATION_ICON } from "../../constants/icons";
 
 interface AlertProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 
@@ -64,13 +67,13 @@ interface AlertProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElemen
 	 * The icon to represent the alert.
 	 * @default undefined
 	 */
-	icon?: (classname: string) => JSX.Element;
+	icon?: Optional<(classname: string) => JSX.Element>;
 
 	/**
 	 * The icon of the close button.
 	 * @default undefined
 	 */
-	closeIcon?: (classname: string, close: this['onClose']) => JSX.Element;
+	closeIcon?: Optional<(classname: string, close: this['onClose']) => JSX.Element>;
 }
 
 const alertSplitProps = [
@@ -86,7 +89,8 @@ const alertSplitProps = [
 	"children",
 	"show",
 	"closeIcon",
-	"icon"
+	"icon",
+	"color"
 ] as const;
 
 const defaultAlertProps: DefaultProps<
@@ -119,16 +123,16 @@ function Alert(props: AlertProps) {
 		const radius = resolveSize("radius", baseProps.radius);
 		const color = resolveColor(baseProps.color);
 		const variant = variants[baseProps.variant](baseProps.color, false);
-		
+
 		return localVars(
-			Object.assign(variant, { 
-				"border-radius": radius, 
-				color 
+			Object.assign(variant, {
+				"border-radius": radius,
+				color
 			})
 		);
 	};
 
-	const style = buildStyles(utils, baseProps.style, cssVariables());
+	const style = () => buildStyles(utils, baseProps.style, cssVariables());
 	const labelIdentifier = createUniqueId(), descriptionIdentifier = createUniqueId();
 
 	return (
@@ -139,12 +143,21 @@ function Alert(props: AlertProps) {
 			aria-describedby={descriptionIdentifier}
 			aria-label={labelIdentifier}
 			aria-hidden={!baseProps.show}
-			{...style}
+			{...style()}
 			{...other}
 		>
-			<div class={baseProps.styles.icon}>
-				i
-			</div>
+			<Switch>
+				<Match when={baseProps.withIcon && !baseProps.icon}>
+					<Icon
+						path={INFORMATION_ICON}
+						class={baseProps.styles.icon}
+						size={1.325}
+					/>
+				</Match>
+				<Match when={baseProps.withIcon && baseProps.icon}>
+					{baseProps.icon!(baseProps.styles.icon)}
+				</Match>
+			</Switch>
 			<div class={baseProps.styles.body}>
 				<Show when={baseProps.title}>
 					<span id={labelIdentifier} class={baseProps.styles.title}>
@@ -171,7 +184,7 @@ function Alert(props: AlertProps) {
 						onclick={baseProps.onClose}
 						style={{ "--text-color": undefined }}
 					>
-						x
+						<Icon path={CLOSE_ICON} size={1.1} />
 					</Button>
 				</Match>
 				<Match when={baseProps.withCloseButton && baseProps.closeIcon}>
