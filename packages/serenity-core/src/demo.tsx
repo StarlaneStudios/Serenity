@@ -19,6 +19,13 @@ export const DemoPage = () => {
 		setShow(prev => !prev);
 	};
 
+	const onSubmit: JSX.EventHandlerUnion<HTMLFormElement, Event> = async (event) => {
+		event.preventDefault();
+		const form = new FormData(event.currentTarget);
+		
+		console.log(form.get('bruh'));
+	};
+
 	return (
 		<>
 			<Row m={1}>
@@ -50,11 +57,16 @@ export const DemoPage = () => {
 				</For>
 			</Column>
 			{/* <Loader /> */}
-			<Row>
-				<Checkbox ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
-				<Checkbox color="grape" ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
-				<Checkbox ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
-			</Row>
+			<form onsubmit={onSubmit}>
+				<Row>
+					<Checkbox name="bruh" ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
+					<Checkbox name="abc" color="grape" ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
+					<Checkbox name="def" ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
+					<button type="submit">
+						Submit
+					</button>
+				</Row>
+			</form>
 		</>
 	);
 };

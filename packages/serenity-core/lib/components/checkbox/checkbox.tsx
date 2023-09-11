@@ -1,4 +1,4 @@
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveSize } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveLength } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { Checkbox as KobalteCheckbox } from "@kobalte/core";
 import { DefaultProps } from "../../typings/helpers";
@@ -8,6 +8,12 @@ import { CHECK_ICON } from "../../constants/icons";
 import { Icon } from "../icon";
 
 interface CheckboxProps extends SerenityBaseProps {
+
+	/**
+	 * The name of the checkbox. Used for form submission.
+	 * @default undefined
+	 */
+	name?: string;
 
 	/**
 	 * Targeting certain styles within this component.
@@ -46,8 +52,9 @@ const checkboxSplitProps = [
 	"radius"
 ] as const;
 
-const defaultCheckboxProps: DefaultProps<CheckboxProps> = {
+const defaultCheckboxProps = {
 	description: undefined,
+	name: undefined,
 	color: "blue",
 	radius: "sm",
 	styles: {
@@ -56,7 +63,7 @@ const defaultCheckboxProps: DefaultProps<CheckboxProps> = {
 		control: classes['checkbox__control'],
 		error: classes['checkbox__error']
 	}
-};
+} satisfies DefaultProps<CheckboxProps>;
 
 function Checkbox(props: Omit<OverrideComponentProps<"div", CheckboxProps>, 'onChange'>) {
 
@@ -66,7 +73,7 @@ function Checkbox(props: Omit<OverrideComponentProps<"div", CheckboxProps>, 'onC
 	const cssVariables = () => {
 
 		const color = resolveColor(baseProps.color);
-		const radius = resolveSize("radius", baseProps.radius);
+		const radius = resolveLength("radius", baseProps.radius);
 
 		return localVars({
 			color,
