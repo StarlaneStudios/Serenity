@@ -8,6 +8,7 @@ import { Text } from "../lib/components/text";
 import { Unit } from "../lib/components/unit";
 import { Alert } from "../lib/components/alert";
 import { Color, Variant, isColorLight } from "@serenity-ui/styles";
+import { Switch } from "../lib/components/switch";
 
 export const DemoPage = () => {
 
@@ -65,6 +66,9 @@ export const DemoPage = () => {
 					<button type="submit">
 						Submit
 					</button>
+				</Row>
+				<Row mt="xl">
+					<Switch />
 				</Row>
 			</form>
 		</>
