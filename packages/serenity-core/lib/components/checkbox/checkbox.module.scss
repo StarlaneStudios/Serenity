@@ -40,23 +40,37 @@
 		user-select: none;
 	}
 
+	&__icon {
+		color: #fff;
+	}
+
 	&[data-disabled] {
 		
 		.checkbox__control {
 			background-color: var(--serenity-checkbox-disabled-color);
 			border-color: var(--serenity-checkbox-disabled-color);
 		}
+
+		.checkbox__icon {
+			color: var(--serenity-checkbox-icon-disabled-color);
+		}
 	}
 }
+
+@include defineVariables((
+	"checkbox-icon-disabled-color": var(--sereniry-color-dark-6)
+));
 
 @include defineDarkVariables((
 	"checkbox-background-color": var(--serenity-color-dark-6),
 	"checkbox-description-color": var(--serenity-color-dark-2),
-	"checkbox-disabled-color": var(--serenity-color-dark-4)
+	"checkbox-disabled-color": var(--serenity-color-dark-4),
+	"checkbox-icon-disabled-color": var(--serenity-color-dark-6),
 ));
 
 @include defineLightVariables((
 	"checkbox-background-color": var(--serenity-color-gray-0),
 	"checkbox-description-color": var(--serenity-color-gray-6),
-	"checkbox-disabled-color": var(--serenity-color-gray-2)
+	"checkbox-disabled-color": var(--serenity-color-gray-2),
+	"checkbox-icon-disabled-color": var(--serenity-color-gray-5),
 ));

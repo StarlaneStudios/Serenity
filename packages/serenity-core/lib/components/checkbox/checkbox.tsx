@@ -16,6 +16,18 @@ interface CheckboxProps extends SerenityBaseProps {
 	name?: string;
 
 	/**
+	 * Whether the checkbox is disabled or not.
+	 * @default false
+	 */
+	disabled?: boolean;
+
+	/**
+	 * Whether the checkbox is checked or not.
+	 * @default false
+	 */
+	checked?: boolean;
+
+	/**
 	 * Targeting certain styles within this component.
 	 */
 	styles?: Record<'label' | 'description' | 'control' | 'error', string>;
@@ -55,6 +67,8 @@ const checkboxSplitProps = [
 const defaultCheckboxProps = {
 	description: undefined,
 	name: undefined,
+	disabled: false,
+	checked: false,
 	color: "blue",
 	radius: "sm",
 	styles: {
@@ -98,8 +112,7 @@ function Checkbox(props: Omit<OverrideComponentProps<"div", CheckboxProps>, 'onC
 				>
 					<Icon 
 						path={CHECK_ICON} 
-						class={classes['checkbox__icon']} 
-						color="var(--serenity-default-color)"
+						class={classes['checkbox__icon']}
 					/>
 				</KobalteCheckbox.Indicator>
 			</KobalteCheckbox.Control>
