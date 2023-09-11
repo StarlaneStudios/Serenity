@@ -1,0 +1,77 @@
+.checkbox {
+	display: flex;
+
+	&__control {
+		background-color: var(--serenity-checkbox-background-color);
+		border: 0.0625rem solid var(--serenity-default-border-color);
+		border-radius: var(--border-radius);
+		transition: .15s ease-in-out;
+	}
+
+	&__indicator,
+	&__icon,
+	&__control {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	&__input:focus-visible+.checkbox__control {
+		outline: 0.125rem solid var(--color);
+		outline-offset: 0.125rem;
+	}
+
+	&__control[data-checked] {
+		border-color: var(--color);
+		background-color: var(--color);
+	}
+
+	&__label {
+		color: var(--serenity-text-color);
+	}
+
+	&__description {
+		color: var(--serenity-checkbox-description-color);
+		font-size: 12px;
+		margin-top: 6px;
+	}
+
+	&__description,
+	&__label {
+		margin-left: 0.75rem;
+		user-select: none;
+	}
+
+	&__icon {
+		color: #fff;
+	}
+
+	&[data-disabled] {
+		
+		.checkbox__control {
+			background-color: var(--serenity-checkbox-disabled-color);
+			border-color: var(--serenity-checkbox-disabled-color);
+		}
+
+		.checkbox__icon {
+			color: var(--serenity-checkbox-icon-disabled-color);
+		}
+	}
+}
+
+@include defineVariables((
+	"checkbox-icon-disabled-color": var(--sereniry-color-dark-6)
+));
+
+@include defineDarkVariables((
+	"checkbox-background-color": var(--serenity-color-dark-6),
+	"checkbox-description-color": var(--serenity-color-dark-2),
+	"checkbox-disabled-color": var(--serenity-color-dark-4),
+	"checkbox-icon-disabled-color": var(--serenity-color-dark-6),
+));
+
+@include defineLightVariables((
+	"checkbox-background-color": var(--serenity-color-gray-0),
+	"checkbox-description-color": var(--serenity-color-gray-6),
+	"checkbox-disabled-color": var(--serenity-color-gray-2),
+	"checkbox-icon-disabled-color": var(--serenity-color-gray-5),
+));
