@@ -1,7 +1,6 @@
 import { Tuple } from "@serenity-ui/utils";
 import { Length, Size, UnitType } from "../types/values";
 import { JSX } from "solid-js/jsx-runtime";
-import { Color } from "../types/theme";
 import { DEFAULT_COLORS } from "../constants/colors";
 import { v } from "./css";
 import { isSize } from "./helpers";
