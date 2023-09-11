@@ -4,6 +4,7 @@ export * from "./components/accordion";
 export * from "./components/alert";
 export * from "./components/badge";
 export * from "./components/button";
+export * from "./components/checkbox";
 export * from "./components/chevron";
 export * from "./components/column";
 export * from "./components/divider";
