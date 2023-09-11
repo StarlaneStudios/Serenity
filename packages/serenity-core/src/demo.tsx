@@ -59,7 +59,7 @@ export const DemoPage = () => {
 			{/* <Loader /> */}
 			<form onsubmit={onSubmit}>
 				<Row>
-					<Checkbox name="bruh" ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
+					<Checkbox name="bruh" disabled ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
 					<Checkbox name="abc" color="grape" ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
 					<Checkbox name="def" ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
 					<button type="submit">
