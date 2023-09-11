@@ -5,6 +5,7 @@
 		background-color: var(--serenity-checkbox-background-color);
 		border: 0.0625rem solid var(--serenity-default-border-color);
 		border-radius: var(--border-radius);
+		transition: .15s ease-in-out;
 	}
 
 	&__indicator,
