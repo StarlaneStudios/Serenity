@@ -23,7 +23,7 @@ export const DemoPage = () => {
 	const onSubmit: JSX.EventHandlerUnion<HTMLFormElement, Event> = async (event) => {
 		event.preventDefault();
 		const form = new FormData(event.currentTarget);
-
+		
 		console.log(form.get('bruh'));
 	};
 
@@ -67,20 +67,10 @@ export const DemoPage = () => {
 						Submit
 					</button>
 				</Row>
-				<Row my="md" mx="xs">
+				<Row mt="xl">
 					<Switch />
 				</Row>
 			</form>
-			<Accordion collapsible mx="xs"> 
-				<Accordion.Item value="abc">
-					<Accordion.Header>
-						Test
-					</Accordion.Header>
-					<Accordion.Content>
-						Dit is de content
-					</Accordion.Content>
-				</Accordion.Item>
-			</Accordion>
 		</>
 	);
 };
