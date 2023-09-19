@@ -25,6 +25,7 @@ function AccordionHeader(props: AccordionHeaderProps) {
 	return (
 		<KobalteAccordion.Header
 			class={c(classes['accordion--header'], root.class)}
+			as="div"
 			{...styles}
 			{...other}
 		>
@@ -42,7 +43,7 @@ function AccordionHeader(props: AccordionHeaderProps) {
 				</As>
 			</KobalteAccordion.Trigger>
 		</KobalteAccordion.Header>
-	)
+	);
 }
 
 export { 
