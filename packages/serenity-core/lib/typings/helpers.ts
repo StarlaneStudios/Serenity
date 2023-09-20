@@ -6,3 +6,5 @@ export type Optional<T> = T | undefined;
 
 export type OptionalKeys<T> = { [K in keyof T]-?: {} extends Pick<T, K> ? K : never }[keyof T];
 export type DefaultProps<T extends object> = Omit<{ [K in OptionalKeys<T>]: T[K] }, keyof SerenityBaseProps>;
+
+export type StylesProps<K extends string> = Partial<Record<K, string>>;

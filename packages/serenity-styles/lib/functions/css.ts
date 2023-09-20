@@ -21,6 +21,16 @@ export function c(...args: (string | false | undefined)[]) {
 }
 
 /**
+ * Handles the style strategy wether it needs to be extended or replaced.
+ * @param args 
+ * @param strategy 
+ * @returns The handled style 
+ */
+export function s(strategy: 'extend' | 'replace', ...args: (string | false | undefined)[]) {
+	return strategy === 'extend' ? c(...args) : args.filter(Boolean).pop() || undefined;
+}
+
+/**
  * Converts any value to a boolean HTML attribute
  * 
  * @param value The value value
