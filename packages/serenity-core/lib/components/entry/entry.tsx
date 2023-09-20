@@ -50,6 +50,10 @@ interface EntryProps extends SerenityBaseProps {
 	 */
 	rightSection?: JSX.Element;
 
+	/**
+	 * The styles to apply to the children of the entry component.
+	 */
+	styles?: Record<'inner' | 'content' | 'title' | 'subtitle' | 'chevron' | 'left-section' | 'right-section', string>;
 }
 
 const entrySplitProps = [
@@ -64,10 +68,11 @@ const entrySplitProps = [
 	"class",
 	"style",
 	"children",
-	"onClick"
+	"onClick",
+	"styles"
 ] as const;
 
-const defaultEntryProps: DefaultProps<EntryProps> = { 
+const defaultEntryProps: DefaultProps<EntryProps> = {
 	open: false,
 	onOpenChange: undefined,
 	defaultOpen: false,
@@ -75,7 +80,16 @@ const defaultEntryProps: DefaultProps<EntryProps> = {
 	subtitleLines: 1,
 	leftSection: null,
 	rightSection: null,
-};
+	styles: {
+		inner: classes['entry__inner'],
+		content: classes['entry__content'],
+		title: classes['entry__title'],
+		subtitle: classes['entry__subtitle'],
+		chevron: classes['entry__chevron'],
+		"left-section": classes['entry__left-section'],
+		"right-section": classes['entry__right-section'],
+	}
+} satisfies Omit<EntryProps, 'title'>;
 
 function Entry(props: OverrideComponentProps<"div", EntryProps>) {
 
@@ -88,7 +102,7 @@ function Entry(props: OverrideComponentProps<"div", EntryProps>) {
 
 	const styles = () => buildStyles(utils, baseProps.style, cssVariables());
 
-	
+
 	const { toggle, isOpen } = createDisclosureState({
 		open: () => baseProps.open,
 		defaultOpen: () => baseProps.defaultOpen,
@@ -107,18 +121,18 @@ function Entry(props: OverrideComponentProps<"div", EntryProps>) {
 			{...other}
 		>
 			<button
-				class={classes['entry__inner']}
+				class={baseProps.styles?.inner}
 				onClick={composeEventHandlers([root.onClick, toggle])}
 			>
 				<Show when={baseProps.leftSection}>
 					{leftSection => (
-						<div class={classes['entry__left-section']}>
+						<div class={baseProps.styles?.["left-section"]}>
 							{leftSection()}
 						</div>
 					)}
 				</Show>
-				<div class={classes['entry__content']}>
-					<div class={classes['entry__title']}>
+				<div class={baseProps.styles?.content}>
+					<div class={baseProps.styles?.title}>
 						{baseProps.title}
 					</div>
 					<Show when={baseProps.subtitle}>
@@ -131,10 +145,10 @@ function Entry(props: OverrideComponentProps<"div", EntryProps>) {
 				</div>
 				<Show when={baseProps.children || baseProps.rightSection}>
 					{(_) => (
-						<div class={classes['entry__right-section']}>
+						<div class={baseProps.styles?.["right-section"]}>
 							{baseProps.rightSection || (
 								<Chevron
-									class={classes['entry__chevron']}
+									class={baseProps.styles?.chevron}
 									orientation={arrowDirection()}
 								/>
 							)}
@@ -151,7 +165,7 @@ function Entry(props: OverrideComponentProps<"div", EntryProps>) {
 				</Collapsible.Content>
 			</Collapsible.Root>
 		</div>
-	)
+	);
 };
 
 export { Entry, defaultEntryProps, EntryProps };
