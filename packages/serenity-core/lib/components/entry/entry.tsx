@@ -1,11 +1,11 @@
 import classes from "./entry.module.scss";
-import { SerenityBaseProps, UTILITY_NAMES, b, buildStyles, c, localVars } from "@serenity-ui/styles";
+import { SerenityBaseProps, UTILITY_NAMES, b, buildStyles, c, localVars, s } from "@serenity-ui/styles";
 import { OverrideComponentProps, composeEventHandlers } from "@kobalte/utils";
 import { JSX } from "solid-js/jsx-runtime";
 import { Show, mergeProps, splitProps } from "solid-js";
 import { Chevron } from "../chevron";
 import { Collapsible, createDisclosureState } from "@kobalte/core";
-import { DefaultProps } from "../../typings/helpers";
+import { StylesProps } from "../../typings/helpers";
 
 interface EntryProps extends SerenityBaseProps {
 
@@ -51,9 +51,15 @@ interface EntryProps extends SerenityBaseProps {
 	rightSection?: JSX.Element;
 
 	/**
+	 * Extend of replace the styles of the component
+	 * @default extend
+	 */
+	stylesStrategy?: 'extend' | 'replace';
+
+	/**
 	 * The styles to apply to the children of the entry component.
 	 */
-	styles?: Record<'inner' | 'content' | 'title' | 'subtitle' | 'chevron' | 'left-section' | 'right-section', string>;
+	styles?: StylesProps<'inner' | 'content' | 'title' | 'subtitle' | 'chevron' | 'left-section' | 'right-section'>;
 }
 
 const entrySplitProps = [
@@ -69,10 +75,11 @@ const entrySplitProps = [
 	"style",
 	"children",
 	"onClick",
-	"styles"
+	"styles",
+	"stylesStrategy"
 ] as const;
 
-const defaultEntryProps: DefaultProps<EntryProps> = {
+const defaultEntryProps = {
 	open: false,
 	onOpenChange: undefined,
 	defaultOpen: false,
@@ -80,15 +87,7 @@ const defaultEntryProps: DefaultProps<EntryProps> = {
 	subtitleLines: 1,
 	leftSection: null,
 	rightSection: null,
-	styles: {
-		inner: classes['entry__inner'],
-		content: classes['entry__content'],
-		title: classes['entry__title'],
-		subtitle: classes['entry__subtitle'],
-		chevron: classes['entry__chevron'],
-		"left-section": classes['entry__left-section'],
-		"right-section": classes['entry__right-section'],
-	}
+	stylesStrategy: 'extend'
 } satisfies Omit<EntryProps, 'title'>;
 
 function Entry(props: OverrideComponentProps<"div", EntryProps>) {
@@ -101,7 +100,6 @@ function Entry(props: OverrideComponentProps<"div", EntryProps>) {
 	});
 
 	const styles = () => buildStyles(utils, baseProps.style, cssVariables());
-
 
 	const { toggle, isOpen } = createDisclosureState({
 		open: () => baseProps.open,
@@ -121,23 +119,23 @@ function Entry(props: OverrideComponentProps<"div", EntryProps>) {
 			{...other}
 		>
 			<button
-				class={baseProps.styles?.inner}
+				class={s(baseProps.stylesStrategy, classes['entry__inner'], baseProps.styles?.inner)}
 				onClick={composeEventHandlers([root.onClick, toggle])}
 			>
 				<Show when={baseProps.leftSection}>
 					{leftSection => (
-						<div class={baseProps.styles?.["left-section"]}>
+						<div class={s(baseProps.stylesStrategy, classes['entry__left-section'], baseProps.styles?.["left-section"])}>
 							{leftSection()}
 						</div>
 					)}
 				</Show>
-				<div class={baseProps.styles?.content}>
-					<div class={baseProps.styles?.title}>
+				<div class={s(baseProps.stylesStrategy, classes['entry__content'], baseProps.styles?.content)}>
+					<div class={s(baseProps.stylesStrategy, classes['entry__title'], baseProps.styles?.title)}>
 						{baseProps.title}
 					</div>
 					<Show when={baseProps.subtitle}>
 						{subtitle => (
-							<div class={classes['entry__subtitle']}>
+							<div class={s(baseProps.stylesStrategy, classes['entry__subtitle'], baseProps.styles?.subtitle)}>
 								{subtitle()}
 							</div>
 						)}
@@ -145,10 +143,10 @@ function Entry(props: OverrideComponentProps<"div", EntryProps>) {
 				</div>
 				<Show when={baseProps.children || baseProps.rightSection}>
 					{(_) => (
-						<div class={baseProps.styles?.["right-section"]}>
+						<div class={s(baseProps.stylesStrategy, classes['entry__right-section'], baseProps.styles?.["right-section"])}>
 							{baseProps.rightSection || (
 								<Chevron
-									class={baseProps.styles?.chevron}
+									class={s(baseProps.stylesStrategy, classes['entry__chevron'], baseProps.styles?.chevron)}
 									orientation={arrowDirection()}
 								/>
 							)}
