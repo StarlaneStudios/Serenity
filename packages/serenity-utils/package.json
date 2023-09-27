@@ -1,6 +1,6 @@
 {
 	"name": "@serenity-ui/utils",
-	"version": "0.1.14",
+	"version": "0.1.15",
 	"type": "module",
 	"main": "./dist/serenity-utils.umd.cjs",
 	"module": "./dist/serenity-utils.js",
