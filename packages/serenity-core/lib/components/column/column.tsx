@@ -21,7 +21,7 @@ const columnSplitProps = [
 ] as const;
 
 const defaultColumnProps: DefaultProps<ColumnProps, 'spacing' | 'justify' | 'align' | 'direction'> = {
-	align: "unset",
+	align: "stretch",
 	justify: "unset",
 	direction: "column",
 	spacing: "md"
