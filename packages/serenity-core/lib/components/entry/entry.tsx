@@ -51,12 +51,6 @@ interface EntryProps extends SerenityBaseProps {
 	rightSection?: JSX.Element;
 
 	/**
-	 * Extend of replace the styles of the component
-	 * @default extend
-	 */
-	stylesStrategy?: 'extend' | 'replace';
-
-	/**
 	 * The styles to apply to the children of the entry component.
 	 */
 	styles?: StylesProps<'inner' | 'content' | 'title' | 'subtitle' | 'chevron' | 'left-section' | 'right-section'>;

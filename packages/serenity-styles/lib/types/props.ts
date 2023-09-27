@@ -49,4 +49,13 @@ export interface UtilityStyleProps {
 	z?: JSX.CSSProperties['z-index'];
 }
 
-export type SerenityBaseProps = UtilityStyleProps;
+interface SerenityDefaultProps {
+
+	/**
+	 * Wether to extend or replace the default styles.
+	 * @default "extend"
+	 */
+	stylesStrategy?: "extend" | "replace";
+}
+
+export type SerenityBaseProps = UtilityStyleProps & SerenityDefaultProps;
