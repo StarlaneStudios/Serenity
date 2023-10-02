@@ -1,6 +1,6 @@
 import classes from "./divider.module.scss";
 import { Size, Color, localVars, c, resolveLength, resolveColor, SerenityBaseProps, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
-import { mergeProps, splitProps } from "solid-js";
+import { Show, mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import { DefaultProps } from "../../util/types";
 
@@ -25,7 +25,7 @@ const dividerSplitProps = [
 ] as const;
 
 const defaultDividerProps: DefaultProps<DividerProps, 'thickness' | 'color' | 'orientation' | 'variant' | 'labelPosition' | 'classes'> = {
-	thickness: "sm",
+	thickness: "xs",
 	orientation: "horizontal",
 	variant: "solid",
 	labelPosition: "center",
@@ -56,13 +56,15 @@ function Divider(props: DividerProps) {
 			{...styles}
 			{...other}
 		>
-			<span
-				class={baseProps.classes.dividerLabel}
-				data-position={baseProps.labelPosition}
-				aria-hidden={baseProps.orientation === "vertical"}
-			>
-				{baseProps.children}
-			</span>
+			<Show when={baseProps.children}>
+				<span
+					class={baseProps.classes.dividerLabel}
+					data-position={baseProps.labelPosition}
+					aria-hidden={baseProps.orientation === "vertical"}
+				>
+					{baseProps.children}
+				</span>
+			</Show>
 		</div>
 	);
 };

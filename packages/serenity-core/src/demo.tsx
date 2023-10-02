@@ -31,7 +31,9 @@ export const DemoPage = () => {
 				</Button>
 			</Row>
 
-			<Divider />
+			<Divider>
+				
+			</Divider>
 
 			<Column p={1}>
 				<For
