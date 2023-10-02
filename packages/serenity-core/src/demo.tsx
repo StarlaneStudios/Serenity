@@ -1,13 +1,6 @@
-import { mdiCheck, mdiLock } from "@mdi/js";
-import { Accordion, AccordionProps, Button, Checkbox, Column, Divider, Entry, Icon, InputField, Layout, Paper, Row, useSerenity } from "../lib";
-import { Tabs } from "../lib/components/tabs";
-import { Badge } from "../lib/components/badge";
-import { Loader } from "../lib/components/loader";
-import { For, JSX, createEffect, createSignal, onMount } from "solid-js";
-import { Text } from "../lib/components/text";
-import { Unit } from "../lib/components/unit";
+import { Button, Checkbox, Column, Divider, Entry, Row, useSerenity } from "../lib";
+import { For, JSX, createSignal } from "solid-js";
 import { Alert } from "../lib/components/alert";
-import { Color, Variant, isColorLight } from "@serenity-ui/styles";
 import classes from "./demo.module.scss";
 
 export const DemoPage = () => {
@@ -37,6 +30,9 @@ export const DemoPage = () => {
 					Toggle theme
 				</Button>
 			</Row>
+
+			<Divider />
+
 			<Column p={1}>
 				<For
 					each={['default', 'filled', 'outline', 'transparent', 'white', 'light'] as const}

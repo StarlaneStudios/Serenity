@@ -24,11 +24,12 @@ const dividerSplitProps = [
 	"children"
 ] as const;
 
-const defaultDividerProps: DefaultProps<DividerProps, 'thickness' | 'orientation' | 'variant' | 'labelPosition' | 'classes'> = {
+const defaultDividerProps: DefaultProps<DividerProps, 'thickness' | 'color' | 'orientation' | 'variant' | 'labelPosition' | 'classes'> = {
 	thickness: "sm",
 	orientation: "horizontal",
 	variant: "solid",
 	labelPosition: "center",
+	color: "var(--serenity-divider-color)",
 	classes: {
 		dividerLabel: classes["divider--label"]
 	}
