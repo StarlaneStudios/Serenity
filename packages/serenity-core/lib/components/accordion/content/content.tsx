@@ -1,14 +1,15 @@
 import classes from "../accordion.module.scss";
 import { JSX, splitProps } from "solid-js";
 import { Accordion as KobalteAccordion } from "@kobalte/core";
-import { SerenityBaseProps, UTILITY_NAMES, buildStyles } from "@serenity-ui/styles";
+import { SerenityBaseProps, UTILITY_NAMES, buildStyles, c } from "@serenity-ui/styles";
 
 interface AccordionContentProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 
 }
 
 const accordionSplitProps = [
-	"style"
+	"style",
+	"class"
 ] as const;
 
 function AccordionContent(props: AccordionContentProps) {
@@ -17,7 +18,7 @@ function AccordionContent(props: AccordionContentProps) {
 
 	return (
 		<KobalteAccordion.Content
-			class={classes['accordion--content']}
+			class={c(classes['accordion--content'], root.class)}
 			{...styles}
 			{...other}
 		>
