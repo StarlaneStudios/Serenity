@@ -68,8 +68,8 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 		kobalteTextFieldErrorProps,
 		UTILITY_NAMES
 	);
-
 	const baseProps = mergeProps(root, defaultBaseInputProps);
+
 
 	const cssVariables = () => {
 		const radius = resolveLength('radius', baseProps.radius);
