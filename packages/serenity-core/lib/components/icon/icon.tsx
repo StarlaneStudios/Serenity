@@ -42,7 +42,7 @@ function Icon(props: IconProps) {
 		size: resolveLength('icon-size', baseProps.size, 'em')
 	});
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<svg

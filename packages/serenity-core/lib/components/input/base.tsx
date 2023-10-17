@@ -78,7 +78,7 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 		return localVars({ radius, height });
 	};
 
-	const styles = buildStyles(util, baseProps.style as JSX.CSSProperties, cssVariables());
+	const styles = () => buildStyles(util, cssVariables(), baseProps.style as JSX.CSSProperties);
 
 	return (
 		<TextField.Root

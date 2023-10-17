@@ -16,12 +16,12 @@ const tabSplitProps = [
 function TabsTab(props: TabsTabProps) {
 
 	const [root, utils, other] = splitProps(props, tabSplitProps, UTILITY_NAMES);
-	const styles = buildStyles(utils, root.style);
+	const styles = () => buildStyles(utils, root.style);
 	
 	return (
 		<KobalteTabs.Trigger
 			class={c(classes['tabs__item'], root.class)}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			{root.children}

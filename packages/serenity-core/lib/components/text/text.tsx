@@ -51,7 +51,7 @@ function Text<TElement extends ElementType = "div">(props: PolymorphicProps<Text
 		})
 	};
 
-	const styles = buildStyles(utils, root.style, cssVariables());
+	const styles = () => buildStyles(utils, cssVariables(), root.style);
 	const component = props.inline ? 'span' : 'div';
 
 	return (
@@ -60,7 +60,7 @@ function Text<TElement extends ElementType = "div">(props: PolymorphicProps<Text
 			component={root.as || component}
 			data-truncate={b(root.truncate)}
 			data-clamp={root.lineClamp}
-			{...styles}
+			{...styles()}
 			{...other}
 		/>
 	);

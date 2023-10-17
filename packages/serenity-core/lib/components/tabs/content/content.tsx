@@ -15,12 +15,12 @@ const splitTabContentProps = [
 function TabsContent(props: TabsContentProps) {
 
 	const [root, utils, other] = splitProps(props, splitTabContentProps, UTILITY_NAMES);
-	const styles = buildStyles(utils, root.style);
+	const styles = () => buildStyles(utils, root.style);
 	
 	return (
 		<KobalteTabs.Content
 			class={c(classes['tabs__content'], root.class)}
-			{...styles}
+			{...styles()}
 			{...other}
 		/>
 	);

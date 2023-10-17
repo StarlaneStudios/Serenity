@@ -19,7 +19,7 @@ const splitAccordionItemKobalteProps = [
 
 function AccordionItem(props: AccordionItemProps) {
 	const [root, kobalte, util, other] = splitProps(props, splitAccordionItemProps, splitAccordionItemKobalteProps, UTILITY_NAMES);
-	const styles = buildStyles(util, root.style);
+	const styles = () => buildStyles(util, root.style);
 
 	return (
 		<Accordion.Item 
@@ -29,7 +29,7 @@ function AccordionItem(props: AccordionItemProps) {
 		>
 			<As
 				component="div"
-				{...styles}
+				{...styles()}
 				{...other}
 			>
 				{root.children}

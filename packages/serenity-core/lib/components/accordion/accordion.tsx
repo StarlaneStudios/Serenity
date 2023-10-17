@@ -49,7 +49,7 @@ function Accordion(props: AccordionProps) {
 		});
 	};
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<KobalteAccordion.Root
@@ -63,7 +63,7 @@ function Accordion(props: AccordionProps) {
 				data-no-chevron-animation={b(baseProps.noChevronAnimation)}
 				spacing={baseProps.variant === "seperated" ? baseProps.spacing : 0}
 				children={baseProps.children}
-				{...styles}
+				{...styles()}
 				{...other}
 			/>
 		</KobalteAccordion.Root>

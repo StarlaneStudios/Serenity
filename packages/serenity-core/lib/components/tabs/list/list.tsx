@@ -45,13 +45,13 @@ function TabsList(props: TabsListProps) {
 		return localVars({ spacing });
 	};
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<KobalteTabs.List
 			class={c(classes['tabs__list'], baseProps.class)}
 			data-grow={b(baseProps.grow)}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			{baseProps.children}

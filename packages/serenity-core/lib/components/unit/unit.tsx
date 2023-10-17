@@ -14,12 +14,12 @@ const unitSplitProps = [
 function Unit(props: UnitProps) {
 
 	const [root, utils, other] = splitProps(props, unitSplitProps, UTILITY_NAMES);
-	const styles = buildStyles(utils, root.style);
+	const styles = () => buildStyles(utils, root.style);
 
 	return (
 		<div
 			class={c(classes.unit, root.class)}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			{root.children}
