@@ -1,11 +1,13 @@
 import { splitProps } from "solid-js";
 import { Select as KobalteSelect } from "@kobalte/core";
-import { c } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveLength } from "@serenity-ui/styles";
 import { Show } from "solid-js";
 import { createVirtualizer } from "@tanstack/solid-virtual";
 import classes from "./select.module.scss";
 import inputClasses from "../input/base.module.scss";
 import { useSerenity } from "../../provider";
+import { DefaultProps } from "../../typings/helpers";
+import { mergeProps } from "solid-js";
 
 interface SelectItem {
 	label: string;
@@ -18,11 +20,28 @@ interface SelectGroup {
 	options: SelectItem[];
 }
 
-type SelectProps = KobalteSelect.SelectRootProps<SelectItem, SelectGroup> & {
+interface SelectBaseProps extends SerenityBaseProps {
 	label?: string;
 	description?: string;
 	error?: string;
+	radius?: Size | number;
 };
+
+type SelectProps = KobalteSelect.SelectRootProps<SelectItem, SelectGroup> & SelectBaseProps;
+
+const selectSplitProps = [
+	"class",
+	"label",
+	"error",
+	"description",
+	"aria-label",
+	"radius",
+	"style"
+] as const;
+
+const defaultSplitProps = {
+	radius: "md"
+} satisfies Partial<DefaultProps<SelectProps>>;
 
 function SelectItem(props: KobalteSelect.SelectItemProps) {
 
@@ -46,17 +65,24 @@ function SelectSection(props: KobalteSelect.SelectRootSectionComponentProps<Sele
 
 function Select(props: SelectProps) {
 
-	const serenity = useSerenity();
-	
-	const [root, other] = splitProps(props, [
-		"class",
-		"label",
-		"error",
-		"description",
-		"aria-label"
-	]);
-
 	let listboxRef: HTMLUListElement | undefined;
+
+	const serenity = useSerenity();
+	const [root, utils, other] = splitProps(props, selectSplitProps, UTILITY_NAMES);
+	const baseProps = mergeProps(defaultSplitProps, root);
+
+	const cssVariables = () => {
+
+		return localVars({
+			radius: resolveLength("radius", baseProps.radius)
+		});
+	};
+
+	const styles = () => buildStyles(
+		utils,
+		cssVariables(),
+		baseProps.style
+	);
 
 	const virtualizer = createVirtualizer({
 		count: (props.options ?? []).length,
@@ -75,13 +101,14 @@ function Select(props: SelectProps) {
 			optionTextValue="label"
 			optionDisabled="disabled"
 			sectionComponent={SelectSection}
+			{...styles()}
 			{...other}
 		>
 			<Show when={props.label}>
 				{(label) => (
 					<KobalteSelect.Label
-						class={inputClasses['base-input__label']} 
-						children={label()} 
+						class={inputClasses['base-input__label']}
+						children={label()}
 					/>
 				)}
 			</Show>
@@ -93,8 +120,8 @@ function Select(props: SelectProps) {
 					/>
 				)}
 			</Show>
-			<KobalteSelect.Trigger 
-				class={classes['select__trigger']} 
+			<KobalteSelect.Trigger
+				class={classes['select__trigger']}
 				aria-label={root["aria-label"]}
 			>
 				<KobalteSelect.Value<string>>
