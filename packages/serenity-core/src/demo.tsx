@@ -1,4 +1,4 @@
-import { Button, Checkbox, Column, Divider, Entry, Row, useSerenity } from "../lib";
+import { Button, Checkbox, Column, Divider, Entry, Row, Select, Unit, useSerenity } from "../lib";
 import { For, JSX, createSignal } from "solid-js";
 import { Alert } from "../lib/components/alert";
 import classes from "./demo.module.scss";
@@ -32,7 +32,7 @@ export const DemoPage = () => {
 			</Row>
 
 			<Divider>
-				
+
 			</Divider>
 
 			<Column p={1}>
@@ -76,8 +76,48 @@ export const DemoPage = () => {
 					inner: classes['entry__inner-test'],
 				}}
 			>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae suscipit cupiditate architecto iste facilis iure voluptatem. Fugit modi debitis voluptate, itaque recusandae, maiores inventore, voluptatum corrupti sit minus sapiente aliquam!	
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae suscipit cupiditate architecto iste facilis iure voluptatem. Fugit modi debitis voluptate, itaque recusandae, maiores inventore, voluptatum corrupti sit minus sapiente aliquam!
 			</Entry>
+			<Unit m="xl">
+				<Select
+					label="Select a food…"
+					description="This is a description"
+					onChange={() => { }}
+					options={[
+						{
+							label: "Group 1",
+							options: [
+								{
+									label: "Option 1",
+									value: "option1"
+								},
+								{
+									label: "Option 2",
+									value: "option2"
+								},
+								{
+									label: "Disabled option",
+									value: "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+									disabled: true
+								}
+							]
+						},
+						{
+							label: "Group 2",
+							options: [
+								{
+									label: "Option 3",
+									value: "option3"
+								},
+								{
+									label: "Option 4",
+									value: "option4"
+								}
+							]
+						}
+					]}
+				/>
+			</Unit>
 		</>
 	);
 };
