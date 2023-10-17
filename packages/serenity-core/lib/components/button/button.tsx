@@ -59,7 +59,7 @@ function Button(props: ButtonProps) {
 		);
 	};
 
-	const styles = buildStyles(utils, cssVariables(), baseProps.style);
+	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<KobalteButton.Root
