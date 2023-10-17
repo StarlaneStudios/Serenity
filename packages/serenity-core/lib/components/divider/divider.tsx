@@ -53,7 +53,7 @@ function Divider(props: DividerProps) {
 			class={c(classes.divider, baseProps.class)}
 			role="separator"
 			aria-orientation={baseProps.orientation}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			<Show when={baseProps.children}>

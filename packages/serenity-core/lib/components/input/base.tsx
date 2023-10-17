@@ -85,7 +85,7 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 			class={c(defaultBaseInputProps.styles.root, root.class)}
 			data-variant={props.variant}
 			validationState={props.error ? 'invalid' : 'valid'}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			<Show when={props.label}>

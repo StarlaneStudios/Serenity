@@ -58,7 +58,7 @@ function Chevron(props: ChevronProps) {
 			xmlns="http://www.w3.org/2000/svg"
 			data-no-animation={b(baseProps.disableAnimation)}
 			class={c(classes.chevron, root.class)}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			<path
