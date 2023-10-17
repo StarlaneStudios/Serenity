@@ -43,12 +43,12 @@ function Column(props: ColumnProps) {
 		});
 	};
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, baseProps.style, cssVariables());
 
 	return (
 		<div
 			class={c(classes.column, root.class)}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			{root.children}
