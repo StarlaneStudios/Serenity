@@ -47,7 +47,7 @@ function Chevron(props: ChevronProps) {
 		return chevronOrientationValues.get(baseProps.orientation);
 	};
 
-	const styles = buildStyles(utils, baseProps.style, {
+	const styles = () => buildStyles(utils, baseProps.style, {
 		transform: orientation()
 	});
 
