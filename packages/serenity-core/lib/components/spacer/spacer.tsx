@@ -13,11 +13,11 @@ const spacerSplitProps = [
 function Spacer(props: SpacerProps) {
 
 	const [root, utils, other] = splitProps(props, spacerSplitProps, UTILITY_NAMES);
-	const style = buildStyles(utils, { "flex-grow": 1 }, root.style);
+	const style = () => buildStyles(utils, { "flex-grow": 1 }, root.style);
 
 	return (
 		<span
-			{...style}
+			{...style()}
 			{...other}
 		/>
 	);

@@ -14,12 +14,12 @@ const accordionSplitProps = [
 
 function AccordionContent(props: AccordionContentProps) {
 	const [root, utils, other] = splitProps(props, accordionSplitProps, UTILITY_NAMES);
-	const styles = buildStyles(utils, root.style);
+	const styles = () => buildStyles(utils, root.style);
 
 	return (
 		<KobalteAccordion.Content
 			class={c(classes['accordion--content'], root.class)}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			<p class={classes['accordion--content__text']}>

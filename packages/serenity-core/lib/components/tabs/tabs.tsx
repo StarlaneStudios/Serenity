@@ -53,13 +53,13 @@ function Tabs(props: TabsProps) {
 		return localVars({ color, radius });
 	};
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<KobalteTabs.Root
 			class={c(classes.tabs, baseProps.class)}
 			data-variant={baseProps.variant}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			{props.children}

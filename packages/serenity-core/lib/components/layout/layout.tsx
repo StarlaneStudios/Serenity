@@ -42,13 +42,13 @@ function Layout(props: LayoutProps) {
 		return Object.assign(variables, cols);
 	};
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<div
 			class={c(classes.layout, baseProps.class)}
 			role="grid"
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			{root.children}

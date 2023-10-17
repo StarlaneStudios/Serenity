@@ -132,7 +132,7 @@ function Alert(props: AlertProps) {
 		);
 	};
 
-	const style = () => buildStyles(utils, baseProps.style, cssVariables());
+	const style = () => buildStyles(utils, cssVariables(), baseProps.style);
 	const labelIdentifier = createUniqueId(), descriptionIdentifier = createUniqueId();
 
 	return (

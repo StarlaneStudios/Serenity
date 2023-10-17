@@ -43,7 +43,7 @@ function Column(props: ColumnProps) {
 		});
 	};
 
-	const styles = () => buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<div

@@ -20,13 +20,13 @@ const accordionSplitProps = [
 function AccordionHeader(props: AccordionHeaderProps) {
 
 	const [root, utils, other] = splitProps(props, accordionSplitProps, UTILITY_NAMES);
-	const styles = buildStyles(utils, root.style);
+	const styles = () => buildStyles(utils, root.style);
 
 	return (
 		<KobalteAccordion.Header
 			class={c(classes['accordion--header'], root.class)}
 			as="div"
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			<KobalteAccordion.Trigger

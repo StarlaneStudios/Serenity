@@ -53,13 +53,13 @@ function Loader(props: LoaderProps) {
 		'background-color': resolveColor(baseProps.color, 6) + "aa"
 	});
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<span
 			class={c(classes.loader, baseProps.class)}
 			role="presentation"
-			{...styles}
+			{...styles()}
 			{...other}
 		/>
 	);

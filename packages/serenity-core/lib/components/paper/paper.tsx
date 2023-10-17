@@ -37,13 +37,13 @@ function Paper(props: PaperProps) {
 		return localVars({ radius, shadow });
 	};
 
-	const styles = buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<div
 			class={c(classes.paper, baseProps.class)}
 			data-border={resolveBorder(baseProps.border)}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			{baseProps.children}

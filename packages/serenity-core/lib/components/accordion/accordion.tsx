@@ -49,7 +49,7 @@ function Accordion(props: AccordionProps) {
 		});
 	};
 
-	const styles = () => buildStyles(utils, baseProps.style, cssVariables());
+	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);
 
 	return (
 		<KobalteAccordion.Root
