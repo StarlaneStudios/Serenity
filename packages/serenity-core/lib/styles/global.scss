@@ -37,12 +37,12 @@ $utility-rules: (
 	"z": "z-index"
 );
 
-// @layer serenity {
-.serenity-ui {
-	background-color: var(--serenity-body-background-color);
-	color: var(--serenity-text-color);
+@layer serenity {
+	.serenity-ui {
+		background-color: var(--serenity-body-background-color);
+		color: var(--serenity-text-color);
+	}
 }
-// }
 	
 // @layer serenity-utils {
 @each $key, $rule in $utility-rules {

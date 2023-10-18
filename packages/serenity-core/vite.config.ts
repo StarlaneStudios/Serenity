@@ -75,11 +75,11 @@ export default defineConfig({
 				additionalData: (content, path) => {
 					const mixins = `@import '../serenity-styles/lib/styles/mixins.scss';`;
 
-					// if (path.endsWith('global.scss')) {
-					return `${mixins} ${content}`;
-					// } else {
-					// 	return `${mixins} @layer serenity { ${content} };`
-					// }
+					if (path.endsWith('global.scss')) {
+						return `${mixins} ${content}`;
+					} else {
+						return `${mixins} @layer serenity { ${content} };`
+					}
 				}
 			}
 		},
