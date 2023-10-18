@@ -44,10 +44,10 @@ $utility-rules: (
 }
 // }
 	
-@layer serenity-utils {
-	@each $key, $rule in $utility-rules {
-		.serenity-ui *[data-style*="-#{$key}-"] {
-			#{$rule}: var(--serenity-util-#{$key});
-		}
+// @layer serenity-utils {
+@each $key, $rule in $utility-rules {
+	.serenity-ui *[data-style*="-#{$key}-"] {
+		#{$rule}: var(--serenity-util-#{$key});
 	}
 }
+// }
