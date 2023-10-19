@@ -32,7 +32,7 @@
 		font-size: 0.875rem;
 		border-radius: 4px;
 
-		&:hover:not([data-disabled]) {
+		&:hover:not([data-disabled]):not([data-selected]) {
 			background-color: var(--serenity-select-listbox-item-hover-color);
 		}
 
@@ -47,12 +47,15 @@
 
 		&[data-selected] {
 			background-color: var(--serenity-color-blue-6);
-			color: var(--serenity-color-gray-0);
+
+			.select__item-label {
+				color: var(--serenity-color-gray-0);
+			}
 		}
 	}
 
 	&__item-label {
-		color: var(--serenity-select-label-color);
+		color: var(--serenity-select-text-color);
 	}
 
 	&__listbox,
