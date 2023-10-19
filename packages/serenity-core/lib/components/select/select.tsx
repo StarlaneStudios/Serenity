@@ -27,10 +27,11 @@ interface SelectBaseProps extends SerenityBaseProps {
 	description?: string;
 	error?: string;
 	radius?: Size | number;
+	onChange?: (value: string) => void;
 }
 
 type SelectOptionsData = (string | SelectItemData | SelectGroupData);
-type SelectProps = KobalteSelect.SelectRootProps<SelectOptionsData, SelectOptionsData> & SelectBaseProps;
+type SelectProps = Omit<KobalteSelect.SelectRootProps<SelectOptionsData, SelectOptionsData>, 'onChange'> & SelectBaseProps;
 
 const selectSplitProps = [
 	"class",
@@ -40,7 +41,9 @@ const selectSplitProps = [
 	"aria-label",
 	"radius",
 	"style",
-	"variant"
+	"variant",
+	"onChange",
+	"value"
 ] as const;
 
 const defaultSplitProps = {
@@ -127,12 +130,32 @@ function Select(props: SelectProps) {
 		return value.label;
 	}
 
+	const onChange = (item: SelectItemData | string) => {
+
+		if(typeof item === "string") {
+			return props.onChange?.(item);
+		}
+
+		props.onChange?.(item.value);
+	}
+
+	const value = () => {
+
+		if(props.options.every(o => typeof o === "string")) {
+			return props.value;
+		}
+
+		return { value: root.value };
+	};
+
 	return (
 		<KobalteSelect.Root<any>
 			class={c(inputClasses['base-input'], classes['select'], root.class)}
 			data-variant={root.variant}
 			itemComponent={SelectItem as any}
 			sectionComponent={SelectSection as any}
+			onChange={onChange}
+			value={value()}
 			{...selectAttributes()}
 			{...styles()}
 			{...other}

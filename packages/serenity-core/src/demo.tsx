@@ -8,6 +8,7 @@ export const DemoPage = () => {
 
 	const { toggleTheme } = useSerenity();
 	const [show, setShow] = createSignal(true);
+	const [value, setValue] = createSignal<string>()
 
 	const color = "blue.7";
 	const hideAlert: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent> = (event) => {
@@ -81,10 +82,11 @@ export const DemoPage = () => {
 			</Entry>
 			<Unit m="xl">
 				<Select
+					value={value()}
 					variant="filled"
-					label="Select a food…"
+					label={`Selected value: ${value()}`}
 					description="This is a description"
-					onChange={() => { }}
+					onChange={setValue}
 					options={[
 						{
 							label: "Group 1",
