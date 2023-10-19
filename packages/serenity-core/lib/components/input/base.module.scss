@@ -17,7 +17,7 @@
 		margin-block: 5px;
 		cursor: text;
 
-		min-height: var(--height);
+		min-height: calc(var(--height) - 2px);
 		flex: 1;
 
 		outline-color: transparent;
@@ -85,7 +85,7 @@
 		background-color: var(--input-background-color);
 		border: none;
 		width: 100%;
-		min-height: var(--height);
+		min-height: calc(var(--height) - 2px);
 
 		&::placeholder {
 			color: var(--serenity-input-placeholder-color);

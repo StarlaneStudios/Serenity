@@ -23,7 +23,7 @@ const defaultBaseInputProps: DefaultProps<
 > = {
 	variant: 'default',
 	radius: 'xs',
-	size: 'md',
+	size: 'sm',
 	styles: {
 		root: classes['base-input'],
 		label: classes['base-input__label'],
@@ -68,8 +68,8 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 		kobalteTextFieldErrorProps,
 		UTILITY_NAMES
 	);
-	const baseProps = mergeProps(root, defaultBaseInputProps);
 
+	const baseProps = mergeProps(root, defaultBaseInputProps);
 
 	const cssVariables = () => {
 		const radius = resolveLength('radius', baseProps.radius);
