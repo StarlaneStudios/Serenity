@@ -1,33 +1,36 @@
-import { splitProps } from "solid-js";
+import { Component, splitProps } from "solid-js";
 import { Select as KobalteSelect } from "@kobalte/core";
 import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveLength } from "@serenity-ui/styles";
 import { Show } from "solid-js";
-import { createVirtualizer } from "@tanstack/solid-virtual";
-import classes from "./select.module.scss";
-import inputClasses from "../input/base.module.scss";
 import { useSerenity } from "../../provider";
 import { DefaultProps } from "../../typings/helpers";
 import { mergeProps } from "solid-js";
+import { SelectBaseItemComponentProps } from "@kobalte/core/dist/types/select/select-base";
+import classes from "./select.module.scss";
+import inputClasses from "../input/base.module.scss";
+import { SelectValueState } from "@kobalte/core/dist/types/select/select-value";
 
-interface SelectItem {
+interface SelectItemData {
 	label: string;
 	value: string;
 	disabled?: boolean;
 }
 
-interface SelectGroup {
+interface SelectGroupData {
 	label: string;
-	options: SelectItem[];
+	options: SelectItemData[];
 }
 
 interface SelectBaseProps extends SerenityBaseProps {
+	variant?: "filled" | "outline" | "default";
 	label?: string;
 	description?: string;
 	error?: string;
 	radius?: Size | number;
-};
+}
 
-type SelectProps = KobalteSelect.SelectRootProps<SelectItem, SelectGroup> & SelectBaseProps;
+type SelectOptionsData = (string | SelectItemData | SelectGroupData);
+type SelectProps = KobalteSelect.SelectRootProps<SelectOptionsData, SelectOptionsData> & SelectBaseProps;
 
 const selectSplitProps = [
 	"class",
@@ -36,47 +39,51 @@ const selectSplitProps = [
 	"description",
 	"aria-label",
 	"radius",
-	"style"
+	"style",
+	"variant"
 ] as const;
 
 const defaultSplitProps = {
-	radius: "md"
+	radius: "md",
+	variant: "default"
 } satisfies Partial<DefaultProps<SelectProps>>;
 
-function SelectItem(props: KobalteSelect.SelectItemProps) {
+const SelectItem: Component<SelectBaseItemComponentProps<SelectOptionsData>> = (props) => {
+
+	const label = typeof props.item.rawValue === "string" ? props.item.rawValue : props.item.rawValue.label;
 
 	return (
-		<KobalteSelect.Item class={classes['select__item']} item={props.item}>
-			<KobalteSelect.ItemLabel class={classes['select__item-label']}>
-				{props.item.rawValue.label}
-			</KobalteSelect.ItemLabel>
+		<KobalteSelect.Item 
+			class={classes['select__item']} 
+			item={props.item}
+		>
+			<KobalteSelect.ItemLabel 
+				class={classes['select__item-label']} 
+				children={label}
+			/>
 		</KobalteSelect.Item>
 	);
-}
+};
 
-function SelectSection(props: KobalteSelect.SelectRootSectionComponentProps<SelectGroup>) {
+function SelectSection(props: KobalteSelect.SelectRootSectionComponentProps<SelectGroupData>) {
 
 	return (
-		<KobalteSelect.Section class={classes['select__section']}>
-			{props.section.rawValue.label}
-		</KobalteSelect.Section>
+		<KobalteSelect.Section 
+			class={classes['select__section']} 
+			children={props.section.rawValue.label}
+		/>
 	);
 }
 
 function Select(props: SelectProps) {
 
-	let listboxRef: HTMLUListElement | undefined;
-
 	const serenity = useSerenity();
 	const [root, utils, other] = splitProps(props, selectSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultSplitProps, root);
 
-	const cssVariables = () => {
-
-		return localVars({
-			radius: resolveLength("radius", baseProps.radius)
-		});
-	};
+	const cssVariables = () => localVars({
+		radius: resolveLength("radius", baseProps.radius)
+	});
 
 	const styles = () => buildStyles(
 		utils,
@@ -84,23 +91,49 @@ function Select(props: SelectProps) {
 		baseProps.style
 	);
 
-	const virtualizer = createVirtualizer({
-		count: (props.options ?? []).length,
-		getScrollElement: () => listboxRef,
-		estimateSize: () => 32,
-		enableSmoothScroll: false,
-		overscan: 5
-	});
+	const selectAttributes: () => any = () => {
+
+		if (props.options.every(o => typeof o === "string")) {
+			return {};
+		}
+		
+		const attrs: Record<string, any> = {
+			optionValue: "value",
+			optionTextValue: "label",
+			optionDisabled: "disabled"
+		};
+
+		// check if the options have groups
+		if (props.options.every(o => typeof o === "object" && "options" in o)) {
+			attrs.optionGroupChildren = "options";
+			attrs.groupTextValue = "label";
+		}
+
+		return attrs;
+	};
+
+	const selectedValue = (state: SelectValueState<SelectOptionsData>) => {
+
+		const value = state.selectedOption();
+
+		if(!value) {
+			return undefined;
+		}
+
+		if(typeof value === "string") {
+			return value;
+		}
+
+		return value.label;
+	}
 
 	return (
-		<KobalteSelect.Root
-			class={c(inputClasses['base-input'], root.class)}
-			itemComponent={SelectItem}
-			optionValue="value"
-			optionGroupChildren="options"
-			optionTextValue="label"
-			optionDisabled="disabled"
-			sectionComponent={SelectSection}
+		<KobalteSelect.Root<any>
+			class={c(inputClasses['base-input'], classes['select'], root.class)}
+			data-variant={root.variant}
+			itemComponent={SelectItem as any}
+			sectionComponent={SelectSection as any}
+			{...selectAttributes()}
 			{...styles()}
 			{...other}
 		>
@@ -124,9 +157,9 @@ function Select(props: SelectProps) {
 				class={classes['select__trigger']}
 				aria-label={root["aria-label"]}
 			>
-				<KobalteSelect.Value<string>>
-					{state => state.selectedOption()}
-				</KobalteSelect.Value>
+				<KobalteSelect.Value<SelectOptionsData> 
+					children={selectedValue}
+				/>
 			</KobalteSelect.Trigger>
 			<Show when={props.error}>
 				{(error) => (
@@ -138,10 +171,8 @@ function Select(props: SelectProps) {
 			</Show>
 			<KobalteSelect.Portal mount={serenity.element() ?? undefined}>
 				<KobalteSelect.Content>
-					<KobalteSelect.Listbox<SelectItem, SelectGroup>
-						ref={listboxRef}
+					<KobalteSelect.Listbox
 						class={classes['select__listbox']}
-						scrollToItem={key => virtualizer.scrollToIndex(parseInt(key))}
 					/>
 				</KobalteSelect.Content>
 			</KobalteSelect.Portal>
@@ -150,5 +181,7 @@ function Select(props: SelectProps) {
 }
 
 export {
-	Select
+	Select,
+	SelectGroupData,
+	SelectItemData
 };
