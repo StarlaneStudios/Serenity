@@ -40,6 +40,15 @@
 			opacity: 0.35;
 			cursor: not-allowed;
 		}
+
+		&:focus:not([data-selected]), &:focus-visible:not([data-selected]) {
+			background-color: var(--serenity-select-listbox-item-hover-color);
+		}
+
+		&[data-selected] {
+			background-color: var(--serenity-color-blue-6);
+			color: var(--serenity-color-gray-0);
+		}
 	}
 
 	&__item-label {
@@ -93,35 +102,42 @@
 	}
 }
 
-@include defineDarkVariables(("select-background-color": var(--serenity-color-dark-4),
-		"select-border-color": var(--serenity-color-dark-4),
-		"select-text-color": var(--serenity-color-dark-0),
-		"select-focus-color": var(--serenity-color-blue-6),
-		"select-label-color": var(--serenity-color-dark-0),
-		"select-description-color": var(--serenity-color-dark-2),
-		"select-placeholder-color": var(--serenity-color-dark-2),
-		"select-error-color": var(--serenity-color-red-6),
-		"select-listbox-background-color": var(--serenity-color-dark-6),
-		"select-listbox-item-hover-color": var(--serenity-color-dark-7),
-		"select-listbox-border-color": var(--serenity-color-dark-4),
-		"select-group-divider": var(--serenity-color-dark-4)));
+@include defineDarkVariables((
+	"select-background-color": var(--serenity-color-dark-4),
+	"select-border-color": var(--serenity-color-dark-4),
+	"select-text-color": var(--serenity-color-dark-0),
+	"select-active-color": var(--serenity-color-dark-0),
+	"select-focus-color": var(--serenity-color-blue-6),
+	"select-label-color": var(--serenity-color-dark-0),
+	"select-description-color": var(--serenity-color-dark-2),
+	"select-placeholder-color": var(--serenity-color-dark-2),
+	"select-error-color": var(--serenity-color-red-6),
+	"select-listbox-background-color": var(--serenity-color-dark-6),
+	"select-listbox-item-hover-color": var(--serenity-color-dark-7),
+	"select-listbox-border-color": var(--serenity-color-dark-4),
+	"select-group-divider": var(--serenity-color-dark-4),
+));
 
-@include defineLightVariables(("select-background-color": var(--serenity-color-gray-1),
-		"select-border-color": var(--serenity-color-gray-4),
-		"select-text-color": #000,
-		"select-focus-color": var(--serenity-color-blue-6),
-		"select-label-color": var(--serenity-color-gray-9),
-		"select-placeholder-color": var(--serenity-color-gray-6),
-		"select-description-color": var(--serenity-color-gray-6),
-		"select-error-color": var(--serenity-color-red-6),
-		"select-listbox-background-color": var(--serenity-body-background-color),
-		"select-listbox-item-hover-color": var(--serenity-color-gray-0),
-		"select-listbox-border-color": var(--serenity-color-gray-1),
-		"select-group-divider": var(--serenity-color-gray-2)));
+@include defineLightVariables((
+	"select-background-color": var(--serenity-color-gray-1),
+	"select-border-color": var(--serenity-color-gray-4),
+	"select-text-color": #000,
+	"select-active-color": var(--serenity-color-gray-9),
+	"select-focus-color": var(--serenity-color-blue-6),
+	"select-label-color": var(--serenity-color-gray-9),
+	"select-placeholder-color": var(--serenity-color-gray-6),
+	"select-description-color": var(--serenity-color-gray-6),
+	"select-error-color": var(--serenity-color-red-6),
+	"select-listbox-background-color": var(--serenity-body-background-color),
+	"select-listbox-item-hover-color": var(--serenity-color-gray-0),
+	"select-listbox-border-color": var(--serenity-color-gray-1),
+	"select-group-divider": var(--serenity-color-gray-2)
+));
 
-@include defineVariables(("select-height-xs": 1.875rem,
-		"select-height-sm": 2.25rem,
-		"select-height-md": 2.625rem,
-		"select-height-lg": 3.125rem,
-		"select-height-xl": 3.75rem,
-	));
+@include defineVariables((
+	"select-height-xs": 1.875rem,
+	"select-height-sm": 2.25rem,
+	"select-height-md": 2.625rem,
+	"select-height-lg": 3.125rem,
+	"select-height-xl": 3.75rem,
+));
