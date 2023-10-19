@@ -206,5 +206,7 @@ function Select(props: SelectProps) {
 export {
 	Select,
 	SelectGroupData,
-	SelectItemData
+	SelectItemData,
+	SelectOptionsData,
+	SelectProps
 };
