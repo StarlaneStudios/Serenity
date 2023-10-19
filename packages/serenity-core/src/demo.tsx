@@ -1,7 +1,8 @@
-import { Button, Checkbox, Column, Divider, Entry, Row, Select, Unit, useSerenity } from "../lib";
+import { Button, Checkbox, Column, Divider, Entry, InputField, Row, Select, Unit, useSerenity } from "../lib";
 import { For, JSX, createSignal } from "solid-js";
 import { Alert } from "../lib/components/alert";
 import classes from "./demo.module.scss";
+import { Select as KobalteSelect, TextField } from "@kobalte/core";
 
 export const DemoPage = () => {
 
@@ -80,6 +81,7 @@ export const DemoPage = () => {
 			</Entry>
 			<Unit m="xl">
 				<Select
+					variant="filled"
 					label="Select a food…"
 					description="This is a description"
 					onChange={() => { }}
@@ -117,6 +119,57 @@ export const DemoPage = () => {
 						}
 					]}
 				/>
+
+				<InputField
+					label="bruh"
+					size="xs"
+					description="This is a description"
+					mt="xs"
+					variant="outline"
+				/>
+
+				<InputField
+					label="bruh"
+					size="xs"
+					description="This is a description"
+					mt="xs"
+					variant="default"
+				/>
+
+				<InputField
+					label="bruh"
+					size="xs"
+					description="This is a description"
+					mt="xs"
+					variant="filled"
+				/>
+
+				<KobalteSelect.Root
+					value={"Apple"}
+					options={["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]}
+					placeholder="Select a fruit…"
+					itemComponent={props => (
+						<KobalteSelect.Item item={props.item}>
+							<KobalteSelect.ItemLabel>{props.item.rawValue}</KobalteSelect.ItemLabel>
+							<KobalteSelect.ItemIndicator>
+								V
+							</KobalteSelect.ItemIndicator>
+						</KobalteSelect.Item>
+					)}
+				>
+					<KobalteSelect.Trigger aria-label="Fruit">
+						<KobalteSelect.Value<string>>{state => state.selectedOption()}</KobalteSelect.Value>
+						<KobalteSelect.Icon>
+							C
+						</KobalteSelect.Icon>
+					</KobalteSelect.Trigger>
+					<KobalteSelect.ErrorMessage>Hmm, I prefer apples.</KobalteSelect.ErrorMessage>
+					<KobalteSelect.Portal>
+						<KobalteSelect.Content>
+							<KobalteSelect.Listbox />
+						</KobalteSelect.Content>
+					</KobalteSelect.Portal>
+				</KobalteSelect.Root>
 			</Unit>
 		</>
 	);
