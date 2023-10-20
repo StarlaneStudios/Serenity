@@ -22,7 +22,7 @@ interface SelectGroupData {
 }
 
 interface SelectBaseProps extends SerenityBaseProps {
-	variant?: "filled" | "outline" | "default";
+	variant?: "filled" | "default";
 	label?: string;
 	description?: string;
 	error?: string;

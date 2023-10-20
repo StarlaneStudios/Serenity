@@ -85,13 +85,6 @@
 
 	&[data-variant="default"] {
 		.select__trigger {
-			background-color: var(--serenity-color-border-color);
-			border: 1px solid var(--serenity-color-border-color);
-		}
-	}
-
-	&[data-variant="outline"] {
-		.select__trigger {
 			background-color: transparent;
 			border: 1px solid var(--serenity-select-border-color);
 		}
