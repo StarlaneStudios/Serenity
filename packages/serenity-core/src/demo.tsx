@@ -1,4 +1,4 @@
-import { Button, Checkbox, Column, Divider, Entry, InputField, Row, Select, Unit, useSerenity } from "../lib";
+import { Button, Checkbox, Column, Divider, Entry, InputField, Row, Select, Unit, useSerenity, Tabs } from "../lib";
 import { For, JSX, createSignal } from "solid-js";
 import { Alert } from "../lib/components/alert";
 import classes from "./demo.module.scss";
@@ -68,11 +68,16 @@ export const DemoPage = () => {
 					</button>
 				</Row>
 			</form>
+			<Tabs variant="pills">
+				<Tabs.List spacing="14px">
+					<Tabs.Tab value="a">Tab 1</Tabs.Tab>
+					<Tabs.Tab value="b">Tab 2</Tabs.Tab>
+				</Tabs.List>
+			</Tabs>
 			<Entry
 				title="This is a title"
 				subtitle="This is a subtitle"
 				open
-				stylesStrategy="extend"
 				styles={{
 					chevron: classes['entry__chevron-test'],
 					inner: classes['entry__inner-test'],
