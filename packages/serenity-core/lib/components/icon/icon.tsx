@@ -53,7 +53,7 @@ function Icon(props: IconProps) {
 			data-nudge-end={b(baseProps.end)}
 			data-spinning={b(baseProps.spinning)}
 			class={c(classes.icon, root.class)}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			<path d={root.path} style={{ fill: color() }} />

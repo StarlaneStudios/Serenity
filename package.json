@@ -28,28 +28,30 @@
 		"@kobalte/core": "^0.11.0",
 		"@solidjs/meta": "^0.28.6",
 		"@solidjs/router": "^0.8.3",
-		"solid-js": "1.7.11",
-		"solid-start": "^0.3.5"
+		"@tanstack/solid-virtual": "3.0.0-beta.6",
+		"@tanstack/virtual-core": "3.0.0-alpha.1",
+		"solid-js": "1.8.1",
+		"solid-start": "^0.3.6"
 	},
 	"devDependencies": {
 		"@serenity-ui/rollup-preset-solid": "2.0.1-fix.1",
-		"@types/node": "^20.5.9",
-		"esbuild": "^0.19.2",
-		"eslint": "^8.48.0",
+		"@types/node": "^20.8.6",
+		"esbuild": "^0.19.4",
+		"eslint": "^8.51.0",
 		"eslint-plugin-solid": "^0.13.0",
 		"eslint-plugin-unused-imports": "^3.0.0",
-		"glob": "^10.3.4",
+		"glob": "^10.3.10",
 		"rollup": "^3.28.1",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.66.1",
+		"sass": "1.69.3",
 		"solid-devtools": "^0.27.7",
-		"solid-start-node": "^0.3.5",
-		"turbo": "^1.10.13",
+		"solid-start-node": "^0.3.6",
+		"turbo": "^1.10.15",
 		"typescript": "5.2.2",
 		"typescript-plugin-css-modules": "^5.0.1",
-		"vite": "^4.4.9",
+		"vite": "^4.4.11",
 		"vite-plugin-dts": "^3.5.3",
-		"vite-plugin-solid": "^2.7.0",
-		"vitest": "0.34.3"
+		"vite-plugin-solid": "^2.7.1",
+		"vitest": "0.34.6"
 	}
 }

@@ -67,7 +67,7 @@ function Button(props: ButtonProps) {
 			data-variant={baseProps.variant}
 			data-loading={b(baseProps.loading)}
 			aria-disabled={other.disabled}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			<span class={baseProps.classes.inner}>

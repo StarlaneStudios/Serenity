@@ -17,7 +17,7 @@
 		margin-block: 5px;
 		cursor: text;
 
-		min-height: var(--height);
+		min-height: calc(var(--height) - 2px);
 		flex: 1;
 
 		outline-color: transparent;
@@ -85,7 +85,7 @@
 		background-color: var(--input-background-color);
 		border: none;
 		width: 100%;
-		min-height: var(--height);
+		min-height: calc(var(--height) - 2px);
 
 		&::placeholder {
 			color: var(--serenity-input-placeholder-color);
@@ -125,25 +125,25 @@
 }
 
 @include defineDarkVariables((
-	"input-background-color": "var(--serenity-color-dark-6)",
-	"input-border-color": "var(--serenity-color-dark-4)",
-	"input-text-color": "var(--serenity-color-dark-0)",
-	"input-focus-color": "var(--serenity-color-blue-6)",
-	"input-label-color": "var(--serenity-color-dark-0)",
-	"input-description-color": "var(--serenity-color-dark-2)",
-	"input-placeholder-color": "var(--serenity-color-dark-2)",
-	"input-error-color": "var(--serenity-color-red-6)",
+	"input-background-color": var(--serenity-color-dark-6),
+	"input-border-color": var(--serenity-color-dark-4),
+	"input-text-color": var(--serenity-color-dark-0),
+	"input-focus-color": var(--serenity-color-blue-6),
+	"input-label-color": var(--serenity-color-dark-0),
+	"input-description-color": var(--serenity-color-dark-2),
+	"input-placeholder-color": var(--serenity-color-dark-2),
+	"input-error-color": var(--serenity-color-red-6),
 ));
 
 @include defineLightVariables((
-	"input-background-color": "#fff",
-	"input-border-color": "var(--serenity-color-gray-4)",
-	"input-text-color": "#000",
-	"input-focus-color": "var(--serenity-color-blue-6)",
-	"input-label-color": "var(--serenity-color-gray-9)",
-	"input-placeholder-color": "var(--serenity-color-gray-6)",
-	"input-description-color": "var(--serenity-color-gray-6)",
-	"input-error-color": "var(--serenity-color-red-6)",
+	"input-background-color": #fff,
+	"input-border-color": var(--serenity-color-gray-4),
+	"input-text-color": #000,
+	"input-focus-color": var(--serenity-color-blue-6),
+	"input-label-color": var(--serenity-color-gray-9),
+	"input-placeholder-color": var(--serenity-color-gray-6),
+	"input-description-color": var(--serenity-color-gray-6),
+	"input-error-color": var(--serenity-color-red-6),
 ));
 
 @include defineVariables((

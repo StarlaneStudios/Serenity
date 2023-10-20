@@ -57,7 +57,7 @@ function Row(props: RowProps) {
 			class={c(classes.row, baseProps.class)}
 			data-grow={b(baseProps.grow)}
 			data-no-wrap={b(baseProps.noWrap)}
-			{...styles}
+			{...styles()}
 			{...other}
 		>
 			{baseProps.children}

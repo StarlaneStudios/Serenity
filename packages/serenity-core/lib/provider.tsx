@@ -1,10 +1,12 @@
 import { Theme } from "@serenity-ui/styles";
+import { createUniqueId } from "solid-js";
 import { Accessor, ParentProps, Setter, createContext, createSignal, useContext } from "solid-js";
 
 const SerenityContext = createContext<{
 	theme: Accessor<Theme>;
 	setTheme: Setter<Theme>;
 	toggleTheme: () => void;
+	element: () => HTMLElement | null;
 }>();
 
 interface SerenityProviderProps {
@@ -35,15 +37,22 @@ function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 		setCurrentTheme(theme => theme === 'light' ? 'dark' : 'light');
 	};
 
+	const uuid = createUniqueId();
+
 	return (
 		<SerenityContext.Provider
 			value={{
 				theme: currentTheme,
 				setTheme: setCurrentTheme,
-				toggleTheme
+				toggleTheme,
+				element: () => document.getElementById(uuid)
 			}}
 		>
-			<div class="serenity-ui" data-theme={currentTheme()}>
+			<div 
+				id={uuid} 
+				class="serenity-ui" 
+				data-theme={currentTheme()}
+			>
 				{props.children}
 			</div>
 		</SerenityContext.Provider>
