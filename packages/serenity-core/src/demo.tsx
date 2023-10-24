@@ -75,8 +75,8 @@ export const DemoPage = () => {
 				</Tabs.List>
 			</Tabs>
 			<Entry
-				title="This is a title"
-				subtitle="This is a subtitle"
+				title="Projects"
+				subtitle="View a list of projects"
 				open
 				styles={{
 					chevron: classes['entry__chevron-test'],
