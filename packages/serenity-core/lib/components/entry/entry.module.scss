@@ -38,7 +38,7 @@
 	&__subtitle {
 		font-weight: 400;
 		font-size: var(--serenity-font-size-xs);
-		color: var(--serenity-color-gray-6);
+		color: var(--serenity-entry-subtitle-text-color);
 		line-height: 1rem;
 		text-align: start;
 		overflow: hidden;
@@ -57,3 +57,11 @@
 		transform: rotate(180deg);
 	}
 }
+
+@include defineDarkVariables((
+	"entry-subtitle-text-color": var(--serenity-color-gray-6)
+));
+
+@include defineLightVariables((
+	"entry-subtitle-text-color": var(--serenity-color-gray-7)
+));
