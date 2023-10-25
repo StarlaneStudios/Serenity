@@ -5,6 +5,7 @@ import { SerenityBaseProps, UTILITY_NAMES, buildStyles, c } from "@serenity-ui/s
 
 interface AccordionItemProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	value: string;
+	eager?: boolean;
 }
 
 const splitAccordionItemProps = [
@@ -14,7 +15,8 @@ const splitAccordionItemProps = [
 ] as const;
 
 const splitAccordionItemKobalteProps = [
-	'value'
+	'value',
+	'eager'
 ] as const;
 
 function AccordionItem(props: AccordionItemProps) {
@@ -26,6 +28,7 @@ function AccordionItem(props: AccordionItemProps) {
 			class={c(classes["accordion--item"], root.class)}
 			asChild
 			value={kobalte.value}
+			forceMount={kobalte.eager}
 		>
 			<As
 				component="div"
