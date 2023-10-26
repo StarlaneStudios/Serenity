@@ -1,4 +1,4 @@
-import { Theme } from "@serenity-ui/styles";
+import { Color, Theme } from "@serenity-ui/styles";
 import { createUniqueId } from "solid-js";
 import { Accessor, ParentProps, Setter, createContext, createSignal, useContext } from "solid-js";
 
@@ -7,6 +7,8 @@ const SerenityContext = createContext<{
 	setTheme: Setter<Theme>;
 	toggleTheme: () => void;
 	element: () => HTMLElement | null;
+	accentColor: Accessor<Color>;
+	setAccentColor: Setter<Color>;
 }>();
 
 interface SerenityProviderProps {
@@ -25,6 +27,11 @@ interface SerenityProviderProps {
 	 */
 	withGlobalStyle?: boolean;
 
+	/**
+	 * The accent color of the application.
+	 * @default "blue.6"
+	 */
+	accentColor?: Color;
 }
 
 /**
@@ -32,6 +39,7 @@ interface SerenityProviderProps {
  */
 function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 	const [currentTheme, setCurrentTheme] = createSignal<Theme>(props.initialTheme || 'light');
+	const [accentColor, setAccentColor] = createSignal<Color>(props.accentColor || 'blue.6');
 
 	const toggleTheme = () => {
 		setCurrentTheme(theme => theme === 'light' ? 'dark' : 'light');
@@ -45,13 +53,18 @@ function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 				theme: currentTheme,
 				setTheme: setCurrentTheme,
 				toggleTheme,
-				element: () => document.getElementById(uuid)
+				element: () => document.getElementById(uuid),
+				accentColor,
+				setAccentColor
 			}}
 		>
 			<div 
 				id={uuid} 
 				class="serenity-ui" 
 				data-theme={currentTheme()}
+				style={{
+					"--serenity-accent-color": props.accentColor || "blue.6"
+				}}
 			>
 				{props.children}
 			</div>

@@ -2,7 +2,7 @@ import { Button, Checkbox, Column, Divider, Entry, InputField, Row, Select, Unit
 import { For, JSX, createSignal } from "solid-js";
 import { Alert } from "../lib/components/alert";
 import classes from "./demo.module.scss";
-import { Select as KobalteSelect, TextField } from "@kobalte/core";
+import { Select as KobalteSelect } from "@kobalte/core";
 
 export const DemoPage = () => {
 
