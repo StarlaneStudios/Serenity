@@ -1,4 +1,4 @@
-import { Color, Theme } from "@serenity-ui/styles";
+import { Color, Theme, resolveColor } from "@serenity-ui/styles";
 import { createUniqueId } from "solid-js";
 import { Accessor, ParentProps, Setter, createContext, createSignal, useContext } from "solid-js";
 
@@ -63,7 +63,7 @@ function SerenityProvider(props: ParentProps<SerenityProviderProps>) {
 				class="serenity-ui" 
 				data-theme={currentTheme()}
 				style={{
-					"--serenity-accent-color": props.accentColor || "blue.6"
+					"--serenity-accent-color": resolveColor(props.accentColor || "blue.6")
 				}}
 			>
 				{props.children}

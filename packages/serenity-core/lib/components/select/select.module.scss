@@ -9,6 +9,11 @@
 	margin-block: 5px !important;
 	display: flex;
 	align-items: center;
+
+	&:focus {
+		outline: 1px solid var(--serenity-input-focus-color);
+		border: none;
+	}
 }
 
 .select {
@@ -46,7 +51,7 @@
 		}
 
 		&[data-selected] {
-			background-color: var(--serenity-color-blue-6);
+			background-color: var(--serenity-accent-color);
 
 			.select__item-label {
 				color: var(--serenity-color-gray-0);

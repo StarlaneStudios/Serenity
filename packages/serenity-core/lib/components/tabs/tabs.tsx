@@ -1,8 +1,9 @@
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveColor, resolveLength, buildStyles } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveColor, resolveLength, buildStyles, isColorLight } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 import { mergeProps, splitProps } from "solid-js";
 import classes from "./tabs.module.scss";
+import { useSerenity } from "../../provider";
 
 interface TabsProps extends SerenityBaseProps, KobalteTabs.TabsRootProps {
 
@@ -34,23 +35,25 @@ const splitTabsProps = [
 
 const defaultTabsProps: DefaultProps<
 	TabsProps,
-	'variant' | 'color' | 'radius'
+	'variant' | 'radius'
 > = {
 	variant: "default",
-	color: "blue",
 	radius: 'sm'
 };
 
 function Tabs(props: TabsProps) {
 
+	const { accentColor } = useSerenity();
+
 	const [root, utils, other] = splitProps(props, splitTabsProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultTabsProps, root);
-	
-	const cssVariables = () => {
-		const color = resolveColor(baseProps.color, 6);
-		const radius = resolveLength("radius", baseProps.radius);
 
-		return localVars({ color, radius });
+	const cssVariables = () => {
+		const color = resolveColor(baseProps.color ?? accentColor());
+		const radius = resolveLength("radius", baseProps.radius);
+		const textColor = isColorLight(color) ? "#000" : "#fff";
+
+		return localVars({ color, radius, "text-color": textColor });
 	};
 
 	const styles = () => buildStyles(utils, cssVariables(), baseProps.style);

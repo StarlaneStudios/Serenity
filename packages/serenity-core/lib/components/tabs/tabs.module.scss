@@ -115,6 +115,7 @@
 	.tabs__item[data-selected] {
 		background-color: var(--color);
 		border-radius: var(--radius);
+		color: var(--text-color);
 	}
 }
 
@@ -160,12 +161,10 @@
 
 @include defineDarkVariables((
 	"tabs-border-color": rgb(55, 58, 64),
-	"tabs-text-color": #fff,
 	"tabs-hover-color": rgb(37, 38, 43)
 ));
 
 @include defineLightVariables((
 	"tabs-border-color": rgb(222, 226, 230),
-	"tabs-text-color": #000,
 	"tabs-hover-color": rgb(248, 249, 250),
 ));

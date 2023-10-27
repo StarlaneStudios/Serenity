@@ -10,7 +10,6 @@ export const DemoPage = () => {
 	const [show, setShow] = createSignal(true);
 	const [value, setValue] = createSignal<string>()
 
-	const color = "blue.7";
 	const hideAlert: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent> = (event) => {
 		setShow(prev => !prev);
 	};
@@ -48,7 +47,6 @@ export const DemoPage = () => {
 							title="Dit is een alert"
 							onClose={hideAlert}
 							show={show()}
-							color={color}
 						>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit.
 							libero ducimus voluptatem natus,
@@ -61,14 +59,14 @@ export const DemoPage = () => {
 			<form onsubmit={onSubmit}>
 				<Row>
 					<Checkbox name="bruh" disabled checked ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
-					<Checkbox name="abc" color="grape" ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
+					<Checkbox name="abc" ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
 					<Checkbox name="def" ml="xl" label="Dit is een test" description="Why is there a checkbox?" />
 					<button type="submit">
 						Submit
 					</button>
 				</Row>
 			</form>
-			<Tabs variant="pills">
+			<Tabs variant="default">
 				<Tabs.List spacing="14px">
 					<Tabs.Tab value="a">Tab 1</Tabs.Tab>
 					<Tabs.Tab value="b">Tab 2</Tabs.Tab>

@@ -7,7 +7,7 @@
 	"packageManager": "pnpm@8.6.0",
 	"scripts": {
 		"build": "turbo run build --no-daemon",
-		"dev": "turbo run dev --no-daemon",
+		"dev": "turbo run dev --no-daemon --no-cache",
 		"test": "turbo run test --no-daemon",
 		"release": "pnpm release:bump && pnpm release:commit && pnpm release:publish",
 		"release:bump": "node --no-warnings ./scripts/bump-versions.js",
@@ -28,7 +28,7 @@
 		"@kobalte/core": "^0.11.0",
 		"@solidjs/meta": "^0.28.6",
 		"@solidjs/router": "^0.8.3",
-		"solid-js": "1.8.3",
+		"solid-js": "1.8.4",
 		"solid-start": "^0.3.7"
 	},
 	"devDependencies": {
@@ -41,7 +41,7 @@
 		"glob": "^10.3.10",
 		"rollup": "^3.28.1",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.69.4",
+		"sass": "1.69.5",
 		"solid-devtools": "^0.27.7",
 		"solid-start-node": "^0.3.7",
 		"turbo": "^1.10.16",

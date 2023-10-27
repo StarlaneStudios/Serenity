@@ -2,34 +2,22 @@ import { DEFAULT_COLORS } from "../constants/colors";
 import { darkenColor, isColorLight, setColorOpacity } from "./colors";
 import { resolveColor } from "./resolvers";
 
-export const resolveWhiteVariant = (
-	color: string, 
-	defaultShade?: number
-) => ({
-	"text-color": resolveColor(color, defaultShade),
+export interface VariantResolver {
+	(color: string, interactive: boolean): Record<string, string | undefined>;
+}
+
+export const resolveWhiteVariant: VariantResolver = (color) => ({
+	"text-color": resolveColor(color, 6),
 	"background-color": "#ffffff"
 });
 
-export const resolveTransparentVariant = (
-	color: string, 
-	defaultShade?: number
-) => ({
-	"text-color": resolveColor(color, defaultShade)
+export const resolveTransparentVariant: VariantResolver = (color) => ({
+	"text-color": resolveColor(color, 6)
 });
 
-/**
- * 
- * @param color 
- * @param defaultShade 
- * @returns
- */
-export const resolveLightVariant = (
-	color: string, 
-	defaultShade?: number, 
-	interactive = true
-) => {
+export const resolveLightVariant: VariantResolver = (color, interactive = true) => {
 
-	const output = resolveColor(color, defaultShade);
+	const output = resolveColor(color, 6);
 	const base: Record<string, string | undefined> = {
 		"text-color": output,
 		"background-color": setColorOpacity(output, 0.1, DEFAULT_COLORS),
@@ -42,13 +30,9 @@ export const resolveLightVariant = (
 	return base;
 };
 
-export const resolveOutlineVariant = (
-	color: string,
-	defaultShade?: number,
-	interactive = true
-) => {
+export const resolveOutlineVariant: VariantResolver = (color, interactive = true) => {
 
-	const output = resolveColor(color, defaultShade);
+	const output = resolveColor(color, 6);
 	const base: Record<string, string | undefined> = {
 		"text-color": output,
 		"border-color": output
@@ -61,13 +45,9 @@ export const resolveOutlineVariant = (
 	return base;
 };
 
-export const resolveFilledVariant = (
-	color: string,
-	defaultShade?: number,
-	interactive = true
-) => {
+export const resolveFilledVariant: VariantResolver = (color, interactive = true) => {
 
-	const output = resolveColor(color, defaultShade);
+	const output = resolveColor(color, 6);
 	const base: Record<string, string | undefined> = {
 		"text-color": isColorLight(output) ? "#000" : "#fff",
 		"background-color": output,
@@ -83,18 +63,14 @@ export const resolveFilledVariant = (
 	return base;
 };
 
-export const resolveSubtleVariant = (
-	color: string, 
-	defaultShade?: number,
-	interactive = true
-) => {
+export const resolveSubtleVariant: VariantResolver = (color, interactive = true) => {
 
-	const output = resolveColor(color, defaultShade);
+	const output = resolveColor(color, 6);
 	const base: Record<string, string | undefined> = {
 		"text-color": output,
 	};
 
-	if(interactive) {
+	if (interactive) {
 		base["hover-color"] = setColorOpacity(output, 0.12, DEFAULT_COLORS);
 	}
 
