@@ -4,7 +4,8 @@ import { Color, Size } from "@serenity-ui/styles";
 import { variants } from "../../constants/variants";
 import { Button as KobalteButton } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";
-import classes from "./button.module.scss"
+import classes from "./button.module.scss";
+import { useSerenity } from "../../provider";
 
 interface ButtonProps extends SerenityBaseProps, JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: Color;
@@ -29,8 +30,7 @@ const buttonSplitProps = [
 	"style"
 ] as const;
 
-const defaultButtonProps: DefaultProps<ButtonProps, 'color' | 'size' | 'radius' | 'variant' | 'classes'> = {
-	color: "blue",
+const defaultButtonProps: DefaultProps<ButtonProps, 'size' | 'radius' | 'variant' | 'classes'> = {
 	size: "md",
 	radius: "sm",
 	variant: "filled",
@@ -42,12 +42,15 @@ const defaultButtonProps: DefaultProps<ButtonProps, 'color' | 'size' | 'radius' 
 
 function Button(props: ButtonProps) {
 
+	const { accentColor } = useSerenity();
+
 	const [root, utils, other] = splitProps(props, buttonSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultButtonProps, root);
 
 	const cssVariables = () => {
 
-		const variantVariables = variants[baseProps.variant](baseProps.color, true);
+		const color = baseProps.color ?? accentColor();
+		const variantVariables = variants[baseProps.variant](color, true);
 
 		return localVars(
 			Object.assign(variantVariables, {

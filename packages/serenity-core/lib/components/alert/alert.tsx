@@ -6,7 +6,8 @@ import { Button } from "../button";
 import { variants } from "../../constants/variants";
 import { Optional } from "../../typings/helpers";
 import { Icon } from "../icon";
-import { ALERT_ICON, CLOSE_ICON, INFORMATION_ICON } from "../../constants/icons";
+import { CLOSE_ICON, INFORMATION_ICON } from "../../constants/icons";
+import { useSerenity } from "../../provider";
 
 interface AlertProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 
@@ -95,11 +96,10 @@ const alertSplitProps = [
 
 const defaultAlertProps: DefaultProps<
 	AlertProps,
-	'variant' | 'radius' | 'color' |
+	'variant' | 'radius' |
 	'withIcon' | 'withCloseButton' | 'styles' |
 	'show'
 > = {
-	color: "blue",
 	radius: "sm",
 	variant: "filled",
 	withCloseButton: true,
@@ -116,18 +116,23 @@ const defaultAlertProps: DefaultProps<
 
 function Alert(props: AlertProps) {
 
+	const { accentColor } = useSerenity();
+
 	const [root, utils, other] = splitProps(props, alertSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultAlertProps, root);
 
 	const cssVariables = () => {
+
+		const color = baseProps.color ?? accentColor();
+
 		const radius = resolveSize("radius", baseProps.radius);
-		const color = resolveColor(baseProps.color);
-		const variant = variants[baseProps.variant](baseProps.color, false);
+		const textColor = resolveColor(color);
+		const variant = variants[baseProps.variant](color, false);
 
 		return localVars(
 			Object.assign(variant, {
 				"border-radius": radius,
-				color
+				color: textColor,
 			})
 		);
 	};

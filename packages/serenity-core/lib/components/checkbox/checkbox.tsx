@@ -6,6 +6,7 @@ import { OverrideComponentProps } from "@kobalte/utils";
 import classes from "./checkbox.module.scss";
 import { CHECK_ICON } from "../../constants/icons";
 import { Icon } from "../icon";
+import { useSerenity } from "../../provider";
 
 interface CheckboxProps extends SerenityBaseProps {
 
@@ -44,7 +45,7 @@ interface CheckboxProps extends SerenityBaseProps {
 
 	/**
 	 * The color of the checkbox.
-	 * @default "blue"
+	 * @default "blue.6"
 	 */
 	color?: Color;
 
@@ -69,7 +70,6 @@ const defaultCheckboxProps = {
 	name: undefined,
 	disabled: false,
 	checked: false,
-	color: "blue",
 	radius: "sm",
 	styles: {
 		label: classes['checkbox__label'],
@@ -77,16 +77,18 @@ const defaultCheckboxProps = {
 		control: classes['checkbox__control'],
 		error: classes['checkbox__error']
 	}
-} satisfies DefaultProps<CheckboxProps>;
+} satisfies Partial<DefaultProps<CheckboxProps>>;
 
 function Checkbox(props: Omit<OverrideComponentProps<"div", CheckboxProps>, 'onChange'>) {
+
+	const { accentColor } = useSerenity();
 
 	const [root, utils, others] = splitProps(props, checkboxSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultCheckboxProps, root);
 
 	const cssVariables = () => {
 
-		const color = resolveColor(baseProps.color);
+		const color = resolveColor(baseProps.color ?? accentColor());
 		const radius = resolveLength("radius", baseProps.radius);
 
 		return localVars({

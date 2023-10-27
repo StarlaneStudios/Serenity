@@ -3,6 +3,7 @@ import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./badge.module.scss";
 import { variants } from "../../constants/variants";
+import { useSerenity } from "../../provider";
 
 interface BadgeProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 
@@ -48,9 +49,8 @@ const badgeSplitProps = [
 
 const defaultBadgeProps: DefaultProps<
 	BadgeProps,
-	'color' | 'variant' | 'size' | 'radius' | 'styles'
+	'variant' | 'size' | 'radius' | 'styles'
 > = {
-	color: 'blue',
 	radius: 'xs',
 	size: 'md',
 	variant: 'default',
@@ -60,6 +60,8 @@ const defaultBadgeProps: DefaultProps<
 };
 
 function Badge(props: BadgeProps) {
+
+	const { accentColor } = useSerenity();
 
 	const [root, utils, other] = splitProps(props, badgeSplitProps, UTILITY_NAMES);
 	const baseProps = mergeProps(defaultBadgeProps, root);
@@ -79,10 +81,12 @@ function Badge(props: BadgeProps) {
 			'font-size': fontSize
 		};
 
+		const color = baseProps.color ?? accentColor();
+
 		if (baseProps.variant === "dot") {
-			vars.color = resolveColor(baseProps.color);
+			vars.color = resolveColor(color);
 		} else {
-			const variant = variants[baseProps.variant](baseProps.color, false);
+			const variant = variants[baseProps.variant](color, false);
 			Object.assign(vars, variant);
 		}
 
