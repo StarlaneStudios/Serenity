@@ -15,12 +15,6 @@ export const resolveTransparentVariant: VariantResolver = (color) => ({
 	"text-color": resolveColor(color, 6)
 });
 
-/**
- * 
- * @param color 
- * @param defaultShade 
- * @returns
- */
 export const resolveLightVariant: VariantResolver = (color, interactive = true) => {
 
 	const output = resolveColor(color, 6);

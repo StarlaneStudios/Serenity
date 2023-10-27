@@ -1,9 +1,6 @@
-import { Variant, resolveFilledVariant, resolveLightVariant, resolveOutlineVariant, resolveSubtleVariant, resolveTransparentVariant, resolveWhiteVariant } from "@serenity-ui/styles";
+import { Variant, VariantResolver, resolveFilledVariant, resolveLightVariant, resolveOutlineVariant, resolveSubtleVariant, resolveTransparentVariant, resolveWhiteVariant } from "@serenity-ui/styles";
 
-export const variants: Record<
-	Variant,
-	(color: string, interactive: boolean) => Record<string, any>
-> = {
+export const variants: Record<Variant, VariantResolver> = {
 	default: () => ({}),
 	light: resolveLightVariant,
 	outline: resolveOutlineVariant,
