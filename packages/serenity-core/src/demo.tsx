@@ -66,7 +66,7 @@ export const DemoPage = () => {
 					</button>
 				</Row>
 			</form>
-			<Tabs variant="pills">
+			<Tabs variant="default">
 				<Tabs.List spacing="14px">
 					<Tabs.Tab value="a">Tab 1</Tabs.Tab>
 					<Tabs.Tab value="b">Tab 2</Tabs.Tab>
