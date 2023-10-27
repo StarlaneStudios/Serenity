@@ -10,7 +10,6 @@ export const DemoPage = () => {
 	const [show, setShow] = createSignal(true);
 	const [value, setValue] = createSignal<string>()
 
-	const color = "blue.7";
 	const hideAlert: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent> = (event) => {
 		setShow(prev => !prev);
 	};
@@ -48,7 +47,6 @@ export const DemoPage = () => {
 							title="Dit is een alert"
 							onClose={hideAlert}
 							show={show()}
-							color={color}
 						>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit.
 							libero ducimus voluptatem natus,
