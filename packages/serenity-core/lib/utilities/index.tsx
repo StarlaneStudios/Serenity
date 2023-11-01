@@ -1,6 +1,6 @@
 import { parseColor, parseSpacing } from './parsers';
 import type { JSX } from 'solid-js';
-import type { UtilityStyleProps } from '../types/props';
+import type { UtilityStyleProps } from '../typings/props';
 
 type UtilityParsers = Partial<Record<keyof UtilityStyleProps, (arg: any) => string | undefined>>;
 

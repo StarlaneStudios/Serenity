@@ -1,6 +1,6 @@
-import { resolveColor, resolveLength } from "../functions/resolvers";
-import { Color } from "../types/theme";
-import { Length } from "../types/values";
+import { resolveColor, resolveLength } from "../utils/resolvers";
+import { Color } from "../typings/theme";
+import { Length } from "../typings/values";
 
 export function parseSpacing(value: Length): string | undefined {
 	return resolveLength('spacing', value);

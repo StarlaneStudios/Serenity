@@ -1,8 +1,6 @@
-import { resolve, dirname, join } from 'node:path';
+import { resolve } from 'node:path';
 import solid from "vite-plugin-solid";
 import { defineConfig } from "vite";
-import { copyFileSync, mkdirSync } from "fs";
-import { globSync } from 'glob';
 import ts from 'typescript';
 
 export default defineConfig({
@@ -61,9 +59,6 @@ export default defineConfig({
 				'solid-js',
 				'solid-js/web',
 				'solid-js/store',
-				'@serenity-ui/styles',
-				'@serenity-ui/utils',
-				'@serenity-ui/primitives',
 				"@kobalte/core"
 			]
 		}
@@ -73,7 +68,7 @@ export default defineConfig({
 		preprocessorOptions: {
 			scss: {
 				additionalData: (content, path) => {
-					const mixins = `@import '../serenity-styles/lib/styles/mixins.scss';`;
+					const mixins = `@import './lib/styles/mixins.scss';`;
 
 					if (path.endsWith('global.scss')) {
 						return `${mixins} ${content}`;

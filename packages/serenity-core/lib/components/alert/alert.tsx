@@ -3,7 +3,7 @@ import { JSX, Match, Show, Switch, createEffect, createUniqueId, mergeProps, spl
 import { DefaultProps } from "../../util/types";
 import classes from "./alert.module.scss";
 import { Button } from "../button";
-import { variants } from "../../constants/variants";
+import { VARIANTS } from "../../constants/variants";
 import { Optional } from "../../typings/helpers";
 import { Icon } from "../icon";
 import { CLOSE_ICON, INFORMATION_ICON } from "../../constants/icons";
@@ -127,7 +127,7 @@ function Alert(props: AlertProps) {
 
 		const radius = resolveSize("radius", baseProps.radius);
 		const textColor = resolveColor(color);
-		const variant = variants[baseProps.variant](color, false);
+		const variant = VARIANTS[baseProps.variant](color, false);
 
 		return localVars(
 			Object.assign(variant, {

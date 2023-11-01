@@ -1,10 +1,9 @@
-import { Tuple } from "@serenity-ui/utils";
-import { Length, Size, UnitType } from "../types/values";
 import { JSX } from "solid-js/jsx-runtime";
-import { DEFAULT_COLORS } from "../constants/colors";
 import { v } from "./css";
-import { isSize } from "./helpers";
-import { Color, ColorValue } from "../types/theme";
+import { Length, Size, UnitType } from "../typings/values";
+import { isSize } from "../constants/sizes";
+import { getThemeColor } from "./theme";
+import { Tuple } from "../typings/helpers";
 
 /**
  * Resolve the input as a length value
@@ -114,18 +113,24 @@ export function resolveColor(input: string, defaultShade: number = 6) {
 	}
 
 	if (input == "accent") {
-		return 'var(--serenity-accent-color)';
+		return v('accent-color');
 	}
 
-	const [color, shade] = input.split('.');
-	const base = DEFAULT_COLORS[color];
-
-	if (!base) {
-		return input;
-	}
-	else if (!shade) {
-		return base[defaultShade];
-	}
-
-	return base[+shade];
+	return getThemeColor(input, defaultShade);
 };
+
+/**
+ * Resolve border value and try to resolve for css classes
+ * @param border 
+ * @returns 
+ */
+export function resolveBorder(border?: boolean | string[]): string | undefined {
+
+	if(!border) {
+		return undefined;
+	} else if(typeof border === "boolean") {
+		return border ? "trbl" : undefined;
+	}
+
+	return border.join("");
+}

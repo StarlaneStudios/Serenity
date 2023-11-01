@@ -2,7 +2,7 @@ import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveLen
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./badge.module.scss";
-import { variants } from "../../constants/variants";
+import { VARIANTS } from "../../constants/variants";
 import { useSerenity } from "../../provider";
 
 interface BadgeProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
@@ -86,7 +86,7 @@ function Badge(props: BadgeProps) {
 		if (baseProps.variant === "dot") {
 			vars.color = resolveColor(color);
 		} else {
-			const variant = variants[baseProps.variant](color, false);
+			const variant = VARIANTS[baseProps.variant](color, false);
 			Object.assign(vars, variant);
 		}
 
