@@ -1,6 +1,4 @@
-import { Color, ColorValue, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveSize } from "@serenity-ui/styles";
 import { JSX, Match, Show, Switch, createEffect, createUniqueId, mergeProps, splitProps } from "solid-js";
-import { DefaultProps } from "../../util/types";
 import classes from "./alert.module.scss";
 import { Button } from "../button";
 import { VARIANTS } from "../../constants/variants";
@@ -8,6 +6,13 @@ import { Optional } from "../../typings/helpers";
 import { Icon } from "../icon";
 import { CLOSE_ICON, INFORMATION_ICON } from "../../constants/icons";
 import { useSerenity } from "../../provider";
+import { DefaultProps } from "../../typings/deprecated";
+import { SerenityBaseProps } from "../../typings/props";
+import { ColorValue } from "../../typings/theme";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c } from "../../utils/css";
+import { resolveSize, resolveColor } from "../../utils/resolvers";
 
 interface AlertProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 

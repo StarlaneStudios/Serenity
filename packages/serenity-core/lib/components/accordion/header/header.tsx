@@ -1,10 +1,12 @@
 import classes from "../accordion.module.scss";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
 import { JSX, splitProps } from "solid-js";
-import { SerenityBaseProps, UTILITY_NAMES, buildStyles, c } from "@serenity-ui/styles";
 import { Chevron } from "../../chevron";
 import { Row } from "../../row";
 import { Spacer } from "../../spacer";
+import { SerenityBaseProps } from "../../../typings/props";
+import { UTILITY_NAMES, buildStyles } from "../../../utilities";
+import { c } from "../../../utils/css";
 
 interface AccordionHeaderProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	triggerClass?: string;

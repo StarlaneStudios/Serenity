@@ -1,7 +1,12 @@
-import { Color, ColorValue, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveLength } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { DefaultProps } from "../../util/types";
 import classes from "./loader.module.scss";
+import { DefaultProps } from "../../typings/deprecated";
+import { SerenityBaseProps } from "../../typings/props";
+import { ColorValue } from "../../typings/theme";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c } from "../../utils/css";
+import { resolveLength, resolveColor } from "../../utils/resolvers";
 
 interface LoaderProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLSpanElement> {
 

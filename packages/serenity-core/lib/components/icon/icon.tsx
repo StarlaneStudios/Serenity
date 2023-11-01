@@ -1,7 +1,12 @@
+import { DefaultProps } from '../../typings/deprecated';
+import { SerenityBaseProps } from '../../typings/props';
+import { ColorValue } from '../../typings/theme';
+import { Size, Variant } from '../../typings/values';
+import { UTILITY_NAMES, buildStyles } from '../../utilities';
+import { localVars, b, c } from '../../utils/css';
+import { resolveColor, resolveLength } from '../../utils/resolvers';
 import classes from './icon.module.scss';
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, Variant, buildStyles, c, resolveColor, resolveLength, localVars, b, ColorValue } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { DefaultProps } from '../../util/types';
 
 interface IconProps extends SerenityBaseProps, JSX.HTMLAttributes<SVGSVGElement> {
 	path: string;

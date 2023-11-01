@@ -1,6 +1,7 @@
-import { SerenityBaseProps, UTILITY_NAMES, buildStyles } from "@serenity-ui/styles";
 import { splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
+import { SerenityBaseProps } from "../../typings/props";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
 
 export interface SpacerProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLSpanElement> {
 

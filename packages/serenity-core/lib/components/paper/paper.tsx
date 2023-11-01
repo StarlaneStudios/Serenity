@@ -1,8 +1,11 @@
+import { DefaultProps } from "../../typings/deprecated";
+import { SerenityBaseProps } from "../../typings/props";
+import { Side, Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c } from "../../utils/css";
+import { resolveLength, resolveShadow, resolveBorder } from "../../utils/resolvers";
 import classes from "./paper.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { SerenityBaseProps, Size, c, resolveShadow, resolveLength, buildStyles, UTILITY_NAMES, Side, localVars } from "@serenity-ui/styles";
-import { resolveBorder } from "@serenity-ui/utils";
-import { DefaultProps } from "../../util/types";
 
 interface PaperProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	border?: boolean | Side[];

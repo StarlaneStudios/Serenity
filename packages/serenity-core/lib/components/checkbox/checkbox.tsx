@@ -1,4 +1,3 @@
-import { Color, ColorValue, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveLength } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { Checkbox as KobalteCheckbox } from "@kobalte/core";
 import { DefaultProps } from "../../typings/helpers";
@@ -7,6 +6,12 @@ import classes from "./checkbox.module.scss";
 import { CHECK_ICON } from "../../constants/icons";
 import { Icon } from "../icon";
 import { useSerenity } from "../../provider";
+import { SerenityBaseProps } from "../../typings/props";
+import { ColorValue } from "../../typings/theme";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c } from "../../utils/css";
+import { resolveColor, resolveLength } from "../../utils/resolvers";
 
 interface CheckboxProps extends SerenityBaseProps {
 

@@ -1,9 +1,13 @@
 import classes from "./accordion.module.scss";
 import { mergeProps, splitProps } from "solid-js";
 import { Column, ColumnProps } from "../column";
-import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, resolveLength, b, localVars } from "@serenity-ui/styles";
 import { As, Accordion as KobalteAccordion } from "@kobalte/core";
-import { DefaultProps } from "../../util/types";
+import { DefaultProps } from "../../typings/deprecated";
+import { SerenityBaseProps } from "../../typings/props";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c, b } from "../../utils/css";
+import { resolveLength } from "../../utils/resolvers";
 
 interface AccordionProps extends SerenityBaseProps, Omit<ColumnProps, 'align' | 'justify'> {
 	variant?: "default" | "contained" | "seperated" | "filled";

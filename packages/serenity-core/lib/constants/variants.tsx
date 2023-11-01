@@ -1,4 +1,5 @@
 import { Variant } from "../typings/values";
+import { darken, lighten, opacitize } from "../utils/css";
 import { resolveColor } from "../utils/resolvers";
 
 interface VariantResolver {
@@ -18,11 +19,11 @@ const resolveLightVariant: VariantResolver = (color, interactive = true) => {
 	const output = resolveColor(color, 6);
 	const base: Record<string, string | undefined> = {
 		"text-color": output,
-		"background-color": setColorOpacity(output, 0.1, DEFAULT_COLORS), // TODO mix-color
+		"background-color": opacitize(output, 90)
 	};
 
 	if (interactive) {
-		base['hover-color'] = setColorOpacity(output, 0.12, DEFAULT_COLORS); // TODO mix-color
+		base['hover-color'] = opacitize(output, 88);
 	}
 
 	return base;
@@ -36,7 +37,7 @@ const resolveOutlineVariant: VariantResolver = (color, interactive = true) => {
 	};
 
 	if (interactive) {
-		base["hover-color"] = setColorOpacity(output, 0.12, DEFAULT_COLORS); // TODO mix-color
+		base["hover-color"] = opacitize(output, 12);
 	}
 
 	return base;
@@ -46,13 +47,13 @@ const resolveFilledVariant: VariantResolver = (color, interactive = true) => {
 	const output = resolveColor(color, 6);
 	const base: Record<string, string | undefined> = {
 		"text-color": "#fff",
-		"background-color": output,
+		"background-color": output
 	};
 
 	if (interactive) {
 		Object.assign(base, {
-			"hover-color": darkenColor(output, 12), // TODO mix-color
-			"active-color": darkenColor(output, 15) // TODO mix-color
+			"hover-color": darken(output, 12),
+			"active-color": darken(output, 15)
 		});
 	}
 
@@ -66,7 +67,7 @@ const resolveSubtleVariant: VariantResolver = (color, interactive = true) => {
 	};
 
 	if (interactive) {
-		base["hover-color"] = setColorOpacity(output, 0.12, DEFAULT_COLORS); // TODO mix-color
+		base["hover-color"] = opacitize(output, 12);
 	}
 
 	return base;

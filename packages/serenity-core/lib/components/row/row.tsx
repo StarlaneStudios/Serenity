@@ -1,8 +1,12 @@
 import classes from "./row.module.scss";
-import { SerenityBaseProps, Size, localVars, c, b, resolveLength, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
-import { DefaultProps } from "../../util/types";
+import { DefaultProps } from "../../typings/deprecated";
+import { SerenityBaseProps } from "../../typings/props";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c, b } from "../../utils/css";
+import { resolveLength } from "../../utils/resolvers";
 
 interface RowProps extends SerenityBaseProps, Omit<JSX.HTMLAttributes<HTMLDivElement>, 'size'> {
 	justify?: JSX.CSSProperties["justify-content"];

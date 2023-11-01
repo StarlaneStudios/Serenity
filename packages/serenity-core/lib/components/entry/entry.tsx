@@ -1,11 +1,13 @@
 import classes from "./entry.module.scss";
-import { SerenityBaseProps, UTILITY_NAMES, b, buildStyles, c, localVars, s } from "@serenity-ui/styles";
 import { OverrideComponentProps, composeEventHandlers } from "@kobalte/utils";
 import { JSX } from "solid-js/jsx-runtime";
 import { Show, mergeProps, splitProps } from "solid-js";
 import { Chevron } from "../chevron";
 import { Collapsible, createDisclosureState } from "@kobalte/core";
 import { StylesProps } from "../../typings/helpers";
+import { SerenityBaseProps } from "../../typings/props";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c, b, s } from "../../utils/css";
 
 interface EntryProps extends SerenityBaseProps {
 

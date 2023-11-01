@@ -1,7 +1,11 @@
+import { DefaultProps } from "../../typings/deprecated";
+import { SerenityBaseProps } from "../../typings/props";
+import { ColorValue } from "../../typings/theme";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { b, c } from "../../utils/css";
+import { resolveColor } from "../../utils/resolvers";
 import classes from "./chevron.module.scss";
-import { Color, ColorValue, SerenityBaseProps, UTILITY_NAMES, b, buildStyles, c, resolveColor } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { DefaultProps } from "../../util/types";
 
 interface ChevronProps extends SerenityBaseProps, Omit<JSX.SvgSVGAttributes<SVGSVGElement>, 'children' | 'cursor' | 'display'> {
 	orientation?: "up" | "down" | "left" | "right" | number;
