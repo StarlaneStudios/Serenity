@@ -1,8 +1,12 @@
 import { JSX, Show, mergeProps, splitProps } from "solid-js";
 import { TextField } from "@kobalte/core";
 import classes from "./base.module.scss";
-import { SerenityBaseProps, Size, UTILITY_NAMES, b, buildStyles, c, localVars, resolveLength, resolveSize } from "@serenity-ui/styles";
-import { DefaultProps } from "../../util/types";
+import { DefaultProps } from "../../typings/deprecated";
+import { SerenityBaseProps } from "../../typings/props";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c } from "../../utils/css";
+import { resolveLength, resolveSize } from "../../utils/resolvers";
 
 type DefaultBaseInputProps = TextField.TextFieldRootProps & TextField.TextFieldLabelProps & TextField.TextFieldDescriptionProps & TextField.TextFieldErrorMessageProps;
 type BaseInputProps<P> = DefaultBaseInputProps & SerenityBaseProps & {

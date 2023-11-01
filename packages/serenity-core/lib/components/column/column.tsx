@@ -1,7 +1,11 @@
+import { DefaultProps } from "../../typings/deprecated";
+import { SerenityBaseProps } from "../../typings/props";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c } from "../../utils/css";
+import { resolveLength } from "../../utils/resolvers";
 import classes from "./column.module.scss";
 import { splitProps, JSX, mergeProps } from "solid-js";
-import { buildStyles, localVars, c, resolveLength, SerenityBaseProps, Size, UTILITY_NAMES } from "@serenity-ui/styles";
-import { DefaultProps } from "../../util/types";
 
 interface ColumnProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	spacing?: number | Size;

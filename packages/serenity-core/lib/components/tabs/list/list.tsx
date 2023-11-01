@@ -1,8 +1,12 @@
 import classes from "../tabs.module.scss";
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { SerenityBaseProps, localVars, c, resolveLength, buildStyles, UTILITY_NAMES, b, Length } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
-import { DefaultProps } from "../../../util/types";
+import { DefaultProps } from "../../../typings/deprecated";
+import { SerenityBaseProps } from "../../../typings/props";
+import { Length } from "../../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../../utilities";
+import { localVars, c, b } from "../../../utils/css";
+import { resolveLength } from "../../../utils/resolvers";
 
 interface TabsListProps extends SerenityBaseProps, KobalteTabs.TabsListProps {
 

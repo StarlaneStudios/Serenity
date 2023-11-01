@@ -1,7 +1,9 @@
 import classes from "../accordion.module.scss";
 import { JSX, splitProps } from "solid-js";
 import { Accordion, As } from "@kobalte/core";
-import { SerenityBaseProps, UTILITY_NAMES, buildStyles, c } from "@serenity-ui/styles";
+import { SerenityBaseProps } from "../../../typings/props";
+import { UTILITY_NAMES, buildStyles } from "../../../utilities";
+import { c } from "../../../utils/css";
 
 interface AccordionItemProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	value: string;

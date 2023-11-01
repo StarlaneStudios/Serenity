@@ -1,5 +1,5 @@
 import { JSX, mergeProps } from "solid-js";
-import { DefaultProps } from "../../util/types";
+import { DefaultProps } from "../../typings/deprecated";
 
 interface DialogProps extends JSX.DialogHtmlAttributes<HTMLDialogElement> {
 

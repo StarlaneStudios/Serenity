@@ -1,9 +1,14 @@
-import { SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveLength, buildStyles, resolveColor, ColorValue } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { DefaultProps } from "../../util/types";
 import classes from "./badge.module.scss";
 import { VARIANTS } from "../../constants/variants";
 import { useSerenity } from "../../provider";
+import { DefaultProps } from "../../typings/deprecated";
+import { SerenityBaseProps } from "../../typings/props";
+import { ColorValue } from "../../typings/theme";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c } from "../../utils/css";
+import { resolveLength, resolveColor } from "../../utils/resolvers";
 
 interface BadgeProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 

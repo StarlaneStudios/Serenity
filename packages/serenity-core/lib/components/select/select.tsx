@@ -1,6 +1,5 @@
 import { Component, splitProps } from "solid-js";
 import { Select as KobalteSelect } from "@kobalte/core";
-import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveLength } from "@serenity-ui/styles";
 import { Show } from "solid-js";
 import { useSerenity } from "../../provider";
 import { DefaultProps } from "../../typings/helpers";
@@ -9,6 +8,11 @@ import { SelectBaseItemComponentProps } from "@kobalte/core/dist/types/select/se
 import classes from "./select.module.scss";
 import inputClasses from "../input/base.module.scss";
 import { SelectValueState } from "@kobalte/core/dist/types/select/select-value";
+import { SerenityBaseProps } from "../../typings/props";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c } from "../../utils/css";
+import { resolveLength } from "../../utils/resolvers";
 
 interface SelectItemData {
 	label: string;

@@ -1,9 +1,14 @@
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveColor, resolveLength, buildStyles, isColorLight, ColorValue } from "@serenity-ui/styles";
-import { DefaultProps } from "../../util/types";
 import { mergeProps, splitProps } from "solid-js";
 import classes from "./tabs.module.scss";
 import { useSerenity } from "../../provider";
+import { DefaultProps } from "../../typings/deprecated";
+import { SerenityBaseProps } from "../../typings/props";
+import { ColorValue } from "../../typings/theme";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c } from "../../utils/css";
+import { resolveColor, resolveLength } from "../../utils/resolvers";
 
 interface TabsProps extends SerenityBaseProps, KobalteTabs.TabsRootProps {
 
@@ -51,7 +56,8 @@ function Tabs(props: TabsProps) {
 	const cssVariables = () => {
 		const color = resolveColor(baseProps.color ?? accentColor());
 		const radius = resolveLength("radius", baseProps.radius);
-		const textColor = isColorLight(color) ? "#000" : "#fff";
+		// const textColor = isColorLight(color) ? "#000" : "#fff"; // TODO: fix
+		const textColor = "#fff";
 
 		return localVars({ color, radius, "text-color": textColor });
 	};

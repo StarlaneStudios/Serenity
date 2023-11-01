@@ -1,6 +1,8 @@
-import { Color, ColorFormat, Theme, resolveColor } from "@serenity-ui/styles";
 import { createUniqueId } from "solid-js";
 import { Accessor, ParentProps, Setter, createContext, createSignal, useContext } from "solid-js";
+import { Theme, Color } from "./typings/theme";
+import { ColorFormat } from "./typings/values";
+import { resolveColor } from "./utils/resolvers";
 
 const SerenityContext = createContext<{
 	theme: Accessor<Theme>;

@@ -1,7 +1,9 @@
 import classes from "../tabs.module.scss";
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { SerenityBaseProps, c, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
 import { splitProps } from "solid-js";
+import { SerenityBaseProps } from "../../../typings/props";
+import { UTILITY_NAMES, buildStyles } from "../../../utilities";
+import { c } from "../../../utils/css";
 
 interface TabsTabProps extends SerenityBaseProps, KobalteTabs.TabsTriggerProps {
 

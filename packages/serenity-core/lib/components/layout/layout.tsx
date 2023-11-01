@@ -1,8 +1,12 @@
+import { DefaultProps } from "../../typings/deprecated";
+import { Tuple } from "../../typings/helpers";
+import { SerenityBaseProps } from "../../typings/props";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c } from "../../utils/css";
+import { resolveGridSpacing, resolveGridCols } from "../../utils/resolvers";
 import classes from "./layout.module.scss";
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, resolveGridCols, resolveGridSpacing, localVars } from "@serenity-ui/styles";
-import { Tuple } from "@serenity-ui/utils";
-import { DefaultProps } from "../../util/types";
 
 interface LayoutProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 	breakpoints?: Record<Size, number>;

@@ -1,8 +1,11 @@
 import { JSX, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { ElementType, PolymorphicProps } from "../../typings/polymorphic";
-import { Size, UTILITY_NAMES, buildStyles, localVars, c, b, resolveLength } from "@serenity-ui/styles";
 import classes from "./text.module.scss";
+import { Size } from "../../typings/values";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { localVars, c, b } from "../../utils/css";
+import { resolveLength } from "../../utils/resolvers";
 
 interface TextProps {
 	size?: Size | number;

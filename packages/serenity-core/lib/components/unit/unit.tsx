@@ -1,6 +1,8 @@
+import { SerenityBaseProps } from "../../typings/props";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { c } from "../../utils/css";
 import classes from "./unit.module.scss";
 import { JSX, splitProps } from "solid-js";
-import { SerenityBaseProps, UTILITY_NAMES, c, buildStyles } from "@serenity-ui/styles";
 
 interface UnitProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
 }
