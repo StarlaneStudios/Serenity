@@ -14,7 +14,7 @@ export type ColorMap = ColorOverride extends {
 	: Record<DefaultColorNames, Tuple<string, 10>>;
 
 export type Color = keyof ColorMap;
-export type ColorValue = Color | ColorFormat;
+export type ColorValue = "accent" | Color | ColorFormat;
 
 // ==============================
 // Themes

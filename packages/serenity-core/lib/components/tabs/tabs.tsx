@@ -1,5 +1,5 @@
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveColor, resolveLength, buildStyles, isColorLight } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveColor, resolveLength, buildStyles, isColorLight, ColorValue } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 import { mergeProps, splitProps } from "solid-js";
 import classes from "./tabs.module.scss";
@@ -16,7 +16,7 @@ interface TabsProps extends SerenityBaseProps, KobalteTabs.TabsRootProps {
 	 * the background color of the tab and indicator when active.
 	 * only applies to the default variant and the pills variant.
 	*/
-	color?: Color;
+	color?: ColorValue;
 
 	/**
 	 * The border-radius of the tab items within the component.

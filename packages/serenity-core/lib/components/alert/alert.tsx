@@ -1,4 +1,4 @@
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveSize } from "@serenity-ui/styles";
+import { Color, ColorValue, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveSize } from "@serenity-ui/styles";
 import { JSX, Match, Show, Switch, createEffect, createUniqueId, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./alert.module.scss";
@@ -21,7 +21,7 @@ interface AlertProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElemen
 	 * The color of the alert.
 	 * @default blue
 	 */
-	color?: Color;
+	color?: ColorValue;
 
 	/**
 	 * The border radius of the alert.

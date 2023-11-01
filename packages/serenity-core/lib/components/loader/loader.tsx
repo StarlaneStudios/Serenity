@@ -1,4 +1,4 @@
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveLength } from "@serenity-ui/styles";
+import { Color, ColorValue, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveLength } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./loader.module.scss";
@@ -15,7 +15,7 @@ interface LoaderProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLSpanElem
 	 * The color of the loader element.
 	 * @default "blue"
 	 */
-	color?: Color;
+	color?: ColorValue;
 
 	/**
 	 * The size of the loader element.

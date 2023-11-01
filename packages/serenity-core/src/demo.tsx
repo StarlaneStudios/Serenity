@@ -1,7 +1,8 @@
-import { Button, Checkbox, Column, Divider, Entry, InputField, Row, Select, Unit, useSerenity, Tabs } from "../lib";
+import { Button, Checkbox, Column, Divider, Entry, InputField, Row, Select, Unit, useSerenity, Tabs, Icon } from "../lib";
 import { For, JSX, createSignal } from "solid-js";
 import { Alert } from "../lib/components/alert";
 import classes from "./demo.module.scss";
+import { mdiAccount } from "@mdi/js";
 import { Select as KobalteSelect } from "@kobalte/core";
 
 export const DemoPage = () => {
@@ -30,6 +31,8 @@ export const DemoPage = () => {
 				<Button onclick={toggleTheme}>
 					Toggle theme
 				</Button>
+
+				<Icon path={mdiAccount} color="accent" />
 			</Row>
 
 			<Divider>

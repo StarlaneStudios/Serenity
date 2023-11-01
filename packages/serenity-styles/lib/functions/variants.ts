@@ -49,7 +49,7 @@ export const resolveFilledVariant: VariantResolver = (color, interactive = true)
 
 	const output = resolveColor(color, 6);
 	const base: Record<string, string | undefined> = {
-		"text-color": isColorLight(output) ? "#000" : "#fff",
+		"text-color": "#fff",
 		"background-color": output,
 	};
 

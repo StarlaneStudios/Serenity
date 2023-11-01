@@ -1,11 +1,11 @@
 import classes from "./divider.module.scss";
-import { Size, Color, localVars, c, resolveLength, resolveColor, SerenityBaseProps, buildStyles, UTILITY_NAMES } from "@serenity-ui/styles";
+import { Size, Color, localVars, c, resolveLength, resolveColor, SerenityBaseProps, buildStyles, UTILITY_NAMES, ColorValue } from "@serenity-ui/styles";
 import { Show, mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import { DefaultProps } from "../../util/types";
 
 interface DividerProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElement> {
-	color?: Color;
+	color?: ColorValue;
 	thickness?: Size | number;
 	orientation?: "horizontal" | "vertical";
 	variant?: JSX.CSSProperties['border-top-style'];

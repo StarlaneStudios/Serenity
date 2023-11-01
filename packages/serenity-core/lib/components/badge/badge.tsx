@@ -1,4 +1,4 @@
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveLength, buildStyles, resolveColor } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveLength, buildStyles, resolveColor, ColorValue } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./badge.module.scss";
@@ -11,7 +11,7 @@ interface BadgeProps extends SerenityBaseProps, JSX.HTMLAttributes<HTMLDivElemen
 	 * The color of the badge.
 	 * @default "primary"
 	 */
-	color?: Color;
+	color?: ColorValue;
 
 	/**
 	 * The variant of the badge.

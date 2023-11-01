@@ -1,11 +1,11 @@
 import classes from "./chevron.module.scss";
-import { Color, SerenityBaseProps, UTILITY_NAMES, b, buildStyles, c, resolveColor } from "@serenity-ui/styles";
+import { Color, ColorValue, SerenityBaseProps, UTILITY_NAMES, b, buildStyles, c, resolveColor } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 
 interface ChevronProps extends SerenityBaseProps, Omit<JSX.SvgSVGAttributes<SVGSVGElement>, 'children' | 'cursor' | 'display'> {
 	orientation?: "up" | "down" | "left" | "right" | number;
-	color?: Color;
+	color?: ColorValue;
 	disableAnimation?: boolean;
 }
 

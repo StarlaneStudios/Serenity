@@ -1,5 +1,5 @@
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { SerenityBaseProps, UTILITY_NAMES, Variant, buildStyles, localVars, c, resolveLength, resolveSize, b } from "@serenity-ui/styles";
+import { SerenityBaseProps, UTILITY_NAMES, Variant, buildStyles, localVars, c, resolveLength, resolveSize, b, ColorValue } from "@serenity-ui/styles";
 import { Color, Size } from "@serenity-ui/styles";
 import { variants } from "../../constants/variants";
 import { Button as KobalteButton } from "@kobalte/core";
@@ -8,7 +8,7 @@ import classes from "./button.module.scss";
 import { useSerenity } from "../../provider";
 
 interface ButtonProps extends SerenityBaseProps, JSX.ButtonHTMLAttributes<HTMLButtonElement> {
-	color?: Color;
+	color?: ColorValue;
 	size?: Size;
 	classes?: Record<'inner' | 'label', string>;
 	variant?: Variant;

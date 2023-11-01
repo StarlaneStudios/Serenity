@@ -1,12 +1,12 @@
 import classes from './icon.module.scss';
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, Variant, buildStyles, c, resolveColor, resolveLength, localVars, b } from "@serenity-ui/styles";
+import { Color, SerenityBaseProps, Size, UTILITY_NAMES, Variant, buildStyles, c, resolveColor, resolveLength, localVars, b, ColorValue } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from '../../util/types';
 
 interface IconProps extends SerenityBaseProps, JSX.HTMLAttributes<SVGSVGElement> {
 	path: string;
 	size?: Size | number;
-	color?: Color;
+	color?: ColorValue;
 	variant?: Omit<Variant, 'transparent' | 'white'>;
 	start?: boolean;
 	end?: boolean;

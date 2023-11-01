@@ -1,4 +1,4 @@
-import { Color, Theme, resolveColor } from "@serenity-ui/styles";
+import { Color, ColorFormat, Theme, resolveColor } from "@serenity-ui/styles";
 import { createUniqueId } from "solid-js";
 import { Accessor, ParentProps, Setter, createContext, createSignal, useContext } from "solid-js";
 
@@ -31,7 +31,7 @@ interface SerenityProviderProps {
 	 * The accent color of the application.
 	 * @default "blue.6"
 	 */
-	accentColor?: Color;
+	accentColor?: Color | ColorFormat;
 }
 
 /**

@@ -4,6 +4,7 @@ import { JSX } from "solid-js/jsx-runtime";
 import { DEFAULT_COLORS } from "../constants/colors";
 import { v } from "./css";
 import { isSize } from "./helpers";
+import { Color, ColorValue } from "../types/theme";
 
 /**
  * Resolve the input as a length value
@@ -110,6 +111,10 @@ export function resolveColor(input: string, defaultShade: number = 6) {
 
 	if (input.startsWith('#') || input.startsWith('hsl') || input.startsWith('rgb')) {
 		return input;
+	}
+
+	if (input == "accent") {
+		return 'var(--serenity-accent-color)';
 	}
 
 	const [color, shade] = input.split('.');
