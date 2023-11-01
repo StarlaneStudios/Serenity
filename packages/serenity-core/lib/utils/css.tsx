@@ -67,7 +67,7 @@ export function localVars<T extends Record<string, string | undefined | number |
  * @param percentage The amount to lighten
  */
 export function lighten(color: string, percentage: number) {
-	return `mix-color(in srgb, ${color}, white ${percentage}%)`
+	return `color-mix(in srgb, ${color}, white ${percentage}%)`
 }
 
 /**
@@ -77,7 +77,7 @@ export function lighten(color: string, percentage: number) {
  * @param percentage The amount to darken
  */
 export function darken(color: string, percentage: number) {
-	return `mix-color(in srgb, ${color}, black ${percentage}%)`
+	return `color-mix(in srgb, ${color}, black ${percentage}%)`
 }
 
 /**
@@ -87,5 +87,5 @@ export function darken(color: string, percentage: number) {
  * @param percentage The amount to opacitize
  */
 export function opacitize(color: string, percentage: number) {
-	return `mix-color(in srgb, ${color}, transparent ${percentage}%)`
+	return `color-mix(in srgb, ${color}, transparent ${percentage}%)`
 }
