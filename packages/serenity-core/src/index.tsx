@@ -6,7 +6,7 @@ render(() => (
 	<SerenityProvider
 		initialTheme="dark"
 		withGlobalStyle={true}
-		accentColor="blue"
+		accentColor="pink"
 	>
 		<DemoPage />
 	</SerenityProvider>

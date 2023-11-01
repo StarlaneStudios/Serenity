@@ -4,11 +4,6 @@
 export type UnitType = "rem" | "em";
 
 /**
- * The different accepted color formats
- */
-export type ColorFormat = `#${string}` | `rgb(${number}, ${number}, ${number})` | `rgba(${number}, ${number}, ${number}, ${number})` | `hsl(${number}, ${number}%, ${number}%)` | `hsla(${number}, ${number}%, ${number}%, ${number})`;
-
-/**
  * The names of colors provided by Serenity
  */
 export type ColorNames = "dark" | "gray" | "red" | "pink" | "grape" | "violet" | "indigo" | "blue" | "cyan" | "teal" | "green" | "lime" | "yellow" | "orange";

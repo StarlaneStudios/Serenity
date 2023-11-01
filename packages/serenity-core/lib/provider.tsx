@@ -1,7 +1,6 @@
 import { createUniqueId } from "solid-js";
 import { Accessor, ParentProps, Setter, createContext, createSignal, useContext } from "solid-js";
 import { Theme, Color } from "./typings/theme";
-import { ColorFormat } from "./typings/values";
 import { resolveColor } from "./utils/resolvers";
 
 const SerenityContext = createContext<{
@@ -33,7 +32,7 @@ interface SerenityProviderProps {
 	 * The accent color of the application.
 	 * @default "blue.6"
 	 */
-	accentColor?: Color | ColorFormat;
+	accentColor?: Exclude<Color, "accent">;
 }
 
 /**

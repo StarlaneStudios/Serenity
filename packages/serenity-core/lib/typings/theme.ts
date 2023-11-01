@@ -1,5 +1,5 @@
 import { Tuple } from "./helpers";
-import { ColorNames, ColorFormat, ThemeNames } from "./values";
+import { ColorNames, ThemeNames } from "./values";
 
 // ==============================
 // Colors
@@ -14,7 +14,7 @@ export type ColorMap = ColorOverride extends {
 	: Record<DefaultColorNames, Tuple<string, 10>>;
 
 export type Color = keyof ColorMap;
-export type ColorValue = "accent" | Color | ColorFormat;
+export type ColorValue = "accent" | Color | (string & {});
 
 // ==============================
 // Themes
