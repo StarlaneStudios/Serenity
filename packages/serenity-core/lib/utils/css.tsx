@@ -89,3 +89,12 @@ export function darken(color: string, percentage: number) {
 export function opacitize(color: string, percentage: number) {
 	return `color-mix(in srgb, ${color}, transparent ${percentage}%)`
 }
+
+/**
+ * Returns whether the given input is a CSS color function.
+ * 
+ * @param input The input value
+ */
+export function isColorFunction(input: string) {
+	return input.startsWith('#') || input.startsWith('hsl') || input.startsWith('rgb') || input.startsWith('var')
+}

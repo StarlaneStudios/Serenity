@@ -1,5 +1,5 @@
 import { JSX } from "solid-js/jsx-runtime";
-import { v } from "./css";
+import { isColorFunction, v } from "./css";
 import { Length, Size, UnitType } from "../typings/values";
 import { isSize } from "../constants/sizes";
 import { getThemeColor } from "./theme";
@@ -108,7 +108,7 @@ export function resolveGridCols(breakpoints: Record<Size, number>): JSX.CSSPrope
  */
 export function resolveColor(input: string, defaultShade: number = 6) {
 
-	if (input.startsWith('#') || input.startsWith('hsl') || input.startsWith('rgb')) {
+	if (isColorFunction(input)) {
 		return input;
 	}
 
