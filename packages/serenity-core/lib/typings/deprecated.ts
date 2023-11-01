@@ -1,4 +1,3 @@
-
 /**
  * Pick default props from props interface
  * 

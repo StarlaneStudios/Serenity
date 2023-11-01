@@ -32,10 +32,7 @@
 	],
 	"dependencies": {
 		"@kobalte/core": "0.10.0",
-		"@kobalte/utils": "^0.9.0",
-		"@serenity-ui/primitives": "*",
-		"@serenity-ui/styles": "*",
-		"@serenity-ui/utils": "*"
+		"@kobalte/utils": "^0.9.0"
 	},
 	"devDependencies": {
 		"@mdi/js": "^7.2.96",

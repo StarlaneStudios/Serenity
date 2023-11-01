@@ -22,6 +22,7 @@ export function c(...args: (string | false | undefined)[]) {
 
 /**
  * Handles the style strategy wether it needs to be extended or replaced.
+ * 
  * @param args 
  * @param strategy 
  * @returns The handled style 
@@ -46,7 +47,6 @@ export function b(value: any) {
  * @param map The CSS variables
  */
 export function localVars<T extends Record<string, string | undefined | number | null>>(map: T): JSX.CSSProperties {
-
 	const variables: Record<string, any> = {};
 
 	for (const key in map) {
@@ -59,3 +59,33 @@ export function localVars<T extends Record<string, string | undefined | number |
 
 	return variables;
 };
+
+/**
+ * Create a mix-color function that lightens a color.
+ * 
+ * @param color The color value
+ * @param percentage The amount to lighten
+ */
+export function lighten(color: string, percentage: number) {
+	return `mix-color(in srgb, ${color}, white ${percentage}%)`
+}
+
+/**
+ * Create a mix-color function that darkens a color.
+ * 
+ * @param color The color value
+ * @param percentage The amount to darken
+ */
+export function darken(color: string, percentage: number) {
+	return `mix-color(in srgb, ${color}, black ${percentage}%)`
+}
+
+/**
+ * Create a mix-color function that adds alpha to a color.
+ * 
+ * @param color The color value
+ * @param percentage The amount to opacitize
+ */
+export function opacitize(color: string, percentage: number) {
+	return `mix-color(in srgb, ${color}, transparent ${percentage}%)`
+}

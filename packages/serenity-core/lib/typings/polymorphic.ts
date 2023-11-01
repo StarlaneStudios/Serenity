@@ -1,5 +1,5 @@
-import type { SerenityBaseProps } from "@serenity-ui/styles";
 import type { Component, JSX, ComponentProps } from "solid-js";
+import { SerenityBaseProps } from "./props";
 
 export type ElementType<TProps = {}> = keyof JSX.IntrinsicElements | Component<TProps>;
 

@@ -1,4 +1,0 @@
-lib/**/*
-tsconfig.*
-vite.config.ts
-vitest.config.ts

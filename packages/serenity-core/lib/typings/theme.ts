@@ -1,4 +1,4 @@
-import { Tuple } from "@serenity-ui/utils";
+import { Tuple } from "./helpers";
 import { ColorNames, ColorFormat, ThemeNames } from "./values";
 
 // ==============================

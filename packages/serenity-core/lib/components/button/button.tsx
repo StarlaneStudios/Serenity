@@ -1,11 +1,15 @@
 import { JSX, mergeProps, splitProps } from "solid-js";
-import { SerenityBaseProps, UTILITY_NAMES, Variant, buildStyles, localVars, c, resolveLength, resolveSize, b, ColorValue } from "@serenity-ui/styles";
-import { Size } from "@serenity-ui/styles";
-import { variants } from "../../constants/variants";
+import { VARIANTS } from "../../constants/variants";
 import { Button as KobalteButton } from "@kobalte/core";
-import { DefaultProps } from "../../util/types";
 import classes from "./button.module.scss";
 import { useSerenity } from "../../provider";
+import { SerenityBaseProps } from "../../typings/props";
+import { ColorValue } from "../../typings/theme";
+import { Size, Variant } from "../../typings/values";
+import { DefaultProps } from "../../typings/deprecated";
+import { UTILITY_NAMES, buildStyles } from "../../utilities";
+import { b, c, localVars } from "../../utils/css";
+import { resolveLength, resolveSize } from "../../utils/resolvers";
 
 interface ButtonProps extends SerenityBaseProps, JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: ColorValue;
@@ -50,7 +54,7 @@ function Button(props: ButtonProps) {
 	const cssVariables = () => {
 
 		const color = baseProps.color ?? accentColor();
-		const variantVariables = variants[baseProps.variant](color, true);
+		const variantVariables = VARIANTS[baseProps.variant](color, true);
 
 		return localVars(
 			Object.assign(variantVariables, {

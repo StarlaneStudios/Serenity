@@ -1,6 +1,6 @@
 import { JSX } from 'solid-js';
-import { ColorValue } from "./theme";
-import { Length } from "./values";
+import { ColorValue } from './theme';
+import { Length } from './values';
 
 export interface UtilityStyleProps {
 

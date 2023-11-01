@@ -14,16 +14,5 @@
 	],
 	"exclude": [
 		"lib/**/*.test.ts(x)"
-	],
-	"references": [
-		{
-			"path": "../serenity-utils/tsconfig.json"
-		},
-		{
-			"path": "../serenity-styles/tsconfig.json"
-		},
-		{
-			"path": "../serenity-primitives/tsconfig.json"
-		}
 	]
 }
