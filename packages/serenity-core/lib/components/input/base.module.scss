@@ -43,6 +43,15 @@
 		color: var(--serenity-input-label-color);
 		font-size: var(--serenity-font-size-md);
 		font-weight: 600;
+
+		&[data-required] {
+			&::after {
+				content: "*";
+				color: var(--serenity-color-red-6);
+				margin-left: 5px;
+				font-size: 14px;
+			}
+		}
 	}
 
 	&__description {

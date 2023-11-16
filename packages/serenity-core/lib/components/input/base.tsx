@@ -15,15 +15,17 @@ type BaseInputProps<P> = DefaultBaseInputProps & SerenityBaseProps & {
 	size?: Size;
 	rightSection?: JSX.Element;
 	leftSection?: JSX.Element;
+	required?: boolean;
 } & P;
 
 const defaultBaseInputProps: DefaultProps<
 	BaseInputProps<{}>,
-	'variant' | 'styles' | 'radius' | 'size'
+	'variant' | 'styles' | 'radius' | 'size' | 'required'
 > = {
 	variant: 'default',
 	radius: 'xs',
 	size: 'sm',
+	required: false,
 	styles: {
 		root: classes['base-input'],
 		label: classes['base-input__label'],
@@ -46,7 +48,8 @@ const splitBaseInputProps = [
 	"style",
 	"size",
 	"leftSection",
-	"rightSection"
+	"rightSection",
+	"required"
 ] as const;
 
 const kobalteTextFieldErrorProps = [
@@ -89,7 +92,10 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 			{...other}
 		>
 			<Show when={props.label}>
-				<TextField.Label class={defaultBaseInputProps.styles.label}>
+				<TextField.Label 
+					class={defaultBaseInputProps.styles.label}
+					data-required={root.required}
+				>
 					{baseProps.label}
 				</TextField.Label>
 			</Show>
