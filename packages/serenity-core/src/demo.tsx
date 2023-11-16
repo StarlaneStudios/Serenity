@@ -151,6 +151,9 @@ export const DemoPage = () => {
 					description="This is a description"
 					mt="xs"
 					variant="filled"
+					error="Dit is een error"
+					lazyError
+					defaultValue="test"
 				/>
 
 				<KobalteSelect.Root
