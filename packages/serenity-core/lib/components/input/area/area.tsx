@@ -1,6 +1,7 @@
 import { onMount, splitProps } from "solid-js";
 import { BaseInput, BaseInputProps, fieldInputSplitProps } from "../base";
 import { TextField as KobalteTextField } from "@kobalte/core";
+import createBlurInputTrigger from "../../../primitives/createBlurTrigger";
 
 interface TextAreaProps extends BaseInputProps<KobalteTextField.TextFieldTextAreaProps> {
 
@@ -8,11 +9,19 @@ interface TextAreaProps extends BaseInputProps<KobalteTextField.TextFieldTextAre
 
 function TextAreaInput(props: TextAreaProps) {
 
-	const [input, other] = splitProps(props, fieldInputSplitProps);
-
+	const [input, extra, other] = splitProps(props, fieldInputSplitProps, ["error", "lazyError"]);
+	const blur = createBlurInputTrigger(props.value, extra.error, extra.lazyError);
+	
 	return (
-		<BaseInput<TextAreaProps> {...other}>
-			<KobalteTextField.TextArea {...input} />
+		<BaseInput<TextAreaProps> 
+			lazyError={extra.lazyError}
+			error={blur.value()}
+			{...other}
+		>
+			<KobalteTextField.TextArea 
+				onBlur={blur.handleBlur}
+				{...input} 
+			/>
 		</BaseInput>
 	);
 }

@@ -1,4 +1,5 @@
-.base-input, .base-input__wrapper {
+.base-input,
+.base-input__wrapper {
 	display: flex;
 }
 
@@ -26,7 +27,7 @@
 
 		transition: outline-color .2s, outline-width .2s;
 
-		&:focus-within, &:active {
+		&:focus-within {
 			outline-color: var(--serenity-input-focus-color);
 			outline-width: 1px;
 			border-color: transparent;
@@ -35,6 +36,14 @@
 			textarea {
 				outline: none;
 			}
+		}
+	}
+
+	&[data-invalid] {
+
+		.base-input__wrapper {
+			border-color: var(--serenity-color-red-6);
+			outline-color: var(--serenity-color-red-6);
 		}
 	}
 
@@ -103,13 +112,19 @@
 	}
 
 	&[data-variant="default"] {
-		.base-input__wrapper, input, textarea {
+
+		.base-input__wrapper,
+		input,
+		textarea {
 			background-color: var(--serenity-input-background-color);
 		}
 	}
 
 	&[data-variant="filled"] {
-		.base-input__wrapper, input, textarea {
+
+		.base-input__wrapper,
+		input,
+		textarea {
 			background-color: var(--serenity-input-border-color);
 		}
 	}
@@ -121,11 +136,7 @@
 		outline-style: solid;
 		outline-color: var(--serenity-color-red-6);
 		outline-width: 1px;
-
-		&:focus-within {
-			outline-color: var(--serenity-input-focus-color);
-		}
-
+		
 		input,
 		textarea {
 			color: var(--serenity-color-red-6);
@@ -133,32 +144,28 @@
 	}
 }
 
-@include defineDarkVariables((
-	"input-background-color": var(--serenity-color-dark-6),
-	"input-border-color": var(--serenity-color-dark-4),
-	"input-text-color": var(--serenity-color-dark-0),
-	"input-focus-color": var(--serenity-accent-color),
-	"input-label-color": var(--serenity-color-dark-0),
-	"input-description-color": var(--serenity-color-dark-2),
-	"input-placeholder-color": var(--serenity-color-dark-2),
-	"input-error-color": var(--serenity-color-red-6),
-));
+@include defineDarkVariables(("input-background-color": var(--serenity-color-dark-6),
+		"input-border-color": var(--serenity-color-dark-4),
+		"input-text-color": var(--serenity-color-dark-0),
+		"input-focus-color": var(--serenity-accent-color),
+		"input-label-color": var(--serenity-color-dark-0),
+		"input-description-color": var(--serenity-color-dark-2),
+		"input-placeholder-color": var(--serenity-color-dark-2),
+		"input-error-color": var(--serenity-color-red-6),
+	));
 
-@include defineLightVariables((
-	"input-background-color": #fff,
-	"input-border-color": var(--serenity-color-gray-4),
-	"input-text-color": #000,
-	"input-focus-color": var(--serenity-accent-color),
-	"input-label-color": var(--serenity-color-gray-9),
-	"input-placeholder-color": var(--serenity-color-gray-6),
-	"input-description-color": var(--serenity-color-gray-6),
-	"input-error-color": var(--serenity-color-red-6),
-));
+@include defineLightVariables(("input-background-color": #fff,
+		"input-border-color": var(--serenity-color-gray-4),
+		"input-text-color": #000,
+		"input-focus-color": var(--serenity-accent-color),
+		"input-label-color": var(--serenity-color-gray-9),
+		"input-placeholder-color": var(--serenity-color-gray-6),
+		"input-description-color": var(--serenity-color-gray-6),
+		"input-error-color": var(--serenity-color-red-6),
+	));
 
-@include defineVariables((
-	"input-height-xs": 1.875rem,
-	"input-height-sm": 2.25rem,
-	"input-height-md": 2.625rem,
-	"input-height-lg": 3.125rem,
-	"input-height-xl": 3.75rem
-));
+@include defineVariables(("input-height-xs": 1.875rem,
+		"input-height-sm": 2.25rem,
+		"input-height-md": 2.625rem,
+		"input-height-lg": 3.125rem,
+		"input-height-xl": 3.75rem));

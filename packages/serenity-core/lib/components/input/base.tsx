@@ -1,7 +1,7 @@
-import { JSX, Show, mergeProps, splitProps } from "solid-js";
+import { JSX, Show, children, createSignal, mergeProps, splitProps } from "solid-js";
 import { TextField } from "@kobalte/core";
 import classes from "./base.module.scss";
-import { SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveLength, resolveSize } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, UTILITY_NAMES, b, buildStyles, c, localVars, resolveLength, resolveSize } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 
 type DefaultBaseInputProps = TextField.TextFieldRootProps & TextField.TextFieldLabelProps & TextField.TextFieldDescriptionProps & TextField.TextFieldErrorMessageProps;
@@ -16,16 +16,18 @@ type BaseInputProps<P> = DefaultBaseInputProps & SerenityBaseProps & {
 	rightSection?: JSX.Element;
 	leftSection?: JSX.Element;
 	required?: boolean;
+	lazyError?: boolean; // shows error only when input is dirty
 } & P;
 
 const defaultBaseInputProps: DefaultProps<
 	BaseInputProps<{}>,
-	'variant' | 'styles' | 'radius' | 'size' | 'required'
+	'variant' | 'styles' | 'radius' | 'size' | 'required' | 'lazyError'
 > = {
 	variant: 'default',
 	radius: 'xs',
 	size: 'sm',
 	required: false,
+	lazyError: true,
 	styles: {
 		root: classes['base-input'],
 		label: classes['base-input__label'],
@@ -49,7 +51,8 @@ const splitBaseInputProps = [
 	"size",
 	"leftSection",
 	"rightSection",
-	"required"
+	"required",
+	"lazyError"
 ] as const;
 
 const kobalteTextFieldErrorProps = [
@@ -85,37 +88,38 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 
 	return (
 		<TextField.Root
-			class={c(defaultBaseInputProps.styles.root, root.class)}
-			data-variant={props.variant}
-			validationState={props.error ? 'invalid' : 'valid'}
+			class={c(defaultBaseInputProps.styles.root, baseProps.class)}
+			data-variant={baseProps.variant}
+			data-lazy={b(baseProps.lazyError)}
+			validationState={baseProps.error ? 'invalid' : 'valid'}
 			{...styles()}
 			{...other}
 		>
-			<Show when={props.label}>
+			<Show when={baseProps.label}>
 				<TextField.Label 
 					class={defaultBaseInputProps.styles.label}
-					data-required={root.required}
+					data-required={baseProps.required}
 				>
 					{baseProps.label}
 				</TextField.Label>
 			</Show>
-			<Show when={props.description}>
+			<Show when={baseProps.description}>
 				<TextField.Description class={defaultBaseInputProps.styles.description}>
 					{baseProps.description}
 				</TextField.Description>
 			</Show>
-			<label class={defaultBaseInputProps.styles.wrapper}>
-				<div class={defaultBaseInputProps.styles.leftSection}>
+			<label class={baseProps.styles.wrapper}>
+				<div class={baseProps.styles.leftSection}>
 					{baseProps.leftSection}
 				</div>
 				{props.children}
-				<div class={defaultBaseInputProps.styles.rightSection}>
+				<div class={baseProps.styles.rightSection}>
 					{baseProps.rightSection}
 				</div>
 			</label>
-			<Show when={props.error}>
+			<Show when={baseProps.error}>
 				<TextField.ErrorMessage
-					class={defaultBaseInputProps.styles.error}
+					class={baseProps.styles.error}
 					forceMount={error.forceMount}
 				>
 					{baseProps.error}
