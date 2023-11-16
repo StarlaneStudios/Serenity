@@ -1,4 +1,4 @@
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveLength, buildStyles, resolveColor, ColorValue } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveLength, buildStyles, resolveColor, ColorValue } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./badge.module.scss";

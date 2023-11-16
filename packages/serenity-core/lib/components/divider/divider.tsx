@@ -1,5 +1,5 @@
 import classes from "./divider.module.scss";
-import { Size, Color, localVars, c, resolveLength, resolveColor, SerenityBaseProps, buildStyles, UTILITY_NAMES, ColorValue } from "@serenity-ui/styles";
+import { Size, localVars, c, resolveLength, resolveColor, SerenityBaseProps, buildStyles, UTILITY_NAMES, ColorValue } from "@serenity-ui/styles";
 import { Show, mergeProps, splitProps } from "solid-js";
 import { JSX } from "solid-js/jsx-runtime";
 import { DefaultProps } from "../../util/types";

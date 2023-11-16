@@ -1,6 +1,6 @@
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { SerenityBaseProps, UTILITY_NAMES, Variant, buildStyles, localVars, c, resolveLength, resolveSize, b, ColorValue } from "@serenity-ui/styles";
-import { Color, Size } from "@serenity-ui/styles";
+import { Size } from "@serenity-ui/styles";
 import { variants } from "../../constants/variants";
 import { Button as KobalteButton } from "@kobalte/core";
 import { DefaultProps } from "../../util/types";

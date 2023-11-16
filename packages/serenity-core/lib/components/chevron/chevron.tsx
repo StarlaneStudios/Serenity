@@ -1,5 +1,5 @@
 import classes from "./chevron.module.scss";
-import { Color, ColorValue, SerenityBaseProps, UTILITY_NAMES, b, buildStyles, c, resolveColor } from "@serenity-ui/styles";
+import { ColorValue, SerenityBaseProps, UTILITY_NAMES, b, buildStyles, c, resolveColor } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 

@@ -1,4 +1,4 @@
-import { Color, ColorValue, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveLength } from "@serenity-ui/styles";
+import { ColorValue, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveLength } from "@serenity-ui/styles";
 import { mergeProps, splitProps } from "solid-js";
 import { Checkbox as KobalteCheckbox } from "@kobalte/core";
 import { DefaultProps } from "../../typings/helpers";

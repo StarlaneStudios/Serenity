@@ -1,5 +1,5 @@
 import { Tabs as KobalteTabs } from "@kobalte/core";
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveColor, resolveLength, buildStyles, isColorLight, ColorValue } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, UTILITY_NAMES, localVars, c, resolveColor, resolveLength, buildStyles, isColorLight, ColorValue } from "@serenity-ui/styles";
 import { DefaultProps } from "../../util/types";
 import { mergeProps, splitProps } from "solid-js";
 import classes from "./tabs.module.scss";

@@ -1,4 +1,4 @@
-import { Color, ColorValue, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveSize } from "@serenity-ui/styles";
+import { ColorValue, SerenityBaseProps, Size, UTILITY_NAMES, buildStyles, c, localVars, resolveColor, resolveSize } from "@serenity-ui/styles";
 import { JSX, Match, Show, Switch, createEffect, createUniqueId, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from "../../util/types";
 import classes from "./alert.module.scss";

@@ -1,5 +1,5 @@
 import classes from './icon.module.scss';
-import { Color, SerenityBaseProps, Size, UTILITY_NAMES, Variant, buildStyles, c, resolveColor, resolveLength, localVars, b, ColorValue } from "@serenity-ui/styles";
+import { SerenityBaseProps, Size, UTILITY_NAMES, Variant, buildStyles, c, resolveColor, resolveLength, localVars, b, ColorValue } from "@serenity-ui/styles";
 import { JSX, mergeProps, splitProps } from "solid-js";
 import { DefaultProps } from '../../util/types';
 
