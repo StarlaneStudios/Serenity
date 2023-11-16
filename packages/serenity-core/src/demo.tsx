@@ -143,6 +143,8 @@ export const DemoPage = () => {
 					description="This is a description"
 					mt="xs"
 					variant="default"
+					error="Dit is een error"
+					lazyError={false}
 				/>
 
 				<InputField

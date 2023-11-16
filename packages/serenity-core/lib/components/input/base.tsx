@@ -5,7 +5,7 @@ import { DefaultProps } from "../../typings/deprecated";
 import { SerenityBaseProps } from "../../typings/props";
 import { Size } from "../../typings/values";
 import { UTILITY_NAMES, buildStyles } from "../../utilities";
-import { localVars, c } from "../../utils/css";
+import { localVars, c, b } from "../../utils/css";
 import { resolveLength, resolveSize } from "../../utils/resolvers";
 
 type DefaultBaseInputProps = TextField.TextFieldRootProps & TextField.TextFieldLabelProps & TextField.TextFieldDescriptionProps & TextField.TextFieldErrorMessageProps;
