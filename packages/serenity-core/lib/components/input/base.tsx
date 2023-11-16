@@ -16,18 +16,15 @@ type BaseInputProps<P> = DefaultBaseInputProps & SerenityBaseProps & {
 	rightSection?: JSX.Element;
 	leftSection?: JSX.Element;
 	required?: boolean;
-	lazyError?: boolean; // shows error only when input is dirty
 } & P;
 
 const defaultBaseInputProps: DefaultProps<
 	BaseInputProps<{}>,
-	'variant' | 'styles' | 'radius' | 'size' | 'required' | 'lazyError'
+	'variant' | 'styles' | 'radius' | 'size'
 > = {
 	variant: 'default',
 	radius: 'xs',
 	size: 'sm',
-	required: false,
-	lazyError: true,
 	styles: {
 		root: classes['base-input'],
 		label: classes['base-input__label'],
@@ -51,8 +48,7 @@ const splitBaseInputProps = [
 	"size",
 	"leftSection",
 	"rightSection",
-	"required",
-	"lazyError"
+	"required"
 ] as const;
 
 const kobalteTextFieldErrorProps = [
@@ -90,7 +86,6 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 		<TextField.Root
 			class={c(defaultBaseInputProps.styles.root, baseProps.class)}
 			data-variant={baseProps.variant}
-			data-lazy={b(baseProps.lazyError)}
 			validationState={baseProps.error ? 'invalid' : 'valid'}
 			{...styles()}
 			{...other}
@@ -98,7 +93,7 @@ function BaseInput<P>(props: BaseInputProps<P>) {
 			<Show when={baseProps.label}>
 				<TextField.Label 
 					class={defaultBaseInputProps.styles.label}
-					data-required={baseProps.required}
+					data-required={b(baseProps.required)}
 				>
 					{baseProps.label}
 				</TextField.Label>
