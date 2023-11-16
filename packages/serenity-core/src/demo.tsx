@@ -69,7 +69,7 @@ export const DemoPage = () => {
 					</button>
 				</Row>
 			</form>
-			<Tabs variant="default">
+			<Tabs variant="pills">
 				<Tabs.List spacing="14px">
 					<Tabs.Tab value="a">Tab 1</Tabs.Tab>
 					<Tabs.Tab value="b">Tab 2</Tabs.Tab>
@@ -134,6 +134,7 @@ export const DemoPage = () => {
 					description="This is a description"
 					mt="xs"
 					variant="outline"
+					required
 				/>
 
 				<InputField
