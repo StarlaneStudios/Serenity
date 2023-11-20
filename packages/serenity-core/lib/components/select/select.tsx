@@ -154,8 +154,8 @@ function Select(props: SelectProps) {
 
 	return (
 		<KobalteSelect.Root<any>
-			class={c(inputClasses['base-input'], classes['select'], root.class)}
-			data-variant={root.variant}
+			class={c(inputClasses['base-input'], classes['select'], baseProps.class)}
+			data-variant={baseProps.variant}
 			itemComponent={SelectItem as any}
 			sectionComponent={SelectSection as any}
 			onChange={onChange}
@@ -164,7 +164,7 @@ function Select(props: SelectProps) {
 			{...styles()}
 			{...other}
 		>
-			<Show when={props.label}>
+			<Show when={baseProps.label}>
 				{(label) => (
 					<KobalteSelect.Label
 						class={inputClasses['base-input__label']}
@@ -172,7 +172,7 @@ function Select(props: SelectProps) {
 					/>
 				)}
 			</Show>
-			<Show when={props.description}>
+			<Show when={baseProps.description}>
 				{(description) => (
 					<KobalteSelect.Description
 						class={inputClasses['base-input__description']}
@@ -188,7 +188,7 @@ function Select(props: SelectProps) {
 					children={selectedValue}
 				/>
 			</KobalteSelect.Trigger>
-			<Show when={props.error}>
+			<Show when={baseProps.error}>
 				{(error) => (
 					<KobalteSelect.ErrorMessage
 						class={classes['base-input__error']}
