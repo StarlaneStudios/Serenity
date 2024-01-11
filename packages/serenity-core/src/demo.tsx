@@ -4,6 +4,7 @@ import { Alert } from "../lib/components/alert";
 import classes from "./demo.module.scss";
 import { mdiAccount } from "@mdi/js";
 import { Select as KobalteSelect } from "@kobalte/core";
+import { Dialog } from "../lib/components/dialog";
 
 export const DemoPage = () => {
 
@@ -185,6 +186,9 @@ export const DemoPage = () => {
 					</KobalteSelect.Portal>
 				</KobalteSelect.Root>
 			</Unit>
+			<Dialog title="This is a title" defaultOpen>
+				Test
+			</Dialog>
 		</>
 	);
 };
