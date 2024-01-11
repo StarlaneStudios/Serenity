@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@kobalte/core':
-        specifier: ^0.11.0
+        specifier: ^0.11.2
         version: 0.11.2(solid-js@1.8.4)
       '@solidjs/meta':
         specifier: ^0.28.6
