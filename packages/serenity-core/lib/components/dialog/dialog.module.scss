@@ -1,0 +1,46 @@
+.dialog {
+
+	&__overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 50;
+		background-color: rgb(0 0 0 / 0.2);
+		animation: overlayHide 250ms ease 100ms forwards;
+
+		&[data-expanded] {
+			animation: overlayShow 250ms ease;
+		}
+	}
+
+	&__content {
+		position: fixed;
+		inset: 30%;
+		background-color: var(--color-white);
+		border-radius: var(--border-radius);
+		box-shadow: var(--box-shadow);
+		padding: var(--space-4);
+		overflow: auto;
+		background-color: white;
+		border-radius: 4px;
+	}
+}
+
+@keyframes overlayHide {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes overlayShow {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
