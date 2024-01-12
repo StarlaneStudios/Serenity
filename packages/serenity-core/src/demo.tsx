@@ -4,12 +4,14 @@ import { Alert } from "../lib/components/alert";
 import classes from "./demo.module.scss";
 import { mdiAccount } from "@mdi/js";
 import { Select as KobalteSelect } from "@kobalte/core";
+import { Dialog } from "../lib/components/dialog";
 
 export const DemoPage = () => {
 
 	const { toggleTheme } = useSerenity();
 	const [show, setShow] = createSignal(true);
-	const [value, setValue] = createSignal<string>()
+	const [value, setValue] = createSignal<string>();
+	const [dialog, setDialog] = createSignal(true);
 
 	const hideAlert: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent> = (event) => {
 		setShow(prev => !prev);
@@ -185,6 +187,46 @@ export const DemoPage = () => {
 					</KobalteSelect.Portal>
 				</KobalteSelect.Root>
 			</Unit>
+			<Dialog
+				title="About Kobalte"
+				open={dialog()}
+				onOpenChange={setDialog}
+				activator={
+					<Button>
+						Open dialog
+					</Button>
+				}
+			>
+				<p>
+					Feedback is specifiek en ‘to the point’. Hoe specifieker je bent, hoe meer de ander ervan kan leren.
+				</p>
+				<p>
+					Feedback is beschrijvend en heeft betrekking op gedragsaspecten. Zeg niet rechtstreeks
+					'jij doet dit fout', maar beschrijf het effect van zijn gedrag. Bijvoorbeeld: 'jouw werkhouding zorgt er soms voor dat ...'.
+				</p>
+				<p>
+					Beide partijen kunnen hun voordeel met de feedback doen. Leef je in de situatie van de ander in en vraag jezelf af of jouw commentaar de ander kan helpen. Heeft hij er iets aan?
+				</p>
+				<p>
+					Beschrijf het gedrag dat je hebt waargenomen. Geef concreet aan wat je hebt waargenomen,
+					geef geen interpretaties. Het gaat om de concrete feiten.
+				</p>
+				<p>
+					Vertel welk effect het gedrag van de ander op je heeft. Als je ontevreden of boos bent, zeg het dan. Maak gebruik van ‘ik-boodschappen’ in plaats van ‘jij-boodschappen’.
+				</p>
+				<p>
+					Geef suggesties voor verandering van het gedrag. Als je op een goede manier wilt corrigeren,
+					bied dan een alternatief.
+				</p>
+				<Row justify="end" mt="xs">
+					<Button variant="light" size="sm" onclick={() => setDialog(false)}>
+						Cancel
+					</Button>
+					<Button variant="filled" size="sm">
+						Submit
+					</Button>
+				</Row>
+			</Dialog>
 		</>
 	);
 };

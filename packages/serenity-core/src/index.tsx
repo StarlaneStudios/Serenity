@@ -4,9 +4,9 @@ import { SerenityProvider } from "../lib";
 
 render(() => (
 	<SerenityProvider
-		initialTheme="dark"
+		initialTheme="light"
 		withGlobalStyle={true}
-		accentColor="pink"
+		accentColor="orange"
 	>
 		<DemoPage />
 	</SerenityProvider>

@@ -1,0 +1,125 @@
+.dialog {
+
+	&__overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 50;
+		background-color: rgb(0 0 0 / 0.2);
+		pointer-events: none;
+		animation: overlayHide 250ms ease 100ms forwards;
+
+		&[data-expanded] {
+			animation: overlayShow 250ms ease;
+		}
+
+	}
+
+	&__positioner {
+		position: fixed;
+		inset: 0;
+		z-index: 50;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__content {
+		position: relative;
+		z-index: 50;
+		max-width: min(calc(100vw - 16px), 500px);
+		border: 1px solid var(--serenity-dialog-border-color);
+		border-radius: 6px;
+		padding: 16px;
+		background-color: var(--serenity-dialog-background-color);
+		box-shadow: var(--serenity-dialog-box-shadow);
+		animation: contentHide 300ms ease-in forwards;
+
+		&[data-expanded] {
+			animation: contentShow 300ms ease-out;
+		}
+	}
+
+	&__close-button {
+		position: absolute;
+		top: 4px;
+		right: 0;
+	}
+
+	&__header {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		margin-bottom: 12px;
+	}
+
+	&__title {
+		font-size: 20px;
+		font-weight: 500;
+		color: var(--serenity-dialog-title-color);
+		margin-block: 0;
+	}
+
+	&__description {
+		font-size: 16px;
+		color: var(--serenity-dialog-description-color);
+		margin-bottom: 0;
+	}
+}
+
+@include defineDarkVariables(("dialog-background-color": var(--serenity-color-dark-6),
+		"dialog-border-color": var(--serenity-color-dark-4),
+		"dialog-box-shadow": 0 0 10px 0 rgba(0, 0, 0, 0.1),
+		"dialog-title-color": var(--serenity-color-gray-0),
+		"dialog-description-color": var(--serenity-color-gray-1),
+	));
+
+@include defineLightVariables(("dialog-background-color": #fff,
+		"dialog-border-color": #e5e5e5,
+		"dialog-box-shadow": 0 0 10px 0 rgba(1, 1, 1, 0.1),
+		"dialog-title-color": var(--serenity-color-gray-9),
+		"dialog-description-color": var(--serenity-color-gray-8),
+	));
+
+@keyframes overlayShow {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes overlayHide {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes contentShow {
+	from {
+		opacity: 0;
+		transform: scale(0.96);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes contentHide {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	to {
+		opacity: 0;
+		transform: scale(0.96);
+	}
+}

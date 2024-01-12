@@ -1,7 +1,7 @@
 /**
  * CSS Unit types used internally in Serenity
  */
-export type UnitType = "rem" | "em";
+export type UnitType = "rem" | "em" | "px";
 
 /**
  * The names of colors provided by Serenity
