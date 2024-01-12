@@ -41,8 +41,10 @@
 		user-select: none;
 	}
 
-	&__icon {
-		fill: #fff;
+	&:not([data-disabled]) {
+		.checkbox__icon {
+			color: white;
+		}
 	}
 
 	&[data-disabled] {
