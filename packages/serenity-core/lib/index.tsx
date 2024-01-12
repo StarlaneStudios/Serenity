@@ -8,6 +8,7 @@ export * from "./components/checkbox";
 export * from "./components/chevron";
 export * from "./components/column";
 export * from "./components/divider";
+export * from "./components/dialog";
 export * from "./components/entry";
 export * from "./components/icon";
 export * from "./components/input";
