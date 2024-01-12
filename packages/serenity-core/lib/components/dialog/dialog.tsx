@@ -1,27 +1,27 @@
-import { mergeProps, splitProps } from "solid-js";
-import { Dialog as KobalteDialog } from "@kobalte/core";
+import { JSX, ParentProps, ValidComponent, mergeProps, splitProps } from "solid-js";
+import { As, Dialog as KobalteDialog } from "@kobalte/core";
 import { DefaultProps } from "../../typings/helpers";
 import classes from "./dialog.module.scss";
 import { resolveLength } from "../../utils/resolvers";
 import { localVars } from "../../utils/css";
-import { UTILITY_NAMES, buildStyles } from "../../utilities";
-import { SerenityBaseProps } from "../../typings/props";
-import { Length } from "../../typings/values";
+import { buildStyles } from "../../utilities";
+import { useSerenity } from "../../provider";
+import { Icon } from "../icon";
+import { mdiClose } from "@mdi/js";
+import { Button } from "../button";
 
-interface DialogProps extends SerenityBaseProps, KobalteDialog.DialogRootProps {
+interface DialogProps extends KobalteDialog.DialogRootProps, ParentProps {
 	title: string;
-	description?: string;
-
 	blur?: number | string;
-	size?: Length;
+	activator: JSX.Element;
 }
 
 const defaultDialogProps = {
 	defaultOpen: false,
-	modal: true,
+	modal: false,
 	preventScroll: true,
 	blur: 5,
-	size: "lg"
+	forceMount: true
 } satisfies Partial<DefaultProps<DialogProps>>;
 
 const dialogSplitProps = [
@@ -32,13 +32,14 @@ const dialogSplitProps = [
 	"onOpenChange",
 	"open",
 	"preventScroll",
-	"blur",
-	"size"
+	"blur"
 ] satisfies (keyof DialogProps)[];
 
 function Dialog(props: DialogProps) {
 
-	const [root, utils, other] = splitProps(props, dialogSplitProps, UTILITY_NAMES);
+	const serenity = useSerenity();
+
+	const [root, other] = splitProps(props, dialogSplitProps);
 	const baseProps = mergeProps(defaultDialogProps, root);
 
 	const overlayCSSVariables = () => {
@@ -46,25 +47,44 @@ function Dialog(props: DialogProps) {
 		return localVars({ blur });
 	};
 
-	const overlayStyles = () => buildStyles(utils, overlayCSSVariables());
+	const overlayStyles = () => buildStyles({}, overlayCSSVariables());
 
 	return (
-		<KobalteDialog.Root
-			{...root}
-		>
-			<KobalteDialog.Trigger children={other.children} />
-			<KobalteDialog.Portal>
+		<KobalteDialog.Root {...root}>
+			<KobalteDialog.Trigger asChild>
+				<As 
+					component="span"
+					children={other.activator}
+				/>
+			</KobalteDialog.Trigger>
+			<KobalteDialog.Portal mount={serenity.element() ?? undefined}>
 				<KobalteDialog.Overlay
-					class={classes['dialog__overlay']}
+					class={classes.dialog__overlay}
 					{...overlayStyles()}
 				/>
-				<KobalteDialog.Content
-					class={classes['dialog__content']}
-				>
-					<KobalteDialog.CloseButton />
-					<KobalteDialog.Title children={props.title} />
-					<KobalteDialog.Description children={props.description} />
-				</KobalteDialog.Content>
+				<div class={classes.dialog__positioner}>
+					<KobalteDialog.Content class={classes.dialog__content}>
+						<div class={classes.dialog__header}>
+							<KobalteDialog.Title
+								class={classes.dialog__title}
+								children={props.title}
+							/>
+							<KobalteDialog.CloseButton
+								as="div"
+								class={classes['dialog__close-button']}
+							>
+								<Button
+									size="xs"
+									variant="transparent"
+									color="gray"
+								>
+									<Icon path={mdiClose} />
+								</Button>
+							</KobalteDialog.CloseButton>
+						</div>
+						{other.children}
+					</KobalteDialog.Content>
+				</div>
 			</KobalteDialog.Portal>
 		</KobalteDialog.Root>
 	);
