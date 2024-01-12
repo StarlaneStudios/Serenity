@@ -108,15 +108,15 @@ export function resolveGridCols(breakpoints: Record<Size, number>): JSX.CSSPrope
  */
 export function resolveColor(input: string, defaultShade: number = 6) {
 
-	if (isColorFunction(input)) {
-		return input;
+	switch(true) {
+		case isColorFunction(input):
+		case input == "currentColor":
+			return input;
+		case input == "accent":
+			return v('accent-color');
+		default:
+			return getThemeColor(input, defaultShade);
 	}
-
-	if (input == "accent") {
-		return v('accent-color');
-	}
-
-	return getThemeColor(input, defaultShade);
 };
 
 /**
