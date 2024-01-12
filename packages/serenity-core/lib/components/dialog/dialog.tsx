@@ -11,7 +11,7 @@ import { mdiClose } from "@mdi/js";
 import { Button } from "../button";
 
 interface DialogProps extends KobalteDialog.DialogRootProps, ParentProps {
-	title: string;
+	title: JSX.Element;
 	blur?: number | string;
 	activator: JSX.Element;
 }
