@@ -26,6 +26,7 @@
 		outline-style: solid;
 
 		transition: outline-color .2s, outline-width .2s;
+		overflow: hidden;
 
 		&:focus-within {
 			outline-color: var(--serenity-input-focus-color);
@@ -52,6 +53,7 @@
 		color: var(--serenity-input-label-color);
 		font-size: var(--serenity-font-size-md);
 		font-weight: 600;
+		width: max-content;
 
 		&[data-required] {
 			&::after {
@@ -67,7 +69,7 @@
 		color: var(--serenity-input-description-color);
 		font-size: var(--serenity-font-size-sm);
 		font-weight: lighter;
-		line-height: 0.6;
+		line-height: 0.75;
 		margin-bottom: 5px;
 	}
 

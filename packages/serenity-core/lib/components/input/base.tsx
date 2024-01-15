@@ -27,7 +27,7 @@ const defaultBaseInputProps: DefaultProps<
 	'variant' | 'styles' | 'radius' | 'size'
 > = {
 	variant: 'default',
-	radius: 'xs',
+	radius: 'sm',
 	size: 'sm',
 	styles: {
 		root: classes['base-input'],
