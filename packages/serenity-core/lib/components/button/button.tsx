@@ -34,10 +34,11 @@ const buttonSplitProps = [
 	"style"
 ] as const;
 
-const defaultButtonProps: DefaultProps<ButtonProps, 'size' | 'radius' | 'variant' | 'classes'> = {
+const defaultButtonProps: DefaultProps<ButtonProps, 'size' | 'radius' | 'variant' | 'classes' | 'type'> = {
 	size: "md",
 	radius: "sm",
 	variant: "filled",
+	type: "button",
 	classes: {
 		inner: classes["button__inner"],
 		label: classes["button__label"]
@@ -71,6 +72,7 @@ function Button(props: ButtonProps) {
 	return (
 		<KobalteButton.Root
 			class={c(baseProps.class, classes.button)}
+			type={baseProps.type}
 			data-variant={baseProps.variant}
 			data-loading={b(baseProps.loading)}
 			aria-disabled={other.disabled}
