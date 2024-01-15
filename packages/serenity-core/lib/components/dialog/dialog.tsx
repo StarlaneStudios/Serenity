@@ -1,4 +1,4 @@
-import { JSX, ParentProps, ValidComponent, mergeProps, splitProps } from "solid-js";
+import { JSX, ParentProps, mergeProps, splitProps } from "solid-js";
 import { As, Dialog as KobalteDialog } from "@kobalte/core";
 import { DefaultProps } from "../../typings/helpers";
 import classes from "./dialog.module.scss";

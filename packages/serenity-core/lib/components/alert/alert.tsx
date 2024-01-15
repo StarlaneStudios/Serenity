@@ -1,4 +1,4 @@
-import { JSX, Match, Show, Switch, createEffect, createUniqueId, mergeProps, splitProps } from "solid-js";
+import { JSX, Match, Show, Switch, createUniqueId, mergeProps, splitProps } from "solid-js";
 import classes from "./alert.module.scss";
 import { Button } from "../button";
 import { VARIANTS } from "../../constants/variants";

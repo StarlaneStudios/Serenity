@@ -1,5 +1,5 @@
 import { Variant } from "../typings/values";
-import { darken, lighten, opacitize } from "../utils/css";
+import { darken, opacitize } from "../utils/css";
 import { resolveColor } from "../utils/resolvers";
 
 interface VariantResolver {
