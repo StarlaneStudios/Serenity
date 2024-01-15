@@ -9,7 +9,7 @@ import { localVars, c, b } from "../../utils/css";
 import { resolveLength, resolveSize } from "../../utils/resolvers";
 
 type DefaultBaseInputProps = TextField.TextFieldRootProps & TextField.TextFieldLabelProps & TextField.TextFieldDescriptionProps & TextField.TextFieldErrorMessageProps;
-type BaseInputProps<P> = DefaultBaseInputProps & SerenityBaseProps & {
+type BaseInputProps<P> = Omit<DefaultBaseInputProps, 'onchange' | 'onChange'> & SerenityBaseProps & {
 	label?: string;
 	description?: string;
 	error?: string;
