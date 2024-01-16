@@ -67,7 +67,7 @@ const resolveSubtleVariant: VariantResolver = (color, interactive = true) => {
 	};
 
 	if (interactive) {
-		base["hover-color"] = opacitize(output, 12);
+		base["hover-color"] = opacitize(output, 88);
 	}
 
 	return base;
