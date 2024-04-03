@@ -29,12 +29,12 @@ interface EntryProps extends SerenityBaseProps {
 	/**
 	 * The main title to display
 	 */
-	title: string;
+	title: JSX.Element;
 
 	/**
 	 * The subtitle to display
 	 */
-	subtitle?: string;
+	subtitle?: JSX.Element;
 
 	/**
 	 * The maximum number of lines to display for the subtitle, uses -webkit-line-clamp
