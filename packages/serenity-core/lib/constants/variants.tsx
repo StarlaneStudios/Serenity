@@ -37,7 +37,7 @@ const resolveOutlineVariant: VariantResolver = (color, interactive = true) => {
 	};
 
 	if (interactive) {
-		base["hover-color"] = opacitize(output, 12);
+		base["hover-color"] = opacitize(output, 96);
 	}
 
 	return base;
