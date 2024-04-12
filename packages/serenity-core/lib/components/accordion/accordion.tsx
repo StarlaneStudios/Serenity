@@ -9,26 +9,33 @@ import { UTILITY_NAMES, buildStyles } from "../../utilities";
 import { localVars, c, b } from "../../utils/css";
 import { resolveLength } from "../../utils/resolvers";
 
-interface AccordionProps extends SerenityBaseProps, Omit<ColumnProps, 'align' | 'justify'> {
+interface AccordionProps extends SerenityBaseProps, Omit<ColumnProps, 'align' | 'justify' | 'onChange'> {
 	variant?: "default" | "contained" | "seperated" | "filled";
 	multiple?: boolean;
 	radius?: Size | number;
 	collapsible?: boolean;
 	noChevronAnimation?: boolean;
+	value?: string[];
+	defaultValue?: string[];
+
+	onChange?: (value: string[]) => void;
 }
 
-const defaultAccrodionProps: DefaultProps<AccordionProps, 'variant' | 'spacing' | 'multiple' | 'radius' | 'collapsible' | 'noChevronAnimation'> = {
+const defaultAccrodionProps = {
 	variant: "contained",
 	spacing: "sm",
 	multiple: false,
 	radius: "sm",
 	collapsible: false,
 	noChevronAnimation: false
-};
+} as Exclude<AccordionProps, keyof ColumnProps>;
 
 const KobalteAccordionProps = [
 	"multiple",
-	"collapsible"
+	"collapsible",
+	"value",
+	"defaultValue",
+	"onChange"
 ] as const;
 
 const AccordionSplitProps = [
