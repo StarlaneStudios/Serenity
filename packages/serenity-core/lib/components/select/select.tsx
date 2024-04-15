@@ -32,6 +32,7 @@ interface SelectBaseProps extends SerenityBaseProps {
 	error?: string;
 	radius?: Size | number;
 	onChange?: (value: string) => void;
+	mount?: Node;
 }
 
 type SelectOptionsData = (string | SelectItemData | SelectGroupData);
@@ -47,7 +48,8 @@ const selectSplitProps = [
 	"style",
 	"variant",
 	"onChange",
-	"value"
+	"value",
+	"mount"
 ] as const;
 
 const defaultSplitProps = {
@@ -153,13 +155,13 @@ function Select(props: SelectProps) {
 	};
 
 	return (
-		<KobalteSelect.Root<any>
+		<KobalteSelect.Root
 			class={c(inputClasses['base-input'], classes['select'], baseProps.class)}
 			data-variant={baseProps.variant}
 			itemComponent={SelectItem as any}
 			sectionComponent={SelectSection as any}
-			onChange={onChange}
-			value={value()}
+			onChange={baseProps.onChange ? onChange : undefined}
+			value={baseProps.value ? value() : undefined}
 			{...selectAttributes()}
 			{...styles()}
 			{...other}
@@ -196,7 +198,7 @@ function Select(props: SelectProps) {
 					/>
 				)}
 			</Show>
-			<KobalteSelect.Portal mount={serenity.element() ?? undefined}>
+			<KobalteSelect.Portal mount={baseProps.mount ?? serenity.element() ?? undefined}>
 				<KobalteSelect.Content>
 					<KobalteSelect.Listbox
 						class={classes['select__listbox']}
