@@ -28,7 +28,7 @@
 		"@serenity-ui/styles": "*"
 	},
 	"peerDependencies": {
-		"solid-js": "1.7.11"
+		"solid-js": "1.8.16"
 	},
 	"files": [
 		"dist"
