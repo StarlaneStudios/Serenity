@@ -22,4 +22,8 @@ export * from "./components/tabs";
 export * from "./components/text";
 export * from "./components/unit";
 
+export type * from "./typings/values";
+export type * from "./typings/props";
+export type * from "./typings/theme";
+
 import "./styles/global.scss";
