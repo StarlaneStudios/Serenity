@@ -14,6 +14,7 @@ export * from "./components/icon";
 export * from "./components/input";
 export * from "./components/layout";
 export * from "./components/loader";
+export * from "./components/pagination";
 export * from "./components/paper";
 export * from "./components/row";
 export * from "./components/select";
