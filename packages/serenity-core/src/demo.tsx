@@ -5,6 +5,7 @@ import classes from "./demo.module.scss";
 import { mdiAccount } from "@mdi/js";
 import { Select as KobalteSelect } from "@kobalte/core";
 import { Dialog } from "../lib/components/dialog";
+import { Pagination } from "../lib/components/pagination";
 
 export const DemoPage = () => {
 
@@ -26,6 +27,15 @@ export const DemoPage = () => {
 
 	return (
 		<>
+			<Pagination
+				count={10}
+				color="orange"
+			/>
+			<Pagination
+				count={10}
+				color="blue"
+				fixedItems
+			/>
 			<Row m={1}>
 				<Button onClick={hideAlert}>
 					Click me
